@@ -1,0 +1,142 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	margin: 0;
+}
+
+button{
+	display: inline-block;
+	padding: 0.4em 0.8em;
+	background-color: green;
+	border: none;
+	border-radius: 4px;
+	line-height: 24px;
+	cursor: pointer;
+}
+
+#header{
+	font-size: 30px;
+}
+
+#num-levels{
+	position: relative;
+	display: inline-block;
+	height: 30px;
+	margin-top: 0.5rem;
+	font-size: 15px;
+	user-select: none;
+}
+
+#level-indicator{
+	display: inline-block;
+	width: 160px;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#inst{
+	font-size: 16px;
+	font-family: sans-serif;
+}
+
+#edit_screen{
+	width: 50%;
+	height: auto;
+	position: relative;
+	padding: 2em;
+	background-color: #0080ff;
+	font-size: 20px;
+
+}
+
+#editor{
+	position: relative;
+}
+
+#editor,
+pre {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #aaa;
+}
+
+#vscreen{
+	position: relative;
+	width: 50vw;
+	height: 50vw;
+	overflow: hidden;
+}
+
+#board{
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 1em;
+}
+
+#css{
+	height: 260px;
+  position: relative;
+  padding: 10px 10px 10px 40px;
+  background-color: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#text{
+	display: block;
+	width: 100%;
+	height: 25px;
+	margin-left: 5px;
+	border: none;
+	outline: none;
+	resize: none;
+	overflow: auto;
+	font-size: 18px;
+}
+
+#pond,
+#background {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+}
+
+#next_btn{
+	position: absolute;
+	right: 2%;
+	bottom: 2%;
+}
+
+#sair_btn{
+	background-color: red;
+	position: absolute;
+	bottom: 10%;
+}
+
+.line-numbers{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	padding: 10px 6px;
+	text-align: right;
+	background-color: #999;
+	color: #D5D5D5;
+}
+
+pre{
+	margin: 0;
+}
