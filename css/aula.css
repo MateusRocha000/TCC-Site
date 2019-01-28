@@ -29,6 +29,8 @@ button{
 	margin-top: 0.5rem;
 	font-size: 15px;
 	user-select: none;
+	background-color: #A6F5FE;
+	border-radius: 4px;
 }
 
 #level-indicator{
@@ -91,7 +93,7 @@ pre {
 }
 
 #css{
-  height: 300px;
+  height: 260px;
   position: relative;
   padding: 10px 10px 10px 50px;
   background-color: #ddd;
@@ -155,7 +157,7 @@ pre {
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 83%;
+	height: 78%;
 	padding: 10px 6px;
 	text-align: right;
 	background-color: #999;
@@ -167,6 +169,18 @@ pre {
 	width: 30%;
 	height: 30%;
 	overflow: hidden;
+}
+
+.seta.esq, .seta.dir{
+	cursor: pointer;
+}
+
+.seta.esq{
+	border-right-color: blue;
+}
+
+.seta.dir{
+	border-left-color: blue;
 }
 
 pre{

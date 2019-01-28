@@ -9,18 +9,18 @@
 <body>
 	<div id="edit_screen"  ng-controller="tcc-site">
 		<div id="header">
-			<h1 id="title">Título: tag &lth1&gt</h1>
+			<h1 id="title">{{levels[cur_level].name}}</h1>
 
 			<div id="num-levels">
-				<span class="seta esq">◀</span>
+				<span class="seta esq" ng-click="backLevel(cur_level)" name="seta-esq">◀</span>
 				<span id="level-indicator">
 					<span id="labelLevel" class="translate">Level</span>
-					<span class="current">1</span>
+					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level+1}}</span>
 					<span id="labelOf" class="translate">of</span>
-					<span class="total">3</span>
+					<span class="total">{{levels.length}}</span>
 					<span class="caret">▾</span>
 				</span>
-				<span class="seta dir">▶</span>
+				<span class="seta dir" ng-click="nextLevel(cur_level)" name="seta-dir">▶</span>
 
 				<div id="levels-box" class="tooltip">
 					<div id="levels">
@@ -31,7 +31,7 @@
 		</div>
 		
 		<div id="instr">
-			{{levels[0].instr}}
+			{{levels[cur_level].instr}}
 		</div>
 
 		<div id="editor">
@@ -53,17 +53,13 @@
 					<br>
 					8
 					<br>
-					9
-					<br>
-					10
-					<br>
 				</div>
 				<pre id="before">{{levels[0].before}}</pre>
-				<input type="text" id="text" oninput="appendHTML()"></input>
+				<input type="text" id="text" oninput="appendHTML()" name="text"></input>
 				<pre id="after">{{levels[0].after}}</pre>
 
 				<button id="quit_btn">Sair</button>
-				<button id="next_btn">Próximo</button>
+				<button id="next_btn" ng-click="nextLevel(cur_level)" ng-disabled="text.$invalid">Próximo</button>
 			</div>
 
 			
@@ -78,18 +74,19 @@
 					
 				</div>
 
-				<div id="item">
+				<div id="item" ng-bind-html="myHTML">
 					
 				</div>
 			</div>
 		</div>
 	</section>
 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-sanitize.js"></script>
 	<script src="./JS/module.js"></script>
 	<script type="text/javascript" src="./JS/aulas.js"></script>
 	<script src="./JS/jquery.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="./JS/game.js"></script>
 	<script type="text/javascript" src="./JS/levels.js"></script>
 	<script src="JS/native.js"></script>

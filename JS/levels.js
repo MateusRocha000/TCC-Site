@@ -1,19 +1,21 @@
 angular.module("tcc-site").controller("tcc-site", function($scope){
+	$scope.cur_level = 0;
 	$scope.levels = [
 		{
-				name: 'tag-h1',
+				name: 'Tag de título: <h1>',
 				instr: 'Tag de título para a página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>'
+				after: '   </body>\n</html>',
+				tag_init: '<h1>',
+				tag_end: '</h1>'
 		},
 		{
-				name: 'tag-p',
-				instr: {
-					"pt" : "<p>Tag de parágrafo para a página</p>",
-					"en" : "<p>Paragraph tag for the web page</p>"
-				},
-				before: "<body>",
-				after: "</body>"
+				name: 'Tag de parágrafo: <p>',
+				instr: 'Tag de parágrafo para a página',
+				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
+				after: "</body>\n</html>",
+				tag_init: '<p>',
+				tag_end: '</p>'
 		}/*,
 		{
 				name: "intro-css",
@@ -45,6 +47,27 @@ angular.module("tcc-site").controller("tcc-site", function($scope){
 			}
 		}*/
 	];
+	
+	var count = Object.keys($scope.levels).length;
+	
+	$scope.nextLevel = function(cur_level)
+	{
+		if($scope.cur_level < count-1)
+			$scope.cur_level++;
+	};
+	
+	$scope.backLevel = function(cur_level)
+	{
+		if($scope.cur_level > 0)
+			$scope.cur_level--;
+	};
+	
+	$scope.canGoNext = function()
+	{
+		
+	};
+	
+	
 	
 	$scope.levelWin = [
 		{
