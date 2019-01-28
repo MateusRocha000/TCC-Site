@@ -1,12 +1,13 @@
-$('#before').text('<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n     <h1>\n');
-$('#after').text('     </h1>\n   </body>\n</html>');
+$('#before').text('<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n');
+$('#after').text('   </body>\n</html>');
 
 function appendHTML()
 {
-  var title = document.getElementById("text").value;
+  var text = document.getElementById("text").value;
   var item = document.getElementById("item");
 
-  item.innerHTML = '<h1>' + title + '</h1>';
+  if (text.includes('<h1>') && text.includes('</h1>'))
+    item.innerHTML = text;
 }
 
 /*var game = {

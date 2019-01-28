@@ -136,6 +136,10 @@ pre {
 	bottom: 1em;
 }
 
+#next_btn.disabled{
+	opacity: 0.5;
+}
+
 #quit_btn{
 	background-color: red;
 	position: absolute;
