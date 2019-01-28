@@ -1,6 +1,3 @@
-$('#before').text('<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n');
-$('#after').text('   </body>\n</html>');
-
 function appendHTML()
 {
   var text = document.getElementById("text").value;
@@ -9,6 +6,7 @@ function appendHTML()
   if (text.includes('<h1>') && text.includes('</h1>'))
     item.innerHTML = text;
 }
+
 
 /*var game = {
   level: parseInt(localStorage.level, 10) || 0,

@@ -1,15 +1,15 @@
-<html>
+<html ng-app="tcc-site" lang="pt-br">
 <head>
 	<title>Introdução - HTML</title>
-
+	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/aula.css">
+	
 </head>
 <body>
-
-	<section id="edit_screen">
+	<div id="edit_screen"  ng-controller="tcc-site">
 		<div id="header">
-			<h1 class="title"></h1>
+			<h1 id="title">Título: tag &lth1&gt</h1>
 
 			<div id="num-levels">
 				<span class="seta esq">◀</span>
@@ -29,8 +29,10 @@
 				</div>
 			</div>
 		</div>
-
-		<p id="inst"></p>
+		
+		<div id="instr">
+			{{levels[0].instr}}
+		</div>
 
 		<div id="editor">
 			<div id="css">
@@ -56,13 +58,9 @@
 					10
 					<br>
 				</div>
-				<pre id="before">
-					
-				</pre>
+				<pre id="before">{{levels[0].before}}</pre>
 				<input type="text" id="text" oninput="appendHTML()"></input>
-				<pre id="after">
-
-				</pre>
+				<pre id="after">{{levels[0].after}}</pre>
 
 				<button id="quit_btn">Sair</button>
 				<button id="next_btn">Próximo</button>
@@ -71,7 +69,7 @@
 			
 		</div>
 		
-	</section>
+	</div>
 
 	<section id="view_screen">
 		<div id="vscreen">
@@ -87,6 +85,8 @@
 		</div>
 	</section>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+	<script src="./JS/module.js"></script>
 	<script type="text/javascript" src="./JS/aulas.js"></script>
 	<script src="./JS/jquery.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
