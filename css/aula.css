@@ -190,6 +190,15 @@ pre {
 	border-left-color: blue;
 }
 
+.popup{
+	display: table;
+	position: fixed;
+    top: 50%;
+    /*half of the modal height*/
+    margin: 0 auto;
+    left: 50%;
+}
+
 pre{
 	margin: 0;
 }

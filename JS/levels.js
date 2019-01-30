@@ -1,4 +1,4 @@
-angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage, $sessionStorage, $sce){
+angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage, $sessionStorage, $window){
 	$scope.cur_level = 0;
 	$scope.answer = [];
 	$scope.myHTML = '';
@@ -37,7 +37,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	var count = Object.keys($scope.levels).length;
 	var key = Object.values($scope.levels[$scope.cur_level].id);
 	
-	
 	$scope.saveData = function(text)
 	{
 		key = Object.values($scope.levels[$scope.cur_level].id);
@@ -45,11 +44,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
 		console.log($scope.answer);
 	};
-	
-	$scope.loadData = function()
-	{
-		
-	}
 	
 	$scope.clearStorage = function()
 	{
@@ -98,7 +92,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				$scope.cur_level++;
 				$scope.loadLevel();
 			}
-			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
 			
 		}
 	};
@@ -115,7 +108,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				$scope.cur_level--;
 				$scope.loadLevel();
 			}
-			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
 			
 		}
 	};
@@ -123,9 +115,18 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.submit = function()
 	{
 		var text = $scope.myHTML;
-		$scope.saveData(text);
-		if( ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_init)) && ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_end)) )
+		if( ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_init)) && ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_end)) ){
+			$scope.saveData(text);
 			$scope.disableBtn = false;
+		}
+		else
+			{
+				var x = screen.width/2 - 700/2;
+			    var y = screen.height/2 - 450/2;
+				$window.open("popup_modal.html","popup","width=500,height=500,left="+x+",top="+y);
+				//$window.write("<h1>Código incorreto</h1><br><p>O código inserido está incorreto</p>");
+				$scope.myHTML = '';
+			}
 	};
 	
 	$scope.levelWin = [
