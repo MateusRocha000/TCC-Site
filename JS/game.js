@@ -3,8 +3,10 @@ function appendHTML()
   var text = document.getElementById("text").value;
   var item = document.getElementById("item");
 
-  if (text.includes('<h1>') && text.includes('</h1>'))
+  if (text.includes('<') && text.includes('</') && text.includes('>'))
     item.innerHTML = text;
+ 
+  console.log(item.innerHTML);
 }
 
 
