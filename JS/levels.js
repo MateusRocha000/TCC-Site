@@ -1,6 +1,7 @@
 angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage, $sessionStorage, $sce){
 	$scope.cur_level = 0;
 	$scope.answer = [];
+	$scope.myHTML = '';
 	$scope.levels = [
 		{
 				id: '0',
@@ -47,9 +48,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	
 	$scope.loadData = function()
 	{
-		key = Object.values($scope.levels[$scope.cur_level].id);
-		var content = $scope.answer[key];
-		$scope.myHTML = content;
+		
 	}
 	
 	$scope.clearStorage = function()
@@ -58,17 +57,29 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		console.log($scope.answer);
 	};
 	
+	$scope.loadLevel = function()
+	{
+		$scope.title = $scope.levels[$scope.cur_level].name;
+		$scope.instruction = $scope.levels[$scope.cur_level].instr;
+		$scope.before = $scope.levels[$scope.cur_level].before;
+		$scope.after = $scope.levels[$scope.cur_level].after;
+		$scope.disableBtn = true;
+		
+		key = Object.values($scope.levels[$scope.cur_level].id);
+		var content = $scope.answer[key];
+		$scope.myHTML = content;
+	}
+	
 	$scope.passLevel = function()
 	{
 		var next_content = $scope.answer[$scope.cur_level+1];
 		if($scope.cur_level < count-1)
 		{
-			
 			if(next_content == '')
-				$scope.myHTML = null;
+				$scope.myHTML = '';
 			else{
 				$scope.cur_level++;
-				$scope.loadData();
+				$scope.loadLevel();
 			}
 			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
 			
@@ -82,10 +93,10 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			
 			if(next_content == '')
-				$scope.myHTML = null;
+				$scope.myHTML = '';
 			else{
 				$scope.cur_level++;
-				$scope.loadData();
+				$scope.loadLevel();
 			}
 			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
 			
@@ -99,10 +110,10 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			
 			if(back_content == '')
-				$scope.myHTML = null;
+				$scope.myHTML = '';
 			else{
 				$scope.cur_level--;
-				$scope.loadData();
+				$scope.loadLevel();
 			}
 			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
 			
@@ -113,6 +124,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	{
 		var text = $scope.myHTML;
 		$scope.saveData(text);
+		if( ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_init)) && ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_end)) )
+			$scope.disableBtn = false;
 	};
 	
 	$scope.levelWin = [

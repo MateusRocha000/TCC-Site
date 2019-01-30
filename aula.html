@@ -7,9 +7,9 @@
 	
 </head>
 <body>
-	<div id="edit_screen"  ng-controller="tcc-site as tcc">
+	<div id="edit_screen"  ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
 		<div id="header">
-			<h1 id="title">{{levels[cur_level].name}}</h1>
+			<h1 id="title">{{title}}</h1>
 
 			<div id="num-levels">
 				<span class="seta esq" ng-click="backLevel(cur_level)" name="seta-esq">◀</span>
@@ -31,7 +31,7 @@
 		</div>
 		
 		<div id="instr">
-			{{levels[cur_level].instr}}
+			{{instruction}}
 		</div>
 
 		<div id="editor">
@@ -54,14 +54,14 @@
 					8
 					<br>
 				</div>
-				<pre id="before">{{levels[0].before}}</pre>
-				<input type="text" id="text" onchange="appendHTML()" ng-model="myHTML"></input>
-				<pre id="after">{{levels[0].after}}</pre>
+				<pre id="before">{{before}}</pre>
+				<input type="text" id="text" onchange="appendHTML()" ng-model="myHTML" placeholder="Enter your code here"></input>
+				<pre id="after">{{after}}</pre>
 
 				<button id="quit_btn">Sair</button>
 				<button id="clear_storage" ng-click="clearStorage()">Limpar</button>
 				<button id="submit" ng-click="submit()">Submit</button>
-				<button id="next_btn" ng-click="passLevel()" ng-disabled="text.$invalid">Próximo</button>
+				<button id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			</div>
 
 			
