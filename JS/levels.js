@@ -37,7 +37,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	var key = Object.values($scope.levels[$scope.cur_level].id);
 	
 	
-	$scope.saveData = function(cur_level, text)
+	$scope.saveData = function(text)
 	{
 		key = Object.values($scope.levels[$scope.cur_level].id);
 		$scope.answer[key] = text;
@@ -45,42 +45,74 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		console.log($scope.answer);
 	};
 	
+	$scope.loadData = function()
+	{
+		key = Object.values($scope.levels[$scope.cur_level].id);
+		var content = $scope.answer[key];
+		$scope.myHTML = content;
+	}
+	
 	$scope.clearStorage = function()
 	{
 		$scope.answer.length = 0;
 		console.log($scope.answer);
 	};
 	
-	$scope.passLevel = function(cur_level)
+	$scope.passLevel = function()
 	{
+		var next_content = $scope.answer[$scope.cur_level+1];
 		if($scope.cur_level < count-1)
 		{
-			$scope.myHTML = null;
-			$scope.cur_level++;
+			
+			if(next_content == '')
+				$scope.myHTML = null;
+			else{
+				$scope.cur_level++;
+				$scope.loadData();
+			}
+			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
+			
 		}
 	};
 	
-	$scope.nextLevel = function(cur_level)
+	$scope.nextLevel = function()
 	{
+		var next_content = $scope.answer[$scope.cur_level+1];
 		if($scope.cur_level < count-1)
 		{
-			$scope.myHTML = null;
-			$scope.cur_level++;
+			
+			if(next_content == '')
+				$scope.myHTML = null;
+			else{
+				$scope.cur_level++;
+				$scope.loadData();
+			}
+			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
+			
 		}
 	};
 	
 	$scope.backLevel = function(cur_level)
 	{
+		var back_content = $scope.answer[$scope.cur_level-1];
 		if($scope.cur_level > 0)
 		{
-			$scope.cur_level--;
+			
+			if(back_content == '')
+				$scope.myHTML = null;
+			else{
+				$scope.cur_level--;
+				$scope.loadData();
+			}
+			console.log('Resposta deste nível: ' + $scope.answer[$scope.cur_level]);
+			
 		}
 	};
 	
 	$scope.submit = function()
 	{
 		var text = $scope.myHTML;
-		$scope.saveData($scope.cur_level, text);
+		$scope.saveData(text);
 	};
 	
 	$scope.levelWin = [
