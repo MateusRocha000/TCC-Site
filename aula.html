@@ -4,6 +4,7 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="css/animate.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/aula.css">
+	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
 </head>
 <body>
 	<div id="edit_screen"  ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
@@ -54,7 +55,7 @@
 					<br>
 				</div>
 				<pre id="before">{{before}}</pre>
-				<input type="text" id="text" onchange="appendHTML()" ng-model="myHTML" placeholder="Enter your code here"></input>
+				<input type="text" id="text" onchange="appendCode()" ng-model="myHTML" placeholder="Enter your code here"></input>
 				<pre id="after">{{after}}</pre>
 
 				<button id="quit_btn">Sair</button>
@@ -71,11 +72,11 @@
 	<section id="view_screen">
 		<div id="vscreen">
 			<div id="board">
-				<div id="background">
+				<div id="background" ng-class="levels[cur_level].id = '0' ? 'nivel_um' : 'nivel_dois'">
 					
 				</div>
 
-				<div id="item" ng-model="item">
+				<div id="item" ng-model="item" >
 					
 				</div>
 			</div>

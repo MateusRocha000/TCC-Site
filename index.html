@@ -5,7 +5,8 @@
 
 <link rel="stylesheet" type="text/css" href="./css/index.css">
 
-<link href='https://fonts.googleapis.com/css?family=Atma' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Atma'
+	rel='stylesheet'>
 
 </head>
 
@@ -13,72 +14,69 @@
 
 
 
-<h1>Web Teaching</h1>
+	<h1>Web Teaching</h1>
 
-<div class="janela">
-	<div class="placa_intro">
-			<img src="./img/placa.png" class="board_intro">
-			<img src="./img/papel.png" class="paper_intro">
-		<div class="texto">
-			<p>Uma plataforma para ensinar a criação de sites para iniciantes na área.</p>
-		    <p>O usuário aprenderá sobre HTML, CSS e Javascript. Além disso, poderá criar e editar seu portfólio.</p>
-		   
+	<div class="janela">
+		<div class="placa_intro">
+			<img src="./img/placa.png" class="board_intro"> <img
+				src="./img/papel.png" class="paper_intro">
+			<div class="texto">
+				<p>Uma plataforma para ensinar a criação de sites para
+					iniciantes na área.</p>
+				<p>O usuário aprenderá sobre HTML, CSS e Javascript. Além
+					disso, poderá criar e editar seu portfólio.</p>
+
+			</div>
 		</div>
-	</div>
 
-	<div class="acesso_conta">
-		<img src="./img/placa.png" class="board_account">
-			<img src="./img/papel.png" class="paper_account">
+		<div class="acesso_conta">
+			<img src="./img/placa.png" class="board_account"> <img
+				src="./img/papel.png" class="paper_account">
 
-		<div class="label">
-			<label>
-			Usuário: <input id="user_name" type="text" name="user_name" placeholder="Usuário" required></input>	
-			</label>
-			
-			<label>
-				Senha: <input id="password" type="password" name="password" placeholder="Senha" required></input>	
-			</label>
-		    
-		    <button id="loginbtn" onclick="document.getElement('login').style.display='block'">
-		    	Logar
-		    </button>
+			<div class="label">
+				<label> Usuário: <input id="user_name" type="text"
+					name="user_name" placeholder="Usuário" required></input>
+				</label> <label> Senha: <input id="password" type="password"
+					name="password" placeholder="Senha" required></input>
+				</label>
 
-		    <button id="signbtn" onclick="document.getElement('sign_up_button').style.display='block'">
-		    	Cadastrar
-		    </button>
+				<button id="loginbtn"
+					onclick="document.getElement('login').style.display='block'">
+					Logar</button>
+
+				<button id="signbtn"
+					onclick="document.getElement('sign_up_button').style.display='block'">
+					Cadastrar</button>
+			</div>
 		</div>
+
+		<div id="sign_up_form" class="modal">
+			<span
+				onclick="document.getElementById('sign_up_form').style.display='none'"
+				class="close" title="Close Modal"></span>
+
+			<form id="sign_up_form" class="modal-content"
+				action="contaUsuario.html" method="POST">
+				<label> Usuário: <input type="text" name="username"
+					placeholder="Insira usuário" required></input>
+				</label> <label> E-mail: <input type="email" name="email"
+					placeholder="Insira e-mail" required></input>
+				</label> <label> Senha: <input type="password" name="psw"
+					placeholder="Insira senha" required></input>
+				</label> <label> Repetir senha: <input type="password"
+					name="confirm_psw" placeholder="Repita a senha" required></input>
+				</label>
+
+				<div class="buttons">
+
+					<input class="signup" type="submit" value="Ok" /> <input
+						class="cancelbtn" type="button" value="Cancelar"
+						onclick="document.getElementById('suf').style.display='none'" />
+				</div>
+			</form>
+		</div>
+
 	</div>
-
-	<div id="sign_up_form" class="modal">
-		<span onclick="document.getElementById('sign_up_form').style.display='none'" class="close" title="Close Modal"></span>
-
-		<form id="sign_up_form" class="modal-content" action="contaUsuario.html" method="POST">
-			<label>
-				Usuário: <input type="text" name="username" placeholder="Insira usuário" required></input>
-			</label>
-
-			<label>
-                E-mail: <input type="email" name="email" placeholder="Insira e-mail" required></input>
-            </label>
-
-            <label>
-                Senha: <input type="password" name="psw" placeholder="Insira senha" required></input>
-            </label>
-
-            <label>
-                Repetir senha: <input type="password" name="confirm_psw" placeholder="Repita a senha" required></input>
-            </label>
-
-            <div class="buttons">
-
-                <input class="signup" type="submit" value="Ok" />
-
-                <input class="cancelbtn" type="button" value="Cancelar" onclick="document.getElementById('suf').style.display='none'" />
-            </div>
-		</form>
-	</div>
-
-</div>
 
 </body>
 </html>

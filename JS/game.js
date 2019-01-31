@@ -1,4 +1,4 @@
-function appendHTML()
+function appendCode()
 {
   var text = document.getElementById("text").value;
   var item = document.getElementById("item");

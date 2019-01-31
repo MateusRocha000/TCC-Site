@@ -1,14 +1,14 @@
-body{
+body {
 	background-color: #0080ff;
-  margin: auto;
+	margin: auto;
 }
 
-h1{
-  	font-family: serif;
-    text-align: center;
+h1 {
+	font-family: serif;
+	text-align: center;
 }
 
-button{
+button {
 	display: inline-block;
 	padding: 0.4em 0.8em;
 	background-color: #4CAF50;
@@ -19,14 +19,14 @@ button{
 	cursor: pointer;
 }
 
-.sanfona{
+.sanfona {
 	width: 30vw;
 	background-color: white;
 	padding: 1%;
 	list-style: none;
 }
 
-.sanfona li{
+.sanfona li {
 	list-style: none;
 	text-align: center;
 	width: 100%;
@@ -35,27 +35,26 @@ button{
 	border-bottom: 1px solid black;
 }
 
-.sanfona li ul{
+.sanfona li ul {
 	display: none;
 }
 
-.sanfona li:focus ul{
+.sanfona li:focus ul {
 	display: block;
 	padding: 0;
 }
 
-.class_title{
+.class_title {
 	background-color: #ddd;
 	font-size: 35px;
-	
 }
 
-.sub_item{
+.sub_item {
 	background-color: gray;
 	font-size: 24px;
 }
 
-#menu{
+#menu {
 	display: flex;
 	justify-content: center;
 }
@@ -171,7 +170,7 @@ button{
 	padding: 10px 0 10px 0;
 }
 */
-#sair_btn{
+#sair_btn {
 	background-color: red;
 	position: absolute;
 	bottom: 10%;

@@ -9,6 +9,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Inicializa a área de texto como vazia
 	$scope.myHTML = '';
 	
+	
+	
 	//Contém os dados de cada nível
 	$scope.levels = [
 		{
@@ -17,6 +19,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				instr: 'Tag de título para a página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
+				item: '',
 				tag_init: '<h1>',
 				tag_end: '</h1>'
 		},
@@ -26,6 +29,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				instr: 'Tag de parágrafo para a página',
 				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
 				after: "</body>\n</html>",
+				item: '',
 				tag_init: '<p>',
 				tag_end: '</p>'
 		},
@@ -33,14 +37,17 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				id: '2',
 				name: 'Seletores',
 				instr: 'Seletores de CSS',
-				before: 'body{\nbackground-color: blue;\n}'
+				before: 'HTML:\n...\n<h1 id="title">Titulo</h1>\n...\n-----------------------\nCSS:\n',
+				item: '<h1>Titulo</h1>',
+				tag_init: '#title{',
+				tag_end: '}'
 		},
 		{
 				id: '3',
 				name: 'Variáveis',
 				instr: 'Variáveis em javascript'
 		}
-	];
+	];	
 	
 	//Variável auxiliar com o tamanho da variável níveis
 	var count = Object.keys($scope.levels).length;
@@ -65,10 +72,12 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Função que carrega os dados do nível
 	$scope.loadLevel = function()
 	{
+		console.log($scope.cur_level);
 		$scope.title = $scope.levels[$scope.cur_level].name;
 		$scope.instruction = $scope.levels[$scope.cur_level].instr;
 		$scope.before = $scope.levels[$scope.cur_level].before;
 		$scope.after = $scope.levels[$scope.cur_level].after;
+		$scope.item = $scope.levels[$scope.cur_level].item;
 		$scope.disableBtn = true;
 		
 		key = Object.values($scope.levels[$scope.cur_level].id);
@@ -142,6 +151,11 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				$scope.myHTML = '';
 			}
 	};
+	
+	$scope.applyStyle = function()
+	{
+		return $scope.levels[$scope.cur_level].style;
+	}
 	
 	//Objeto para a conclusão do curso, informando a finalização
 	$scope.levelWin = [

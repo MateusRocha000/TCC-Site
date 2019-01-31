@@ -1,26 +1,26 @@
 {
-  "name": "package.json",
-  "version": "1.0.0",
-  "description": "Web site for web teaching",
-  "main": "game.js",
-  "scripts": {
-    "test": "json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MateusRocha000/TCC-Site.git"
-  },
-  "keywords": [
-    "tccsite"
-  ],
-  "author": "Mateus Rocha",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MateusRocha000/TCC-Site/issues"
-  },
-  "homepage": "https://github.com/MateusRocha000/TCC-Site#readme",
-  "dependencies": {
-    "angular": "^1.7.6",
-    "package.json": "^2.0.1"
-  }
+	"name": "package.json",
+	"version": "1.0.0",
+	"description": "Web site for web teaching",
+	"main": "game.js",
+	"scripts": {
+		"test": "json"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MateusRocha000/TCC-Site.git"
+	},
+	"keywords": [
+		"tccsite"
+	],
+	"author": "Mateus Rocha",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MateusRocha000/TCC-Site/issues"
+	},
+	"homepage": "https://github.com/MateusRocha000/TCC-Site#readme",
+	"dependencies": {
+		"angular": "^1.7.6",
+		"package.json": "^2.0.1"
+	}
 }

@@ -1,13 +1,13 @@
-body{
+body {
 	margin: 0;
 	background-color: #0080ff;
 }
 
-h1{
+h1 {
 	text-align: center;
 }
 
-button{
+button {
 	display: inline-block;
 	padding: 0.4em 0.8em;
 	background-color: green;
@@ -17,35 +17,33 @@ button{
 	cursor: pointer;
 }
 
-#corpo{
+#corpo {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
 
-#preview_pastas
-{
+#preview_pastas {
 	border: 2px solid blue;
 	width: 60%;
 }
 
-#buttons{
+#buttons {
 	padding: 10px 0 10px 0;
 }
 
-#sair_btn{
+#sair_btn {
 	background-color: red;
 	position: absolute;
 	bottom: 10%;
 	left: 10%;
 }
 
-.folder{
+.folder {
 	display: flex;
 	justify-content: space-between;
 	border: 1px solid gray;
 	background-color: #ddd;
 	padding: 5px 0 5px 10px;
 }
-
