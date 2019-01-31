@@ -3,10 +3,9 @@ function appendHTML()
   var text = document.getElementById("text").value;
   var item = document.getElementById("item");
 
+  //Se o código contém os caracteres da tag, atribui o código à div
   if (text.includes('<') && text.includes('</') && text.includes('>'))
     item.innerHTML = text;
- 
-  console.log(item.innerHTML);
 }
 
 
