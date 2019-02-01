@@ -55,12 +55,12 @@
 					<br>
 				</div>
 				<pre id="before">{{before}}</pre>
-				<input type="text" id="text" onchange="appendCode()" ng-model="text_code" placeholder="Enter your code here"></input>
+				<input type="text" id="text" ng-model="text_code" placeholder="Enter your code here"></input>
 				<pre id="after">{{after}}</pre>
 
 				<button id="quit_btn">Sair</button>
 				<button id="clear_storage" ng-click="clearStorage()">Limpar</button>
-				<button id="submit" ng-click="submit()">Submit</button>
+				<button id="submit" ng-click="submit();item=true" ng-model="submit">Submit</button>
 				<button id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			</div>
 
@@ -76,7 +76,7 @@
 					
 				</div>
 
-				<div id="item" ng-model="item" ng-bind-html="myHTML">
+				<div class="item" ng-if="item" ng-model="item" ng-bind-html="text_code" ng-class="{'pos_one': cur_level == '1', 'pos_two': cur_level == '2', 'pos_three': cur_level == '3'}">
 					
 				</div>
 			</div>

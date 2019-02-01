@@ -116,13 +116,11 @@ button {
 	font-size: 18px;
 }
 
-#item {
+.item {
 	font-family: 'ZCOOL KuaiLe', cursive;
 	font-size: 30px;
 	display: flex;
 	position: absolute;
-	top: 46.5%;
-	left: 38%;
 	width: 60%;
 	height: 20%;
 	padding: 1em;
@@ -209,10 +207,15 @@ button {
 	z-index: 10;
 }
 
+.pos_one{
+	top: 46.5%;
+	left: 38%;
+}
+
 .level-two{
 	background-image: url("../img/papel.png"), url("../img/placa.png");
 	background-color: #80ffff;
-	background-size : 50% 30%, 50% 50%;
+	background-size : 50% 25%, 50% 50%;
 	background-repeat : no-repeat;
 	background-position : center 400px, center bottom;
 	order: 1, 2;
@@ -224,6 +227,11 @@ button {
 	height : 100%;	
 	padding	: 1em;
 	z-index: 10;
+}
+
+.pos_two{
+	top: 49%;
+	left: 26%;
 }
 
 .level-three{
@@ -239,6 +247,10 @@ button {
 	height : 100%;	
 	padding	: 1em;
 	z-index: 10;
+}
+
+.pos_three{
+	
 }
 
 pre {
