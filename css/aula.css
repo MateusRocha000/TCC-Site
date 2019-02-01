@@ -117,6 +117,7 @@ button {
 }
 
 .item {
+	text-align: center;
 	font-family: 'ZCOOL KuaiLe', cursive;
 	font-size: 30px;
 	display: flex;
