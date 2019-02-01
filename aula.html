@@ -6,8 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="./css/aula.css">
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
 </head>
-<body>
-	<div id="edit_screen"  ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
+<body ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
+	<div id="edit_screen"  >
 		<div id="header">
 			<h1 id="title">{{title}}</h1>
 
@@ -15,7 +15,7 @@
 				<span class="seta esq" ng-click="backLevel(cur_level)" name="seta-esq">◀</span>
 				<span id="level-indicator">
 					<span id="labelLevel" class="translate">Level</span>
-					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level+1}}</span>
+					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level}}</span>
 					<span id="labelOf" class="translate">of</span>
 					<span class="total">{{levels.length}}</span>
 					<span class="caret">▾</span>
@@ -55,7 +55,7 @@
 					<br>
 				</div>
 				<pre id="before">{{before}}</pre>
-				<input type="text" id="text" onchange="appendCode()" ng-model="myHTML" placeholder="Enter your code here"></input>
+				<input type="text" id="text" onchange="appendCode()" ng-model="text_code" placeholder="Enter your code here"></input>
 				<pre id="after">{{after}}</pre>
 
 				<button id="quit_btn">Sair</button>
@@ -72,11 +72,11 @@
 	<section id="view_screen">
 		<div id="vscreen">
 			<div id="board">
-				<div id="background" ng-class="levels[cur_level].id = '0' ? 'nivel_um' : 'nivel_dois'">
+				<div class="background" ng-class="{'level-one': cur_level == '1', 'level-two': cur_level == '2', 'level-three': cur_level == '3'}">
 					
 				</div>
 
-				<div id="item" ng-model="item" >
+				<div id="item" ng-model="item" ng-bind-html="myHTML">
 					
 				</div>
 			</div>

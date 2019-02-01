@@ -1,7 +1,7 @@
 angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage, $sessionStorage, $window){
 	
 	//Salva o nível atual em que o usuário está
-	$scope.cur_level = 0;
+	$scope.cur_level = 1;
 	
 	//Array que salva o código que o usuário coloca, caso esteja certo
 	$scope.answer = [];
@@ -14,7 +14,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Contém os dados de cada nível
 	$scope.levels = [
 		{
-				id: '0',
+				id: '1',
 				name: 'Tag de título: <h1>',
 				instr: 'Tag de título para a página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
@@ -24,7 +24,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				tag_end: '</h1>'
 		},
 		{
-				id: '1',
+				id: '2',
 				name: 'Tag de parágrafo: <p>',
 				instr: 'Tag de parágrafo para a página',
 				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
@@ -34,7 +34,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				tag_end: '</p>'
 		},
 		{
-				id: '2',
+				id: '3',
 				name: 'Seletores',
 				instr: 'Seletores de CSS',
 				before: 'HTML:\n...\n<h1 id="title">Titulo</h1>\n...\n-----------------------\nCSS:\n',
@@ -43,7 +43,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				tag_end: '}'
 		},
 		{
-				id: '3',
+				id: '4',
 				name: 'Variáveis',
 				instr: 'Variáveis em javascript'
 		}
@@ -53,12 +53,12 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	var count = Object.keys($scope.levels).length;
 	
 	//Variável para mapear a posição em que o código do usuário será salvo na variável "answer"
-	var key = Object.values($scope.levels[$scope.cur_level].id);
+	var key = Object.values($scope.levels[$scope.cur_level-1].id);
 	
 	//Salva o dado como parâmetro em "answer" e no localStorage para poder ser carregado caso o usuário volte em um nível concluído, mostrando a resposta dele
 	$scope.saveData = function(text)
 	{
-		key = Object.values($scope.levels[$scope.cur_level].id);
+		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		$scope.answer[key] = text;
 		localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
 	};
@@ -73,29 +73,29 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.loadLevel = function()
 	{
 		console.log($scope.cur_level);
-		$scope.title = $scope.levels[$scope.cur_level].name;
-		$scope.instruction = $scope.levels[$scope.cur_level].instr;
-		$scope.before = $scope.levels[$scope.cur_level].before;
-		$scope.after = $scope.levels[$scope.cur_level].after;
-		$scope.item = $scope.levels[$scope.cur_level].item;
+		$scope.title = $scope.levels[$scope.cur_level-1].name;
+		$scope.instruction = $scope.levels[$scope.cur_level-1].instr;
+		$scope.before = $scope.levels[$scope.cur_level-1].before;
+		$scope.after = $scope.levels[$scope.cur_level-1].after;
+		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
 		
-		key = Object.values($scope.levels[$scope.cur_level].id);
+		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		var content = $scope.answer[key];
-		$scope.myHTML = content;
+		$scope.text_code = content;
 	}
 	
 	//Função para o botão de passar nível do botão Próximo
 	$scope.passLevel = function()
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do próximo nível
-		var next_content = $scope.answer[$scope.cur_level+1];
-		if($scope.cur_level < count-1)
+		var next_content = $scope.answer[$scope.cur_level];
+		if($scope.cur_level < count)
 		{
 			if(next_content == '')
-				$scope.myHTML = '';
+				$scope.text_code = '';
 
-			$scope.cur_level++;
+			$scope.cur_level = $scope.cur_level + 1;
 			$scope.loadLevel();
 		}
 	};
@@ -104,14 +104,14 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.nextLevel = function()
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do próximo nível
-		var next_content = $scope.answer[$scope.cur_level+1];
-		if($scope.cur_level < count-1)
+		var next_content = $scope.answer[$scope.cur_level];
+		if($scope.cur_level < count)
 		{
 			
 			if(next_content == '')
-				$scope.myHTML = '';
+				$scope.text_code = '';
 			
-			$scope.cur_level++;
+			$scope.cur_level = $scope.cur_level + 1;
 			$scope.loadLevel();
 		}
 	};
@@ -120,14 +120,14 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.backLevel = function(cur_level)
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do nível anterior
-		var back_content = $scope.answer[$scope.cur_level-1];
-		if($scope.cur_level > 0)
+		var back_content = $scope.answer[$scope.cur_level-2];
+		if($scope.cur_level > 1)
 		{
 			
 			if(back_content == '')
-				$scope.myHTML = '';
+				$scope.text_code = '';
 
-			$scope.cur_level--;
+			$scope.cur_level = $scope.cur_level - 1;
 			$scope.loadLevel();
 			
 		}
@@ -137,8 +137,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.submit = function()
 	{
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
-		if( ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_init)) && ($scope.myHTML.includes($scope.levels[$scope.cur_level].tag_end)) ){
-			$scope.saveData($scope.myHTML);
+		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) ){
+			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
 		}
 		else
@@ -148,13 +148,13 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			    var y = screen.height/2 - 450/2;
 				$window.open("popup_modal.html","popup","width=500,height=500,left="+x+",top="+y);
 				//$window.write("<h1>Código incorreto</h1><br><p>O código inserido está incorreto</p>");
-				$scope.myHTML = '';
+				$scope.text_code = '';
 			}
 	};
 	
 	$scope.applyStyle = function()
 	{
-		return $scope.levels[$scope.cur_level].style;
+		return $scope.levels[$scope.cur_level-1].style;
 	}
 	
 	//Objeto para a conclusão do curso, informando a finalização
