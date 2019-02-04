@@ -19,14 +19,14 @@ button {
 	cursor: pointer;
 }
 
-.sanfona {
+#menu {
 	width: 30vw;
 	background-color: white;
 	padding: 1%;
 	list-style: none;
 }
 
-.sanfona li {
+.#menu li {
 	list-style: none;
 	text-align: center;
 	width: 100%;
@@ -35,11 +35,11 @@ button {
 	border-bottom: 1px solid black;
 }
 
-.sanfona li ul {
+#menu li ul {
 	display: none;
 }
 
-.sanfona li:focus ul {
+#menu li:focus ul {
 	display: block;
 	padding: 0;
 }
@@ -52,11 +52,6 @@ button {
 .sub_item {
 	background-color: gray;
 	font-size: 24px;
-}
-
-#menu {
-	display: flex;
-	justify-content: center;
 }
 
 /*

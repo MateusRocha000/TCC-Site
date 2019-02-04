@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="tcc-site">
 <head>
 <title>Web Teaching</title>
 
-<link rel="stylesheet" type="text/css" href="./css/index.css">
+<link rel="stylesheet" type="text/css" href="index.css">
 
 <link href='https://fonts.googleapis.com/css?family=Atma'
 	rel='stylesheet'>
 
 </head>
 
-<body>
+<body ng-controller="tcc-site as tcc">
 
 
 
@@ -21,10 +20,9 @@
 			<img src="./img/placa.png" class="board_intro"> <img
 				src="./img/papel.png" class="paper_intro">
 			<div class="texto">
-				<p>Uma plataforma para ensinar a cria√ß√£o de sites para
-					iniciantes na √°rea.</p>
-				<p>O usu√°rio aprender√° sobre HTML, CSS e Javascript. Al√©m
-					disso, poder√° criar e editar seu portf√≥lio.</p>
+				<p>Uma plataforma para ensinar a criaÁ„o de sites para
+					iniciantes na ·rea.</p>
+				<p>O usu·rio aprender· sobre HTML, CSS e Javascript.</p>
 
 			</div>
 		</div>
@@ -33,50 +31,35 @@
 			<img src="./img/placa.png" class="board_account"> <img
 				src="./img/papel.png" class="paper_account">
 
-			<div class="label">
-				<label> Usu√°rio: <input id="user_name" type="text"
-					name="user_name" placeholder="Usu√°rio" required></input>
-				</label> <label> Senha: <input id="password" type="password"
-					name="password" placeholder="Senha" required></input>
-				</label>
-
-				<button id="loginbtn"
-					onclick="document.getElement('login').style.display='block'">
-					Logar</button>
-
-				<button id="signbtn"
-					onclick="document.getElement('sign_up_button').style.display='block'">
-					Cadastrar</button>
-			</div>
-		</div>
-
-		<div id="sign_up_form" class="modal">
-			<span
-				onclick="document.getElementById('sign_up_form').style.display='none'"
-				class="close" title="Close Modal"></span>
-
-			<form id="sign_up_form" class="modal-content"
-				action="contaUsuario.html" method="POST">
-				<label> Usu√°rio: <input type="text" name="username"
-					placeholder="Insira usu√°rio" required></input>
-				</label> <label> E-mail: <input type="email" name="email"
-					placeholder="Insira e-mail" required></input>
-				</label> <label> Senha: <input type="password" name="psw"
-					placeholder="Insira senha" required></input>
-				</label> <label> Repetir senha: <input type="password"
-					name="confirm_psw" placeholder="Repita a senha" required></input>
-				</label>
-
-				<div class="buttons">
-
-					<input class="signup" type="submit" value="Ok" /> <input
-						class="cancelbtn" type="button" value="Cancelar"
-						onclick="document.getElementById('suf').style.display='none'" />
+			<form name="form" ng-submit="login()" role="form">
+				<div class="form-group" ng-class="{'has-error': form.username.$dirty && form.username.$error.required}">
+					<label for="username">Nome de usu·rio</label>
+					<input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+					<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Campo obrigatÛrio</span>
+				</div>
+				
+				<div class="form-group" ng-class="{'has-error': form.password.$dirty && form.password.$error.required}">
+					<label for="password">Senha</label>
+					<input type="password" id="password" class="form-control" ng-model="password" required/>
+					<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Campo obrigatÛrio</span>
+				
+				</div>
+				
+				<div class="form-actions">
+					<a href="#!contaUsuario"><button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Login</button></a>
 				</div>
 			</form>
 		</div>
 
+		
+
 	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-sanitize.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+	<script type="text/javascript" src="module.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 
 </body>
 </html>

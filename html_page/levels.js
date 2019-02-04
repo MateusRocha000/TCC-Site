@@ -28,24 +28,30 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				name: 'Tag de parágrafo: <p>',
 				instr: 'Tag de parágrafo para a página',
 				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
-				after: "</body>\n</html>",
+				after: '	</body>\n</html>',
 				item: '',
 				tag_init: '<p>',
 				tag_end: '</p>'
 		},
 		{
 				id: '3',
-				name: 'Seletores',
-				instr: 'Seletores de CSS',
-				before: 'HTML:\n...\n<h1 id="title">Titulo</h1>\n...\n-----------------------\nCSS:\n',
-				item: '<h1>Titulo</h1>',
-				tag_init: '#title{',
-				tag_end: '}'
+				name: 'Tag de imagem: <img>',
+				instr: 'Tag de imagem para a página',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<img>',
+				tag_end: '</img>'
 		},
 		{
 				id: '4',
-				name: 'Variáveis',
-				instr: 'Variáveis em javascript'
+				name: 'Tag de link: <a>',
+				instr: 'Tag de link externo para a página',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<a>',
+				tag_end: '</a>'
 		}
 	];	
 	

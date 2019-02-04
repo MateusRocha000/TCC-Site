@@ -1,134 +1,79 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="tcc-site">
 <head>
 <title>Conta</title>
 
-<link rel="stylesheet" type="text/css" href="./css/contaUsuario.css">
+<link rel="stylesheet" type="text/css" href="contaUsuario.css">
 </head>
-<body>
-	<h1>Acesse suas aulas ou crie e edite seu portfólio</h1>
+<body ng-controller="tcc-site">
+	<h1>Acesse suas aulas</h1>
 
-	<div id="menu">
-		<ul class="sanfona">
-			<li tabindex="0">
-				<div class="class_title">HTML</div>
-				<div class="sub_item">
-					<ul>
-						<li>Introdução</li>
-						<li>Tags</li>
-						<li>Imagens</li>
-						<li>Botões</li>
-						<li>Listas</li>
-						<li>Tabelas</li>
-						<li>Classe</li>
-						<li>ID</li>
-						<li>Comentários</li>
-					</ul>
-				</div>
+	<ul id="menu">
+		<li ng-repeat="tema in temas">
+			{{tema.tema}}
+			<li ng-repeat="aula in temas.aulas">
+				{{aula.name}}
 			</li>
+		</li>		
+	</ul>
 
-			<li tabindex="1">
-				<div class="class_title">CSS</div>
-				<div class="sub_item">
-					<ul>
-						<li>Introdução</li>
-						<li>Seletores</li>
-						<li>Classe</li>
-						<li>ID</li>
-						<li>Texto</li>
-						<li>Tamanho dos elementos</li>
-						<li>Modelo de caixa</li>
-						<li>Posição</li>
-						<li>Elemento flutuante</li>
-					</ul>
-				</div>
-			</li>
+<!-- 	<div id="menu"> -->
+<!-- 		<ul class="sanfona"> -->
+<!-- 			<li tabindex="0"> -->
+<!-- 				<div class="class_title">{{menu[0]}}</div> -->
+<!-- 				<div class="sub_item"> -->
+<!-- 					<ul> -->
+<!-- 						<li>Introdução</li> -->
+<!-- 						<li>Tags</li> -->
+<!-- 						<li>Imagens</li> -->
+<!-- 						<li>Botões</li> -->
+<!-- 						<li>Listas</li> -->
+<!-- 						<li>Tabelas</li> -->
+<!-- 						<li>Classe</li> -->
+<!-- 						<li>ID</li> -->
+<!-- 						<li>Comentários</li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 			</li> -->
 
-			<li tabindex="2">
-				<div class="class_title">JavaScript</div>
-				<div class="sub_item">
-					<ul>
-						<li>Introdução</li>
-						<li>Variáveis</li>
-						<li>Operadores</li>
-						<li>Condicional</li>
-						<li>Funções</li>
-						<li>Eventos</li>
-					</ul>
-				</div>
-			</li>
-		</ul>
-	</div>
-	<!--
-	<div id="buttons">
-		<div class="dropdown">
-			<button class="dropbtn">HTML</button>
-			<div class="html-content">
-				<div id="class_list">
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-				</div>
-			</div>
-		</div>
+<!-- 			<li tabindex="1"> -->
+<!-- 				<div class="class_title">CSS</div> -->
+<!-- 				<div class="sub_item"> -->
+<!-- 					<ul> -->
+<!-- 						<li>Introdução</li> -->
+<!-- 						<li>Seletores</li> -->
+<!-- 						<li>Classe</li> -->
+<!-- 						<li>ID</li> -->
+<!-- 						<li>Texto</li> -->
+<!-- 						<li>Tamanho dos elementos</li> -->
+<!-- 						<li>Modelo de caixa</li> -->
+<!-- 						<li>Posição</li> -->
+<!-- 						<li>Elemento flutuante</li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 			</li> -->
 
-		<div class="dropdown">
-			<button class="dropbtn">CSS</button>
-			<div class="css-content">
-				<div id="class_list">
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="dropdown">
-			<button class="dropbtn">JavaScript</button>
-			<div class="js-content">
-				<div id="class_list">
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-					<span class="class"></span>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	
-	<div id="corpo">
-		<div id="preview_pastas">
-			<div class="folder">
-				<div class="folder_name">Pasta 1</div>
-				<div class="folder_btn">
-					<button>Carregar arquivos</button>
-					<button>Deletar pasta</button>
-				</div>
-				
-			</div>
-
-			<div class="folder">
-				<div class="folder_name">Pasta 2</div>
-				<div class="folder_btn">
-					<button>Carregar arquivos</button>
-					<button>Deletar pasta</button>
-				</div>
-			</div>
-		</div>
-		<div id="port_buttons">
-			<button>Criar pasta</button>
-			<button>Carregar pasta</button>
-		</div>
-	</div>
-	-->
+<!-- 			<li tabindex="2"> -->
+<!-- 				<div class="class_title">JavaScript</div> -->
+<!-- 				<div class="sub_item"> -->
+<!-- 					<ul> -->
+<!-- 						<li>Introdução</li> -->
+<!-- 						<li>Variáveis</li> -->
+<!-- 						<li>Operadores</li> -->
+<!-- 						<li>Condicional</li> -->
+<!-- 						<li>Funções</li> -->
+<!-- 						<li>Eventos</li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
 
 	<button id="sair_btn">Sair</button>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-sanitize.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+	<script type="text/javascript" src="module.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
