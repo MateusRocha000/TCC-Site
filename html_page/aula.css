@@ -258,7 +258,8 @@ body {
 }
 
 .level-three{
-	background-color: gray;
+	background-image: url("../img/placa.png");
+	background-color: #80ffff;
 	background-size : 50% 50%;
 	background-repeat : no-repeat;
 	background-position : center bottom;
@@ -272,9 +273,6 @@ body {
 	z-index: 10;
 }
 
-.pos_three{
-	
-}
 
 pre {
 	margin: 0;

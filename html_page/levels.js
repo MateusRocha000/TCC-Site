@@ -9,7 +9,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Inicializa a área de texto como vazia
 	$scope.myHTML = '';
 	
-	
+	$scope.img = '../img/troll.jpg';
 	
 	//Contém os dados de cada nível
 	$scope.levels = [
@@ -57,6 +57,46 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				item: '',
 				tag_init: '<a>',
 				tag_end: '</a>'
+		},
+		{
+				id: '6',
+				name: 'Tag de botão: <button>',
+				instr: 'Tag de inserção de imagem para a página',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<img>',
+				tag_end: 'src'
+		},
+		{
+				id: '7',
+				name: 'Tags de lista: <ul> e <li>',
+				instr: 'Tag de lista para a página',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<ul>',
+				tag_end: '</ul>'
+		},
+		{
+				id: '8',
+				name: 'Tags de tabela: <table>, <tr>, <th> e <td>',
+				instr: 'Tag de tabela para a página',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<table>',
+				tag_end: '</table>'
+		},
+		{
+				id: '9',
+				name: 'Tag de comentário: <!-- -->',
+				instr: 'Tag de comentário para a página',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<!--',
+				tag_end: '-->'
 		}
 	];	
 	
