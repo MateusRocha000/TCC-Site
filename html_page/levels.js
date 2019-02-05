@@ -26,7 +26,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				after: '   </body>\n</html>',
 				item: '',
 				tag_init: '<h1>',
-				tag_end: '</h1>'
+				tag_end: '</h1>',
 		},
 		{
 				id: '3',
@@ -83,17 +83,28 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Função que carrega os dados do nível
 	$scope.loadLevel = function()
 	{
-		console.log($scope.cur_level);
 		$scope.title = $scope.levels[$scope.cur_level-1].name;
 		$scope.instruction = $scope.levels[$scope.cur_level-1].instr;
 		$scope.before = $scope.levels[$scope.cur_level-1].before;
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
 		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
+		console.log($scope.cur_level);
+		
+		$scope.backBtn = true;
+		if($scope.cur_level !== 1)
+			$scope.backBtn = false;
+		
+		$scope.nextBtn = false;
+		if($scope.cur_level === count)
+			$scope.nextBtn = true;
 		
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		var content = $scope.answer[key];
 		$scope.text_code = content;
+		console.log('Botão anterior desabilitado: ' + $scope.backBtn);
+		console.log('Botão próximo desabilitado: ' + $scope.nextBtn);
+		console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
 	}
 	
 	//Função para o botão de passar nível do botão Próximo
@@ -116,31 +127,34 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do próximo nível
 		var next_content = $scope.answer[$scope.cur_level];
-		if($scope.cur_level < count)
+		if($scope.cur_level !== count)
 		{
-			
+			$scope.nextBtn = false;
 			if(next_content == '')
 				$scope.text_code = '';
 			
+			
 			$scope.cur_level = $scope.cur_level + 1;
 			$scope.loadLevel();
+			
 		}
 	};
 	
 	//Função que retorna um nível para o botão do header
-	$scope.backLevel = function(cur_level)
+	$scope.backLevel = function()
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do nível anterior
 		var back_content = $scope.answer[$scope.cur_level-2];
-		if($scope.cur_level > 1)
+		if($scope.cur_level !== 1)
 		{
-			
+			$scope.backBtn = false;
 			if(back_content == '')
 				$scope.text_code = '';
-
+			
+			
 			$scope.cur_level = $scope.cur_level - 1;
 			$scope.loadLevel();
-			
+						
 		}
 	};
 	
@@ -152,7 +166,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
 		}
-		if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
+		else if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
 			&& ($scope.text_code.includes('<head>') && $scope.text_code.includes('</head>'))
 			&& ($scope.text_code.includes('<body>') && $scope.text_code.includes('</body>')) && $scope.cur_level === 1)
 		{
