@@ -15,6 +15,11 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.levels = [
 		{
 				id: '1',
+				name: 'Introdução ao HTML',
+				instr: 'Explicação sobre HTML'
+		},
+		{
+				id: '2',
 				name: 'Tag de título: <h1>',
 				instr: 'Tag de título para a página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
@@ -24,7 +29,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				tag_end: '</h1>'
 		},
 		{
-				id: '2',
+				id: '3',
 				name: 'Tag de parágrafo: <p>',
 				instr: 'Tag de parágrafo para a página',
 				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
@@ -34,7 +39,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				tag_end: '</p>'
 		},
 		{
-				id: '3',
+				id: '4',
 				name: 'Tag de imagem: <img>',
 				instr: 'Tag de imagem para a página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
@@ -44,7 +49,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				tag_end: '</img>'
 		},
 		{
-				id: '4',
+				id: '5',
 				name: 'Tag de link: <a>',
 				instr: 'Tag de link externo para a página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
@@ -144,6 +149,13 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	{
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
 		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) ){
+			$scope.saveData($scope.text_code);
+			$scope.disableBtn = false;
+		}
+		if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
+			&& ($scope.text_code.includes('<head>') && $scope.text_code.includes('</head>'))
+			&& ($scope.text_code.includes('<body>') && $scope.text_code.includes('</body>')) && $scope.cur_level === 1)
+		{
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
 		}

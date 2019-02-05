@@ -1,1 +1,1 @@
-angular.module("tcc-site", ['ngSanitize', 'ngStorage']);
+angular.module("tcc-site", ['ngSanitize', 'ngStorage', 'ui.bootstrap']);
