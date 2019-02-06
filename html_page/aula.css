@@ -91,11 +91,13 @@ body {
 }
 
 #before {
+	font-size: 18px;
 	color: #00ffff;
 	margin: 0;
 }
 
 #after{
+	font-size: 18px;
 	color: #00ffff;
 }
 
@@ -141,49 +143,40 @@ body {
 	overflow: hidden;
 }
 
-.cursor{
-	left: 300px;
-	font-size: 18px;
-	background-color: #00ffff;
-	color: #00ffff;
-	position: relative;
-	opacity: 0.5;
-	animation: cursor-animation 1s steps(5, start) infinite;
-  	-webkit-animation: cursor-animation 1s steps(5, start) infinite;
-}
-
-@keyframes cursor-animation {
-  to {
-    visibility: hidden;
-  }
-}
-@-webkit-keyframes cursor-animation {
-  to {
-    visibility: hidden;
-  }
+@keyframes blinking{
+	from, to{
+		border-color: transparent;
+	}50%{
+		border-color: #00ffff;
+	}
 }
 
 #text {
-	position: absolute;
+	position: relative;
+	background-color: white;
+	color: #00ffff;
 	display: block;
+	width: calc(100% - 30px);
 	height: 25px;
 	margin-left: 50px;
 	border: none;
+	border-right: 15px solid #00ffff;
 	outline: none;
-	overflow: auto;
 	font-size: 18px;
 }
 
-#caret{
-    margin: 0;
-    padding: 0;
+.cursor{
+	position: absolute;
+	top: 51.5%;
+	bottom: 40.5%;
+	left: 81px;
+	right: 0;
+	width: 18px;
+	background: transparent;
+	box-sizing: border-box;
+	border-left: 18px solid;
+	animation: blinking 1s step-end infinite;
 }
-
-.caret {
-	font-family: cursor, courier;
-	font-weight: bold;
-}
-
 
 #next_btn {
 	position: absolute;

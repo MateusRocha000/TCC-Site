@@ -131,8 +131,20 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				url: 'comentario',
 				style: 'ten'
 		}
-	];	
-	
+	];
+
+	$scope.expand = function(e)
+	{
+		var element = document.getElementByClassName(e);
+		var scrollLeft = element.scrollLeft - 20;
+		element.style.width = scrollLeft + 'px';
+	}
+
+	function expandir()
+	{
+		$scope.expand('cursor');
+	}
+
 	//Variável auxiliar com o tamanho da variável níveis
 	var count = Object.keys($scope.levels).length;
 	

@@ -21,6 +21,8 @@
 	"homepage": "https://github.com/MateusRocha000/TCC-Site#readme",
 	"dependencies": {
 		"angular": "^1.7.6",
-		"package.json": "^2.0.1"
+		"bower": "^1.8.8",
+		"package.json": "^2.0.1",
+		"rangyinputs": "^1.2.0"
 	}
 }

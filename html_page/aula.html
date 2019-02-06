@@ -60,7 +60,8 @@
 				</div>
 				 -->
 				<pre id="before">{{before}}</pre>
-				<input type="text" id="text" ng-model="text_code" onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';"></input><div id="caret"><span class="caret"></span><b class="cursor">O</b></div>
+				
+					<input type="text" id="text" ng-model="text_code" onchange="expand($event)"></input><span class="cursor"></span>
 				<pre id="after">{{after}}</pre>
 
 				

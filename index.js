@@ -3,7 +3,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.temas = [
 		{
 			tema: 'HTML', aulas: {
-				'introducao': 'Introdução',
 				'titulo': 'Título',
 				'paragrafo': 'Parágrafo',
 				'imagem': 'Imagem',
@@ -18,7 +17,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		},
 		{
 			tema: 'CSS', aulas: {
-				'introducao': 'Introdução',
 				'classe': 'Classe',
 				'id': 'Id',
 				'texto': 'Texto',
@@ -30,7 +28,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		},
 		{
 			tema: 'JavaScript', aulas: {
-				'introducao': 'Introdução',
 				'variavel': 'Variável',
 				'operador': 'Operador',
 				'condicional': 'Condicional',
