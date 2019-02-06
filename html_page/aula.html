@@ -2,7 +2,7 @@
 <head>
 	<title>Introdução - HTML</title>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="../css/animate.min.css">
+	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" type="text/css" href="aula.css">
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -61,10 +61,10 @@
 				<input type="text" id="text" ng-model="text_code" placeholder="Enter your code here"></input>
 				<pre id="after">{{after}}</pre>
 
-				<button id="quit_btn">Sair</button>
-				<button id="clear_storage" ng-click="clearStorage()">Limpar</button>
-				<button id="submit" ng-click="submit();item=!item" ng-model="submit">Submit</button>
-				<button id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+				<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
+				<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
+				<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Submit</a>
+				<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			</div>
 
 			

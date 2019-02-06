@@ -144,23 +144,20 @@ body {
 
 #next_btn {
 	position: absolute;
-	right: 1em;
-	bottom: 1em;
-	background-color: green;
+	right: 0.5em;
+	bottom: 0.5em;
 }
 
 #submit {
 	position: absolute;
-	right: 7em;
-	bottom: 1em;
-	background-color: blue;
+	right: 6.5em;
+	bottom: 0.5em;
 }
 
 #clear_storage {
 	position: absolute;
-	right: 12.5em;
-	bottom: 1em;
-	background-color: yellow;
+	left: 4.8em;
+	bottom: 0.5em;
 }
 
 #next_btn.disabled {
@@ -168,10 +165,9 @@ body {
 }
 
 #quit_btn {
-	background-color: red;
 	position: absolute;
-	left: 1em;
-	bottom: 1em;
+	left: 0.5em;
+	bottom: 0.5em;
 }
 
 .line-numbers {

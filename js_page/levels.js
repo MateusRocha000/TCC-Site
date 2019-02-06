@@ -5,98 +5,48 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	
 	//Array que salva o código que o usuário coloca, caso esteja certo
 	$scope.answer = [];
-	
-	//Inicializa a área de texto como vazia
-	$scope.myHTML = '';
+
 	
 	//Contém os dados de cada nível
 	$scope.levels = [
 		{
 				id: '1',
-				name: 'Introdução ao HTML',
-				instr: 'Explicação sobre HTML'
+				name: 'Variável',
+				instr: 'Variáveis em JavaScript',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				item: '<div>Olá</div>',
+				js_init: 'var'
 		},
 		{
 				id: '2',
-				name: 'Tag de título: <h1>',
-				instr: 'Tag de título para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<h1>',
-				tag_end: '</h1>',
+				name: 'Operador',
+				instr: 'Operadores em JavaScript.',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				item: '<div>Olá</div>'
 		},
 		{
 				id: '3',
-				name: 'Tag de parágrafo: <p>',
-				instr: 'Tag de parágrafo para a página',
-				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
-				after: '	</body>\n</html>',
-				item: '',
-				tag_init: '<p>',
-				tag_end: '</p>'
+				name: 'Condicional',
+				instr: 'Condicional em JavaScript.',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				item: '<div>Olá</div>'
 		},
 		{
 				id: '4',
-				name: 'Tag de imagem: <img>',
-				instr: 'Tag de imagem para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<img>',
-				tag_end: '</img>'
+				name: 'Função',
+				instr: 'Função em JavaScript',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				item: '<div>Olá</div>'
 		},
 		{
 				id: '5',
-				name: 'Tag de link: <a>',
-				instr: 'Tag de link externo para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<a>',
-				tag_end: '</a>'
-		},
-		{
-				id: '6',
-				name: 'Tag de botão: <button>',
-				instr: 'Tag de inserção de imagem para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<img>',
-				tag_end: 'src'
-		},
-		{
-				id: '7',
-				name: 'Tags de lista: <ul> e <li>',
-				instr: 'Tag de lista para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<ul>',
-				tag_end: '</ul>'
-		},
-		{
-				id: '8',
-				name: 'Tags de tabela: <table>, <tr>, <th> e <td>',
-				instr: 'Tag de tabela para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<table>',
-				tag_end: '</table>'
-		},
-		{
-				id: '9',
-				name: 'Tag de comentário: <!-- -->',
-				instr: 'Tag de comentário para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<!--',
-				tag_end: '-->'
+				name: 'Evento',
+				instr: 'Evento em JavaScript',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				item: '<div>Olá</div>'
 		}
 	];	
+	
 	
 	//Variável auxiliar com o tamanho da variável níveis
 	var count = Object.keys($scope.levels).length;
@@ -127,22 +77,10 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
 		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
-		console.log($scope.cur_level);
-		
-		$scope.backBtn = true;
-		if($scope.cur_level !== 1)
-			$scope.backBtn = false;
-		
-		$scope.nextBtn = false;
-		if($scope.cur_level === count)
-			$scope.nextBtn = true;
 		
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		var content = $scope.answer[key];
 		$scope.text_code = content;
-		console.log('Botão anterior desabilitado: ' + $scope.backBtn);
-		console.log('Botão próximo desabilitado: ' + $scope.nextBtn);
-		console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
 	}
 	
 	//Função para o botão de passar nível do botão Próximo
@@ -165,34 +103,31 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do próximo nível
 		var next_content = $scope.answer[$scope.cur_level];
-		if($scope.cur_level !== count)
+		if($scope.cur_level < count)
 		{
-			$scope.nextBtn = false;
+			
 			if(next_content == '')
 				$scope.text_code = '';
 			
-			
 			$scope.cur_level = $scope.cur_level + 1;
 			$scope.loadLevel();
-			
 		}
 	};
 	
 	//Função que retorna um nível para o botão do header
-	$scope.backLevel = function()
+	$scope.backLevel = function(cur_level)
 	{
 		//Variável que carrega o código da resposta salva (caso exista) do nível anterior
 		var back_content = $scope.answer[$scope.cur_level-2];
-		if($scope.cur_level !== 1)
+		if($scope.cur_level > 1)
 		{
-			$scope.backBtn = false;
+			
 			if(back_content == '')
 				$scope.text_code = '';
-			
-			
+
 			$scope.cur_level = $scope.cur_level - 1;
 			$scope.loadLevel();
-						
+			
 		}
 	};
 	
@@ -200,18 +135,9 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.submit = function()
 	{
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
-		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) ){
+		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].sel_init)) && ($scope.text_code.includes('{')) && ($scope.text_code.includes('}')) && ($scope.text_code.includes(';'))){
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
-			console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
-		}
-		else if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
-			&& ($scope.text_code.includes('<head>') && $scope.text_code.includes('</head>'))
-			&& ($scope.text_code.includes('<body>') && $scope.text_code.includes('</body>')) && $scope.cur_level === 1)
-		{
-			$scope.saveData($scope.text_code);
-			$scope.disableBtn = false;
-			console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
 		}
 		else
 			{
@@ -223,11 +149,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				$scope.text_code = '';
 			}
 	};
-	
-	$scope.applyStyle = function()
-	{
-		return $scope.levels[$scope.cur_level-1].style;
-	}
 	
 	//Objeto para a conclusão do curso, informando a finalização
 	$scope.levelWin = [
