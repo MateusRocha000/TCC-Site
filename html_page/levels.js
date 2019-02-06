@@ -13,88 +13,123 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.levels = [
 		{
 				id: '1',
-				name: 'Introdução ao HTML',
-				instr: 'Explicação sobre HTML'
-		},
-		{
-				id: '2',
 				name: 'Tag de título: <h1>',
 				instr: 'Tag de título para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
 				item: '',
 				tag_init: '<h1>',
 				tag_end: '</h1>',
+				url: 'titulo',
+				style: 'one'
+		},
+		{
+				id: '2',
+				name: 'Tag de parágrafo: <p>',
+				instr: 'Tag de parágrafo para a página',
+				before: "<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n",
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: '<p>',
+				tag_end: '</p>',
+				url: 'paragrafo',
+				style: 'two'
 		},
 		{
 				id: '3',
-				name: 'Tag de parágrafo: <p>',
-				instr: 'Tag de parágrafo para a página',
-				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n",
-				after: '	</body>\n</html>',
+				name: 'Tag de imagem: <img>',
+				instr: 'Tag de imagem para a página',
+				before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
 				item: '',
-				tag_init: '<p>',
-				tag_end: '</p>'
+				tag_init: '<img',
+				tag_end: '/>',
+				url: 'imagem',
+				style: 'three'
 		},
 		{
 				id: '4',
-				name: 'Tag de imagem: <img>',
-				instr: 'Tag de imagem para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				name: 'Tag de link: <a>',
+				instr: 'Tag de link externo para a página',
+				before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
 				item: '',
-				tag_init: '<img>',
-				tag_end: '</img>'
+				tag_init: '<a',
+				tag_end: '</a>',
+				url: 'link',
+				style: 'four'
 		},
 		{
 				id: '5',
-				name: 'Tag de link: <a>',
-				instr: 'Tag de link externo para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				name: 'Tag de botão: <button>',
+				instr: 'Tag de inserção de imagem para a página',
+				before: '<html>\n   <head>\n     <title>Botão</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
 				item: '',
-				tag_init: '<a>',
-				tag_end: '</a>'
+				tag_init: '<button>',
+				tag_end: '</button>',
+				url: 'botao',
+				style: 'five'
 		},
 		{
 				id: '6',
-				name: 'Tag de botão: <button>',
-				instr: 'Tag de inserção de imagem para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
-				after: '   </body>\n</html>',
-				item: '',
-				tag_init: '<img>',
-				tag_end: 'src'
-		},
-		{
-				id: '7',
 				name: 'Tags de lista: <ul> e <li>',
 				instr: 'Tag de lista para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				before: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
 				item: '',
 				tag_init: '<ul>',
-				tag_end: '</ul>'
+				tag_end: '</ul>',
+				url: 'lista',
+				style: 'six'
 		},
 		{
-				id: '8',
+				id: '7',
 				name: 'Tags de tabela: <table>, <tr>, <th> e <td>',
 				instr: 'Tag de tabela para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				before: '<html>\n   <head>\n     <title>Tabela</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
 				item: '',
 				tag_init: '<table>',
-				tag_end: '</table>'
+				tag_end: '</table>',
+				url: 'tabela',
+				style: 'seven'
+		},
+		{
+				id: '8',
+				name: 'Classes',
+				instr: 'Classe para tags da página',
+				before: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: 'class=\"',
+				tag_end: '\"',
+				url: 'classe',
+				style: 'eight'
 		},
 		{
 				id: '9',
+				name: 'Identificadores',
+				instr: 'Identificador para tags da página',
+				before: '<html>\n   <head>\n     <title>Identificadores</title>\n   </head>\n   <body>\n',
+				after: '   </body>\n</html>',
+				item: '',
+				tag_init: 'id=\"',
+				tag_end: '\"',
+				url: 'id',
+				style: 'nine'
+		},
+		{
+				id: '10',
 				name: 'Tag de comentário: <!-- -->',
 				instr: 'Tag de comentário para a página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n',
+				before: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
 				after: '   </body>\n</html>',
 				item: '',
 				tag_init: '<!--',
-				tag_end: '-->'
+				tag_end: '-->',
+				url: 'comentario',
+				style: 'ten'
 		}
 	];	
 	
@@ -107,9 +142,11 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Salva o dado como parâmetro em "answer" e no localStorage para poder ser carregado caso o usuário volte em um nível concluído, mostrando a resposta dele
 	$scope.saveData = function(text)
 	{
-		key = Object.values($scope.levels[$scope.cur_level-1].id);
-		$scope.answer[key] = text;
-		localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
+		//key = Object.values($scope.levels[$scope.cur_level-1].id-1);
+		//$scope.answer[key] = text;
+		//localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
+		$scope.answer[$scope.cur_level-1] = text;
+		console.log('Respostas: ' + $scope.cur_level + ': ' + $scope.answer);
 	};
 	
 	//Limpa o localStorage
@@ -127,7 +164,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
 		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
-		console.log($scope.cur_level);
 		
 		$scope.backBtn = true;
 		if($scope.cur_level !== 1)
@@ -140,9 +176,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		var content = $scope.answer[key];
 		$scope.text_code = content;
-		console.log('Botão anterior desabilitado: ' + $scope.backBtn);
-		console.log('Botão próximo desabilitado: ' + $scope.nextBtn);
-		console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
 	}
 	
 	//Função para o botão de passar nível do botão Próximo
@@ -203,7 +236,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) ){
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
-			console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
 		}
 		else if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
 			&& ($scope.text_code.includes('<head>') && $scope.text_code.includes('</head>'))
@@ -211,7 +243,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
-			console.log('Botão passar de nível desabilitado: ' + $scope.disableBtn);
 		}
 		else
 			{
@@ -223,11 +254,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				$scope.text_code = '';
 			}
 	};
-	
-	$scope.applyStyle = function()
-	{
-		return $scope.levels[$scope.cur_level-1].style;
-	}
 	
 	//Objeto para a conclusão do curso, informando a finalização
 	$scope.levelWin = [

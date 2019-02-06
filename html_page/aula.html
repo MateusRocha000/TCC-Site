@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" type="text/css" href="aula.css">
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 </head>
@@ -38,8 +39,8 @@
 		</div>
 
 		<div id="editor">
-			<div id="css">
-				<div class="line-numbers">
+			<div id="pc_screen">
+				<!-- <div class="line-numbers">
 					1
 					<br>
 					2
@@ -57,16 +58,17 @@
 					8
 					<br>
 				</div>
+				 -->
 				<pre id="before">{{before}}</pre>
-				<input type="text" id="text" ng-model="text_code" placeholder="Enter your code here"></input>
+				<input type="text" id="text" ng-model="text_code" onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';"></input><div id="caret"><span class="caret"></span><b class="cursor">O</b></div>
 				<pre id="after">{{after}}</pre>
 
-				<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
-				<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
-				<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Submit</a>
-				<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+				
 			</div>
-
+			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
+			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
+			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Submit</a>
+			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			
 		</div>
 		
@@ -75,11 +77,11 @@
 	<section id="view_screen">
 		<div id="vscreen">
 			<div id="board">
-				<div class="background" ng-class="{'level-one': cur_level == '2', 'level-two': cur_level == '3', 'level-three': cur_level == '4', 'level-four': cur_level == '5'}">
+				<div class="background level-{{levels[cur_level-1].style}}">
 					
 				</div>
 
-				<div class="item" ng-if="item" ng-model="item" ng-bind-html="text_code" ng-class="{'pos_one': cur_level == '1', 'pos_two': cur_level == '2', 'pos_three': cur_level == '3'}" ng-style="appendStyle()">
+				<div class="item pos_{{levels[cur_level-1].style}}" ng-if="item" ng-model="item" ng-bind-html="text_code">
 					
 				</div>
 			</div>
@@ -87,7 +89,7 @@
 	</section>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>

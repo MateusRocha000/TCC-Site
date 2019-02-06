@@ -9,6 +9,10 @@ body {
 	height: 100%;
 }
 
+.arrow.disabled{
+	opacity: 0.5;
+}
+
 #button1 {
 	background-color: green;
 	padding: 0.4em 0.8em;
@@ -18,10 +22,6 @@ body {
 	cursor: pointer;
 }
 
-.arrow.disabled{
-	opacity: 0.5;
-}
-
 #button2 {
 	background-color: green;
 	padding: 0.4em 0.8em;
@@ -29,12 +29,6 @@ body {
 	border-bottom-right-radius: 4px;
   	border-top-right-radius: 4px;
 	cursor: pointer;
-}
-
-
-#title {
-	font-family: 'Fredoka One', cursive;
-	font-size: 28px;
 }
 
 #num-levels {
@@ -54,6 +48,11 @@ body {
 	line-height: 23px;
 	text-align: center;
 	cursor: pointer;
+}
+
+#title {
+	font-family: 'Fredoka One', cursive;
+	font-size: 28px;
 }
 
 #instr {
@@ -110,7 +109,7 @@ body {
 }
 
 #css {
-	height: 260px;
+	height: 370px;
 	position: relative;
 	padding: 10px 10px 10px 50px;
 	background-color: #ddd;
@@ -144,41 +143,37 @@ body {
 
 #next_btn {
 	position: absolute;
-	right: 1em;
-	bottom: 1em;
-	background-color: green;
+	right: 0.5em;
+	bottom: 0.3em;
 }
 
 #submit {
 	position: absolute;
-	right: 7em;
-	bottom: 1em;
-	background-color: blue;
+	right: 6.5em;
+	bottom: 0.3em;
 }
 
 #clear_storage {
 	position: absolute;
-	right: 12.5em;
-	bottom: 1em;
-	background-color: yellow;
+	left: 4.8em;
+	bottom: 0.3em;
+}
+
+#quit_btn {
+	position: absolute;
+	left: 0.5em;
+	bottom: 0.3em;
 }
 
 #next_btn.disabled {
 	opacity: 0.5;
 }
 
-#quit_btn {
-	background-color: red;
-	position: absolute;
-	left: 1em;
-	bottom: 1em;
-}
-
 .line-numbers {
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 78%;
+	height: 88%;
 	padding: 10px 6px;
 	text-align: right;
 	background-color: #999;

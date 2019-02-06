@@ -7,6 +7,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				'titulo': 'Título',
 				'paragrafo': 'Parágrafo',
 				'imagem': 'Imagem',
+				'link': 'Link',
 				'botao': 'Botão',
 				'lista': 'Lista',
 				'tabela': 'Tabela',
@@ -45,18 +46,4 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$location.path(item);
 	}
 	
-	$scope.loadHTMLClass = function()
-	{
-		$location.path('#/html_page/aula.html');
-	}
-	
-	$scope.loadCSSClass = function()
-	{
-		$location.path('#/css_page/aula.html');
-	}
-	
-	$scope.loadJSClass = function()
-	{
-		$location.path('#/js_page/aula.html');
-	}
 });
