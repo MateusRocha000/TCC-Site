@@ -19,23 +19,29 @@ button {
 }
 
 #title {
-	font-family: 'Fredoka One', cursive;
-	font-size: 28px;
+	font-family: 'Luckiest Guy';
+	font-size: 40px;
 }
 
 #button1 {
-	background-color: green;
+	background-color: #dddd00;
 	padding: 0.4em 0.8em;
-	border: none;
+	border-right: 1px solid black;
+	border-top: none;
+	border-left: none;
+	border-bottom: none;
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	cursor: pointer;
 }
 
 #button2 {
-	background-color: green;
+	background-color: #dddd00;
 	padding: 0.4em 0.8em;
-	border: none;
+	border-left: 1px solid black;
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
 	border-bottom-right-radius: 4px;
   	border-top-right-radius: 4px;
 	cursor: pointer;
@@ -48,7 +54,7 @@ button {
 	margin-top: 0.5rem;
 	font-size: 15px;
 	user-select: none;
-	background-color: #A6F5FE;
+	background-color: #dddd00;
 	border-radius: 4px;
 }
 
@@ -89,7 +95,14 @@ button {
 }
 
 #before {
-	
+	font-size: 18px;
+	color: #00ffff;
+	margin: 0;
+}
+
+#after{
+	font-size: 18px;
+	color: #00ffff;
 }
 
 #view_screen {
@@ -113,25 +126,45 @@ button {
 	z-index: 30;
 }
 
-#css {
-	height: 370px;
+#pc_screen {
+	height: 400px;
 	position: relative;
-	padding: 10px 10px 10px 50px;
-	background-color: #ddd;
+	padding: 30px 30px 30px 30px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
 	border-radius: 4px;
 	overflow: hidden;
 }
 
+#caret{
+	height: 22px;
+	font-size: 18px;
+	background: black;
+	color: #00ffff;
+	overflow: hidden;
+}
+
+#caret span{
+	float: left;
+  	padding-left: 50px;
+  	white-space: pre;
+}
+
+#cursor{
+	float: left;
+	bottom: 0;
+  	width: 15px;
+  	height: 18px;
+  	background: #00ffff;
+}
+
 #text {
-	display: block;
-	width: 100%;
-	line-height: 16px;
-	padding-top: -20px;
-	height: 120px;
-	border: none;
-	outline: none;
-	resize: none;
-	overflow: auto;
+	width: 0;
+	height: 0;
+	opacity: 0;
 }
 
 .item {

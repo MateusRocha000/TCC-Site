@@ -6,9 +6,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Array que salva o código que o usuário coloca, caso esteja certo
 	$scope.answer = [];
 	
-	//Inicializa a área de texto como vazia
-	$scope.myHTML = '';
-	
 	//Contém os dados de cada nível
 	$scope.levels = [
 		{
@@ -164,7 +161,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
 		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
-		console.log($scope.cur_level);
+		
 		$scope.backBtn = true;
 		if($scope.cur_level !== 1)
 			$scope.backBtn = false;
@@ -178,11 +175,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.text_code = content;
 	}
 	
-	$scope.$on('$viewContentLoaded', function(event)
-	{
-		$scope.span_caret = '';
-	});
-	
 	//Função para o botão de passar nível do botão Próximo
 	$scope.passLevel = function()
 	{
@@ -192,7 +184,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			if(next_content == ''){
 				$scope.text_code = '';
-				$scope.span_caret = next_content;
 			}
 				
 
@@ -211,7 +202,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			$scope.nextBtn = false;
 			if(next_content == ''){
 				$scope.text_code = '';
-				$scope.span_caret = next_content;
 			}
 			
 			$scope.cur_level = $scope.cur_level + 1;

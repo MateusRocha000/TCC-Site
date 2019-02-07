@@ -143,14 +143,6 @@ body {
 	overflow: hidden;
 }
 
-@keyframes blinking{
-	from, to{
-		border-color: transparent;
-	}50%{
-		border-color: #00ffff;
-	}
-}
-
 #caret{
 	height: 22px;
 	font-size: 18px;

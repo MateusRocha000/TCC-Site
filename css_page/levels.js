@@ -15,7 +15,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				instr: 'Seletor para aplicar estilo da página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
 				item: '<div>Olá</div>',
-				sel_init: 'div'
+				sel_init: 'div{',
+				sel_end: '}'
 		},
 		{
 				id: '2',
@@ -23,7 +24,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				instr: 'Maneira alternativa de aplicar estilo. Identificadores são únicos.',
 				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div id=\"ola\">Olá</div>\n   </body>\n</html>",
 				item: '<div id=\"ola\">Olá</div>',
-				sel_init: '#ola'
+				sel_init: '#ola{',
+				sel_end: '}'
 		},
 		{
 				id: '3',
@@ -31,7 +33,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				instr: 'Outra maneira de aplicar estilo. Classes são usados em elementos que receberão o mesmo estilo.',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class=\"ola\">Olá</div>\n      <div class=\"ola\">Bem vindo</div>\n   </body>\n</html>',
 				item: '<div class=\"ola\">Olá</div><div class=\"ola\">Bem vindo</div>',
-				css_init: '.ola'
+				sel_init: '.ola{',
+				sel_end: '}'
 		}
 	];	
 	
@@ -65,6 +68,14 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
 		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
+		
+		$scope.backBtn = true;
+		if($scope.cur_level !== 1)
+			$scope.backBtn = false;
+		
+		$scope.nextBtn = false;
+		if($scope.cur_level === count)
+			$scope.nextBtn = true;
 		
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		var content = $scope.answer[key];
@@ -123,8 +134,9 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.submit = function()
 	{
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
-		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].sel_init)) && ($scope.text_code.includes('{')) && ($scope.text_code.includes('}')) && ($scope.text_code.includes(';'))){
+		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].sel_init)) && ($scope.text_code.includes('{')) && ($scope.text_code.includes('}')) && ($scope.text_code.includes(';')) && $scope.text_code !== 'undefined'){
 			$scope.saveData($scope.text_code);
+			$scope.applyStyle($scope.text_code);
 			$scope.disableBtn = false;
 		}
 		else
@@ -138,9 +150,18 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			}
 	};
 	
-	$scope.myStyle = function(value)
+	$scope.applyStyle = function(element)
 	{
-		return value;
+		var el = element.substring(
+				element.lastIndexOf(0),
+				element.lastIndexOf("{")
+		);
+		var style = element.substring(
+				element.lastIndexOf("{") + 1,
+				element.lastIndexOf("}")
+		);
+		
+		el.style = style;
 	}
 	
 	//Objeto para a conclusão do curso, informando a finalização
