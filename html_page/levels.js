@@ -133,18 +133,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		}
 	];
 
-	$scope.expand = function(e)
-	{
-		var element = document.getElementByClassName(e);
-		var scrollLeft = element.scrollLeft - 20;
-		element.style.width = scrollLeft + 'px';
-	}
-
-	function expandir()
-	{
-		$scope.expand('cursor');
-	}
-
 	//Variável auxiliar com o tamanho da variável níveis
 	var count = Object.keys($scope.levels).length;
 	
@@ -176,7 +164,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
 		$scope.item = $scope.levels[$scope.cur_level-1].item;
 		$scope.disableBtn = true;
-		
+		console.log($scope.cur_level);
 		$scope.backBtn = true;
 		if($scope.cur_level !== 1)
 			$scope.backBtn = false;
@@ -190,6 +178,11 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.text_code = content;
 	}
 	
+	$scope.$on('$viewContentLoaded', function(event)
+	{
+		$scope.span_caret = '';
+	});
+	
 	//Função para o botão de passar nível do botão Próximo
 	$scope.passLevel = function()
 	{
@@ -197,8 +190,11 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		var next_content = $scope.answer[$scope.cur_level];
 		if($scope.cur_level < count)
 		{
-			if(next_content == '')
+			if(next_content == ''){
 				$scope.text_code = '';
+				$scope.span_caret = next_content;
+			}
+				
 
 			$scope.cur_level = $scope.cur_level + 1;
 			$scope.loadLevel();
@@ -213,9 +209,10 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		if($scope.cur_level !== count)
 		{
 			$scope.nextBtn = false;
-			if(next_content == '')
+			if(next_content == ''){
 				$scope.text_code = '';
-			
+				$scope.span_caret = next_content;
+			}
 			
 			$scope.cur_level = $scope.cur_level + 1;
 			$scope.loadLevel();
@@ -231,9 +228,10 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		if($scope.cur_level !== 1)
 		{
 			$scope.backBtn = false;
-			if(back_content == '')
+			if(back_content == ''){
 				$scope.text_code = '';
-			
+				$scope.span_caret = back_content;
+			}
 			
 			$scope.cur_level = $scope.cur_level - 1;
 			$scope.loadLevel();
@@ -245,13 +243,13 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.submit = function()
 	{
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
-		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) ){
+		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) && $scope.text_code !== 'undefined'){
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
 		}
 		else if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
 			&& ($scope.text_code.includes('<head>') && $scope.text_code.includes('</head>'))
-			&& ($scope.text_code.includes('<body>') && $scope.text_code.includes('</body>')) && $scope.cur_level === 1)
+			&& ($scope.text_code.includes('<body>') && $scope.text_code.includes('</body>')) && $scope.cur_level === 1  && $scope.text_code !== 'undefined')
 		{
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;

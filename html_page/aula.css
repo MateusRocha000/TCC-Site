@@ -151,31 +151,32 @@ body {
 	}
 }
 
-#text {
-	position: relative;
-	background-color: white;
-	color: #00ffff;
-	display: block;
-	width: calc(100% - 30px);
-	height: 25px;
-	margin-left: 50px;
-	border: none;
-	border-right: 15px solid #00ffff;
-	outline: none;
+#caret{
+	height: 22px;
 	font-size: 18px;
+	background: black;
+	color: #00ffff;
+	overflow: hidden;
 }
 
-.cursor{
-	position: absolute;
-	top: 51.5%;
-	bottom: 40.5%;
-	left: 81px;
-	right: 0;
-	width: 18px;
-	background: transparent;
-	box-sizing: border-box;
-	border-left: 18px solid;
-	animation: blinking 1s step-end infinite;
+#caret span{
+	float: left;
+  	padding-left: 50px;
+  	white-space: pre;
+}
+
+#cursor{
+	float: left;
+	bottom: 0;
+  	width: 15px;
+  	height: 18px;
+  	background: #00ffff;
+}
+
+#text {
+	width: 0;
+	height: 0;
+	opacity: 0;
 }
 
 #next_btn {

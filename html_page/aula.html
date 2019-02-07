@@ -60,16 +60,19 @@
 				</div>
 				 -->
 				<pre id="before">{{before}}</pre>
-				
-					<input type="text" id="text" ng-model="text_code" onchange="expand($event)"></input><span class="cursor"></span>
+				<div id="caret" >
+					<span ng-model="span_caret" ng-if="!span_caret"></span>
+					<div id="cursor"></div>
+				</div>
+				<input type="text" id="text" ng-model="text_code" autofocus></input>
 				<pre id="after">{{after}}</pre>
 
 				
 			</div>
 			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
 			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
-			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Submit</a>
-			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item;span_caret=!span_caret" ng-model="submit">Submit</a>
+			<button class="btn btn-success" id="next_btn" ng-click="passLevel();span_caret=!span_caret" ng-disabled="disableBtn">Próximo</button>
 			
 		</div>
 		
@@ -101,6 +104,7 @@
 	<script src="jquery.min.js"></script>
 	<script type="text/javascript" src="levels.js"></script>
 	<script src="../JS/native.js"></script>
+	<script src="game.js"></script>
 
 	<script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
