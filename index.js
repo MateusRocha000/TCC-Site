@@ -17,6 +17,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		},
 		{
 			tema: 'CSS', aulas: {
+				'seletor': 'Seletor',
 				'classe': 'Classe',
 				'id': 'Id',
 				'texto': 'Texto',
