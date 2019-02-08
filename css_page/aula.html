@@ -16,9 +16,9 @@
 			<div id="num-levels">
 				<button id="button1" ng-click="backLevel()" name="seta-esq" ng-disabled="backBtn"><img class="arrow" src="../img/arrow-left.png" ng-disabled="backBtn"/></button>
 				<span id="level-indicator">
-					<span id="labelLevel" class="translate">Level</span>
+					<span id="labelLevel" class="translate">Nível</span>
 					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level}}</span>
-					<span id="labelOf" class="translate">of</span>
+					<span id="labelOf" class="translate">de</span>
 					<span class="total">{{levels.length}}</span>
 					<span><img src="../img/arrow-bottom.png"/></span>
 				</span>
@@ -40,13 +40,8 @@
 		<div id="editor">
 			<div id="pc_screen">
 				<pre id="before">{{before}}</pre>
-				<!-- <div id="caret" >
-					<span ng-model="span_caret" ng-if="!span_caret"></span>
-					<div id="cursor"></div>
-				</div>
-				<input type="text" id="text" ng-model="text_code" autofocus></input> -->
 				<label>
-					<input type="text" class="text" ng-model="text_code"/>
+					<input type="text" class="text" ng-model="text_code" autofocus/>
 					<div class="wrap"></div>
 				</label>
 				<pre id="after">{{after}}</pre>
@@ -56,8 +51,8 @@
 
 			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
 			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
-			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item;span_caret=!span_caret" ng-model="submit">Submit</a>
-			<button class="btn btn-success" id="next_btn" ng-click="passLevel();span_caret=!span_caret" ng-disabled="disableBtn">Próximo</button>
+			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Testar</a>
+			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 		</div>
 		
 	</div>
@@ -69,7 +64,7 @@
 					
 				</div>
 
-				<div class="item" ng-model="item" ng-bind-html="levels[cur_level].item">
+				<div class="item" ng-model="item" ng-bind-html="levels[cur_level-1].item">
 					
 				</div>
 			</div>

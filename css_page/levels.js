@@ -5,7 +5,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	
 	//Array que salva o código que o usuário coloca, caso esteja certo
 	$scope.answer = [];
-
 	
 	//Contém os dados de cada nível
 	$scope.levels = [
@@ -13,8 +12,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				id: '1',
 				name: 'Seletor',
 				instr: 'Seletor para aplicar estilo da página',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				item: '<div>Olá</div>',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p>Olá</p>\n   </body>\n</html>',
+				item: '<p>Olá</p>',
 				sel_init: 'div{',
 				sel_end: '}',
 				style: 'one'
@@ -23,8 +22,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				id: '2',
 				name: 'Identificador',
 				instr: 'Maneira alternativa de aplicar estilo. Identificadores são únicos.',
-				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div id=\"ola\">Olá</div>\n   </body>\n</html>",
-				item: '<div id=\"ola\">Olá</div>',
+				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id=\"ola\">Olá</p>\n   </body>\n</html>",
+				item: '<p id=\"ola\">Olá</p>',
 				sel_init: '#ola{',
 				sel_end: '}',
 				style: 'two'
@@ -33,8 +32,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				id: '3',
 				name: 'Classe',
 				instr: 'Outra maneira de aplicar estilo. Classes são usados em elementos que receberão o mesmo estilo.',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class=\"ola\">Olá</div>\n      <div class=\"ola\">Bem vindo</div>\n   </body>\n</html>',
-				item: '<div class=\"ola\">Olá</div><div class=\"ola\">Bem vindo</div>',
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p class=\"ola\">Olá</p>\n      <p class=\"ola\">Bem vindo</p>\n   </body>\n</html>',
+				item: '<p class=\"ola\">Olá</p>      <p class=\"ola\">Bem vindo</p>',
 				sel_init: '.ola{',
 				sel_end: '}',
 				style: 'three'
@@ -51,9 +50,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	//Salva o dado como parâmetro em "answer" e no localStorage para poder ser carregado caso o usuário volte em um nível concluído, mostrando a resposta dele
 	$scope.saveData = function(text)
 	{
-		key = Object.values($scope.levels[$scope.cur_level-1].id);
-		$scope.answer[key] = text;
-		localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
+		$scope.answer[$scope.cur_level-1] = text;
+		console.log('Respostas: ' + $scope.cur_level + ': ' + $scope.answer);
 	};
 	
 	//Limpa o localStorage
@@ -139,7 +137,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
 		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].sel_init)) && ($scope.text_code.includes('{')) && ($scope.text_code.includes('}')) && ($scope.text_code.includes(';')) && $scope.text_code !== 'undefined'){
 			$scope.saveData($scope.text_code);
-			$scope.applyStyle($scope.text_code);
 			$scope.disableBtn = false;
 		}
 		else
@@ -152,20 +149,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				$scope.text_code = '';
 			}
 	};
-	
-	$scope.applyStyle = function(element)
-	{
-		var el = element.substring(
-				element.lastIndexOf(0),
-				element.lastIndexOf("{")
-		);
-		var style = element.substring(
-				element.lastIndexOf("{") + 1,
-				element.lastIndexOf("}")
-		);
-		
-		el.style = style;
-	}
 	
 	//Objeto para a conclusão do curso, informando a finalização
 	$scope.levelWin = [

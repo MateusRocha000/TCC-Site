@@ -144,6 +144,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		//localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
 		$scope.answer[$scope.cur_level-1] = text;
 		console.log('Respostas: ' + $scope.cur_level + ': ' + $scope.answer);
+		
 	};
 	
 	//Limpa o localStorage
@@ -173,6 +174,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
 		var content = $scope.answer[key];
 		$scope.text_code = content;
+		
 	}
 	
 	//Função para o botão de passar nível do botão Próximo
@@ -184,7 +186,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			if(next_content == ''){
 				$scope.text_code = '';
-				$scope.wrap = next_content;
+				$scope.wrap = '';
 			}
 				
 
@@ -203,7 +205,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			$scope.nextBtn = false;
 			if(next_content == ''){
 				$scope.text_code = '';
-				$scope.wrap = next_content;
+				$scope.wrap = '';
 			}
 			
 			$scope.cur_level = $scope.cur_level + 1;
@@ -222,7 +224,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			$scope.backBtn = false;
 			if(back_content == ''){
 				$scope.text_code = '';
-				$scope.wrap = back_content;
+				$scope.wrap = '';
 			}
 			
 			$scope.cur_level = $scope.cur_level - 1;

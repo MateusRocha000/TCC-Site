@@ -143,34 +143,6 @@ body {
 	overflow: hidden;
 }
 
-#caret{
-	height: 22px;
-	font-size: 18px;
-	background: black;
-	color: #00ffff;
-	overflow: hidden;
-}
-
-#caret span{
-	float: left;
-  	padding-left: 50px;
-  	white-space: pre;
-}
-
-#cursor{
-	float: left;
-	bottom: 0;
-  	width: 15px;
-  	height: 18px;
-  	background: #00ffff;
-}
-
-#text {
-	width: 0;
-	height: 0;
-	opacity: 0;
-}
-
 #next_btn {
 	position: absolute;
 	right: 0.5em;
