@@ -41,19 +41,18 @@
 		<div id="editor">
 			<div id="pc_screen">	
 				<pre id="before">{{before}}</pre>
-				<div id="caret" >
-					<span ng-model="span_caret" ng-if="!span_caret"></span>
-					<div id="cursor"></div>
-				</div>
-				<input type="text" id="text" ng-model="text_code" autofocus></input>
+				<label>
+					<input type="text" class="text" ng-model="text_code" autofocus/>
+					<div class="wrap" ng-model="wrap"></div>
+				</label>
 				<pre id="after">{{after}}</pre>
 
 				
 			</div>
 			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
 			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
-			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item;span_caret=!span_caret" ng-model="submit">Submit</a>
-			<button class="btn btn-success" id="next_btn" ng-click="passLevel();span_caret=!span_caret" ng-disabled="disableBtn">Próximo</button>
+			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Submit</a>
+			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			
 		</div>
 		
@@ -62,7 +61,7 @@
 	<section id="view_screen">
 		<div id="vscreen">
 			<div id="board">
-				<div class="background level-{{levels[cur_level-1].style}}">
+				<div ng-class="{'level-one': cur_level == '1', 'level-two': cur_level == '2', 'level-three': cur_level == '3'}">
 					
 				</div>
 

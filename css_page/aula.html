@@ -40,11 +40,15 @@
 		<div id="editor">
 			<div id="pc_screen">
 				<pre id="before">{{before}}</pre>
-				<div id="caret" >
+				<!-- <div id="caret" >
 					<span ng-model="span_caret" ng-if="!span_caret"></span>
 					<div id="cursor"></div>
 				</div>
-				<input type="text" id="text" ng-model="text_code" autofocus></input>
+				<input type="text" id="text" ng-model="text_code" autofocus></input> -->
+				<label>
+					<input type="text" class="text" ng-model="text_code"/>
+					<div class="wrap"></div>
+				</label>
 				<pre id="after">{{after}}</pre>
 
 				

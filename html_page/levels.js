@@ -184,6 +184,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			if(next_content == ''){
 				$scope.text_code = '';
+				$scope.wrap = next_content;
 			}
 				
 
@@ -202,6 +203,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			$scope.nextBtn = false;
 			if(next_content == ''){
 				$scope.text_code = '';
+				$scope.wrap = next_content;
 			}
 			
 			$scope.cur_level = $scope.cur_level + 1;
@@ -220,7 +222,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			$scope.backBtn = false;
 			if(back_content == ''){
 				$scope.text_code = '';
-				$scope.span_caret = back_content;
+				$scope.wrap = back_content;
 			}
 			
 			$scope.cur_level = $scope.cur_level - 1;

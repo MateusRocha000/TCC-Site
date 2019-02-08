@@ -16,7 +16,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
 				item: '<div>Olá</div>',
 				sel_init: 'div{',
-				sel_end: '}'
+				sel_end: '}',
+				style: 'one'
 		},
 		{
 				id: '2',
@@ -25,7 +26,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div id=\"ola\">Olá</div>\n   </body>\n</html>",
 				item: '<div id=\"ola\">Olá</div>',
 				sel_init: '#ola{',
-				sel_end: '}'
+				sel_end: '}',
+				style: 'two'
 		},
 		{
 				id: '3',
@@ -34,7 +36,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class=\"ola\">Olá</div>\n      <div class=\"ola\">Bem vindo</div>\n   </body>\n</html>',
 				item: '<div class=\"ola\">Olá</div><div class=\"ola\">Bem vindo</div>',
 				sel_init: '.ola{',
-				sel_end: '}'
+				sel_end: '}',
+				style: 'three'
 		}
 	];	
 	
