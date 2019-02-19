@@ -37,62 +37,35 @@
 		</div>
 
 		<div id="editor">
-			<div id="css">
-				<div class="line-numbers">
-					1
-					<br>
-					2
-					<br>
-					3
-					<br>
-					4
-					<br>
-					5
-					<br>
-					6
-					<br>
-					7
-					<br>
-					8
-					<br>
-					9
-					<br>
-					10
-					<br>
-					11
-					<br>
-					12
-					<br>
-					13
-					<br>
-				</div>
+			<div id="pc_screen">
 				<pre id="before">{{before}}</pre>
-				<textarea type="text" id="text" ng-model="text_code" placeholder="Enter your code here"></textarea>
+				<label>
+					<input type="text" class="text" ng-model="text_code" autofocus/>
+					<div class="wrap"></div>
+				</label>
 				<pre id="after">{{after}}</pre>
 
-				<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
-				<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
-				<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Testar</a>
-				<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+				
 			</div>
 
-			
+			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
+			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
+			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Testar</a>
+			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 		</div>
 		
 	</div>
 
 	<section id="view_screen">
-		<div id="vscreen">
 			<div id="board">
 				<div class="background" ng-class="{'level-one': cur_level == '1', 'level-two': cur_level == '2', 'level-three': cur_level == '3'}">
 					
 				</div>
 
-				<div class="item" ng-model="item" ng-bind-html="levels[cur_level].item" ng-style="myStyle(text_code)">
-					
+				<div id="item">
+					<div id="ola">Olá</div>
 				</div>
 			</div>
-		</div>
 	</section>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -106,6 +79,7 @@
 	<script src="jquery.min.js"></script>
 	<script type="text/javascript" src="levels.js"></script>
 	<script src="../JS/native.js"></script>
+	<script src="game.js"></script>
 
 	<script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

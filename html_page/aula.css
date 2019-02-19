@@ -70,12 +70,20 @@ body {
 	padding-bottom: 1em;
 }
 
+#instr {
+	position: relative;
+	font-size: 16px;
+	font-family: sans-serif;
+	padding-top: 1rem;
+	padding-bottom: 1em;
+}
+
 #edit_screen {
 	width: 50%;
 	height: auto;
 	position: relative;
 	padding: 2em;
-	background-color: #b500b5;
+	background-color: #0080ff;
 	font-size: 20px;
 }
 
@@ -94,6 +102,19 @@ body {
 	font-size: 18px;
 	color: #00ffff;
 	margin: 0;
+}
+
+#pc_screen {
+	height: 400px;
+	position: relative;
+	padding: 30px 30px 30px 30px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
 }
 
 #after{
@@ -130,18 +151,6 @@ body {
 	margin: 0;
 }
 
-#pc_screen {
-	height: 400px;
-	position: relative;
-	padding: 30px 30px 30px 30px;
-	border-top: 30px solid #c0c0c0;
-	border-right: 30px solid #c0c0c0;
-	border-bottom: 50px solid #c0c0c0;
-	border-left: 30px solid #c0c0c0;
-	background-color: #000000;
-	border-radius: 4px;
-	overflow: hidden;
-}
 
 #next_btn {
 	position: absolute;

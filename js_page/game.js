@@ -1,22 +1,27 @@
-$(function() {
-	  var cursor;
-	  $('#caret').click(function() {
-	    $('input').focus();
-	    cursor = window.setInterval(function() {
-	      if ($('#cursor').css('visibility') === 'visible') {
-	        $('#cursor').css({
-	          visibility: 'hidden'
-	        });
-	      } else {
-	        $('#cursor').css({
-	          visibility: 'visible'
-	        });
-	      }
-	    }, 500);
+$(function(){
+	$(".text").on("keyup", function(){
+		$(".wrap").text($(this).val());
+	});
 	
-	  });
+	$("#next_btn").on("click", function(){
+		$(".wrap").empty();
+		$(".text").focus();
+	});
+})
+
+$(function(){
+	$(".text").on("keyup", function(){
+		$(".wrap").text($(this).val());
+	});
 	
-	  $('input').keyup(function() {
-	    $('#caret span').text($(this).val());
-	  });
+	$("#submit").on("click", function(){
+		var item = document.getElementById("item").querySelector("div");
+		var full_code = '$(document).ready(function() {' 
+							+ $(".text").val() 
+							+ 'setInterval(function() {' + item.id + '.style.display = (' + item.id + '.style.display == \'none\' ? \'\' : \'none\');}, 500);});';
+		console.log(full_code);
+		eval(full_code);
+	});
+	
+	
 });

@@ -14,7 +14,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				instr: 'Seletor para aplicar estilo da página',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p>Olá</p>\n   </body>\n</html>',
 				item: '<p>Olá</p>',
-				sel_init: 'div{',
+				sel_init: 'p{',
 				sel_end: '}',
 				style: 'one'
 		},

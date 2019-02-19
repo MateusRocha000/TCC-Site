@@ -13,37 +13,39 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				id: '1',
 				name: 'Variável',
 				instr: 'Variáveis em JavaScript',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				item: '<div>Olá</div>',
-				js_init: 'var'
+				before: '<body>\n      <div id="ola">Olá</div>\n</body>\n\n<script>\n$(document).ready(function() {',
+				after: 'setInterval(function() {\n   ola.style.display = (ola.style.display == \'none\' ? \'\' : \'none\');\n}, 500);\n});\n</script>',
+				js_init: 'var',
 		},
 		{
 				id: '2',
 				name: 'Operador',
 				instr: 'Operadores em JavaScript.',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				item: '<div>Olá</div>'
 		},
 		{
 				id: '3',
 				name: 'Condicional',
 				instr: 'Condicional em JavaScript.',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				item: '<div>Olá</div>'
+				
+				js_init: 'if'
 		},
 		{
 				id: '4',
 				name: 'Função',
 				instr: 'Função em JavaScript',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				item: '<div>Olá</div>'
+				
+				js_init: 'function'
 		},
 		{
 				id: '5',
 				name: 'Evento',
 				instr: 'Evento em JavaScript',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				item: '<div>Olá</div>'
+				
+				js_init: 'on'
 		}
 	];	
 	
@@ -75,7 +77,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.instruction = $scope.levels[$scope.cur_level-1].instr;
 		$scope.before = $scope.levels[$scope.cur_level-1].before;
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
-		$scope.item = $scope.levels[$scope.cur_level-1].item;
+		
 		$scope.disableBtn = true;
 		
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
@@ -135,7 +137,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 	$scope.submit = function()
 	{
 		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
-		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].sel_init)) && ($scope.text_code.includes('{')) && ($scope.text_code.includes('}')) && ($scope.text_code.includes(';'))){
+		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].js_init))){
 			$scope.saveData($scope.text_code);
 			$scope.disableBtn = false;
 		}
