@@ -181,9 +181,12 @@ input.text{
 	display: flex;
 	position: absolute;
 	z-index: 60;
-
 }
 
+#ola{
+	display:block;
+	font-size:25px;
+}
 
 #next_btn {
 	position: absolute;
@@ -299,6 +302,10 @@ input.text{
 	height : 100%;	
 	padding	: 1em;
 	z-index: 10;
+}
+
+.ola_one{
+	display: block;
 }
 
 pre {

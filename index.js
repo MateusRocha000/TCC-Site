@@ -30,7 +30,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			tema: 'JavaScript', aulas: {
 				'variavel': 'Variável',
-				'operador': 'Operador',
 				'condicional': 'Condicional',
 				'funcao': 'Função',
 				'evento': 'Evento'

@@ -14,25 +14,19 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				name: 'Variável',
 				instr: 'Variáveis em JavaScript',
 				before: '<body>\n      <div id="ola">Olá</div>\n</body>\n\n<script>\n$(document).ready(function() {',
-				after: 'setInterval(function() {\n   ola.style.display = (ola.style.display == \'none\' ? \'\' : \'none\');\n}, 500);\n});\n</script>',
-				js_init: 'var',
+				after: 'ola.innerHTML += \'Olá, como vai?\';\n</script>',
+				js_init: 'var'
 		},
 		{
 				id: '2',
-				name: 'Operador',
-				instr: 'Operadores em JavaScript.',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-		},
-		{
-				id: '3',
 				name: 'Condicional',
 				instr: 'Condicional em JavaScript.',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
-				
+				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>\n<script>\nvar ola = document.getElementById("ola");\n',
+				after: '});\n</script>',
 				js_init: 'if'
 		},
 		{
-				id: '4',
+				id: '3',
 				name: 'Função',
 				instr: 'Função em JavaScript',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
@@ -40,7 +34,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				js_init: 'function'
 		},
 		{
-				id: '5',
+				id: '4',
 				name: 'Evento',
 				instr: 'Evento em JavaScript',
 				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
@@ -77,7 +71,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		$scope.instruction = $scope.levels[$scope.cur_level-1].instr;
 		$scope.before = $scope.levels[$scope.cur_level-1].before;
 		$scope.after = $scope.levels[$scope.cur_level-1].after;
-		
 		$scope.disableBtn = true;
 		
 		key = Object.values($scope.levels[$scope.cur_level-1].id);
