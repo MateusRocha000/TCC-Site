@@ -359,6 +359,30 @@ input.text{
 	z-index: 50;
 }
 
+.alert {
+	position: relative;
+	background: #ffffff;
+	border-radius: .4em;
+	width: 40%;
+	height: 10%;
+	top: 80%;
+	left: 30%;
+}
+
+.alert:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 80%;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-right-color: #ffffff;
+	border-left: 0;
+	margin-top: -10px;
+	margin-left: -10px;
+}
+
 pre {
 	margin: 0;
 }

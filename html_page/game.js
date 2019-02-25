@@ -257,14 +257,11 @@ $(function(){
 			document.querySelector("#next_btn").disabled = false;
 			console.log(answer);
 		}
-		else
-		{
-			//Se não tiver as tags, abre uma janela popup informando o erro
-			var x = screen.width/2 - 700/2;
-		    var y = screen.height/2 - 450/2;
-			$window.open("popup_modal.html","popup","width=500,height=500,left="+x+",top="+y);
-			//$window.write("<h1>Código incorreto</h1><br><p>O código inserido está incorreto</p>");
-			text = '';
-		}
+
+
+		setTimeout(function(){
+			let el = document.querySelector('.alert');
+			el.parentNode.removeChild(el);
+		}, 3000);
 	});
 });

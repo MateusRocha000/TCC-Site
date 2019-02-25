@@ -250,11 +250,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		}
 		else
 			{
-				//Se não tiver as tags, abre uma janela popup informando o erro
-				var x = screen.width/2 - 700/2;
-			    var y = screen.height/2 - 450/2;
-				$window.open("popup_modal.html","popup","width=500,height=500,left="+x+",top="+y);
-				//$window.write("<h1>Código incorreto</h1><br><p>O código inserido está incorreto</p>");
+				var el = angular.element(document.querySelector(".background"));
+				el.append('<div class=\"alert\"><strong>Opa!</strong>Seu código está incorreto.</div>');
 				$scope.text_code = '';
 			}
 	};
