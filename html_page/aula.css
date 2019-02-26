@@ -148,6 +148,7 @@ body {
 	position: absolute;
 	width: auto;
 	height: auto;
+	
 	margin: 0;
 }
 
@@ -253,8 +254,8 @@ input.text{
 }
 
 .level-one{
-	background-image : url("../img/portal.png"); 
-	background-size : 50% 50%;
+	background-image : url("../img/entry.png"); 
+	
 	background-repeat : no-repeat;
 	background-position : center bottom;
 	display : flex;	
@@ -269,11 +270,13 @@ input.text{
 }
 
 .pos_one{
-	text-align: center;
-	font-family: 'ZCOOL KuaiLe', cursive;
+	font-family: 'Permanent Marker', cursive;
 	font-size: 30px;
-	top: 13.5em;
-	left: 10.5em;
+	position: absolute;
+	top: 38%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -38%);
 	z-index: 50;
 }
 

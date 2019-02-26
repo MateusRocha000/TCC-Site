@@ -167,15 +167,11 @@ function loadLevel()
 
 	$(".text").val(answer[key]);
 	
-	console.log(cur_level);
-	
 	if(cur_level === 1)
 		document.querySelector("#button1").disabled = true;
 	if(cur_level === count)
 		document.querySelector("#button2").disabled = true;
-	
-	console.log("Botão voltar: " + document.querySelector("#button1").disabled);
-	console.log("Botão Next: " + document.querySelector("#button2").disabled);
+
 };
 
 
@@ -242,12 +238,10 @@ $(function(){
 	
 	$("#submit").on("click", function(){
 		text = document.querySelector(".wrap").textContent;
-		console.log(text);
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
 			saveData(text);
 			document.querySelector("#next_btn").disabled = false;
-			console.log(answer);
 		}
 		else if((text.indexOf('<html>') > -1 && text.indexOf('</html>') > -1) 
 				&& (text.indexOf('<head>') > -1 && text.indexOf('</head>') > -1)
@@ -255,13 +249,6 @@ $(function(){
 		{
 			saveData(text);
 			document.querySelector("#next_btn").disabled = false;
-			console.log(answer);
 		}
-
-
-		setTimeout(function(){
-			let el = document.querySelector('.alert');
-			el.parentNode.removeChild(el);
-		}, 3000);
 	});
 });

@@ -143,7 +143,6 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		//$scope.answer[key] = text;
 		//localStorage.setItem('$scope.answer',JSON.stringify($scope.answer));
 		$scope.answer[$scope.cur_level-1] = text;
-		console.log('Respostas: ' + $scope.cur_level + ': ' + $scope.answer);
 		
 	};
 	
@@ -250,9 +249,16 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		}
 		else
 			{
-				var el = angular.element(document.querySelector(".background"));
+				let el = angular.element(document.querySelector(".background"));
 				el.append('<div class=\"alert\"><strong>Opa!</strong>Seu código está incorreto.</div>');
 				$scope.text_code = '';
+				$scope.wrap = '';
+
+				setTimeout(function(){
+					let el = document.querySelector('.alert');
+					el.parentNode.removeChild(el);
+					$scope.item = !$scope.item;
+				}, 3000);
 			}
 	};
 	
