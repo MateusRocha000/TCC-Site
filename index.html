@@ -2,30 +2,58 @@
 <head>
 <title>Conta</title>
 <meta charset="utf-8"/>
-<link rel="stylesheet" type="text/css" href="contaUsuario.css">
+<link rel="stylesheet" type="text/css" href="index.css">
 <link href="bootstrap.min.css" rel="stylesheet">
 </head>
 <body ng-controller="tcc-site">
 	<h1>Acesse suas aulas</h1>
   	
-  	<uib-accordion close-others="oneAtATime">
-    <div uib-accordion-group class="panel-default" heading="HTML" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" ">
-      <a class="btn btn-primary btn-lg btn-block" ng-repeat="(key, value) in temas[0].aulas" href="./html_page/aula.html">
-      	{{value}}
-      </a>
+  	<div id="menu">
+        <uib-accordion id="accordion" close-others="oneAtATime">
+            <div class="aulas">
+                <div uib-accordion-group class="panel-default aula" style="width: 80%" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                    <div class="head">
+                        <uib-accordion-heading>
+                            HTML
+                            <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" href="./html_page/aula.html">HTML - Começar</a>
+                        </uib-accordion-heading>
+                        
+                    </div>
+                    
+                    <p ng-repeat="(key, value) in temas[0].aulas">
+                      {{value}}
+                    </p>
+                </div>
+                
+            </div>
+            
+            <div class="aulas">
+                <div uib-accordion-group class="panel-default aula" style="width: 80%">
+                    <uib-accordion-heading>
+                        CSS
+                    </uib-accordion-heading>
+                    <p ng-repeat="(key, value) in temas[0].aulas">
+                      {{value}}
+                    </p>
+                </div>
+                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" href="./css_page/aula.html">CSS - Começar</a>
+            </div>
+            
+            <div class="aulas">
+                <div uib-accordion-group class="panel-default aula" style="width: 80%">
+                    <uib-accordion-heading>
+                        JavaScript
+                    </uib-accordion-heading>
+                    <p ng-repeat="(key, value) in temas[0].aulas">
+                      {{value}}
+                    </p>
+                </div>
+                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" href="./js_page/aula.html">JavaScript - Começar</a>
+            </div>
+            
+            
+        </uib-accordion>
     </div>
-    <div uib-accordion-group class="panel-default" heading="CSS" >
-      <a class="btn btn-primary btn-lg btn-block" ng-repeat="(key, value) in temas[1].aulas" href="./css_page/aula.html">
-      	{{value}}
-      </a>
-    </div>
-    <div uib-accordion-group class="panel-default" heading="JavaScript">
-      <a class="btn btn-primary btn-lg btn-block" ng-repeat="(key, value) in temas[2].aulas" href="./js_page/aula.html">
-      	{{value}}
-      </a>
-    </div>
-    
-  </uib-accordion>
 
 	<button id="sair_btn">Sair</button>
 	

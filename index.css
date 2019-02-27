@@ -1,12 +1,6 @@
 body {
 	background-color: #0080ff;
-	background-image: url("./img/ground.png");
-	background-position: right 0 bottom 0;
-	background-repeat: repeat-x;
-	background-size: 5.5vw;
-	background-attachment: fixed;
 	margin: 0;
-	height: 100%;
 }
 
 h1 {
@@ -23,7 +17,6 @@ button {
 	background-color: green;
 	border: none;
 	border-radius: 4px;
-	line-height: 24px;
 	cursor: pointer;
 }
 
@@ -31,113 +24,34 @@ button:hover {
 	opacity: 0.7;
 }
 
-input[type=text], input[type=password], input[type=email] {
-	width: 80%;
-	padding: 3%;
-	display: inline-block;
-	border: 1px solid black;
-	background-color:
+span{
+	font-size: 18px;
 }
 
-form{
-	position: absolute;
-	top: 4em;
-	left: 4em;
+a{
+	margin: 0;
 }
 
-.modal {
-	display: table;
-	display: none;
-	position: fixed;
-	z-index: 3;
-	left: 0;
-	top: 0;
+#menu{
+	display: flex;
 	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgba(71, 78, 93, 0.8);
-	padding-top: 50px;
+	margin: 0;
+	padding: 0;
+	flex-direction: row;
 }
 
-.modal-content {
-	padding: 2%;
-	background-color: #fefefe;
-	margin: 2% auto 15% auto;
-	border: 1px solid #888;
-	width: 25%;
+#accordion{
+	font-size: 14px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 }
 
-.modal-content label {
-	display: table-row;
+#btns{
+	margin: 0;
+	padding: 0;
 }
 
-.janela {
+.aulas{
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: auto;
-	width: 70%;
-}
-
-.placa_intro {
-	position: relative;
-	width: 80%;
-	margin-right: 60px;
-	display: flex;
-	align-items: flex-end;
-}
-
-.board_intro {
-	position: relative;
-	width: 80%;
-}
-
-.paper_intro {
-	position: absolute;
-	top: 7%;
-	left: 5%;
-	width: 70%;
-	height: 55%;
-}
-
-.texto {
-	font-family: 'Atma';
-	font-size: 100%;
-	line-height: 100%;
-	position: absolute;
-	top: 13%;
-	left: 13%;
-	width: 55%;
-}
-
-.acesso_conta {
-	position: relative;
-	width: 80%;
-	display: flex;
-	align-items: flex-end;
-}
-
-
-
-.board_account {
-	position: relative;
-	width: 80%;
-}
-
-.paper_account {
-	position: absolute;
-	top: 7%;
-	left: 5%;
-	width: 70%;
-	height: 55%;
-}
-
-.label {
-	position: absolute;
-	top: 15%;
-	left: 13%;
-}
-
-.acesso_conta label {
-	display: table-row;
 }

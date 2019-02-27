@@ -1,6 +1,6 @@
 let cur_level = 1;
-var answer = [];
-var levels = [
+let answer = [];
+let levels = [
 	{
 		id: '1',
 		name: 'Tag de título: <h1>',
@@ -123,8 +123,8 @@ var levels = [
 	}
 ];
 
-var count = Object.keys(levels).length;
-var key = Object.values(levels[cur_level-1].id);
+let count = Object.keys(levels).length;
+let key = Object.values(levels[cur_level-1].id);
 
 function saveData(text)
 {
@@ -136,40 +136,42 @@ function clearStorage()
 	answer.length = 0;
 };
 
-$(window).on("load", loadLevel);
+$(window).on("load", loadLevel(cur_level));
 
-function loadLevel()
+function loadLevel(level)
 {
-	var title = document.querySelector("#title");
-	var instr = document.querySelector("#instr");
-	var before = document.querySelector("#before");
-	var after = document.querySelector("#after");
-	var item = document.querySelector("#item");
-	var nextBtn = document.querySelector("#next_btn");
-	var submitBtn = document.querySelector("#submit");
-	var quitBtn = document.querySelector("#quit_btn");
-	var display_cur_level = document.querySelector(".current");
-	var total_levels = document.querySelector(".total");
-	var text = document.querySelector(".text");
-	var wrap = document.querySelector(".wrap");
+	let title = document.querySelector("#title");
+	let instr = document.querySelector("#instr");
+	let before = document.querySelector("#before");
+	let after = document.querySelector("#after");
+	let item = document.querySelector("#item");
+	let nextBtn = document.querySelector("#next_btn");
+	let submitBtn = document.querySelector("#submit");
+	let quitBtn = document.querySelector("#quit_btn");
+	let display_cur_level = document.querySelector(".current");
+	let total_levels = document.querySelector(".total");
+	let text = document.querySelector(".text");
+	let wrap = document.querySelector(".wrap");
+	$("#levels-box").hide();
+	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
 	
-	key = Object.values(levels[cur_level-1].id);
-	var content = answer[key];
+	key = Object.values(levels[level-1].id);
+	let content = answer[key];
 	
 	document.querySelector("#next_btn").disabled = true;
 	
-	title.textContent = levels[cur_level-1].name;
-	instr.textContent = levels[cur_level-1].instr;
-	before.textContent = levels[cur_level-1].before;
-	after.textContent = levels[cur_level-1].after;
-	display_cur_level.innerHTML = cur_level;
+	title.textContent = levels[level-1].name;
+	instr.textContent = levels[level-1].instr;
+	before.textContent = levels[level-1].before;
+	after.textContent = levels[level-1].after;
+	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
 
 	$(".text").val(answer[key]);
 	
-	if(cur_level === 1)
+	if(level === 1)
 		document.querySelector("#button1").disabled = true;
-	if(cur_level === count)
+	if(level === count)
 		document.querySelector("#button2").disabled = true;
 
 };
@@ -181,7 +183,7 @@ $(function(){
 	});
 	
 	$("#next_btn").on("click", function(){
-		var next_content = answer[cur_level+1];
+		let next_content = answer[cur_level+1];
 		if(cur_level < count)
 		{
 			if(next_content == '')
@@ -199,7 +201,7 @@ $(function(){
 	});
 	
 	$("#button1").on("click", function(){
-		var back_content = answer[cur_level-1];
+		let back_content = answer[cur_level-1];
 		if(cur_level !== 1)
 		{
 			document.querySelector("#button1").disabled = false;
@@ -210,15 +212,42 @@ $(function(){
 			}
 			
 			cur_level--;
-			loadLevel();
+			loadLevel(cur_level);
 		}
 		$(".wrap").empty();
 		$(".text").focus();
 		$(".text").empty();
 	});
 	
+	levels.forEach(function(level, i){
+		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
+
+		if($.inArray(level.tag_init, answer) !== -1 && $.inArray(level.tag_end, answer) !== -1)
+		{
+			levelMarker.addClass('solved');
+		}
+
+		levelMarker.appendTo('#levels');
+	});
+
+	$(".level-marker").on("click", function(){
+		saveData($("text").textContent);
+
+		let level = $(this).attr('data-level');
+		level = parseInt(level, 10);
+		console.log(level);
+		level++;
+		loadLevel(level);
+	});
+
+	$("#level-indicator").on("click", function(){
+		
+		$('.box').hide();
+		$('#levels-box').toggle();
+	});
+
 	$("#button2").on("click", function(){
-		var next_content = answer[cur_level+1];
+		let next_content = answer[cur_level+1];
 		if(cur_level !== count)
 		{
 			document.querySelector("#button2").disabled = false;
@@ -229,7 +258,7 @@ $(function(){
 			}
 			
 			cur_level++;
-			loadLevel();
+			loadLevel(cur_level);
 		}
 		$(".wrap").empty();
 		$(".text").focus();
@@ -251,4 +280,6 @@ $(function(){
 			document.querySelector("#next_btn").disabled = false;
 		}
 	});
+
+	
 });

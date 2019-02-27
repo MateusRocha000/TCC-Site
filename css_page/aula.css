@@ -143,6 +143,26 @@ button {
 	overflow: hidden;
 }
 
+#levels-box{
+	display: none;
+	top: 30px;
+	right: 31px;
+	max-width: 160px;
+	padding: 1em 0.5em;
+	margin-top: 12px;
+	z-index: 80;
+}
+
+#levels-box:after{
+	left: calc(50% - 12px);
+}
+
+#levels{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 input.text{
 	opacity: 0;
 	position: fixed;
@@ -239,6 +259,53 @@ input.text{
 	/*half of the modal height*/
 	margin: 0 auto;
 	left: 50%;
+}
+
+.box {
+	position: absolute;
+	display: inline-block;
+	max-width: 225px;
+	padding: 1em 1em;
+	background-color: #DFDF2C;
+	border-radius: 4px;
+	font-size: 12px;
+	line-height: 1.5;
+	z-index: 80;
+}
+
+.box:after {
+	content: '';
+	position: absolute;
+	top: -12px;
+	left: 12px;
+	width: 0;
+	height: 0;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 12px solid #DFDF2C;
+}
+
+.level-marker {
+	float: left;
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 2px;
+	line-height: 26px;
+	background-color: #3F4FDE;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	text-align: center;
+	cursor: pointer;
+  }
+  
+.level-marker.current,
+.level-marker:hover {
+	border-color: rgba(255, 255, 255, 0.5);
+}
+  
+.level-marker.solved {
+	background-color: #228B24;
 }
 
 .level-one{
