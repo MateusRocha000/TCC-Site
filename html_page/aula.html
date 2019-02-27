@@ -12,7 +12,7 @@
 <body ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
 	<div id="edit_screen">
 		<div id="header">
-			<h1 id="title">{{title}}</h1>
+			<h1 id="title" class="translate"></h1>
 
 			<div id="num-levels">
 				<button id="button1" ng-click="backLevel()" name="seta-esq" ng-disabled="backBtn"><img class="arrow" src="../img/arrow-left.png" ng-disabled="backBtn"/></button>
@@ -34,8 +34,8 @@
 			</div>
 		</div>
 		
-		<div id="instr">
-			{{instruction}}
+		<div id="instr" class="translate">
+			
 		</div>
 
 		<div id="editor">
@@ -75,7 +75,7 @@
 				</div>
 
 				<div class="item pos_{{levels[cur_level-1].style}}" ng-if="item" ng-model="item" ng-bind-html="text_code">
-					
+
 				</div>
 			</div>
 		</div>

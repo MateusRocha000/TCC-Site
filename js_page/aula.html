@@ -4,13 +4,13 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" type="text/css" href="aula.css">
-	<link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
 	<div id="edit_screen"  >
 		<div id="header">
-			<h1 id="title">{{title}}</h1>
+			<h1 id="title"></h1>
 
 			<div id="num-levels">
 				<button id="button1" ng-click="backLevel()" name="seta-esq" ng-disabled="backBtn"><img class="arrow" src="../img/arrow-left.png" ng-disabled="backBtn"/></button>
@@ -33,7 +33,6 @@
 		</div>
 		
 		<div id="instr">
-			{{instruction}}
 		</div>
 
 		<div id="editor">
