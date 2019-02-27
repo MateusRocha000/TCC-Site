@@ -97,6 +97,25 @@ $(function(){
 		$(".wrap").text($(this).val());
 	});
 	
+	$("#button1").on("click", function(){
+		let back_content = answer[cur_level-1];
+		if(cur_level !== 1)
+		{
+			document.querySelector("#button1").disabled = false;
+			if(back_content == '')
+			{
+				text = '';
+				wrap = '';
+			}
+			
+			cur_level--;
+			loadLevel(cur_level);
+		}
+		$(".wrap").empty();
+		$(".text").focus();
+		$(".text").empty();
+	});
+	
 	$("#next_btn").on("click", function(){
 		$(".wrap").empty();
 		$(".text").focus();
@@ -127,10 +146,28 @@ $(function(){
 		loadLevel(level);
 	});
 
-	$("#level-indicator").on("click", function(){
-		
+	$("#level-indicator").on("click", function(){	
 		$('.box').hide();
 		$('#levels-box').toggle();
+	});
+	
+	$("#button2").on("click", function(){
+		let next_content = answer[cur_level+1];
+		if(cur_level !== count)
+		{
+			document.querySelector("#button2").disabled = false;
+			if(next_content == '')
+			{
+				text = '';
+				wrap = '';
+			}
+			
+			cur_level++;
+			loadLevel(cur_level);
+		}
+		$(".wrap").empty();
+		$(".text").focus();
+		$(".text").empty();
 	});
 	
 	$("#submit").on("click", function(){

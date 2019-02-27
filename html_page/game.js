@@ -169,6 +169,8 @@ function loadLevel(level)
 
 	$(".text").val(answer[key]);
 	
+	
+
 	if(level === 1)
 		document.querySelector("#button1").disabled = true;
 	if(level === count)
