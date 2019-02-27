@@ -168,7 +168,7 @@ function loadLevel(level)
 	total_levels.innerHTML = count;
 
 	$(".text").val(answer[key]);
-	
+	$(".wrap").val(answer[key]);
 	
 
 	if(level === 1)
@@ -195,7 +195,7 @@ $(function(){
 			}
 			
 			cur_level++;
-			loadLevel();
+			loadLevel(cur_level);
 		}
 		$(".wrap").empty();
 		$(".text").focus();

@@ -253,12 +253,12 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				el.append('<div class=\"alert\"><strong>Opa!</strong>Seu código está incorreto.</div>');
 				$scope.text_code = '';
 				$scope.wrap = '';
-
+				/*
 				setTimeout(function(){
 					let el = document.querySelector('.alert');
 					el.parentNode.removeChild(el);
 					$scope.item = !$scope.item;
-				}, 3000);
+				}, 3000);*/
 			}
 	};
 	

@@ -94,8 +94,21 @@ $(function(){
 	});
 	
 	$("#next_btn").on("click", function(){
+		let next_content = answer[cur_level+1];
+		if(cur_level < count)
+		{
+			if(next_content == '')
+			{
+				text = '';
+				wrap = '';
+			}
+			
+			cur_level++;
+			loadLevel(cur_level);
+		}
 		$(".wrap").empty();
 		$(".text").focus();
+		$(".text").empty();
 	});
 	
 	$("#button1").on("click", function(){
