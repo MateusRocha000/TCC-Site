@@ -1,5 +1,6 @@
 let cur_level = 1;
 let answer = [];
+let language = window.location.hash.substring(1) || 'pt-br';
 
 let levels = [
 	{
