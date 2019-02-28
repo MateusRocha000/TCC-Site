@@ -22,6 +22,7 @@
 	"dependencies": {
 		"angular": "^1.7.6",
 		"bower": "^1.8.8",
+		"express": "^4.16.4",
 		"package.json": "^2.0.1",
 		"rangyinputs": "^1.2.0"
 	}

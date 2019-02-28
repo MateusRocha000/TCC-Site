@@ -11,20 +11,15 @@
   	<div id="menu">
         <uib-accordion id="accordion" close-others="oneAtATime">
             <div class="aulas">
-                <div uib-accordion-group class="panel-default aula" style="width: 80%" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                    <div class="head">
-                        <uib-accordion-heading>
-                            HTML
-                            <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" href="./html_page/aula.html">HTML - Começar</a>
-                        </uib-accordion-heading>
-                        
-                    </div>
-                    
+                <div uib-accordion-group class="panel-default aula" style="width: 80%">
+                    <uib-accordion-heading>
+                        HTML
+                    </uib-accordion-heading>
                     <p ng-repeat="(key, value) in temas[0].aulas">
                       {{value}}
                     </p>
                 </div>
-                
+                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='html_page/aula.html'">HTML - Começar</a>
             </div>
             
             <div class="aulas">
@@ -32,11 +27,11 @@
                     <uib-accordion-heading>
                         CSS
                     </uib-accordion-heading>
-                    <p ng-repeat="(key, value) in temas[0].aulas">
+                    <p ng-repeat="(key, value) in temas[1].aulas">
                       {{value}}
                     </p>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" href="./css_page/aula.html">CSS - Começar</a>
+                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='css_page/aula.html'">CSS - Começar</a>
             </div>
             
             <div class="aulas">
@@ -44,11 +39,11 @@
                     <uib-accordion-heading>
                         JavaScript
                     </uib-accordion-heading>
-                    <p ng-repeat="(key, value) in temas[0].aulas">
+                    <p ng-repeat="(key, value) in temas[2].aulas">
                       {{value}}
                     </p>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" href="./js_page/aula.html">JavaScript - Começar</a>
+                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='js_page/aula.html'">JavaScript - Começar</a>
             </div>
             
             
