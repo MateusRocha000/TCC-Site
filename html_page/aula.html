@@ -42,7 +42,7 @@
 			<div id="pc_screen">	
 				<pre id="before">{{before}}</pre>
 				<label>
-					<input type="text" class="text" ng-model="text_code" autofocus/>
+					<input type="text" class="text" name="code" ng-model="text_code" autofocus/>
 					<div class="wrap" ng-model="wrap"></div>
 				</label>
 				<pre id="after">{{after}}</pre>
@@ -52,7 +52,7 @@
 			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
 			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()">Limpar</a>
 			<a class="btn btn-primary" id="submit" ng-click="submit();item=!item" ng-model="submit">Testar</a>
-			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+			<button class="btn btn-success" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn" method="POST" action="/answer">Próximo</button>
 			
 		</div>
 		

@@ -21,6 +21,7 @@
 	"homepage": "https://github.com/MateusRocha000/TCC-Site#readme",
 	"dependencies": {
 		"angular": "^1.7.6",
+		"bcrypt": "^3.0.4",
 		"body-parser": "^1.18.3",
 		"bower": "^1.8.8",
 		"connect-mongo": "^2.0.3",

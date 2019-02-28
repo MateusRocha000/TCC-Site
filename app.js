@@ -53,6 +53,21 @@ app.use(function (err, req, res, next) {
     res.send(err.message);
 });
 
+var schema = new mongoose.Schema({
+    code: String
+});
+var UserSchema = mongoose.model("Answer", schema);
+
+app.post("/answer", function(req, res){
+    var myData = new UserSchema(req.body);
+    myData.save().then(item => {
+        res.send("Código salvo no banco de dados");
+        console.log(myData);
+    }).catch(err => {
+        res.status(400).send("Não foi possível salvo o código");
+    });
+});
+
 app.listen(8000, function(){
     console.log('Express app escutando na porta 8000...');
 });
