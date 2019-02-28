@@ -1,8 +1,8 @@
 'use strict';
-import { Router } from 'express';
-var router = Router();
-import { index } from 'cssController';
+var express = require('express');
+var router = express.Router();
+var cssController = require('./cssController');
 
-router.get('/', index);
+router.get('/', cssController.index);
 
-export default router;
+module.exports = router;

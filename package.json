@@ -21,8 +21,14 @@
 	"homepage": "https://github.com/MateusRocha000/TCC-Site#readme",
 	"dependencies": {
 		"angular": "^1.7.6",
+		"body-parser": "^1.18.3",
 		"bower": "^1.8.8",
+		"connect-mongo": "^2.0.3",
+		"connect-mongodb-session": "^2.1.1",
 		"express": "^4.16.4",
+		"express-session": "^1.15.6",
+		"mongodb": "^3.1.13",
+		"mongoose": "^5.4.16",
 		"package.json": "^2.0.1",
 		"rangyinputs": "^1.2.0"
 	}

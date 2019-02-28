@@ -1,6 +1,6 @@
 'use strict';
-import { join } from "path";
+var path = require("path");
 
-export function index(req, res, next){
-    return res.sendFile(join(__dirname + 'index.html'));
+exports.index = function(req, res, next){
+    return res.sendFile(path.join(__dirname + 'index.html'));
 }
