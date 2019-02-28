@@ -62,7 +62,7 @@ app.post("/answer", function(req, res){
     var myData = new UserSchema(req.body);
     myData.save().then(item => {
         res.send("Código salvo no banco de dados");
-        console.log(myData);
+        console.log(item);
     }).catch(err => {
         res.status(400).send("Não foi possível salvo o código");
     });

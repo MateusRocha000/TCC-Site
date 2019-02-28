@@ -129,12 +129,14 @@ let key = Object.values(levels[cur_level-1].id);
 
 function saveData(text)
 {
+	localStorage.setItem(cur_level-1, text);
 	answer[cur_level-1] = text;
 };
 
 function clearStorage()
 {
 	answer.length = 0;
+	localStorage.clear();
 };
 
 $(window).on("load", loadLevel(cur_level));
@@ -168,15 +170,17 @@ function loadLevel(level)
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
 
-	$(".text").val(answer[key]);
-	$(".wrap").val(answer[key]);
-	
 
 	if(level === 1)
 		document.querySelector("#button1").disabled = true;
 	if(level === count)
 		document.querySelector("#button2").disabled = true;
 
+	
+	for(let i = 0; i < localStorage.length; i++)
+	{
+		console.log((i+1) + ': ' + JSON.stringify(localStorage[i]) + '\n');
+	}
 };
 
 
