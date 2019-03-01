@@ -60,6 +60,27 @@ a{
     margin-top: 20px;
 }
 
+#btn_html{
+    animation: piscar 5s step-start infinite;
+    animation-delay: 1s;
+}
+
+#btn_css{
+    animation: piscar 5s step-start infinite;
+    animation-delay: 2s;
+}
+
+#btn_js{
+    animation: piscar 5s step-start infinite;
+    animation-delay: 3s;
+}
+
+@keyframes piscar{
+    50%{
+        opacity: 0.5;
+    }
+}
+
 #html_content, #css_content, #js_content{
     position: absolute;
     top: 40px;
