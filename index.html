@@ -6,83 +6,46 @@
 <link href="bootstrap.min.css" rel="stylesheet">
 </head>
 <body ng-controller="tcc-site">
-	<h1>Acesse suas aulas</h1>
     
+    <div id="page">
+            <h1 id="title">Acesse suas aulas</h1>
     
-    
-
-  	<div id="menu">
-        <div id="bar">
-            <div id="buttons">
-                    <button id="btn_html">HTML</button>
-                    <button id="btn_css">CSS</button>
-                    <button id="btn_js">JavaScript</button>
-            </div>
-        </div>
-
-        <div id="html_content" class="none">
-            <h1>HTML</h1>
-            <p ng-repeat="(key, value) in temas[0].aulas">
-                    {{value}}
-            </p>
-        </div>
-
-        <div id="css_content" class="none">
-            <h1>CSS</h1>
-            <p ng-repeat="(key, value) in temas[1].aulas">
-                    {{value}}
-            </p>
-        </div>
-
-        <div id="js_content" class="none">
-            <h1>JavaScript</h1>
-            <p ng-repeat="(key, value) in temas[2].aulas">
-                    {{value}}
-            </p>
-        </div>
+            <div id="menu">
+                <div id="bar">
+                    <div id="buttons">
+                            <button id="btn_html">HTML</button>
+                            <button id="btn_css">CSS</button>
+                            <button id="btn_js">JavaScript</button>
+                    </div>
+                </div>
         
-        <!-- <uib-accordion id="accordion" close-others="oneAtATime">
-            <div class="aulas" style="display: none;">
-                <div uib-accordion-group class="panel-default aula" style="width: 80%">
-                    <uib-accordion-heading>
-                        HTML
-                    </uib-accordion-heading>
+                <div id="html_content" class="none">
+                    <h1>HTML</h1>
                     <p ng-repeat="(key, value) in temas[0].aulas">
-                      {{value}}
+                            {{value}}
                     </p>
+                    <a class="btn btn-primary btn-lg btn-block button" style="width: 70%" onclick="window.location.href='html_page/aula.html'">HTML - Começar</a>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='html_page/aula.html'">HTML - Começar</a>
-            </div>
-            
-            <div class="aulas">
-                <div uib-accordion-group class="panel-default aula" style="width: 80%">
-                    <uib-accordion-heading>
-                        CSS
-                    </uib-accordion-heading>
+        
+                <div id="css_content" class="none">
+                    <h1>CSS</h1>
                     <p ng-repeat="(key, value) in temas[1].aulas">
-                      {{value}}
+                            {{value}}
                     </p>
+                    <a class="btn btn-primary btn-lg btn-block button" style="width: 70%" onclick="window.location.href='css_page/aula.html'">CSS - Começar</a>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='css_page/aula.html'">CSS - Começar</a>
-            </div>
-            
-            <div class="aulas">
-                <div uib-accordion-group class="panel-default aula" style="width: 80%">
-                    <uib-accordion-heading>
-                        JavaScript
-                    </uib-accordion-heading>
+        
+                <div id="js_content" class="none">
+                    <h1>JavaScript</h1>
                     <p ng-repeat="(key, value) in temas[2].aulas">
-                      {{value}}
+                            {{value}}
                     </p>
+                    <a class="btn btn-primary btn-lg btn-block button" style="width: 70%" onclick="window.location.href='js_page/aula.html'">JavaScript - Começar</a>
                 </div>
-                <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='js_page/aula.html'">JavaScript - Começar</a>
+                
             </div>
-            
-             -->
-             
-        </uib-accordion>
     </div>
-	
+    
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-sanitize.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>

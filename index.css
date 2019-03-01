@@ -1,22 +1,22 @@
-body {
-	background-color: #0080ff;
-	margin: 0;
+#page{
+    background-color: blue;
+    margin: 0;
+    height: 100%;
 }
 
-h1 {
+#title {
 	font-size: 60px;
 	font-family: serif;
-	text-align: center;
-	margin-bottom: 2.4vw;
+    text-align: center;
+    margin: 0;
 }
 
 button {
 	display: inline-block;
 	margin-top: 10px;
 	padding: 0.4em 0.8em;
-	background-color: green;
+	background-image: linear-gradient(to right, #0BD012, #06900B);
 	border: none;
-	border-radius: 4px;
 	cursor: pointer;
 }
 
@@ -36,17 +36,16 @@ a{
     position: relative;
 	display: flex;
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 30px;
 	padding: 0;
 }
 
 #bar{
-    
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	width: 150px;
 	height: 680px;
-	background-color: gray;
+	background-image: linear-gradient(to right,#DFDFDF,  #9D9C9C);
     border-radius: 0px;
     z-index: 2;
 }
@@ -57,14 +56,14 @@ a{
 }
 
 #btn_html, #btn_css, #btn_js{
-	width: 100px;
-	margin: 5px;
+    width: 150px;
+    margin-top: 20px;
 }
 
 #html_content, #css_content, #js_content{
     position: absolute;
     top: 40px;
-	width: 360px;
+	width: 500px;
 	height: 600px;
 	color: #00ffff;
 	padding: 30px 30px 30px 30px;
@@ -102,10 +101,10 @@ a{
 
 @keyframes fadeInLeft{
 	from {
-        -webkit-transform: translatex(-360px);
-        -moz-transform: translatex(-360px);
-        -o-transform: translatex(-360px);
-        transform: translatex(-360px);
+        -webkit-transform: translatex(-500px);
+        -moz-transform: translatex(-500px);
+        -o-transform: translatex(-500px);
+        transform: translatex(-500px);
     }
     to {
         -webkit-transform: translatex(140px);
@@ -117,10 +116,10 @@ a{
 
 @-webkit-keyframes fadeInLeft {
     from {
-        -webkit-transform: translatex(-360px);
-        -moz-transform: translatex(-360px);
-        -o-transform: translatex(-360px);
-        transform: translatex(-360px);
+        -webkit-transform: translatex(-500px);
+        -moz-transform: translatex(-500px);
+        -o-transform: translatex(-500px);
+        transform: translatex(-500px);
     }
     to {
         -webkit-transform: translatex(140px);
@@ -131,10 +130,10 @@ a{
 }
 @-moz-keyframes fadeInLeft {
     from {
-        -webkit-transform: translatex(-360px);
-        -moz-transform: translatex(-360px);
-        -o-transform: translatex(-360px);
-        transform: translatex(-360px);
+        -webkit-transform: translatex(-500px);
+        -moz-transform: translatex(-500px);
+        -o-transform: translatex(-500px);
+        transform: translatex(-500px);
     }
     to {
         -webkit-transform: translatex(140px);
@@ -171,10 +170,10 @@ a{
 		transform: translatex(0px);
     }
     to {
-		-webkit-transform: translatex(-360px);
-        -moz-transform: translatex(-360px);
-        -o-transform: translatex(-360px);
-        transform: translatex(-360px);
+		-webkit-transform: translatex(-500px);
+        -moz-transform: translatex(-500px);
+        -o-transform: translatex(-500px);
+        transform: translatex(-500px);
     }
 }
 
@@ -186,10 +185,10 @@ a{
 		transform: translatex(0px);
     }
     to {
-		-webkit-transform: translatex(-360px);
-        -moz-transform: translatex(-360px);
-        -o-transform: translatex(-360px);
-        transform: translatex(-360px);
+		-webkit-transform: translatex(-500px);
+        -moz-transform: translatex(-500px);
+        -o-transform: translatex(-500px);
+        transform: translatex(-500px);
     }
 }
 @-moz-keyframes fadeOut {
@@ -200,9 +199,9 @@ a{
 		transform: translatex(0px);
     }
     to {
-		-webkit-transform: translatex(-360px);
-        -moz-transform: translatex(-360px);
-        -o-transform: translatex(-360px);
-        transform: translatex(-360px);
+		-webkit-transform: translatex(-500px);
+        -moz-transform: translatex(-500px);
+        -o-transform: translatex(-500px);
+        transform: translatex(-500px);
     }
 }
