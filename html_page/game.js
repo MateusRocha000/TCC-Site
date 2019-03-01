@@ -175,12 +175,6 @@ function loadLevel(level)
 		document.querySelector("#button1").disabled = true;
 	if(level === count)
 		document.querySelector("#button2").disabled = true;
-
-	
-	for(let i = 0; i < localStorage.length; i++)
-	{
-		console.log((i+1) + ': ' + JSON.stringify(localStorage[i]) + '\n');
-	}
 };
 
 

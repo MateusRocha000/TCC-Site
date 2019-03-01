@@ -7,10 +7,42 @@
 </head>
 <body ng-controller="tcc-site">
 	<h1>Acesse suas aulas</h1>
-  	
+    
+    
+    
+
   	<div id="menu">
-        <uib-accordion id="accordion" close-others="oneAtATime">
-            <div class="aulas">
+        <div id="bar">
+            <div id="buttons">
+                    <button id="btn_html">HTML</button>
+                    <button id="btn_css">CSS</button>
+                    <button id="btn_js">JavaScript</button>
+            </div>
+        </div>
+
+        <div id="html_content" class="none">
+            <h1>HTML</h1>
+            <p ng-repeat="(key, value) in temas[0].aulas">
+                    {{value}}
+            </p>
+        </div>
+
+        <div id="css_content" class="none">
+            <h1>CSS</h1>
+            <p ng-repeat="(key, value) in temas[1].aulas">
+                    {{value}}
+            </p>
+        </div>
+
+        <div id="js_content" class="none">
+            <h1>JavaScript</h1>
+            <p ng-repeat="(key, value) in temas[2].aulas">
+                    {{value}}
+            </p>
+        </div>
+        
+        <!-- <uib-accordion id="accordion" close-others="oneAtATime">
+            <div class="aulas" style="display: none;">
                 <div uib-accordion-group class="panel-default aula" style="width: 80%">
                     <uib-accordion-heading>
                         HTML
@@ -46,17 +78,18 @@
                 <a class="btn btn-primary btn-lg btn-block button" style="width: 20%" onclick="window.location.href='js_page/aula.html'">JavaScript - Começar</a>
             </div>
             
-            
+             -->
+             
         </uib-accordion>
     </div>
-
-	<button id="sair_btn">Sair</button>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-sanitize.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="module.js"></script>
-	<script type="text/javascript" src="index.js"></script>
-	<script src="ui-bootstrap-tpls-2.5.0.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script src="ui-bootstrap-tpls-2.5.0.js"></script>
 </body>
 </html>
