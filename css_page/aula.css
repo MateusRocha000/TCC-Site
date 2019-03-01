@@ -212,22 +212,38 @@ input.text{
 	bottom: 0.3em;
 }
 
-#submit {
+#check{
+	background: green;
 	position: absolute;
-	right: 6.5em;
-	bottom: 0.3em;
+	padding: 5px;
+	right: 140px;
+	bottom: 0.8em;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	cursor: pointer;
 }
 
 #clear_storage {
 	position: absolute;
-	left: 4.8em;
-	bottom: 0.3em;
+	left: 75px;
+	bottom: 0.8em;
+	padding: 5px;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	cursor: pointer;
 }
 
 #quit_btn {
 	position: absolute;
-	left: 0.5em;
-	bottom: 0.3em;
+	left: 30px;
+	bottom: 0.8em;
+	padding: 5px;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	cursor: pointer;
 }
 
 #next_btn.disabled {
