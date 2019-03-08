@@ -275,8 +275,11 @@ $(function(){
 	
 	$("#check").on("click", function(){
 		text = document.querySelector(".wrap").textContent;
+		console.log("Código: " +text);
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
+			document.querySelector(".item").innerHTML = text;
+			console.log("Item: " + document.querySelector(".item").innerHTML);
 			saveData(text);
 			document.querySelector("#next_btn").disabled = false;
 		}
@@ -284,7 +287,7 @@ $(function(){
 				&& (text.indexOf('<head>') > -1 && text.indexOf('</head>') > -1)
 				&& (text.indexOf('<body>') > -1 && text.indexOf('</body>')) > -1 && cur_level === 1  && text !== 'undefined')
 		{
-			document.querySelector(".item").innerHTML = text;
+			
 			saveData(text);
 			document.querySelector("#next_btn").disabled = false;
 		}
