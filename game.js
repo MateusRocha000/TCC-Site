@@ -1,7 +1,5 @@
 $(function()
 {
-    
-
     $('#btn_html').on("click", function(){
         $("#css_content").removeClass('fadein-left');
         $("#css_content").addClass('none');

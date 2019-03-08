@@ -14,6 +14,4 @@ var UserSchema = new mongoose.Schema({
     }
 });
 
-UserSchema.pre('save', function(next){
-    var user
-});
+module.exports = UserSchema;

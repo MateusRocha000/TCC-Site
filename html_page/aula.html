@@ -50,8 +50,8 @@
 				
 			</div>
 			<a class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'"></a>
-			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()"></a>
-			<div id="check" ng-click="submit();item=!item" ng-model="submit" method="POST" action="/answer"></div>
+			<a class="btn btn-warning" id="clear_storage"></a>
+			<div id="check" method="POST" action="/answer"></div>
 			<button class="btn btn-primary" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			
 		</div>

@@ -340,7 +340,7 @@ input.text{
 	font-family: 'Permanent Marker', cursive;
 	font-size: 30px;
 	position: absolute;
-	top: 38%;
+	top: 44%;
 	left: 50%;
 	/* bring your own prefixes */
 	transform: translate(-50%, -38%);
@@ -350,9 +350,9 @@ input.text{
 .level-two{
 	background-image: url("../img/papel.png"), url("../img/placa.png");
 	background-color: #80ffff;
-	background-size : 50% 25%, 50% 50%;
+	background-size : 50% 30%, 50% 50%;
 	background-repeat : no-repeat;
-	background-position : center 400px, center bottom;
+	background-position : center 75%, center bottom;
 	order: 1, 2;
 	display : flex;	
 	position: absolute;	
@@ -365,10 +365,11 @@ input.text{
 }
 
 .pos_two{
-	text-align: center;
+	text-align: justify;
+	width: 340px;
 	font-size: 20px;
-	top: 21em;
-	left: 11em;
+	top: 22.5em;
+	left: 12.5em;
 	z-index: 50;
 }
 

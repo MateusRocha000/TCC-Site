@@ -232,35 +232,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		}
 	};
 	
-	//Função para salvar o código do usuário e habilitar o botão de passar para o próximo nível
-	$scope.submit = function()
-	{
-		//Se o código inserido contém as tags que o usuário digitou, salva o código e habilita o botão de Próximo
-		if( ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_init)) && ($scope.text_code.includes($scope.levels[$scope.cur_level-1].tag_end)) && $scope.text_code !== 'undefined'){
-			$scope.saveData($scope.text_code);
-			$scope.disableBtn = false;
-		}
-		else if(($scope.text_code.includes('<html>') && $scope.text_code.includes('</html>')) 
-			&& ($scope.text_code.includes('<head>') && $scope.text_code.includes('</head>'))
-			&& ($scope.text_code.includes('<body>') && $scope.text_code.includes('</body>')) && $scope.cur_level === 1  && $scope.text_code !== 'undefined')
-		{
-			$scope.saveData($scope.text_code);
-			$scope.disableBtn = false;
-		}
-		else
-			{
-				let el = angular.element(document.querySelector(".background"));
-				el.append('<div class=\"alert\"><strong>Opa!</strong>Seu código está incorreto.</div>');
-				$scope.text_code = '';
-				$scope.wrap = '';
-				/*
-				setTimeout(function(){
-					let el = document.querySelector('.alert');
-					el.parentNode.removeChild(el);
-					$scope.item = !$scope.item;
-				}, 3000);*/
-			}
-	};
+	
 	
 	//Objeto para a conclusão do curso, informando a finalização
 	$scope.levelWin = [
