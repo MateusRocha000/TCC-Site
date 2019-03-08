@@ -2,6 +2,8 @@
 var express = require('express');
 var app = express();
 
+var bodyParser = require('body-parser');
+
 var index = require('./indexRoute');
 var html = require('./html_page/htmlRoute');
 var css = require('./css_page/cssRoute');

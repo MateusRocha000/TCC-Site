@@ -4,6 +4,7 @@
 	"description": "Web site for web teaching",
 	"main": "game.js",
 	"scripts": {
+		"start": "node app.js",
 		"test": "json"
 	},
 	"repository": {
