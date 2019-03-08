@@ -206,6 +206,7 @@ $(function(){
 		$(".wrap").empty();
 		$(".text").focus();
 		$(".text").empty();
+		$(".item").empty();
 	});
 	
 	$("#button1").on("click", function(){
