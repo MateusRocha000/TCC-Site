@@ -32,6 +32,6 @@ app.use(function (err, req, res, next) {
     res.send(err.message);
 });
 
-app.listen(8000, function(){
+app.listen(process.env.PORT || 8000, function(){
     console.log('Express app escutando na porta 8000...');
 });
