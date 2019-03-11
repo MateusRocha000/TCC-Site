@@ -143,6 +143,16 @@ function clearStorage()
 
 $(window).on("load", loadLevel(cur_level));
 
+let window_code = 'help.html';
+
+$(window).on("load", () => {
+	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('visited')){
+		localStorage.setItem('visited', true);
+
+		window.open(window_code, 'Ajuda', 'width=800, height=750');
+	}
+});
+
 function loadLevel(level)
 {
 	let title = document.querySelector("#title");

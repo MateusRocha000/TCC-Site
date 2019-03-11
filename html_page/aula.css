@@ -9,6 +9,22 @@ body {
 	height: 100%;
 }
 
+#help_body{
+	background-color: black;
+}
+
+#help{
+	color: #00ffff;
+	font-family: 'Luckiest Guy';
+	z-index: 2;
+	padding: 20px;
+	border: 40px solid #c0c0c0;
+}
+
+#help h1{
+	margin-top: 0;
+}
+
 #button1 {
 	background-color: #DFDF2C;
 	padding: 0.4em 0.8em;
@@ -126,7 +142,7 @@ body {
 	padding: 1em;
 }
 
-#css_btn, #js_btn{
+#css_btn, #js_btn, #help_btn{
 	margin-top: 50px;
 	margin-right: 30px;
 }
@@ -214,6 +230,14 @@ input.text{
 	position: fixed;
 	top: -100px;
 	left: 0;
+}
+
+.tab1{
+	padding-left: 30px;
+}
+
+.tab2{
+	padding-left: 60px;
 }
 
 .wrap{
