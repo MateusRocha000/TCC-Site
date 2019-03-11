@@ -60,7 +60,7 @@ $(window).on("load", () => {
 	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('js_visited')){
 		localStorage.setItem('js_visited', true);
 
-		window.open(window_code, 'Ajuda', 'width=800, height=600');
+		window.open(window_code, 'Ajuda', 'width=800, height=750');
 	}
 });
 
