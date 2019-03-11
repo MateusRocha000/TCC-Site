@@ -22,6 +22,22 @@ button {
 	cursor: pointer;
 }
 
+#help_body{
+	background-color: black;
+}
+
+#help{
+	color: #00ffff;
+	font-family: 'Luckiest Guy';
+	z-index: 2;
+	padding: 20px;
+	border: 40px solid #c0c0c0;
+}
+
+#help h1{
+	margin-top: 0;
+}
+
 #title {
 	font-family: 'Luckiest Guy';
 	font-size: 40px;
@@ -166,7 +182,7 @@ button {
 	justify-content: center;
 }
 
-#css_btn, #html_btn{
+#css_btn, #html_btn, #help_btn{
 	margin-top: 50px;
 	margin-right: 30px;
 }
