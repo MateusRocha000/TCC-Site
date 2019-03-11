@@ -57,8 +57,8 @@ $(window).on("load", loadLevel(cur_level));
 let window_code = 'help.html';
 
 $(window).on("load", () => {
-	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('visited')){
-		localStorage.setItem('visited', true);
+	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('js_visited')){
+		localStorage.setItem('js_visited', true);
 
 		window.open(window_code, 'Ajuda', 'width=800, height=600');
 	}
