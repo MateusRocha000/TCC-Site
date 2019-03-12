@@ -143,13 +143,21 @@ function clearStorage()
 
 $(window).on("load", loadLevel(cur_level));
 
+function getXY(){
+	var x = screen.width/2 - 540;
+	var y = screen.height/2 - 385;
+	return 'left='+x+',top='+y;
+}
+
 let window_code = 'help.html';
 
 $(window).on("load", () => {
 	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('html_visited')){
 		localStorage.setItem('html_visited', true);
 
-		window.open(window_code, 'Ajuda', 'width=800, height=750');
+		var x = screen.width/2 - 700/2;
+		var y = screen.height/2 - 450/2;
+		window.open(window_code, 'Ajuda', 'width=800, height=750, left='+x+',top='+y);
 	}
 });
 

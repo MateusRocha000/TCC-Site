@@ -50,13 +50,21 @@ function clearStorage()
 
 $(window).on("load", loadLevel(cur_level));
 
+function getXY(){
+	var x = screen.width/2 - 540;
+	var y = screen.height/2 - 385;
+	return 'left='+x+',top='+y;
+}
+
 let window_code = 'help.html';
 
 $(window).on("load", () => {
 	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('css_visited')){
 		localStorage.setItem('css_visited', true);
 
-		window.open(window_code, 'Ajuda', 'width=800, height=600');
+		var x = screen.width/2 - 540;
+		var y = screen.height/2 - 385;
+		window.open(window_code, 'Ajuda', 'width=1080, height=550, left='+x+',top='+y);
 	}
 });
 
