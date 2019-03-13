@@ -15,7 +15,7 @@ body {
 
 #help{
 	color: #00ffff;
-	font-family: 'Luckiest Guy';
+	font-family: 'Courier New', Courier, monospace;
 	z-index: 2;
 	padding: 20px;
 	border: 40px solid #c0c0c0;

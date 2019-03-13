@@ -82,18 +82,14 @@ a{
 }
 
 #html_content, #css_content, #js_content{
+    font-family: 'Courier New', Courier, monospace;
     position: absolute;
     top: 25px;
 	width: 500px;
 	height: 550px;
 	color: #00ffff;
 	padding: 30px 30px 30px 30px;
-	border-top: 30px solid #c0c0c0;
-	border-right: 30px solid #c0c0c0;
-	border-bottom: 30px solid #c0c0c0;
-	border-left: 30px solid #c0c0c0;
-	background-color: #000000;
-    border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0.2);
     z-index: 0;
 }
 
