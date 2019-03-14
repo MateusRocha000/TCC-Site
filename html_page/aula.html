@@ -17,7 +17,7 @@
 			<div id="num-levels">
 				<button id="button1" ng-click="backLevel()" name="seta-esq" ng-disabled="backBtn"><img class="arrow" src="../img/arrow-left.png" ng-disabled="backBtn"/></button>
 				<span id="level-indicator">
-					<span id="labelLevel" class="translate">Level</span>
+					<span id="labelLevel" class="translate">Nível</span>
 					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level}}</span>
 					<span id="labelOf" class="translate">of</span>
 					<span class="total">{{levels.length}}</span>
@@ -71,7 +71,7 @@
 	<section id="view_screen">
 		<div id="vscreen">
 			<div id="board">
-				<div class="background level-{{levels[cur_level-1].style}}">
+				<div class="background">
 					
 				</div>
 

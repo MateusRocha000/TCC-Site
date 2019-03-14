@@ -68,6 +68,8 @@ function loadLevel(level)
 	let total_levels = document.querySelector(".total");
 	let text = document.querySelector(".text");
 	let wrap = document.querySelector(".wrap");
+	let backG = document.querySelector(".background");
+	let style = levels[level-1].style;
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
 	
@@ -82,6 +84,7 @@ function loadLevel(level)
 	after.textContent = levels[level-1].after;
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
+	backG.classList = 'background level-' + style;
 
 	$(".text").val(answer[key]);
 	
