@@ -57,7 +57,7 @@
 		
 		<a class="btn btn-primary" id="html_btn" onclick="window.location.href='../html_page/aula.html'">HTML</a>
 		<a class="btn btn-primary" id="js_btn" onclick="window.location.href='../js_page/aula.html'">JavaScript</a>
-		<a class="btn btn-primary" id="help_btn" onclick="window.open('help.html', 'Ajuda', 'width=1080, height=550,'+getXY() )">Ajuda</a>
+		<a class="btn btn-primary" id="help_btn">Ajuda</a>
 		
 		<div class="credits">
 			<span id="footer" class="translate">Jogo criado por: </span>
@@ -80,6 +80,41 @@
 			</div>
 		</div>
 	</section>
+
+	<div id="help_body">
+		<div id="help">
+				<div id="help_header">
+					<h1>CSS</h1>
+					<div class="btn btn-danger close_modal">&times;</div>
+				</div>
+				<div id="help_content">
+					<p>
+						O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML. Com ela é possível alterar a cor de fundo, tamanho da fonte, posição dos elementos e muitas outras coisas.
+				</p>
+
+				<p>
+						Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves. 
+				</p>
+
+				<p>
+						Um exemplo: caso queira alterar o tamanho da fonte do parágrafo coloque: </p> 
+				</p>
+
+				<span>p {</span><br>
+				<span id="tab1">font-size: 40px;</span><br>
+				<span>}</span>
+
+				<p>
+						Assim, o tamanho do texto, ou fonte, do parágrafo será alterado para 40 pixels.
+				</p>
+
+				<p>
+						Há muitas outras propriedades que são possíveis de alterar, como: largura (width), altura (height), cor de fundo (background-color), e muito mais.
+				</p>
+				</div>
+
+		</div>
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

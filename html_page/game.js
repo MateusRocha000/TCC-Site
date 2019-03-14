@@ -5,7 +5,7 @@ let levels = [
 	{
 		id: '1',
 		name: 'Tag de título: <h1>',
-		instr: 'A tag <h1> é utilizada para transformar seu texto em um título. Você ainda pode criar subtítulos aumentando a numeração da tag: <h2>, <h3>, etc.',
+		instr: 'A tag <h1> é utilizada para transformar seu texto em um título. Utilize a tag para criar um nome para a entrada da nossa cidade.',
 		before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		item: '',
@@ -17,7 +17,7 @@ let levels = [
 	{
 		id: '2',
 		name: 'Tag de parágrafo: <p>',
-		instr: 'Esta tag é utilizada para indicar que seu texto pertence ao parágrafo da página. Quando você quiser mudar de parágrafo basta criar outra área de texto dentro de uma nova tag.',
+		instr: 'Esta tag é utilizada para indicar que seu texto pertence ao parágrafo da página. Use a tag para criar uma mensagem de boas vindas.',
 		before: "<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n",
 		after: '   </body>\n</html>',
 		item: '',
@@ -29,7 +29,7 @@ let levels = [
 	{
 		id: '3',
 		name: 'Tag de imagem: <img>',
-		instr: 'A tag de imagem adiciona uma imagem ao corpo de sua página, fornecendo a caminho onde se encontra a imagem para o atributo \"src\". Se ela estiver em uma subpasta em seu computador, é necessário fornecer o caminho completo.',
+		instr: 'A tag de imagem adiciona uma imagem ao corpo de sua página, fornecendo a caminho onde se encontra a imagem para o atributo \"src\". Coloque uma foto chamativa no outdoor.',
 		before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		item: '',
@@ -65,7 +65,7 @@ let levels = [
 	{
 		id: '6',
 		name: 'Tags de lista: <ul> e <li>',
-		instr: 'Estas tags criam uma lista com, ou sem, subitens. A tag <ul> cria a lista, enquanto a <li> indica os itens da lista. Caso queria abrir uma lista dentro de outra é necessário abrir uma <ul> novamente.',
+		instr: 'Estas tags criam uma lista com, ou sem, subitens. A tag <ul> cria a lista, enquanto a <li> indica os itens da lista. Crie a lista de compras do restaurante.',
 		before: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		item: '',
@@ -151,16 +151,6 @@ function getXY(){
 
 let window_code = 'help.html';
 
-$(window).on("load", () => {
-	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('html_visited')){
-		localStorage.setItem('html_visited', true);
-
-		var x = screen.width/2 - 700/2;
-		var y = screen.height/2 - 450/2;
-		window.open(window_code, 'Ajuda', 'width=800, height=750, left='+x+',top='+y);
-	}
-});
-
 function loadLevel(level)
 {
 	let title = document.querySelector("#title");
@@ -226,6 +216,7 @@ $(function(){
 		$(".text").empty();
 		$(".item").empty();
 	});
+
 	
 	$("#button1").on("click", function(){
 		let back_content = answer[cur_level-1];
@@ -312,6 +303,16 @@ $(function(){
 		}
 		console.log("Resposta: " + answer);
 	});
-
 	
+
+	let modal = document.querySelector("#help_body");
+
+	$("#help_btn").on('click', function(){
+		modal.style.display = "block";
+	});
+
+	$(".close_modal").on('click', function(){
+		modal.style.display = "none";
+	});
+
 });

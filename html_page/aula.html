@@ -49,16 +49,16 @@
 
 				
 			</div>
-			<a class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'"></a>
-			<a class="btn btn-warning" id="clear_storage"></a>
-			<div id="check" method="POST" action="/answer"></div>
+			<a class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'">Sair</a>
+			<a class="btn btn-warning" id="clear_storage">Limpar</a>
+			<div id="check" class="btn btn-success" method="POST" action="/answer">Testar</div>
 			<button class="btn btn-primary" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
 			
 		</div>
 		
 		<a class="btn btn-primary" id="css_btn" onclick="window.location.href='../css_page/aula.html'">CSS</a>
 		<a class="btn btn-primary" id="js_btn" onclick="window.location.href='../js_page/aula.html'">JavaScript</a>
-		<a class="btn btn-primary" id="help_btn" onclick="window.open('help.html', 'Ajuda', 'width=1080, height=650,'+getXY() )">Ajuda</a>
+		<a class="btn btn-primary" id="help_btn">Ajuda</a>
 
 		<div class="credits">
 			<span id="footer" class="translate">Jogo criado por: </span>
@@ -81,6 +81,40 @@
 			</div>
 		</div>
 	</section>
+
+	<div id="help_body">
+			
+			<div id="help">
+					<div id="help_header">
+						<h1>HTML</h1>
+						<div class="btn btn-danger close_modal">&times;</div>
+					</div>
+					<div id="help_content">
+							<p>
+									O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Todas as tags necessitam que sejam iniciadas com suas marcações entre "&lt;" e "&gt;" e fechadas da mesma forma, mas com o acréscimo de uma barra ("/") antes da tag.
+							</p>
+		
+							<p>
+									Para que o navegador entenda que o documento que ele está abrindo é um arquivo HTML, a página precisa utilizar a tag "&lt;html&gt;&lt;/html&gt;". Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag "&lt;head&gt;&lt;/head&gt;" (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts) e um corpo, definido pela tag "&lt;body&gt;&lt;/body&gt;" e é dentro dessa tag que estará todo o corpo de sua página.
+							</p>
+		
+							<p>
+									Depois disso tudo, sabemos que um documento html tem essa cara:
+							</p>
+		
+							<span>&lt;html&gt;</span><br>
+							<span class="tab1">&lt;head&gt;</span><br>
+							<span class="tab2">&lt;title&gt;Título da página&lt;/title&gt;<br>
+							<span class="tab1">&lt;/head&gt;</span><br>
+		
+							<span class="tab1">&lt;body&gt;</span><br>
+		
+							<span class="tab1">&lt;/body&gt;</span><br>
+							<span>&lt;/html&gt;</span>
+					</div>
+
+			</div>
+		</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

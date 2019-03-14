@@ -54,24 +54,6 @@ function clearStorage()
 
 $(window).on("load", loadLevel(cur_level));
 
-function getXY(){
-	var x = screen.width/2 - 540;
-	var y = screen.height/2 - 385;
-	return 'left='+x+',top='+y;
-}
-
-let window_code = 'help.html';
-
-$(window).on("load", () => {
-	if(typeof window.localStorage !== "undefined" && !localStorage.getItem('js_visited')){
-		localStorage.setItem('js_visited', true);
-
-		var x = screen.width/2 - 540;
-		var y = screen.height/2 - 385;
-		window.open(window_code, 'Ajuda', 'width=1080, height=550, left='+x+',top='+y);
-	}
-});
-
 function loadLevel(level)
 {
 	let title = document.querySelector("#title");
@@ -188,7 +170,7 @@ $(function(){
 		$(".text").empty();
 	});
 	
-	$("#submit").on("click", function(){
+	$("#check").on("click", function(){
 		item = document.getElementById("item").querySelector("div");
 		full_code = '$(document).ready(';
 		var aux;
@@ -219,5 +201,14 @@ $(function(){
 			item.style.fontSize = 25;
 	});
 	
-	
+	let modal = document.querySelector("#help_body");
+	let close_btn = document.querySelector(".close_modal");
+
+	$("#help_btn").on('click', function(){
+		modal.style.display = "block";
+	});
+
+	$(".close_modal").on('click', function(){
+		modal.style.display = "none";
+	});
 });
