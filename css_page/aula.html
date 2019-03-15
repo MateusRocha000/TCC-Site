@@ -49,10 +49,22 @@
 				
 			</div>
 
-			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
-			<a class="btn btn-warning" id="clear_storage">Limpar</a>
-			<a class="btn btn-success" id="check">Testar</a>
-			<button class="btn btn-primary" id="next_btn">Próximo</button>
+			<div id="tooltip_quit">
+				<a class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'">Sair</a>
+				<span class="tt_content_quit">Volta para o menu principal</span>
+			</div>
+			<div id="tooltip_clear">
+				<a class="btn btn-warning" id="clear_storage">Limpar</a>
+				<span class="tt_content_clear">Limpa as respostas salvas</span>
+			</div>
+			<div id="tooltip_check">
+				<div id="check" class="btn btn-success" method="POST" action="/answer">Testar</div>
+				<span class="tt_content_check">Testa o seu código</span>
+			</div>
+			<div id="tooltip_next">
+				<button class="btn btn-primary" id="next_btn">Próximo</button>
+				<span class="tt_content_next">Avança para a próxima atividade</span>
+			</div>
 		</div>
 		
 		<a class="btn btn-primary" id="html_btn" onclick="window.location.href='../html_page/aula.html'">HTML</a>
