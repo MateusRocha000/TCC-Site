@@ -26,8 +26,8 @@ let levels = [
 			id: '3',
 			name: 'Classe',
 			instr: 'Outra maneira de aplicar estilo. Classes são usados em elementos que receberão o mesmo estilo.',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p class=\"ola\">Olá</p>\n      <p class=\"ola\">Bem vindo</p>\n   </body>\n</html>',
-			item: '<p class=\"ola\">Olá</p>      <p class=\"ola\">Bem vindo</p>',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p class=\"ola\">Olá</p>\n      <p class=\"ola\">Entre</p>\n   </body>\n</html>',
+			item: '<p class=\"ola\">Olá</p>      <p class=\"ola\">Entre</p>',
 			sel_init: '.ola{',
 			sel_end: '}',
 			style: 'three'
@@ -54,19 +54,18 @@ function loadLevel(level)
 	let title = document.querySelector("#title");
 	let instr = document.querySelector("#instr");
 	let before = document.querySelector("#before");
-	let after = document.querySelector("#after");
 	let item = document.querySelector(".item");
 	let submitBtn = document.querySelector("#submit");
 	let quitBtn = document.querySelector("#quit_btn");
 	let display_cur_level = document.querySelector(".current");
 	let total_levels = document.querySelector(".total");
-	let text = document.querySelector(".text");
-	let wrap = document.querySelector(".wrap");
+	let text = document.querySelector("textarea");
 	let backG = document.querySelector(".background");
 	let style = levels[level-1].style;
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
-	
+	$("textarea.text").val('');
+
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
 	
@@ -75,7 +74,6 @@ function loadLevel(level)
 	title.textContent = levels[level-1].name;
 	instr.textContent = levels[level-1].instr;
 	before.textContent = levels[level-1].before;
-	after.textContent = levels[level-1].after;
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
 	item.innerHTML = levels[level-1].item;
@@ -84,13 +82,20 @@ function loadLevel(level)
 	document.querySelector("#next_btn").disabled = true;
 
 	if(level === 1)
+	{
 		document.querySelector("#button1").disabled = true;
+		document.querySelector("#button2").disabled = false;
+	}
 	else if(level === count)
+	{
+		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
+	}
 	else{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = false;
 	}
+	
 };
 
 $(function(){
@@ -151,8 +156,8 @@ $(function(){
 
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
-		console.log(level);
 		level++;
+		cur_level = level;
 		loadLevel(level);
 	});
 
@@ -182,13 +187,18 @@ $(function(){
 	});
 	
 	$("#check").on("click", function(){
-		saveData($(".text").val());
-		var tmpString1 = $(".text").val().split("{");
-		var tmpString2 = tmpString1[1].split(":");
-		var tmpString3 = tmpString2[1].split(";");
+		saveData($("textarea.text").val());
+		var tmpString1 = $("textarea.text").val().split("{");
+		var tmpString2 = tmpString1[1].trim().split(":");
+		var tmpString3 = tmpString2[1].trim().split(";");
+		console.log('String 1 = ' + '(' + tmpString1[0] + ', ' + tmpString1[1] + ')');
+		console.log('String 2 = ' + '(' + tmpString2[0] + ', ' + tmpString2[1] + ')');
+		console.log('String 3 = ' + '(' + tmpString3[0] + ', ' + tmpString3[1] + ')');
 		
 		var prop = tmpString2[0];
 		var value = tmpString3[0];
+
+		console.log('CSS: ' + prop + ':' + value);
 		
 		$("p").css(prop,value);
 		$("#ola").css(prop,value);

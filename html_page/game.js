@@ -162,12 +162,13 @@ function loadLevel(level)
 	let quitBtn = document.querySelector("#quit_btn");
 	let display_cur_level = document.querySelector(".current");
 	let total_levels = document.querySelector(".total");
-	let text = document.querySelector(".text");
-	let wrap = document.querySelector(".wrap");
+	let text = document.querySelector("textarea");
 	let backG = document.querySelector(".background");
+	let pc = document.querySelector("#pc_screen");
 	let style = levels[level-1].style;
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
+	$("textarea.text").val('');
 	
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
@@ -179,15 +180,34 @@ function loadLevel(level)
 	before.textContent = levels[level-1].before;
 	after.textContent = levels[level-1].after;
 	display_cur_level.innerHTML = level;
-	console.log('Nível: ' + typeof(level));
-	console.log('Nível: ' + typeof(count));
 	total_levels.innerHTML = count;
 	backG.classList = 'background level-' + style;
+	item.classList = 'item pos_' + style;
+
+	if(level == 6)
+		text.classList = 'text_six';
+	else if(level == 7)
+	{
+		pc.classList = 'pc_screen_table';
+		text.classList = 'text_seven';
+	}
+	else
+	{
+		pc.classList = 'pc_screen_else';
+		text.classList = 'text_else';
+	}
+		
 
 	if(level === 1)
+	{
 		document.querySelector("#button1").disabled = true;
+		document.querySelector("#button2").disabled = false;
+	}
 	else if(level === count)
+	{
+		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
+	}
 	else{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = false;
@@ -196,10 +216,6 @@ function loadLevel(level)
 
 
 $(function(){
-	$(".text").on("keyup", function(event){
-		$(".wrap").text($(this).val());
-	});
-
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
 		localStorage.clear();
@@ -218,7 +234,6 @@ $(function(){
 			cur_level++;
 			loadLevel(cur_level);
 		}
-		$(".wrap").empty();
 		$(".text").focus();
 		$(".text").empty();
 		$(".item").empty();
@@ -260,8 +275,8 @@ $(function(){
 
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
-		console.log(level);
 		level++;
+		cur_level = level;
 		loadLevel(level);
 	});
 
@@ -291,18 +306,17 @@ $(function(){
 	});
 	
 	$("#check").on("click", function(){
-		text = document.querySelector(".wrap").textContent;
+		//text = document.querySelector(".wrap").textContent;
+		text = $("textarea.text").val();
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".item").innerHTML = text;
-			console.log("Item: " + document.querySelector(".item").innerHTML);
 			saveData(text);
 			document.querySelector("#next_btn").disabled = false;
 		}
 		else{
 			alert("Código incorreto");
 		}
-		console.log("Resposta: " + answer);
 	});
 	
 

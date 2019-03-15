@@ -1,6 +1,6 @@
 <html ng-app="tcc-site" lang="pt-br">
 <head>
-	<title>Web City - CSS</title>
+	<title>Web City</title>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" type="text/css" href="aula.css">
@@ -39,14 +39,15 @@
 
 		<div id="editor">
 			<div id="pc_screen">
-				<pre id="before"></pre>
-				<label>
-					<input type="text" class="text" ng-model="text_code" autofocus/>
-					<div class="wrap"></div>
-				</label>
-				<pre id="after"></pre>
+				<div id="html">
+						<h2>HTML</h2>
+						<pre id="before"></pre>
+				</div>
+				<div id="css">
+					<h2>CSS</h2>
+						<textarea type="text" class="text" name="code" autofocus></textarea>
+				</div>
 
-				
 			</div>
 
 			<div id="tooltip_quit">
@@ -67,7 +68,7 @@
 			</div>
 		</div>
 		
-		<a class="btn btn-primary" id="html_btn" onclick="window.location.href='../html_page/aula.html'">HTML</a>
+	<!-- 	<a class="btn btn-primary" id="html_btn" onclick="window.location.href='../html_page/aula.html'">HTML</a>
 		<a class="btn btn-primary" id="js_btn" onclick="window.location.href='../js_page/aula.html'">JavaScript</a>
 		<a class="btn btn-primary" id="help_btn">Ajuda</a>
 		
@@ -75,7 +76,7 @@
 			<span id="footer" class="translate">Jogo criado por: </span>
 			<a href="https://github.com/MateusRocha000/">Mateus Rocha</a>
 			<span>(GitHub)</span>
-		</div>
+		</div> -->
 		
 	</div>
 

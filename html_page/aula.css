@@ -151,19 +151,6 @@ body {
 	margin: 0;
 }
 
-#pc_screen {
-	height: 400px;
-	position: relative;
-	padding: 30px 30px 30px 30px;
-	border-top: 30px solid #c0c0c0;
-	border-right: 30px solid #c0c0c0;
-	border-bottom: 50px solid #c0c0c0;
-	border-left: 30px solid #c0c0c0;
-	background-color: #000000;
-	border-radius: 4px;
-	overflow: hidden;
-}
-
 #after{
 	font-size: 18px;
 	color: #00ffff;
@@ -183,6 +170,45 @@ body {
 	width: 100%;
 	height: 100%;
 	padding: 1em;
+}
+
+.pc_screen_six {
+	height: 500px;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_table {
+	height: 450px;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_else {
+	height: 400px;
+	position: relative;
+	padding: 30px 30px 30px 30px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
 }
 
 #css_btn, #js_btn, #help_btn{
@@ -333,11 +359,46 @@ body {
 	opacity: 1;
 }
 
-input.text{
-	opacity: 0;
-	position: fixed;
-	top: -100px;
-	left: 0;
+.text_else{
+    display: block;
+	width: calc(100% - 30px);
+	height: 30px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_six{
+	display: block;
+	width: calc(100% - 30px);
+	height: 85px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_seven{
+	display: block;
+	width: calc(100% - 30px);
+	height: 160px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
 }
 
 .tab1{

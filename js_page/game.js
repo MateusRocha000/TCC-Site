@@ -9,23 +9,25 @@ let levels = [
 				id: '1',
 				name: 'Variável',
 				instr: 'Variáveis em JavaScript',
-				before: '<body>\n      <div id="ola">Olá</div>\n</body>\n\n<script>\n$(document).ready(function() {',
-				after: 'ola.innerHTML += \'Olá, como vai?\';\n</script>',
+				before_html: '<body>\n      <div id="ola">Olá</div>\n</body>',
+				before_js: '$(document).ready(function() {',
+				after_js: 'ola.innerHTML += \'Olá, como vai?\';\n});',
 				js_init: 'var'
 		},
 		{
 				id: '2',
 				name: 'Condicional',
 				instr: 'Condicional em JavaScript.',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>\n<script>\nvar ola = document.getElementById("ola");\n',
-				after: '});\n</script>',
+				before_html: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				before_js: 'var ola = document.getElementById("ola");',
+				after_js: '});\n',
 				js_init: 'if'
 		},
 		{
 				id: '3',
 				name: 'Função',
 				instr: 'Função em JavaScript',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				before_html: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
 				
 				js_init: 'function'
 		},
@@ -33,7 +35,7 @@ let levels = [
 				id: '4',
 				name: 'Evento',
 				instr: 'Evento em JavaScript',
-				before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
+				before_html: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div>Olá</div>\n   </body>\n</html>',
 				
 				js_init: 'on'
 		}
@@ -58,8 +60,9 @@ function loadLevel(level)
 {
 	let title = document.querySelector("#title");
 	let instr = document.querySelector("#instr");
-	let before = document.querySelector("#before");
-	let after = document.querySelector("#after");
+	let before_html = document.querySelector("#before_html");
+	let before_js = document.querySelector("#before_js");
+	let after_js = document.querySelector("#after_js");
 	let item = document.querySelector(".item");
 	let submitBtn = document.querySelector("#submit");
 	let quitBtn = document.querySelector("#quit_btn");
@@ -77,8 +80,9 @@ function loadLevel(level)
 	
 	title.textContent = levels[level-1].name;
 	instr.textContent = levels[level-1].instr;
-	before.textContent = levels[level-1].before;
-	after.textContent = levels[level-1].after;
+	before_html.textContent = levels[level-1].before_html;
+	before_js.textContent = levels[level-1].before_js;
+	after_js.textContent = levels[level-1].after_js;
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
 	backG.classList = 'background level-' + style;
