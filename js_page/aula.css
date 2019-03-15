@@ -85,7 +85,7 @@ button {
 }
 
 #button1 {
-	background-color: #dddd00;
+	background-color: #D3D3D3;
 	padding: 0.4em 0.8em;
 	border-right: 1px solid black;
 	border-top: none;
@@ -97,7 +97,7 @@ button {
 }
 
 #button2 {
-	background-color: #dddd00;
+	background-color: #D3D3D3;
 	padding: 0.4em 0.8em;
 	border-left: 1px solid black;
 	border-top: none;
@@ -115,11 +115,12 @@ button {
 	margin-top: 0.5rem;
 	font-size: 15px;
 	user-select: none;
-	background-color: #dddd00;
+	background-color: #D3D3D3;
 	border-radius: 4px;
 }
 
 #level-indicator {
+	color: black;
 	display: inline-block;
 	width: 160px;
 	line-height: 23px;
@@ -140,7 +141,8 @@ button {
 	height: auto;
 	position: relative;
 	padding: 2em;
-	background-color: #AC0DB2;
+	background-image: url("../img/space_backg.png");
+	color: #00ffff;
 	font-size: 20px;
 }
 
@@ -224,7 +226,7 @@ button {
 }
 
 #css_btn, #html_btn, #help_btn{
-	margin-top: 40px;
+	margin-top: 20px;
 	margin-right: 30px;
 }
 
@@ -265,6 +267,10 @@ input.text{
 	z-index: 60;
 }
 
+.credits{
+	font-size: 15px;
+}
+
 #ola{
 	display:block;
 	font-size:25px;
@@ -277,37 +283,21 @@ input.text{
 }
 
 #check{
-	background: green;
 	position: absolute;
-	padding: 5px;
 	right: 140px;
-	bottom: 0.8em;
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	cursor: pointer;
+	bottom: 0.5em;
 }
 
 #clear_storage {
 	position: absolute;
-	left: 75px;
-	bottom: 0.8em;
-	padding: 5px;
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	cursor: pointer;
+	left: 110px;
+	bottom: 0.5em;
 }
 
 #quit_btn {
 	position: absolute;
 	left: 30px;
-	bottom: 0.8em;
-	padding: 5px;
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	cursor: pointer;
+	bottom: 0.5em;
 }
 
 #next_btn.disabled {
@@ -377,7 +367,8 @@ input.text{
 	height: 30px;
 	margin: 2px;
 	line-height: 26px;
-	background-color: #3F4FDE;
+	background-color: white;
+	color: black;
 	border: 2px solid transparent;
 	border-radius: 50%;
 	text-align: center;
@@ -452,6 +443,7 @@ input.text{
 .ola_one{
 	display: block;
 }
+
 
 pre {
 	margin: 0;

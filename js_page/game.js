@@ -60,8 +60,7 @@ function loadLevel(level)
 	let instr = document.querySelector("#instr");
 	let before = document.querySelector("#before");
 	let after = document.querySelector("#after");
-	let item = document.querySelector("#item");
-	let nextBtn = document.querySelector("#next_btn");
+	let item = document.querySelector(".item");
 	let submitBtn = document.querySelector("#submit");
 	let quitBtn = document.querySelector("#quit_btn");
 	let display_cur_level = document.querySelector(".current");
@@ -76,8 +75,6 @@ function loadLevel(level)
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
 	
-	document.querySelector("#next_btn").disabled = true;
-	
 	title.textContent = levels[level-1].name;
 	instr.textContent = levels[level-1].instr;
 	before.textContent = levels[level-1].before;
@@ -85,14 +82,17 @@ function loadLevel(level)
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
 	backG.classList = 'background level-' + style;
-
-	$(".text").val(answer[key]);
 	
+	document.querySelector("#next_btn").disabled = true;
+
 	if(level === 1)
 		document.querySelector("#button1").disabled = true;
-	if(level === count)
+	else if(level === count)
 		document.querySelector("#button2").disabled = true;
-
+	else{
+		document.querySelector("#button1").disabled = false;
+		document.querySelector("#button2").disabled = false;
+	}
 };
 
 $(function(){
@@ -189,7 +189,7 @@ $(function(){
 		}
 		
 		eval(full_code);
-		
+		document.querySelector("#next_btn").disabled = false;
 	});
 	
 	$("#next_btn").on("click", function(){

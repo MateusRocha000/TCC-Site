@@ -1,7 +1,6 @@
 let cur_level = 1;
 let answer = [];
 let language = window.location.hash.substring(1) || 'pt-br';
-
 let levels = [
 	{
 			id: '1',
@@ -56,8 +55,7 @@ function loadLevel(level)
 	let instr = document.querySelector("#instr");
 	let before = document.querySelector("#before");
 	let after = document.querySelector("#after");
-	let item = document.querySelector("#item");
-	let nextBtn = document.querySelector("#next_btn");
+	let item = document.querySelector(".item");
 	let submitBtn = document.querySelector("#submit");
 	let quitBtn = document.querySelector("#quit_btn");
 	let display_cur_level = document.querySelector(".current");
@@ -80,15 +78,19 @@ function loadLevel(level)
 	after.textContent = levels[level-1].after;
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
+	item.innerHTML = levels[level-1].item;
 	backG.classList = 'background level-' + style;
-
-	$(".text").val(answer[key]);
 	
+	document.querySelector("#next_btn").disabled = true;
+
 	if(level === 1)
 		document.querySelector("#button1").disabled = true;
-	if(level === count)
+	else if(level === count)
 		document.querySelector("#button2").disabled = true;
-
+	else{
+		document.querySelector("#button1").disabled = false;
+		document.querySelector("#button2").disabled = false;
+	}
 };
 
 $(function(){
@@ -191,6 +193,8 @@ $(function(){
 		$("p").css(prop,value);
 		$("#ola").css(prop,value);
 		$(".ola").css(prop,value);
+
+		document.querySelector("#next_btn").disabled = false;
 	});
 
 	let modal = document.querySelector("#help_body");

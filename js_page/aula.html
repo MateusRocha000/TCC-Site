@@ -8,21 +8,21 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body ng-controller="tcc-site as tcc"  ng-init="loadLevel()">
-	<div id="edit_screen"  >
+	<div id="edit_screen">
 		<div id="header">
 			<h1 id="title"></h1>
 
 			<div id="num-levels">
-				<button id="button1" ng-click="backLevel()" name="seta-esq" ng-disabled="backBtn"><img class="arrow" src="../img/arrow-left.png" ng-disabled="backBtn"/></button>
+				<button id="button1"name="seta-esq"><img class="arrow" src="../img/arrow-left.png"></button>
 				<span id="level-indicator">
 					<span id="labelLevel" class="translate">Nível</span>
-					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level}}</span>
+					<span class="current"></span>
 					<span id="labelOf" class="translate">of</span>
-					<span class="total">{{levels.length}}</span>
+					<span class="total"></span>
 					<span><img src="../img/arrow-bottom.png"/></span>
 				</span>
 				
-				<button id="button2" ng-click="nextLevel()" name="seta-dir" ng-disabled="nextBtn"><img class="arrow" src="../img/arrow-right.png" ng-disabled="nextBtn"/></button>
+				<button id="button2" name="seta-dir"><img class="arrow" src="../img/arrow-right.png"></button>
 
 				<div id="levels-box" class="box">
 					<div id="levels">
@@ -37,20 +37,20 @@
 
 		<div id="editor">
 			<div id="pc_screen">
-				<pre id="before">{{before}}</pre>
+				<pre id="before"></pre>
 				<label>
 					<input type="text" class="text" ng-model="text_code" autofocus/>
 					<div class="wrap"></div>
 				</label>
-				<pre id="after">{{after}}</pre>
+				<pre id="after"></pre>
 
 				
 			</div>
 
-			<a class="btn btn-danger" id="quit_btn" href="../index.html"></a>
-			<a class="btn btn-warning" id="clear_storage" ng-click="clearStorage()"></a>
-			<a class="btn btn-primary" id="check" ng-click="submit();item=!item" ng-model="submit"><span class="oi oi-check"></span></a>
-			<button class="btn btn-primary" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+			<a class="btn btn-danger" id="quit_btn" href="../index.html">Sair</a>
+			<a class="btn btn-warning" id="clear_storage">Limpar</a>
+			<a class="btn btn-success" id="check"><span class="oi oi-check"></span>Testar</a>
+			<button class="btn btn-primary" id="next_btn">Próximo</button>
 		</div>
 		
 		<a class="btn btn-primary" id="html_btn" onclick="window.location.href='../html_page/aula.html'">HTML</a>

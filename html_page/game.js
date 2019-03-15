@@ -157,8 +157,7 @@ function loadLevel(level)
 	let instr = document.querySelector("#instr");
 	let before = document.querySelector("#before");
 	let after = document.querySelector("#after");
-	let item = document.querySelector("#item");
-	let nextBtn = document.querySelector("#next_btn");
+	let item = document.querySelector(".item");
 	let submitBtn = document.querySelector("#submit");
 	let quitBtn = document.querySelector("#quit_btn");
 	let display_cur_level = document.querySelector(".current");
@@ -180,20 +179,24 @@ function loadLevel(level)
 	before.textContent = levels[level-1].before;
 	after.textContent = levels[level-1].after;
 	display_cur_level.innerHTML = level;
+	console.log('Nível: ' + typeof(level));
+	console.log('Nível: ' + typeof(count));
 	total_levels.innerHTML = count;
 	backG.classList = 'background level-' + style;
-	
-
 
 	if(level === 1)
 		document.querySelector("#button1").disabled = true;
-	if(level === count)
+	else if(level === count)
 		document.querySelector("#button2").disabled = true;
+	else{
+		document.querySelector("#button1").disabled = false;
+		document.querySelector("#button2").disabled = false;
+	}
 };
 
 
 $(function(){
-	$(".text").on("keyup", function(){
+	$(".text").on("keyup", function(event){
 		$(".wrap").text($(this).val());
 	});
 
@@ -289,7 +292,6 @@ $(function(){
 	
 	$("#check").on("click", function(){
 		text = document.querySelector(".wrap").textContent;
-		console.log("Código: " +text);
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".item").innerHTML = text;
@@ -297,13 +299,8 @@ $(function(){
 			saveData(text);
 			document.querySelector("#next_btn").disabled = false;
 		}
-		else if((text.indexOf('<html>') > -1 && text.indexOf('</html>') > -1) 
-				&& (text.indexOf('<head>') > -1 && text.indexOf('</head>') > -1)
-				&& (text.indexOf('<body>') > -1 && text.indexOf('</body>')) > -1 && cur_level === 1  && text !== 'undefined')
-		{
-			
-			saveData(text);
-			document.querySelector("#next_btn").disabled = false;
+		else{
+			alert("Código incorreto");
 		}
 		console.log("Resposta: " + answer);
 	});

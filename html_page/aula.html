@@ -15,16 +15,16 @@
 			<h1 id="title" class="translate"></h1>
 
 			<div id="num-levels">
-				<button id="button1" ng-click="backLevel()" name="seta-esq" ng-disabled="backBtn"><img class="arrow" src="../img/arrow-left.png" ng-disabled="backBtn"/></button>
+				<button id="button1" name="seta-esq"><img class="arrow" src="../img/arrow-left.png"></button>
 				<span id="level-indicator">
 					<span id="labelLevel" class="translate">Nível</span>
-					<span class="current" ng-model="confirmed" ng-change="limitLevel()">{{cur_level}}</span>
-					<span id="labelOf" class="translate">of</span>
-					<span class="total">{{levels.length}}</span>
+					<span class="current"></span>
+					<span id="labelOf" class="translate">de</span>
+					<span class="total"></span>
 					<span><img src="../img/arrow-bottom.png"/></span>
 				</span>
 				
-				<button id="button2" ng-click="nextLevel()" name="seta-dir" ng-disabled="nextBtn"><img class="arrow" src="../img/arrow-right.png" ng-disabled="nextBtn"/></button>
+				<button id="button2" name="seta-dir"><img class="arrow" src="../img/arrow-right.png"></button>
 
 				<div id="levels-box" class="box">
 					<div id="levels">
@@ -40,19 +40,19 @@
 
 		<div id="editor">
 			<div id="pc_screen">	
-				<pre id="before">{{before}}</pre>
+				<pre id="before"></pre>
 				<label>
 					<input type="text" class="text" name="code" ng-model="text_code" autofocus/>
 					<div class="wrap" ng-model="wrap"></div>
 				</label>
-				<pre id="after">{{after}}</pre>
+				<pre id="after"></pre>
 
 				
 			</div>
 			<a class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'">Sair</a>
 			<a class="btn btn-warning" id="clear_storage">Limpar</a>
 			<div id="check" class="btn btn-success" method="POST" action="/answer">Testar</div>
-			<button class="btn btn-primary" id="next_btn" ng-click="passLevel()" ng-disabled="disableBtn">Próximo</button>
+			<button class="btn btn-primary" id="next_btn">Próximo</button>
 			
 		</div>
 		
@@ -95,7 +95,7 @@
 							</p>
 		
 							<p>
-									Para que o navegador entenda que o documento que ele está abrindo é um arquivo HTML, a página precisa utilizar a tag "&lt;html&gt;&lt;/html&gt;". Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag "&lt;head&gt;&lt;/head&gt;" (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts) e um corpo, definido pela tag "&lt;body&gt;&lt;/body&gt;" e é dentro dessa tag que estará todo o corpo de sua página.
+									O navegador interpreta o arquivo como HTML ao utilizar a tag "&lt;html&gt;&lt;/html&gt;". Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag "&lt;head&gt;&lt;/head&gt;" (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts) e um corpo, definido pela tag "&lt;body&gt;&lt;/body&gt;" e é dentro dessa tag que estará todo o corpo de sua página.
 							</p>
 		
 							<p>
