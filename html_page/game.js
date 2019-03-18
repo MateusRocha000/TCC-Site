@@ -169,7 +169,7 @@ function loadLevel(level)
 	let style = levels[level-1].style;
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
-	$("textarea.text").val('');
+	$("textarea").val('');
 	
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
@@ -310,7 +310,16 @@ $(function(){
 		level = parseInt(level, 10);
 		level++;
 		cur_level = level;
-		loadLevel(level);
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
+		{
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
+		}
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(function(){
+			loadLevel(level)
+		}, 1000);
 	});
 
 	$("#level-indicator").on("click", function(){

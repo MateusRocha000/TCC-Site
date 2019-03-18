@@ -49,6 +49,10 @@ function clearStorage()
 
 $(window).on("load", loadLevel(cur_level));
 
+function hasClass(el, className) {
+    return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+}
+
 function loadLevel(level)
 {
 	let title = document.querySelector("#title");
@@ -64,7 +68,7 @@ function loadLevel(level)
 	let style = levels[level-1].style;
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
-	$("textarea.text").val('');
+	$("textarea").val('');
 
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
@@ -78,6 +82,15 @@ function loadLevel(level)
 	total_levels.innerHTML = count;
 	item.innerHTML = levels[level-1].item;
 	backG.classList = 'background level-' + style;
+
+	if(hasClass(document.querySelector('#board'), 'fadeOut') && hasClass(document.querySelector('#board'), 'animated_fadeout'))
+	{
+		document.querySelector('#board').classList.remove('fadeOut');
+		document.querySelector('#board').classList.remove('animated_fadeout');
+	}
+	
+	document.querySelector('#board').classList.add('fadeIn');
+	document.querySelector('#board').classList.add('animated_fadein');
 	
 	document.querySelector("#next_btn").disabled = true;
 
@@ -105,39 +118,63 @@ $(function(){
 	
 	$("#next_btn").on("click", function(){
 		let next_content = answer[cur_level+1];
-		if(cur_level < count)
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
-			if(next_content == '')
-			{
-				text = '';
-				wrap = '';
-			}
-			
-			cur_level++;
-			loadLevel(cur_level);
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
 		}
-		$(".wrap").empty();
-		$(".text").focus();
-		$(".text").empty();
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(
+			function(){
+				if(cur_level < count)
+				{
+					if(next_content == '')
+					{
+						text = '';
+						wrap = '';
+					}
+					
+					cur_level++;
+					
+					loadLevel(cur_level);
+				}
+				$(".wrap").empty();
+				$(".text").focus();
+				$(".text").empty();
+			}, 1000
+		);
 	});
 	
 	$("#button1").on("click", function(){
 		let back_content = answer[cur_level-1];
-		if(cur_level !== 1)
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
-			document.querySelector("#button1").disabled = false;
-			if(back_content == '')
-			{
-				text = '';
-				wrap = '';
-			}
-			
-			cur_level--;
-			loadLevel(cur_level);
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
 		}
-		$(".wrap").empty();
-		$(".text").focus();
-		$(".text").empty();
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(
+			function(){
+				if(cur_level !== 1)
+				{
+					document.querySelector("#button1").disabled = false;
+					if(back_content == '')
+					{
+						text = '';
+						wrap = '';
+					}
+					
+					cur_level--;
+					
+					loadLevel(cur_level);
+				}
+				$(".wrap").empty();
+				$(".text").focus();
+				$(".text").empty();
+			}, 1000
+		);
 	});
 	
 	levels.forEach(function(level, i){
@@ -158,7 +195,16 @@ $(function(){
 		level = parseInt(level, 10);
 		level++;
 		cur_level = level;
-		loadLevel(level);
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
+		{
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
+		}
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(function(){
+			loadLevel(level)
+		}, 1000);
 	});
 
 	$("#level-indicator").on("click", function(){
@@ -169,21 +215,33 @@ $(function(){
 	
 	$("#button2").on("click", function(){
 		let next_content = answer[cur_level+1];
-		if(cur_level !== count)
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
-			document.querySelector("#button2").disabled = false;
-			if(next_content == '')
-			{
-				text = '';
-				wrap = '';
-			}
-			
-			cur_level++;
-			loadLevel(cur_level);
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
 		}
-		$(".wrap").empty();
-		$(".text").focus();
-		$(".text").empty();
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(
+			function(){
+				if(cur_level !== count)
+				{
+					document.querySelector("#button2").disabled = false;
+					if(next_content == '')
+					{
+						text = '';
+						wrap = '';
+					}
+					
+					cur_level++;
+					
+					loadLevel(cur_level);
+				}
+				$(".wrap").empty();
+				$(".text").focus();
+				$(".text").empty();
+			}, 1000
+		);
 	});
 	
 	$("#check").on("click", function(){
