@@ -7,8 +7,8 @@ function btnHTML()
 	document.querySelector("#css_content").classList.remove('fadein-left');
 	document.querySelector("#css_content").classList.add('none');
 
-	document.querySelector("#js_content").classList.remove('fadein-left');
-	document.querySelector("#js_content").classList.add('none');
+	/* document.querySelector("#js_content").classList.remove('fadein-left');
+	document.querySelector("#js_content").classList.add('none'); */
     
     if(hasClass(document.querySelector("#html_content"), 'none'))
     {
@@ -26,8 +26,8 @@ function btnCSS()
 	document.querySelector("#html_content").classList.remove('fadein-left');
     document.querySelector("#html_content").classList.add('none');
 
-    document.querySelector("#js_content").classList.remove('fadein-left');
-    document.querySelector("#js_content").classList.add('none');
+    /* document.querySelector("#js_content").classList.remove('fadein-left');
+    document.querySelector("#js_content").classList.add('none'); */
 
     if(hasClass(document.querySelector("#css_content"), 'none'))
     {
@@ -40,7 +40,7 @@ function btnCSS()
     }
 }
 
-function btnJS()
+/* function btnJS()
 {
 	document.querySelector("#html_content").classList.remove('fadein-left');
     document.querySelector("#html_content").classList.add('none');
@@ -56,6 +56,7 @@ function btnJS()
     else{
         document.querySelector("#js_content").classList.remove('fadein-left');
         document.querySelector("#js_content").classList.add('none');
-    }
+    } 
     
 }
+*/

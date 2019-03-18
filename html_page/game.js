@@ -1,6 +1,5 @@
 let cur_level = 1;
 let answer = [];
-let language = window.location.hash.substring(1) || 'pt-br';
 let levels = [
 	{
 		id: '1',
@@ -149,7 +148,9 @@ function getXY(){
 	return 'left='+x+',top='+y;
 }
 
-let window_code = 'help.html';
+function hasClass(el, className) {
+    return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+}
 
 function loadLevel(level)
 {
@@ -181,6 +182,14 @@ function loadLevel(level)
 	after.textContent = levels[level-1].after;
 	display_cur_level.innerHTML = level;
 	total_levels.innerHTML = count;
+	if(hasClass(document.querySelector('#board'), 'fadeOut') && hasClass(document.querySelector('#board'), 'animated_fadeout'))
+	{
+		document.querySelector('#board').classList.remove('fadeOut');
+		document.querySelector('#board').classList.remove('animated_fadeout');
+	}
+	
+	document.querySelector('#board').classList.add('fadeIn');
+	document.querySelector('#board').classList.add('animated_fadein');
 	backG.classList = 'background level-' + style;
 	item.classList = 'item pos_' + style;
 
@@ -223,40 +232,64 @@ $(function(){
 	
 	$("#next_btn").on("click", function(){
 		let next_content = answer[cur_level+1];
-		if(cur_level < count)
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
-			if(next_content == '')
-			{
-				text = '';
-				wrap = '';
-			}
-			
-			cur_level++;
-			loadLevel(cur_level);
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
 		}
-		$(".text").focus();
-		$(".text").empty();
-		$(".item").empty();
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(
+			function(){
+				if(cur_level < count)
+				{
+					if(next_content == '')
+					{
+						text = '';
+						wrap = '';
+					}
+					
+					cur_level++;
+					
+					loadLevel(cur_level);
+				}
+				$(".wrap").empty();
+				$(".text").focus();
+				$(".text").empty();
+			}, 1000
+		);
 	});
 
 	
 	$("#button1").on("click", function(){
 		let back_content = answer[cur_level-1];
-		if(cur_level !== 1)
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
-			document.querySelector("#button1").disabled = false;
-			if(back_content == '')
-			{
-				text = '';
-				wrap = '';
-			}
-			
-			cur_level--;
-			loadLevel(cur_level);
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
 		}
-		$(".wrap").empty();
-		$(".text").focus();
-		$(".text").empty();
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(
+			function(){
+				if(cur_level !== 1)
+				{
+					document.querySelector("#button1").disabled = false;
+					if(back_content == '')
+					{
+						text = '';
+						wrap = '';
+					}
+					
+					cur_level--;
+					
+					loadLevel(cur_level);
+				}
+				$(".wrap").empty();
+				$(".text").focus();
+				$(".text").empty();
+			}, 1000
+		);
 	});
 	
 	levels.forEach(function(level, i){
@@ -288,21 +321,33 @@ $(function(){
 
 	$("#button2").on("click", function(){
 		let next_content = answer[cur_level+1];
-		if(cur_level !== count)
+		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
-			document.querySelector("#button2").disabled = false;
-			if(next_content == '')
-			{
-				text = '';
-				wrap = '';
-			}
-			
-			cur_level++;
-			loadLevel(cur_level);
+			document.querySelector('#board').classList.remove('fadeIn');
+			document.querySelector('#board').classList.remove('animated_fadein');
 		}
-		$(".wrap").empty();
-		$(".text").focus();
-		$(".text").empty();
+		document.querySelector('#board').classList.add('fadeOut');
+		document.querySelector('#board').classList.add('animated_fadeout');
+		setTimeout(
+			function(){
+				if(cur_level !== count)
+				{
+					document.querySelector("#button2").disabled = false;
+					if(next_content == '')
+					{
+						text = '';
+						wrap = '';
+					}
+					
+					cur_level++;
+					
+					loadLevel(cur_level);
+				}
+				$(".wrap").empty();
+				$(".text").focus();
+				$(".text").empty();
+			}, 1000
+		);
 	});
 	
 	$("#check").on("click", function(){
