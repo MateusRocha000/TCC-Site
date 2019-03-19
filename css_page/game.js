@@ -57,7 +57,7 @@ function loadLevel(level)
 	if(localStorage.getItem('visited') == null)
 	{
 		document.querySelector("#help_body").style.display = "block";
-		localStorage.setItem('visited', true);
+		localStorage.setItem('visited',true);
 	}
 
 	if(answer[level-1] !== '')
