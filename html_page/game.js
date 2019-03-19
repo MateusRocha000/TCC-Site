@@ -134,6 +134,12 @@ function loadLevel(level)
 	document.querySelector("#next_btn").disabled = true;
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = '';
+	
+	if(localStorage.getItem('visited') == null)
+	{
+		document.querySelector("#help_body").style.display = "block";
+		localStorage.setItem('visited',true);
+	}
 
 	if(answer[level-1] !== '')
 		$("textarea").val(answer[level-1]);
