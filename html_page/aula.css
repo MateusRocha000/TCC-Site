@@ -57,6 +57,7 @@ body {
 	width: 30px;
 	height: 30px;
 	border-radius: 15px;
+	padding: 3px;
 }
   
 .close_modal:hover,
