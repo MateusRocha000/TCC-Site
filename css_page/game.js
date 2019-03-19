@@ -4,7 +4,7 @@ let levels = [
 	{
 			id: '1',
 			name: 'Seletor',
-			instr: 'Seletor para aplicar estilo da página',
+			instr: 'Seletor para aplicar estilo da página.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p>Olá</p>\n   </body>\n</html>',
 			item: '<p>Olá</p>',
 			sel_init: 'p{',
@@ -206,18 +206,18 @@ $(function(){
 		var tmpString1 = $("textarea").val().split("{");
 		var tmpString2 = tmpString1[1].trim().split(":");
 		var tmpString3 = tmpString2[1].trim().split(";");
-		console.log('String 1 = ' + '(' + tmpString1[0] + ', ' + tmpString1[1] + ')');
-		console.log('String 2 = ' + '(' + tmpString2[0] + ', ' + tmpString2[1] + ')');
-		console.log('String 3 = ' + '(' + tmpString3[0] + ', ' + tmpString3[1] + ')');
 		
 		var prop = tmpString2[0];
 		var value = tmpString3[0];
-
-		console.log('CSS: ' + prop + ':' + value);
 		
-		$("p").css(prop,value);
-		$("#ola").css(prop,value);
-		$(".ola").css(prop,value);
+		if(cur_level == 1 && tmpString1[0].indexOf('p') > -1)
+			$("p").css(prop,value);
+		else if (cur_level == 2 && tmpString1[0].indexOf('#') > -1)
+			$("#ola").css(prop,value);
+		else if (cur_level == 3 && tmpString1[0].indexOf('.') > -1)
+			$(".ola").css(prop,value);
+		else
+			alert('Código incorreto.');
 
 		document.querySelector("#next_btn").disabled = false;
 	});
