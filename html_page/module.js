@@ -1,1 +1,0 @@
-angular.module("tcc-site", ['ngSanitize', 'ngStorage']);
