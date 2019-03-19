@@ -239,6 +239,7 @@ button {
 
 #css{
 	grid-area: css;
+	padding-left: 10px;
 }
 
 
@@ -367,7 +368,7 @@ button {
 	opacity: 1;
 }
 
-.text{
+textarea{
     display: block;
 	width: calc(100% - 30px);
 	height: 260px;

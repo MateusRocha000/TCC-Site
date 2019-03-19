@@ -4,13 +4,12 @@ let levels = [
 	{
 		id: '1',
 		name: 'Tag de título: <h1>',
-		instr: 'A tag <h1> é utilizada para transformar seu texto em um título. Utilize a tag para criar um nome para a entrada da nossa cidade.',
+		instr: 'A tag <h1> é utilizada para transformar seu texto em um título. Utilize a tag para criar uma mensagem para a entrada da nossa cidade.',
 		before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		item: '',
 		tag_init: '<h1>',
 		tag_end: '</h1>',
-		url: 'titulo',
 		style: 'one'
 	},
 	{
@@ -22,7 +21,6 @@ let levels = [
 		item: '',
 		tag_init: '<p>',
 		tag_end: '</p>',
-		url: 'paragrafo',
 		style: 'two'
 	},
 	{
@@ -34,7 +32,6 @@ let levels = [
 		item: '',
 		tag_init: '<img',
 		tag_end: '/>',
-		url: 'imagem',
 		style: 'three'
 	},
 	{
@@ -46,7 +43,6 @@ let levels = [
 		item: '',
 		tag_init: '<a',
 		tag_end: '</a>',
-		url: 'link',
 		style: 'four'
 	},
 	{
@@ -58,7 +54,6 @@ let levels = [
 		item: '',
 		tag_init: '<button>',
 		tag_end: '</button>',
-		url: 'botao',
 		style: 'five'
 	},
 	{
@@ -70,7 +65,6 @@ let levels = [
 		item: '',
 		tag_init: '<ul>',
 		tag_end: '</ul>',
-		url: 'lista',
 		style: 'six'
 	},
 	{
@@ -82,7 +76,6 @@ let levels = [
 		item: '',
 		tag_init: '<table>',
 		tag_end: '</table>',
-		url: 'tabela',
 		style: 'seven'
 	},
 	{
@@ -94,7 +87,6 @@ let levels = [
 		item: '',
 		tag_init: 'class=\"',
 		tag_end: '\"',
-		url: 'classe',
 		style: 'eight'
 	},
 	{
@@ -106,7 +98,6 @@ let levels = [
 		item: '',
 		tag_init: 'id=\"',
 		tag_end: '\"',
-		url: 'id',
 		style: 'nine'
 	},
 	{
@@ -118,7 +109,6 @@ let levels = [
 		item: '',
 		tag_init: '<!--',
 		tag_end: '-->',
-		url: 'comentario',
 		style: 'ten'
 	}
 ];
@@ -126,27 +116,7 @@ let levels = [
 let count = Object.keys(levels).length;
 let key = Object.values(levels[cur_level-1].id);
 
-function saveData(text)
-{
-	answer[cur_level-1] = text;
-	localStorage.setItem('answer',JSON.stringify(answer));
-	
-};
-
-function clearStorage()
-{
-	answer.length = 0;
-	localStorage.clear();
-	console.log("Local Storage: " + localStorage);
-};
-
 $(window).on("load", loadLevel(cur_level));
-
-function getXY(){
-	var x = screen.width/2 - 540;
-	var y = screen.height/2 - 385;
-	return 'left='+x+',top='+y;
-}
 
 function hasClass(el, className) {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
@@ -154,34 +124,28 @@ function hasClass(el, className) {
 
 function loadLevel(level)
 {
-	let title = document.querySelector("#title");
-	let instr = document.querySelector("#instr");
-	let before = document.querySelector("#before");
-	let after = document.querySelector("#after");
-	let item = document.querySelector(".item");
-	let submitBtn = document.querySelector("#submit");
-	let quitBtn = document.querySelector("#quit_btn");
-	let display_cur_level = document.querySelector(".current");
-	let total_levels = document.querySelector(".total");
-	let text = document.querySelector("textarea");
-	let backG = document.querySelector(".background");
-	let pc = document.querySelector("#pc_screen");
-	let style = levels[level-1].style;
+	document.querySelector("#title").textContent = levels[level-1].name;
+	document.querySelector("#instr").textContent = levels[level-1].instr;
+	document.querySelector("#before").textContent = levels[level-1].before;
+	document.querySelector("#after").textContent = levels[level-1].after;
+	document.querySelector(".current").innerHTML = level;
+	document.querySelector(".total").innerHTML = count;
+	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
+	document.querySelector("#next_btn").disabled = true;
+	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
+	document.querySelector(".item").innerHTML = '';
+
+	if(answer[level-1] !== '')
+		$("textarea").val(answer[level-1]);
+	else
+		$("textarea").val('');
+	
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
-	$("textarea").val('');
 	
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
 	
-	document.querySelector("#next_btn").disabled = true;
-	
-	title.textContent = levels[level-1].name;
-	instr.textContent = levels[level-1].instr;
-	before.textContent = levels[level-1].before;
-	after.textContent = levels[level-1].after;
-	display_cur_level.innerHTML = level;
-	total_levels.innerHTML = count;
 	if(hasClass(document.querySelector('#board'), 'fadeOut') && hasClass(document.querySelector('#board'), 'animated_fadeout'))
 	{
 		document.querySelector('#board').classList.remove('fadeOut');
@@ -190,20 +154,18 @@ function loadLevel(level)
 	
 	document.querySelector('#board').classList.add('fadeIn');
 	document.querySelector('#board').classList.add('animated_fadein');
-	backG.classList = 'background level-' + style;
-	item.classList = 'item pos_' + style;
 
 	if(level == 6)
-		text.classList = 'text_six';
+		document.querySelector("textarea").classList = 'text_six';
 	else if(level == 7)
 	{
-		pc.classList = 'pc_screen_table';
-		text.classList = 'text_seven';
+		document.querySelector("#pc_screen").classList = 'pc_screen_table';
+		document.querySelector("textarea").classList = 'text_seven';
 	}
 	else
 	{
-		pc.classList = 'pc_screen_else';
-		text.classList = 'text_else';
+		document.querySelector("#pc_screen").classList = 'pc_screen_else';
+		document.querySelector("textarea").classList = 'text_else';
 	}
 		
 
@@ -231,7 +193,6 @@ $(function(){
 	});
 	
 	$("#next_btn").on("click", function(){
-		let next_content = answer[cur_level+1];
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -243,26 +204,15 @@ $(function(){
 			function(){
 				if(cur_level < count)
 				{
-					if(next_content == '')
-					{
-						text = '';
-						wrap = '';
-					}
-					
 					cur_level++;
-					
 					loadLevel(cur_level);
 				}
-				$(".wrap").empty();
-				$(".text").focus();
-				$(".text").empty();
 			}, 1000
 		);
 	});
 
 	
 	$("#button1").on("click", function(){
-		let back_content = answer[cur_level-1];
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -275,19 +225,9 @@ $(function(){
 				if(cur_level !== 1)
 				{
 					document.querySelector("#button1").disabled = false;
-					if(back_content == '')
-					{
-						text = '';
-						wrap = '';
-					}
-					
 					cur_level--;
-					
 					loadLevel(cur_level);
 				}
-				$(".wrap").empty();
-				$(".text").focus();
-				$(".text").empty();
 			}, 1000
 		);
 	});
@@ -304,8 +244,6 @@ $(function(){
 	});
 
 	$(".level-marker").on("click", function(){
-		saveData($("text").textContent);
-
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
 		level++;
@@ -329,7 +267,6 @@ $(function(){
 	});
 
 	$("#button2").on("click", function(){
-		let next_content = answer[cur_level+1];
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -342,37 +279,26 @@ $(function(){
 				if(cur_level !== count)
 				{
 					document.querySelector("#button2").disabled = false;
-					if(next_content == '')
-					{
-						text = '';
-						wrap = '';
-					}
-					
 					cur_level++;
-					
 					loadLevel(cur_level);
 				}
-				$(".wrap").empty();
-				$(".text").focus();
-				$(".text").empty();
 			}, 1000
 		);
 	});
 	
 	$("#check").on("click", function(){
-		//text = document.querySelector(".wrap").textContent;
-		text = $("textarea.text").val();
+		text = $("textarea").val();
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".item").innerHTML = text;
-			saveData(text);
+			answer[cur_level-1] = text;
+			localStorage.setItem('answer',JSON.stringify(answer));
 			document.querySelector("#next_btn").disabled = false;
 		}
 		else{
 			alert("Código incorreto");
 		}
 	});
-	
 
 	let modal = document.querySelector("#help_body");
 

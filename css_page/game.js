@@ -1,6 +1,5 @@
 let cur_level = 1;
 let answer = [];
-let language = window.location.hash.substring(1) || 'pt-br';
 let levels = [
 	{
 			id: '1',
@@ -37,16 +36,6 @@ let levels = [
 let count = Object.keys(levels).length;
 let key = Object.values(levels[cur_level-1].id);
 
-function saveData(text)
-{
-	answer[cur_level-1] = text;
-};
-
-function clearStorage()
-{
-	answer.length = 0;
-};
-
 $(window).on("load", loadLevel(cur_level));
 
 function hasClass(el, className) {
@@ -55,33 +44,28 @@ function hasClass(el, className) {
 
 function loadLevel(level)
 {
-	let title = document.querySelector("#title");
-	let instr = document.querySelector("#instr");
-	let before = document.querySelector("#before");
-	let item = document.querySelector(".item");
-	let submitBtn = document.querySelector("#submit");
-	let quitBtn = document.querySelector("#quit_btn");
-	let display_cur_level = document.querySelector(".current");
-	let total_levels = document.querySelector(".total");
-	let text = document.querySelector("textarea");
-	let backG = document.querySelector(".background");
-	let style = levels[level-1].style;
+	document.querySelector("#title").textContent = levels[level-1].name;
+	document.querySelector("#instr").textContent = levels[level-1].instr;
+	document.querySelector("#before").textContent = levels[level-1].before;
+	document.querySelector(".current").innerHTML = level;
+	document.querySelector(".total").innerHTML = count;
+	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
+	document.querySelector("#next_btn").disabled = true;
+	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
+	document.querySelector(".item").innerHTML = levels[level-1].item;
+
+	if(answer[level-1] !== '')
+		$("textarea").val(answer[level-1]);
+	else
+		$("textarea").val('');
+
 	$("#levels-box").hide();
 	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
-	$("textarea").val('');
 
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
 	
 	document.querySelector("#next_btn").disabled = true;
-	
-	title.textContent = levels[level-1].name;
-	instr.textContent = levels[level-1].instr;
-	before.textContent = levels[level-1].before;
-	display_cur_level.innerHTML = level;
-	total_levels.innerHTML = count;
-	item.innerHTML = levels[level-1].item;
-	backG.classList = 'background level-' + style;
 
 	if(hasClass(document.querySelector('#board'), 'fadeOut') && hasClass(document.querySelector('#board'), 'animated_fadeout'))
 	{
@@ -112,12 +96,12 @@ function loadLevel(level)
 };
 
 $(function(){
-	$(".text").on("keyup", function(){
-		$(".wrap").text($(this).val());
+	$("#clear_storage").on("click", function(){
+		answer.length = 0;
+		localStorage.clear();
 	});
-	
+
 	$("#next_btn").on("click", function(){
-		let next_content = answer[cur_level+1];
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -129,25 +113,14 @@ $(function(){
 			function(){
 				if(cur_level < count)
 				{
-					if(next_content == '')
-					{
-						text = '';
-						wrap = '';
-					}
-					
 					cur_level++;
-					
 					loadLevel(cur_level);
 				}
-				$(".wrap").empty();
-				$(".text").focus();
-				$(".text").empty();
 			}, 1000
 		);
 	});
 	
 	$("#button1").on("click", function(){
-		let back_content = answer[cur_level-1];
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -160,19 +133,9 @@ $(function(){
 				if(cur_level !== 1)
 				{
 					document.querySelector("#button1").disabled = false;
-					if(back_content == '')
-					{
-						text = '';
-						wrap = '';
-					}
-					
 					cur_level--;
-					
 					loadLevel(cur_level);
 				}
-				$(".wrap").empty();
-				$(".text").focus();
-				$(".text").empty();
 			}, 1000
 		);
 	});
@@ -189,8 +152,6 @@ $(function(){
 	});
 
 	$(".level-marker").on("click", function(){
-		saveData($("text").textContent);
-
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
 		level++;
@@ -214,7 +175,6 @@ $(function(){
 	});
 	
 	$("#button2").on("click", function(){
-		let next_content = answer[cur_level+1];
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -227,26 +187,17 @@ $(function(){
 				if(cur_level !== count)
 				{
 					document.querySelector("#button2").disabled = false;
-					if(next_content == '')
-					{
-						text = '';
-						wrap = '';
-					}
-					
 					cur_level++;
-					
 					loadLevel(cur_level);
 				}
-				$(".wrap").empty();
-				$(".text").focus();
-				$(".text").empty();
 			}, 1000
 		);
 	});
 	
 	$("#check").on("click", function(){
-		saveData($("textarea.text").val());
-		var tmpString1 = $("textarea.text").val().split("{");
+		answer[cur_level-1] = $("textarea").val();
+		localStorage.setItem('answer',JSON.stringify(answer));
+		var tmpString1 = $("textarea").val().split("{");
 		var tmpString2 = tmpString1[1].trim().split(":");
 		var tmpString3 = tmpString2[1].trim().split(";");
 		console.log('String 1 = ' + '(' + tmpString1[0] + ', ' + tmpString1[1] + ')');
@@ -266,7 +217,6 @@ $(function(){
 	});
 
 	let modal = document.querySelector("#help_body");
-	let close_btn = document.querySelector(".close_modal");
 
 	$("#help_btn").on('click', function(){
 		modal.style.display = "block";
