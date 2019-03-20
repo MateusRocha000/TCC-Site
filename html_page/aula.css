@@ -31,7 +31,7 @@ body {
   margin: auto;
   border: 1px solid #888;
   width: 80%;
-  height: 85%;
+  height: 88%;
 }
 
 #help_content{
@@ -737,6 +737,10 @@ pre {
 .fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut
+}
+
+#diagram{
+	margin-top: 0;
 }
 
 .speech-bubble {
