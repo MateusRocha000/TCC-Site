@@ -201,9 +201,64 @@ $(function(){
 	});
 	
 	$("#check").on("click", function(){
-		text = $("textarea").val();
+		let text = $("textarea").val();
+		let lines = text.split('\n');
+		let rule;
+		let aux_rule, aux_prop = [], aux_value = [], temp;
 		answer[cur_level-1] = text;
+
 		if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
+		{
+			for(let i = 0; i < lines.length; i++)
+			{
+				if(lines[i].indexOf(";") > -1)
+				{
+					console.log('Iteração [' + i + ']');
+					aux_rule = lines[i].split(";")[0];
+					console.log('aux_rule = ' + aux_rule);
+					temp = aux_rule.split(":");
+					console.log('temp = ' + temp);
+					aux_prop.push(temp[0]);
+					console.log('temp[0] = ' + aux_prop);
+					aux_value.push(temp[1]);
+					console.log('temp[1] = ' + aux_value);
+				}
+			}
+			
+			if(cur_level == 1)
+			{
+				console.log('p{\n');
+				for(let i = 0; i < lines.length - 1; i++)
+				{
+					console.log(aux_prop[i] + ': ' + aux_value[i] + ';');
+					$("p").css(aux_prop[i], aux_value[i]);
+				}
+				console.log('}');
+			}
+			else if(cur_level == 2)
+			{
+				for(let i = 1; i < lines.length - 1; i++)
+				{
+					$("#ola").css(aux_prop[i], aux_value[i]);
+				}
+			}
+			else if(cur_level == 3)
+			{
+				for(let i = 1; i < lines.length - 1; i++)
+				{
+					$(".ola").css(aux_prop[i], aux_value[i]);
+				}
+			}
+		}
+		else{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+		}
+		
+
+		/* if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
 		{
 			localStorage.setItem('answer',JSON.stringify(answer));
 			var tmpString1 = $("textarea").val().split("{");
@@ -219,13 +274,8 @@ $(function(){
 				$("#ola").css(prop,value);
 			else if (cur_level == 3 && tmpString1[0].indexOf('.') > -1)
 				$(".ola").css(prop,value);
-		}
-		else{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
-			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
-			}, 2000);
-		}
+		} */
+		
 
 		document.querySelector("#next_btn").disabled = false;
 	});

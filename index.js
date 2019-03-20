@@ -18,8 +18,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			tema: 'CSS', aulas: {
 				'seletor': 'Seletor',
-				'classe': 'Classe',
 				'id': 'Id',
+				'classe': 'Classe'/* ,
 				'texto': 'Texto',
 				'tamanho': 'Tamanho dos elementos',
 				'caixa': 'Modelo de caixa',
@@ -32,8 +32,8 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				'variavel': 'Variável',
 				'condicional': 'Condicional',
 				'funcao': 'Função',
-				'evento': 'Evento'
-			}
+				'evento': 'Evento'*/
+			} 
 		}
 		
 	];	

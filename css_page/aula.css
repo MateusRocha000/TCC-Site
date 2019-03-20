@@ -290,6 +290,7 @@ button {
 
 #next_btn.disabled {
 	opacity: 0.5;
+	cursor: context-menu;
 }
 
 #tooltip_quit .tt_content_quit,
