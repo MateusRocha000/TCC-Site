@@ -302,7 +302,10 @@ $(function(){
 			document.querySelector("#next_btn").disabled = false;
 		}
 		else{
-			alert("Código incorreto");
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
 		}
 	});
 

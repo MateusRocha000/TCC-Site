@@ -201,23 +201,31 @@ $(function(){
 	});
 	
 	$("#check").on("click", function(){
-		answer[cur_level-1] = $("textarea").val();
-		localStorage.setItem('answer',JSON.stringify(answer));
-		var tmpString1 = $("textarea").val().split("{");
-		var tmpString2 = tmpString1[1].trim().split(":");
-		var tmpString3 = tmpString2[1].trim().split(";");
+		text = $("textarea").val();
+		answer[cur_level-1] = text;
+		if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
+		{
+			localStorage.setItem('answer',JSON.stringify(answer));
+			var tmpString1 = $("textarea").val().split("{");
+			var tmpString2 = tmpString1[1].trim().split(":");
+			var tmpString3 = tmpString2[1].trim().split(";");
 		
-		var prop = tmpString2[0];
-		var value = tmpString3[0];
+			var prop = tmpString2[0];
+			var value = tmpString3[0];
 		
-		if(cur_level == 1 && tmpString1[0].indexOf('p') > -1)
-			$("p").css(prop,value);
-		else if (cur_level == 2 && tmpString1[0].indexOf('#') > -1)
-			$("#ola").css(prop,value);
-		else if (cur_level == 3 && tmpString1[0].indexOf('.') > -1)
-			$(".ola").css(prop,value);
-		else
-			alert('Código incorreto.');
+			if(cur_level == 1 && tmpString1[0].indexOf('p') > -1)
+				$("p").css(prop,value);
+			else if (cur_level == 2 && tmpString1[0].indexOf('#') > -1)
+				$("#ola").css(prop,value);
+			else if (cur_level == 3 && tmpString1[0].indexOf('.') > -1)
+				$(".ola").css(prop,value);
+		}
+		else{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+		}
 
 		document.querySelector("#next_btn").disabled = false;
 	});
