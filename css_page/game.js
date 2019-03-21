@@ -228,11 +228,32 @@ $(function(){
 				if(lines[i].indexOf(";") > -1)
 				{
 					aux_rule = lines[i].split(";")[0];
-					properties += lines[i];
-					temp = aux_rule.split(":");
-					aux_prop.push(temp[0]);
-					aux_value.push(temp[1]);
-					levels[cur_level-1].text = properties;
+					if(lines[i].indexOf(":") == -1)
+					{
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+						$("textarea").val('');
+						return;
+					}
+					else
+					{
+						properties += lines[i];
+						temp = aux_rule.split(":");
+						aux_prop.push(temp[0]);
+						aux_value.push(temp[1]);
+						levels[cur_level-1].text = properties;
+					}
+				}
+				else
+				{
+					document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
+					setTimeout(function(){
+						document.querySelector(".speech-bubble").remove();
+					}, 2000);
+					$("textarea").val('');
+					return;
 				}
 			}
 			
@@ -240,23 +261,70 @@ $(function(){
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
-					$("p").css(aux_prop[i], aux_value[i]);
+					try{
+						$("p").css(aux_prop[i], aux_value[i]);
+					}catch(err)
+					{
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+						$("textarea").val('');
+						return;
+					}
 				}
 			}
 			else if(cur_level == 2)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
-					$("#ola").css(aux_prop[i], aux_value[i]);
+					
+					try{
+						$("#ola").css(aux_prop[i], aux_value[i]);
+					}catch(err)
+					{
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+						$("textarea").val('');
+						return;
+					}
 				}
 			}
 			else if(cur_level == 3)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
-					$(".ola").css(aux_prop[i], aux_value[i]);
+					
+					try{
+						$(".ola").css(aux_prop[i], aux_value[i]);
+					}catch(err)
+					{
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+						$("textarea").val('');
+					}
 				}
 			}
+		}
+		else if(text.indexOf(levels[cur_level-1].sel_init) == -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Seu seletor está incorreto.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+			$("textarea").val('');
+		}
+		else if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) == -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Está faltando um fecha chaves.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+			$("textarea").val('');
 		}
 		else{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';

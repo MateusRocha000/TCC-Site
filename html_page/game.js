@@ -318,11 +318,29 @@ $(function(){
 			localStorage.setItem('answer',JSON.stringify(answer));
 			document.querySelector("#next_btn").disabled = false;
 		}
-		else{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
+		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
+			$("textarea").val('');
+		}
+		else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+			$("textarea").val('');
+		}
+		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+			$("textarea").val('');
 		}
 	});
 
