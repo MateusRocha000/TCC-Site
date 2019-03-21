@@ -60,7 +60,7 @@ function loadLevel(level)
 		localStorage.setItem('visited',true);
 	}
 
-	if(answer[level-1] !== '' && levels[level-1] !== undefined)
+	if(answer[level-1] !== '' && levels[level-1].text !== undefined)
 	{
 		$("textarea").val(answer[level-1]);
 		document.querySelector(".item").style = levels[level-1].text;
