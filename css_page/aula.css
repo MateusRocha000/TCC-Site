@@ -167,13 +167,17 @@ button {
 
 #html{
 	grid-area: before;
+	border-right: 2px solid #00ffff;
+}
+
+#html, #css{
+	color: #00ffff;
 }
 
 #before {
 	font-size: 18px;
 	color: #00ffff;
 	margin: 0;
-	border-right: 2px solid #00ffff;
 }
 
 #html_btn, #js_btn, #help_btn{
@@ -212,7 +216,7 @@ button {
 	grid-template-areas: 'before css';
 	height: 400px;
 	position: relative;
-	padding: 13px 30px 30px 13px;
+	padding: 0 13px;
 	border-top: 30px solid #c0c0c0;
 	border-right: 30px solid #c0c0c0;
 	border-bottom: 50px solid #c0c0c0;
