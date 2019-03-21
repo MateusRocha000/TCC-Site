@@ -60,8 +60,11 @@ function loadLevel(level)
 		localStorage.setItem('visited',true);
 	}
 
-	if(answer[level-1] !== '')
+	if(answer[level-1] !== '' && levels[level-1] !== undefined)
+	{
 		$("textarea").val(answer[level-1]);
+		document.querySelector(".item").style = levels[level-1].text;
+	}
 	else
 		$("textarea").val('');
 
@@ -203,9 +206,9 @@ $(function(){
 	$("#check").on("click", function(){
 		let text = $("textarea").val();
 		let lines = text.split('\n');
-		let rule;
 		let aux_rule, aux_prop = [], aux_value = [], temp;
 		answer[cur_level-1] = text;
+		let properties = '';
 
 		if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
 		{
@@ -214,9 +217,11 @@ $(function(){
 				if(lines[i].indexOf(";") > -1)
 				{
 					aux_rule = lines[i].split(";")[0];
+					properties += lines[i];
 					temp = aux_rule.split(":");
 					aux_prop.push(temp[0]);
 					aux_value.push(temp[1]);
+					levels[cur_level-1].text = properties;
 				}
 			}
 			
@@ -248,7 +253,6 @@ $(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
 		}
-		
 
 		/* if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
 		{
