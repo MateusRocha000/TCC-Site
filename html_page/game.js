@@ -1,5 +1,6 @@
 let cur_level = 1;
 let answer = [];
+
 let levels = [
 	{
 		id: '1',
@@ -7,7 +8,6 @@ let levels = [
 		instr: 'A tag <h1> é utilizada para transformar seu texto em um título. Utilize a tag para criar uma mensagem para a entrada da nossa cidade.',
 		before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<h1>',
 		tag_end: '</h1>',
 		style: 'one'
@@ -18,7 +18,6 @@ let levels = [
 		instr: 'Esta tag é utilizada para indicar que seu texto pertence ao parágrafo da página. Use a tag para criar uma mensagem de boas vindas.',
 		before: "<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n",
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<p>',
 		tag_end: '</p>',
 		style: 'two'
@@ -29,7 +28,6 @@ let levels = [
 		instr: 'A tag de imagem adiciona uma imagem ao corpo de sua página, fornecendo a caminho onde se encontra a imagem para o atributo \"src\". Coloque uma foto chamativa no outdoor.',
 		before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<img',
 		tag_end: '/>',
 		style: 'three'
@@ -40,7 +38,6 @@ let levels = [
 		instr: 'A tag <a> cria um link para uma página, inserindo o link da página para o atributo \"href\". Lembre-se de colocar um nome para o link para não ficar vazio.',
 		before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<a',
 		tag_end: '</a>',
 		style: 'four'
@@ -51,7 +48,6 @@ let levels = [
 		instr: 'A tag <button> insere um botão na página que pode executar alguma função que deseje.',
 		before: '<html>\n   <head>\n     <title>Botão</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<button>',
 		tag_end: '</button>',
 		style: 'five'
@@ -62,7 +58,6 @@ let levels = [
 		instr: 'Estas tags criam uma lista com, ou sem, subitens. A tag <ul> cria a lista, enquanto a <li> indica os itens da lista. Crie a lista de compras do restaurante.',
 		before: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<ul>',
 		tag_end: '</ul>',
 		style: 'six'
@@ -73,7 +68,6 @@ let levels = [
 		instr: 'A tag <table> cria uma tabela e as tags <tr>, <th>, <td> criam os elementos da tabela, onde <tr> é referente à linha da tabela, <th> ao título da coluna e <td> ao dado da célula da tabela.',
 		before: '<html>\n   <head>\n     <title>Tabela</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<table>',
 		tag_end: '</table>',
 		style: 'seven'
@@ -84,7 +78,6 @@ let levels = [
 		instr: 'Classe para tags da página',
 		before: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: 'class=\"',
 		tag_end: '\"',
 		style: 'eight'
@@ -95,7 +88,6 @@ let levels = [
 		instr: 'Identificador para tags da página',
 		before: '<html>\n   <head>\n     <title>Identificadores</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: 'id=\"',
 		tag_end: '\"',
 		style: 'nine'
@@ -106,7 +98,6 @@ let levels = [
 		instr: 'Tag de comentário para a página',
 		before: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
-		item: '',
 		tag_init: '<!--',
 		tag_end: '-->',
 		style: 'ten'
@@ -141,8 +132,11 @@ function loadLevel(level)
 		localStorage.setItem('visited',true);
 	}
 
-	if(answer[level-1] !== '')
+	if(answer[level-1] !== '' && answer[level-1] !== undefined)
+	{
 		$("textarea").val(answer[level-1]);
+		document.querySelector(".item").innerHTML = answer[level-1];
+	}
 	else
 		$("textarea").val('');
 	
@@ -320,3 +314,133 @@ $(function(){
 	});
 
 });
+
+
+/*
+let titles = [
+	{
+		'pt-br' : 'Tag de título: <h1>',
+		'es'	: 'Etiqueta del título: <h1>',
+		'en'	: 'Title tag: <h1>',
+		'fr'	: 'Balise de titre: <h1>',
+		'it'	: 'Tag del titolo: <h1>',
+		'jp'	: 'タイトルタグ: <h1>',
+		'ch'	: '標題標籤: <h1>',
+		'cr'	: '제목 태그',
+		'dt'	: 'Titel-Tag: <h1>'
+	},
+	{
+		'pt-br' : 'Tag de parágrafo: <p>',
+		'es'	: 'Etiqueta de párrafo: <p>',
+		'en'	: 'Paragraph Tag: <p>',
+		'fr'	: 'Balise de paragraphe: <p>',
+		'it'	: 'Etichetta del paragrafo: <p>',
+		'jp'	: '段落タグ：<p>',
+		'ch'	: '段落標籤：<p>',
+		'cr'	: '단락 태그: <p>',
+		'dt'	: 'Absatz-Tag: <p>'
+	},
+	{
+		'pt-br' : 'Tag de imagem: <img>',
+		'es'	: 'Etiqueta de imagen: <img>',
+		'en'	: 'Image Tag: <img>',
+		'fr'	: 'Tags d'image: <img>',
+		'it'	: 'Tag immagine: <img>',
+		'jp'	: '画像タグ：<img>',
+		'ch'	: '圖片標籤：<img>',
+		'cr'	: '이미지 태그 : <img>',
+		'dt'	: 'Image-Tag: <img>'
+	},
+	{
+		'pt-br' : 'Tag de link: <a>',
+		'es'	: 'Etiqueta de enlace: <a>',
+		'en'	: 'Link Tag: <a>',
+		'fr'	: 'Tag de lien: <a>',
+		'it'	: 'Tag de link: <a>',
+		'jp'	: 'リンクタグ：<a>',
+		'ch'	: '鏈接標籤：<a>',
+		'cr'	: '링크 태그 : <a>',
+		'dt'	: 'Link-Tag: <a>'
+	},
+	{
+		'pt-br' : 'Tag de botão: <button>',
+		'es'	: 'Etiqueta de botón: <button>',
+		'en'	: 'Button tag: <button>',
+		'fr'	: 'Tag du bouton: <button>',
+		'it'	: 'Tag pulsante: <button>',
+		'jp'	: 'ボタンタグ：<button>',
+		'ch'	: '按鈕標記：<button>',
+		'cr'	: '버튼 태그 : <button>',
+		'dt'	: 'Button Tag: <button>'
+	},
+	{
+		'pt-br' : 'Tag de lista: <ul>, <li>',
+		'es'	: '',
+		'en'	: '',
+		'fr'	: '',
+		'it'	: '',
+		'jp'	: '',
+		'ch'	: '',
+		'cr'	: '',
+		'dt'	: ''
+	},
+	{
+		'pt-br' : 'Tags de tabela: <table>, <tr>, <th> e <td>',
+		'es'	: '',
+		'en'	: '',
+		'fr'	: '',
+		'it'	: '',
+		'jp'	: '',
+		'ch'	: '',
+		'cr'	: '',
+		'dt'	: ''
+	},
+	{
+		'pt-br' : 'Classe',
+		'es'	: '',
+		'en'	: '',
+		'fr'	: '',
+		'it'	: '',
+		'jp'	: '',
+		'ch'	: '',
+		'cr'	: '',
+		'dt'	: ''
+	},
+	{
+		'pt-br' : 'Identificador',
+		'es'	: '',
+		'en'	: '',
+		'fr'	: '',
+		'it'	: '',
+		'jp'	: '',
+		'ch'	: '',
+		'cr'	: '',
+		'dt'	: ''
+	},
+	{
+		'pt-br' : 'Tag de comentário: <!-- -->',
+		'es'	: '',
+		'en'	: '',
+		'fr'	: '',
+		'it'	: '',
+		'jp'	: '',
+		'ch'	: '',
+		'cr'	: '',
+		'dt'	: ''
+	}
+];
+
+let instructions = [
+	{
+		'pt-br' : 'A tag <h1> é utilizada para transformar seu texto em um título. Utilize a tag para criar uma mensagem para a entrada da nossa cidade.',
+		'es'	: 'La etiqueta <h1> se utiliza para transformar su texto en un título. Utilice la etiqueta para crear un mensaje para la entrada de nuestra ciudad.',
+		'en'	: 'The <h1> tag is used to turn your text into a title. Please use the tag to create a message to the entrance of our city.',
+		'fr'	: 'La balise <h1> est utilisée pour transformer votre texte en titre. Utilisez la balise pour créer un message pour entrer dans notre ville.',
+		'it'	: 'Il tag <h1> viene utilizzato per trasformare il tuo testo in un titolo. Usa il tag per creare un messaggio per entrare nella nostra città.',
+		'jp'	: '<h1>タグは、テキストをタイトルに変えるために使用されます。 タグを使用して私たちの街に入るためのメッセージを作成してください。',
+		'ch'	: '<h1>標籤用於將文字轉換為標題。 使用標記創建消息以進入我們的城市。',
+		'cr'	: '<h1> 태그는 텍스트를 제목으로 변환하는 데 사용됩니다. 이 태그를 사용하여 우리시에 들어오는 메시지를 만드십시오.',
+		'dt'	: 'Das <h1> -Tag wird verwendet, um aus Ihrem Text einen Titel zu machen. Verwenden Sie das Tag, um eine Nachricht zu erstellen, um unsere Stadt einzugeben.'
+	}
+];
+*/
