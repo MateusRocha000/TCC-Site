@@ -105,6 +105,17 @@ function loadLevel(level)
 };
 
 $(function(){
+	let new_line = 10;
+	$("textarea").keydown(function(e){
+		newLines = $(this).val().split("\n").length;
+
+		if(e.keyCode == 13 && newLines >= new_line)
+		{
+			return false;
+		}
+
+	});
+
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
 		localStorage.clear();

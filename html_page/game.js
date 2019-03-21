@@ -115,6 +115,7 @@ function hasClass(el, className) {
 
 function loadLevel(level)
 {
+	
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").textContent = levels[level-1].instr;
 	document.querySelector("#before").textContent = levels[level-1].before;
@@ -155,8 +156,12 @@ function loadLevel(level)
 	document.querySelector('#board').classList.add('fadeIn');
 	document.querySelector('#board').classList.add('animated_fadein');
 
+	
+
 	if(level == 6)
+	{
 		document.querySelector("textarea").classList = 'text_six';
+	}
 	else if(level == 7)
 	{
 		document.querySelector("#pc_screen").classList = 'pc_screen_table';
@@ -168,7 +173,6 @@ function loadLevel(level)
 		document.querySelector("textarea").classList = 'text_else';
 	}
 		
-
 	if(level === 1)
 	{
 		document.querySelector("#button1").disabled = true;
@@ -187,6 +191,25 @@ function loadLevel(level)
 
 
 $(function(){
+	let new_line_level_six = 3, new_line_level_seven = 6;
+	$("textarea").keydown(function(e){
+		newLines = $(this).val().split("\n").length;
+
+		if(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six)
+		{
+			return false;
+		}
+		else if(e.keyCode == 13 && cur_level == 7 && newLines >= new_line_level_seven)
+		{
+			return false;
+		}
+		else if(e.keyCode == 13 && (cur_level !== 7 && cur_level !== 6))
+		{
+			return false;
+		}
+
+	});
+
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
 		localStorage.clear();
