@@ -188,8 +188,6 @@ $(function(){
 	});
 
 	$("#level-indicator").on("click", function(){
-		
-		$('.box').hide();
 		$('#levels-box').toggle();
 	});
 	

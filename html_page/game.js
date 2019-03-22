@@ -231,7 +231,6 @@ $(function(){
 				if(cur_level < num_levels)
 				{
 					cur_level++;
-					
 					loadLevel(cur_level);
 				}
 			}, 1000
@@ -253,7 +252,6 @@ $(function(){
 				{
 					document.querySelector("#button1").disabled = false;
 					cur_level--;
-					
 					loadLevel(cur_level);
 				}
 			}, 1000
@@ -286,8 +284,6 @@ $(function(){
 
 	//Disponibiliza a caixa com os ícones dos níveis ao clicar no indicador de nível
 	$("#level-indicator").on("click", function(){
-		
-		$('.box').hide();
 		$('#levels-box').toggle();
 	});
 
@@ -354,6 +350,7 @@ $(function(){
 		}
 		//Habilita o botão de próximo para avançar um nível
 		document.querySelector("#next_btn").disabled = false;
+
 	});
 
 	//Mostra o modal de ajuda quando clicado no botão "Ajuda"
