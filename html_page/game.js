@@ -1,6 +1,10 @@
+//Nível atual
 let cur_level = 1;
+
+//Vetor onde serão salvas as respostas do usuário (caso corretas)
 let answer = [];
 
+//Informações de cada nível
 let levels = [
 	{
 		id: '1',
@@ -104,15 +108,18 @@ let levels = [
 	}
 ];
 
-let count = Object.keys(levels).length;
-let key = Object.values(levels[cur_level-1].id);
+//Variável auxiliar que pega a quantidade de níveis
+let num_levels = Object.keys(levels).length;
 
+//Carrega o nível ao carregar a página
 $(window).on("load", loadLevel(cur_level));
 
+//Função auxiliar para verificar se uma classe está atribuída à um elemento do HTML
 function hasClass(el, className) {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
 }
 
+//Função que carrega as informações de cada nível
 function loadLevel(level)
 {
 	
@@ -121,43 +128,44 @@ function loadLevel(level)
 	document.querySelector("#before").textContent = levels[level-1].before;
 	document.querySelector("#after").textContent = levels[level-1].after;
 	document.querySelector(".current").innerHTML = level;
-	document.querySelector(".total").innerHTML = count;
-	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
+	document.querySelector(".total").innerHTML = num_levels;
+	document.querySelector(".background").classList += ' level-' + levels[level-1].style;
 	document.querySelector("#next_btn").disabled = true;
-	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
+	document.querySelector(".item").classList += ' pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = '';
 	
+	//Se a página está sendo visitada pela primeira vez, mostra modal de ajuda e marca como visitada
 	if(localStorage.getItem('visited') == null)
 	{
 		document.querySelector("#help_body").style.display = "block";
 		localStorage.setItem('visited',true);
 	}
 
+	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
 	if(answer[level-1] !== '' && answer[level-1] !== undefined)
 	{
 		$("textarea").val(answer[level-1]);
 		document.querySelector(".item").innerHTML = answer[level-1];
 	}
+	//Remove o que usuário digitou ao mudar de nível para não permanecer na tela
 	else
 		$("textarea").val('');
 	
+	//Esconde box com os níveis
 	$("#levels-box").hide();
-	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
 	
-	key = Object.values(levels[level-1].id);
-	let content = answer[key];
-	
+	//Ao carregar o nível remove a animação de fadeOut de quando saiu do nível
 	if(hasClass(document.querySelector('#board'), 'fadeOut') && hasClass(document.querySelector('#board'), 'animated_fadeout'))
 	{
 		document.querySelector('#board').classList.remove('fadeOut');
 		document.querySelector('#board').classList.remove('animated_fadeout');
 	}
 	
+	//Adiciona animação de fadeIn ao carregar o nível
 	document.querySelector('#board').classList.add('fadeIn');
 	document.querySelector('#board').classList.add('animated_fadein');
 
-	
-
+	//Condicionais para carregar o tamanho da área de texto dos níveis
 	if(level == 6)
 	{
 		document.querySelector("textarea").classList = 'text_six';
@@ -172,13 +180,14 @@ function loadLevel(level)
 		document.querySelector("#pc_screen").classList = 'pc_screen_else';
 		document.querySelector("textarea").classList = 'text_else';
 	}
-		
+	
+	//Condicionais para deixar botões de mudança de nível apenas nos níveis corretos
 	if(level === 1)
 	{
 		document.querySelector("#button1").disabled = true;
 		document.querySelector("#button2").disabled = false;
 	}
-	else if(level === count)
+	else if(level === num_levels)
 	{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
@@ -191,30 +200,24 @@ function loadLevel(level)
 
 
 $(function(){
+	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
 	let new_line_level_six = 3, new_line_level_seven = 6;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
 
-		if(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six)
+		if((e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) || (e.keyCode == 13 && cur_level == 7 && newLines >= new_line_level_seven) || (e.keyCode == 13 && (cur_level !== 7 && cur_level !== 6)))
 		{
 			return false;
 		}
-		else if(e.keyCode == 13 && cur_level == 7 && newLines >= new_line_level_seven)
-		{
-			return false;
-		}
-		else if(e.keyCode == 13 && (cur_level !== 7 && cur_level !== 6))
-		{
-			return false;
-		}
-
 	});
 
+	//Limpa as respostas salvas
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
 		localStorage.clear();
 	});
 	
+	//Muda de nível caso o atual tenha sido concluído adicionando animação de fadeOut
 	$("#next_btn").on("click", function(){
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
@@ -225,16 +228,17 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level < count)
+				if(cur_level < num_levels)
 				{
 					cur_level++;
+					
 					loadLevel(cur_level);
 				}
 			}, 1000
 		);
 	});
 
-	
+	//Botão de voltar um nível com animação de fadeOut
 	$("#button1").on("click", function(){
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
@@ -249,23 +253,20 @@ $(function(){
 				{
 					document.querySelector("#button1").disabled = false;
 					cur_level--;
+					
 					loadLevel(cur_level);
 				}
 			}, 1000
 		);
 	});
 	
+	//Cria uma caixa com ícones dos níveis da atividade
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
-
-		if($.inArray(level.tag_init, answer) !== -1 && $.inArray(level.tag_end, answer) !== -1)
-		{
-			levelMarker.addClass('solved');
-		}
-
 		levelMarker.appendTo('#levels');
 	});
 
+	//Muda o nível para o selecionado na caixa
 	$(".level-marker").on("click", function(){
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
@@ -279,16 +280,18 @@ $(function(){
 		document.querySelector('#board').classList.add('fadeOut');
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(function(){
-			loadLevel(level)
+			loadLevel(level);
 		}, 1000);
 	});
 
+	//Disponibiliza a caixa com os ícones dos níveis ao clicar no indicador de nível
 	$("#level-indicator").on("click", function(){
 		
 		$('.box').hide();
 		$('#levels-box').toggle();
 	});
 
+	//Botão de avançar um nível com animação de fadeOut
 	$("#button2").on("click", function(){
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
@@ -299,18 +302,22 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level !== count)
+				if(cur_level !== num_levels)
 				{
 					document.querySelector("#button2").disabled = false;
 					cur_level++;
+					
 					loadLevel(cur_level);
 				}
 			}, 1000
 		);
 	});
 	
+	//Testa o código digitado pelo usuário e trata erros de entrada
 	$("#check").on("click", function(){
 		text = $("textarea").val();
+
+		//Se a resposta estiver correta, atribui o código ao item da área de visualização
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".item").innerHTML = text;
@@ -318,6 +325,7 @@ $(function(){
 			localStorage.setItem('answer',JSON.stringify(answer));
 			document.querySelector("#next_btn").disabled = false;
 		}
+		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
 		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
@@ -326,6 +334,7 @@ $(function(){
 			}, 2000);
 			$("textarea").val('');
 		}
+		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
 		else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
@@ -334,6 +343,7 @@ $(function(){
 			}, 2000);
 			$("textarea").val('');
 		}
+		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
 		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
@@ -342,8 +352,11 @@ $(function(){
 			}, 2000);
 			$("textarea").val('');
 		}
+		//Habilita o botão de próximo para avançar um nível
+		document.querySelector("#next_btn").disabled = false;
 	});
 
+	//Mostra o modal de ajuda quando clicado no botão "Ajuda"
 	let modal = document.querySelector("#help_body");
 
 	$("#help_btn").on('click', function(){

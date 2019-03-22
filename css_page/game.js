@@ -69,7 +69,6 @@ function loadLevel(level)
 		$("textarea").val('');
 
 	$("#levels-box").hide();
-	$(".level-marker").removeClass('current').eq(this.cur_level).addClass('current');
 
 	key = Object.values(levels[level-1].id);
 	let content = answer[key];
