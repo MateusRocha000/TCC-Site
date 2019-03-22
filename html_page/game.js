@@ -129,9 +129,9 @@ function loadLevel(level)
 	document.querySelector("#after").textContent = levels[level-1].after;
 	document.querySelector(".current").innerHTML = level;
 	document.querySelector(".total").innerHTML = num_levels;
-	document.querySelector(".background").classList += ' level-' + levels[level-1].style;
+	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
 	document.querySelector("#next_btn").disabled = true;
-	document.querySelector(".item").classList += ' pos_' + levels[level-1].style;
+	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = '';
 	
 	//Se a página está sendo visitada pela primeira vez, mostra modal de ajuda e marca como visitada
