@@ -4,6 +4,9 @@ let cur_level = 1;
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
 let answer = [];
 
+//Vetor que indica quais níveis foram cumpridos
+let level_cleared = [];
+
 //Informações de cada nível
 let levels = [
 	{
@@ -272,6 +275,11 @@ $(function(){
 	//Cria uma caixa com ícones dos níveis da atividade
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
+
+		if ($.inArray(level.id, level_cleared) !== -1) {
+			levelMarker.addClass('cleared');
+		}
+
 		levelMarker.appendTo('#levels');
 	});
 
@@ -329,6 +337,10 @@ $(function(){
 		{
 			document.querySelector(".item").innerHTML = text;
 			answer[cur_level-1] = text;
+			level_cleared[cur_level-1] = cur_level;
+			let current_lvl = cur_level-1;
+			$('[data-level=' + current_lvl + ']').addClass('cleared');
+			localStorage.setItem('level_cleared', JSON.stringify(level_cleared));
 			localStorage.setItem('answer',JSON.stringify(answer));
 			document.querySelector("#next_btn").disabled = false;
 		}

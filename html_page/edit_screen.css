@@ -356,6 +356,11 @@
 			border-color: rgba(255, 255, 255, 0.5);
 		}
 
+.cleared{
+	background-color: green;
+	color: white;
+}
+
 /*#css_btn,
 #js_btn,*/
 #help_btn{
