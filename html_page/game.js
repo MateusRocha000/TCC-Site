@@ -9,102 +9,112 @@ let levels = [
 	{
 		id: '1',
 		name: 'Tag de título: <h1>',
-		instr: 'A tag <h1> é utilizada para transformar seu texto em um título. Utilize a tag para criar uma mensagem para a entrada da nossa cidade.',
+		instr: 'Nossa cidade precisa de uma mensagem de boas vindas. Utilize a tag para criar essa mensagem para a entrada da nossa cidade.',
 		before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<h1>',
 		tag_end: '</h1>',
-		style: 'one'
+		style: 'one',
+		help: 'A tag <h1></h1> é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página. Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: <h2>, <h3>, etc.',
 	},
 	{
 		id: '2',
 		name: 'Tag de parágrafo: <p>',
-		instr: 'Esta tag é utilizada para indicar que seu texto pertence ao parágrafo da página. Use a tag para criar uma mensagem de boas vindas.',
+		instr: 'Use a tag para criar uma mensagem de boas vindas.',
 		before: "<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n",
 		after: '   </body>\n</html>',
 		tag_init: '<p>',
 		tag_end: '</p>',
-		style: 'two'
+		style: 'two',
+		help: 'A tag de parágrafo <p></p> é utilizada para indicar que seu texto pertence ao parágrafo da página. Sempre que quiser adicionar um novo parágrafo, basta iniciar novamente a tag.'
 	},
 	{
 		id: '3',
 		name: 'Tag de imagem: <img>',
-		instr: 'A tag de imagem adiciona uma imagem ao corpo de sua página, fornecendo a caminho onde se encontra a imagem para o atributo \"src\". Coloque uma foto chamativa no outdoor.',
+		instr: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros.',
 		before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<img',
 		tag_end: '/>',
-		style: 'three'
+		style: 'three',
+		help: 'A tag de imagem <img> adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores. Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como: \n\n<img src=\"nome_da_imagem.jpg\">.\n\nCaso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:\n\n<img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"'
 	},
 	{
 		id: '4',
-		name: 'Tag de link: <a>',
-		instr: 'A tag <a> cria um link para uma página, inserindo o link da página para o atributo \"href\". Lembre-se de colocar um nome para o link para não ficar vazio.',
-		before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
-		tag_init: '<a',
-		tag_end: '</a>',
-		style: 'four'
-	},
-	{
-		id: '5',
 		name: 'Tag de botão: <button>',
-		instr: 'A tag <button> insere um botão na página que pode executar alguma função que deseje.',
+		instr: 'Precisamos de um novo botão de alarme para aviso de invasões. Consegue criar para nós?',
 		before: '<html>\n   <head>\n     <title>Botão</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<button>',
 		tag_end: '</button>',
-		style: 'five'
+		style: 'four',
+		help: 'A tag <button> insere um botão na página que pode executar alguma função que deseje. Essa função é chamada quando o botão é clicado. Ao criar um botão, você pode colocar um nome para o mesmo que indicará o que ele faz: <button>Botão</button>'
 	},
 	{
-		id: '6',
+		id: '5',
 		name: 'Tags de lista: <ul> e <li>',
-		instr: 'Estas tags criam uma lista com, ou sem, subitens. A tag <ul> cria a lista, enquanto a <li> indica os itens da lista. Crie a lista de compras do restaurante.',
+		instr: 'Muitos dos ingredientes que tínhamos foi perdido. Crie uma lista de compras para o restaurante.',
 		before: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<ul>',
 		tag_end: '</ul>',
-		style: 'six'
+		style: 'five',
+		help: 'Estas tags criam uma lista com, ou sem, subitens. A tag <ul> cria a lista, enquanto a <li> indica os itens da lista.\n<ul>Lista\n   <li>Item 1</li>\n   <li>Item 2</li>\n   <li>Item 3</li>\n</ul>'
 	},
 	{
-		id: '7',
+		id: '6',
 		name: 'Tags de tabela: <table>, <tr>, <th> e <td>',
-		instr: 'A tag <table> cria uma tabela e as tags <tr>, <th>, <td> criam os elementos da tabela, onde <tr> é referente à linha da tabela, <th> ao título da coluna e <td> ao dado da célula da tabela.',
+		instr: 'A janela da prefeitura foi danificada e precisamos de outra. Use seu conhecimento para fazer uma.',
 		before: '<html>\n   <head>\n     <title>Tabela</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<table>',
 		tag_end: '</table>',
-		style: 'seven'
+		style: 'six',
+		help: 'A tag <table> cria uma tabela e as tags <tr>, <th>, <td> criam os elementos da tabela, onde <tr> é referente à linha da tabela, <th> ao título da coluna e <td> ao dado da célula da tabela.\n\n<table>\n  <tr><th>Cabeçalho</th></tr>\n  <tr><td>Elemento 1</td></tr>\n  <tr><td>Elemento 2</td></tr>\n</table>'
 	},
 	{
-		id: '8',
+		id: '7',
 		name: 'Classes',
-		instr: 'Classe para tags da página',
+		instr: 'Classe para tags da página. ',
 		before: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: 'class=\"',
 		tag_end: '\"',
-		style: 'eight'
+		style: 'seven',
+		help: 'Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS. Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele: <nome_da_tag class=\"nome_da_classe\">'
 	},
 	{
-		id: '9',
+		id: '8',
 		name: 'Identificadores',
 		instr: 'Identificador para tags da página',
 		before: '<html>\n   <head>\n     <title>Identificadores</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: 'id=\"',
 		tag_end: '\"',
-		style: 'nine'
+		style: 'eight',
+		help: 'Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão. Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador \"id\" e atribuir um nome para ele: <nome_da_tag id=\"nome_do_id\"&gt.'
 	},
 	{
-		id: '10',
+		id: '9',
 		name: 'Tag de comentário: <!-- -->',
 		instr: 'Tag de comentário para a página',
 		before: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<!--',
 		tag_end: '-->',
-		style: 'ten'
+		style: 'nine',
+		help: 'Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado. Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso. Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.'
+	},
+	{
+		id: '10',
+		name: 'Tag de link: <a>',
+		instr: ' Crie um link para a página de CSS (webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
+		before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
+		after: '   </body>\n</html>',
+		tag_init: '<a',
+		tag_end: '</a>',
+		style: 'ten',
+		help: 'A tag <a> cria um link para uma página, atribuindo o link da página ao atributo \"href\". Assim, ao clicar nele, você é redirecionado àquela página.'
 	}
 ];
 
@@ -122,9 +132,10 @@ function hasClass(el, className) {
 //Função que carrega as informações de cada nível
 function loadLevel(level)
 {
-	
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").textContent = levels[level-1].instr;
+	document.querySelector("#dialog").textContent = levels[level-1].help;
+	document.querySelector("#about").innerHTML = '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
 	document.querySelector("#before").textContent = levels[level-1].before;
 	document.querySelector("#after").textContent = levels[level-1].after;
 	document.querySelector(".current").innerHTML = level;
@@ -166,14 +177,14 @@ function loadLevel(level)
 	document.querySelector('#board').classList.add('animated_fadein');
 
 	//Condicionais para carregar o tamanho da área de texto dos níveis
-	if(level == 6)
+	if(level == 5)
 	{
-		document.querySelector("textarea").classList = 'text_six';
+		document.querySelector("textarea").classList = 'text_five';
 	}
-	else if(level == 7)
+	else if(level == 6)
 	{
 		document.querySelector("#pc_screen").classList = 'pc_screen_table';
-		document.querySelector("textarea").classList = 'text_seven';
+		document.querySelector("textarea").classList = 'text_six';
 	}
 	else
 	{
@@ -201,11 +212,11 @@ function loadLevel(level)
 
 $(function(){
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
-	let new_line_level_six = 3, new_line_level_seven = 6;
+	let new_line_level_five = 3, new_line_level_six = 4;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
 
-		if((e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) || (e.keyCode == 13 && cur_level == 7 && newLines >= new_line_level_seven) || (e.keyCode == 13 && (cur_level !== 7 && cur_level !== 6)))
+		if((e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) || (e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) || (e.keyCode == 13 && (cur_level !== 5 && cur_level !== 6)))
 		{
 			return false;
 		}
@@ -353,21 +364,38 @@ $(function(){
 
 	});
 
-	//Mostra o modal de ajuda quando clicado no botão "Ajuda"
-	let modal = document.querySelector("#help_body");
+	$("#dialog").dialog({
+		autoOpen : false,
+		modal : true, 
+		show : "blind", 
+		hide : "blind",
+		minWidth: 1000,
+		minHeight: 'auto'	
+	});
+
+	$("#about").dialog({
+		autoOpen : false,
+		modal : true, 
+		show : "blind", 
+		hide : "blind",
+		minWidth: 1000,
+		minHeight: 'auto'	
+	});
 
 	$("#help_btn").on('click', function(){
-		modal.style.display = "block";
+		$("#dialog").dialog('open');
+		return false;
 	});
 
-	$(".close_modal").on('click', function(){
-		modal.style.display = "none";
+	$("#html_about_btn").on('click', function(){
+		$("#about").dialog('open');
+		return false;
 	});
-
 });
 
 
 /*
+
 let titles = [
 	{
 		'pt-br' : 'Tag de título: <h1>',

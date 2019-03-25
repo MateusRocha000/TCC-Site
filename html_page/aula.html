@@ -10,6 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 
 </head>
 <body>
@@ -69,9 +70,15 @@
 		</div>
 		
 		<a class="btn btn-primary" id="help_btn">Ajuda</a>
+		<a class="btn btn-primary" id="html_about_btn">Sobre HTML</a>
 		<!-- <a class="btn btn-primary" id="css_btn" onclick="window.location.href='../css_page/aula.html'">CSS</a>
 		<a class="btn btn-primary" id="js_btn" onclick="window.location.href='../js_page/aula.html'">JavaScript</a>
 		
+		<table>
+			<tr><th></th></tr>
+			<tr><td></td><td></td></tr>
+			<tr><td></td><td></td></tr>
+		</table>
 
 		<div class="credits">
 			<span id="footer" class="translate">Jogo criado por: </span>
@@ -95,43 +102,36 @@
 		</div>
 	</section>
 
-	<div id="help_body">
+	<!-- <div id="dialog" title="Ajuda" style="display:none">
 			
 			<div id="help">
 					<div id="help_header">
 						<h1>HTML</h1>
 						<div class="btn btn-danger close_modal">&times;</div>
 					</div>
-					<div id="help_content">
-							<p>
-									O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;.
-							</p>
-		
-							<p>
-									O navegador interpreta o arquivo como HTML ao utilizar a tag "&lt;html&gt;&lt;/html&gt;". Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag "&lt;head&gt;&lt;/head&gt;" (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag "&lt;body&gt;&lt;/body&gt;" e é dentro dessa tag que estará todo o corpo de sua página.
-							</p>
-		
-							<p>
-									Portanto, sabemos que um documento html tem essa cara:
-							</p>
-		
-							<img src="../img/diagram_html.jfif">
-
-							<p>
-								Cumpra as atividades e avance para os próximos níveis.
-							</p>
-					</div>
+					
 
 			</div>
-		</div>
+	</div> -->
 
+	<div id="help_body">
+		<div id="dialog" title="Ajuda" style="text-align: justify; font-family: \'Courier New\', Courier, monospace; background-color: black; color: #00ffff; display: none;">
+			
+		</div>
+	</div>
+
+	<div id="html_about">
+		<div id="about" title="Sobre" style="text-align: justify; font-family: \'Courier New\', Courier, monospace; background-color: black; color: #00ffff; display: none;">
+
+		</div>
+	</div>
+		
+	<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
 	<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="aulas.js"></script>
-	<script src="jquery.min.js"></script>
 	<script src="../JS/native.js"></script>
 	<script src="game.js"></script>
 

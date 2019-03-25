@@ -93,7 +93,7 @@
 			cursor: context-menu;
 		}
 
-.pc_screen_six {
+.pc_screen_five {
 	height: 500px;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -107,7 +107,7 @@
 }
 
 .pc_screen_table {
-	height: 450px;
+	height: 395px;
 	position: relative;
 	padding: 13px 30px 30px 13px;
 	border-top: 30px solid #c0c0c0;
@@ -270,7 +270,7 @@
 	overflow: auto;
 }
 
-.text_six{
+.text_five{
 	display: block;
 	width: calc(100% - 30px);
 	height: 85px;
@@ -284,10 +284,10 @@
 	overflow: auto;
 }
 
-.text_seven{
+.text_six{
 	display: block;
 	width: calc(100% - 30px);
-	height: 160px;
+	height: 108px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;
@@ -361,4 +361,9 @@
 #help_btn{
 	margin-top: 20px;
 	margin-right: 30px;
+}
+
+#html_about_btn{
+	margin-top: 20px;
+	margin-right: 10px;
 }

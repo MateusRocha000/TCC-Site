@@ -12,49 +12,12 @@
   background-color: rgba(0,0,0,0.3); 
 }
 
-#help{
-  font-family: 'Courier New', Courier, monospace;
-  text-align: justify;
-  color: #00ffff;
-  background-color: rgba(0,0,0,0.6);
-  margin: auto;
-  border: 1px solid #888;
-  width: 80%;
-  height: 88%;
+div.ui-widget-overlay, div.ui-widget-content{
+	opacity: 0.8;
+	background-color: black;
 }
 
-#help_content{
-	padding: 20px;
-}
-
-#help h1{
-	margin-top: 0;
-}
-
-#help_header{
-	display: flex;
-	padding: 10px;
-	justify-content: space-between;
-	background-color: #00ffff;
-	color: black
-}
-
-.close_modal {
-	color: #aaaaaa;
-	font-size: 40px;
-	width: 30px;
-	height: 30px;
-	border-radius: 15px;
-	padding: 3px;
-}
-  
-		.close_modal:hover,
-		.close_modal:focus {
-			color: #000;
-			text-decoration: none;
-			cursor: pointer;
-		}
-
-#diagram{
-	margin-top: 0;
+div.ui-dialog .ui-dialog-titlebar-close{
+	background-color: red;
+	border: 0;
 }

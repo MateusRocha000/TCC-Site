@@ -24,8 +24,27 @@
 	position: absolute;
 	width: auto;
 	height: auto;
-	
 	margin: 0;
+}
+
+.item table{
+	border-collapse: separate;
+	border-spacing: 20px;
+	width: 100%;
+}
+
+.item th{
+	border: 1px solid black;
+	background-color: #00ffff;
+	width: 100px;
+	height: 100px;
+}
+
+.item td {
+	border: 1px solid black;
+	background-color: #00ffff;
+	width: 150px;
+	height: 200px;
 }
 
 .level-one{
@@ -135,6 +154,10 @@
 	height: 50%;
 	padding: 1em;
 	z-index: 50;
+}
+
+.pos_six{
+	border: 1px solid black;
 }
 
 .speech-bubble {
