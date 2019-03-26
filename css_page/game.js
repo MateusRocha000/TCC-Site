@@ -1,5 +1,13 @@
+//Nível atual
 let cur_level = 1;
+
+//Vetor onde serão salvas as respostas do usuário (caso corretas)
 let answer = [];
+
+//Vetor que indica quais níveis foram cumpridos
+let level_cleared = [];
+
+//Informações de cada nível
 let levels = [
 	{
 			id: '1',
@@ -9,7 +17,8 @@ let levels = [
 			item: '<p>Olá</p>',
 			sel_init: 'p{',
 			sel_end: '}',
-			style: 'one'
+			style: 'one',
+			help: 'O seletor é utilizado para indicar para a página que um elemento HTML está recebendo um estilo com certas propriedades definidas. A regra é definida com o nome da regra com as propriedades recebendo seus possíveis valores entre chaves, como:\np{\n   font-size: 25px;\n}\n\nNo exemplo acima, é alterado o tamanho da fonte de um parágrafo.'
 	},
 	{
 			id: '2',
@@ -19,7 +28,8 @@ let levels = [
 			item: '<p id=\"ola\">Olá</p>',
 			sel_init: '#ola{',
 			sel_end: '}',
-			style: 'two'
+			style: 'two',
+			help: 'A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de \"#\". Portanto, a regra é feita da seguinte maneira: \n#nome_do_id{\n   font-size: 25px;\n}'
 	},
 	{
 			id: '3',
@@ -29,28 +39,52 @@ let levels = [
 			item: '<p class=\"ola\">Olá</p>      <p class=\"ola\">Entre</p>',
 			sel_init: '.ola{',
 			sel_end: '}',
-			style: 'three'
+			style: 'three',
+			help: 'As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de \"#\" colocamos \".\" no lugar: \n#nome_da_classe{\n   font-size: 25px;\n}'
 	}
 ];
 
-let count = Object.keys(levels).length;
-let key = Object.values(levels[cur_level-1].id);
+//Variável auxiliar que pega a quantidade de níveis
+let num_levels = Object.keys(levels).length;
 
 $(window).on("load", loadLevel(cur_level));
 
+//Salva os níveis concluídos antes de sair da página caso deem refresh na página
+//Mas caso deem refresh de novo, os níveis concluídos são perdidos (Mudar para MongoDB??)
+$(window).on("beforeunload", function(){
+	localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared));
+});
+
 function hasClass(el, className) {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+}
+
+//Função auxiliar para verificar se um elemento está contido em um array
+function hasValue(el, array){
+	let exists = false;
+	for(let i = 0; i < array.length; i++)
+	{
+		if(el == array[i])
+		{
+			exists = true;
+			break;
+		}	
+	}
+	return exists;
 }
 
 function loadLevel(level)
 {
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").textContent = levels[level-1].instr;
+	document.querySelector("#dialog").textContent = levels[level-1].help;
+	document.querySelector("#about").innerHTML = '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML. Com ela é possível alterar a cor de fundo, tamanho da fonte, posição dos elementos e muitas outras coisas.</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves. </p><p>Há muitas propriedades que são possíveis de alterar, como: largura (width), altura (height), cor de fundo (background-color), e muito mais.</p>';
 	document.querySelector("#before").textContent = levels[level-1].before;
 	document.querySelector(".current").innerHTML = level;
-	document.querySelector(".total").innerHTML = count;
+	document.querySelector(".total").innerHTML = num_levels;
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
 	document.querySelector("#next_btn").disabled = true;
+	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = levels[level-1].item;
 
@@ -91,7 +125,7 @@ function loadLevel(level)
 		document.querySelector("#button1").disabled = true;
 		document.querySelector("#button2").disabled = false;
 	}
-	else if(level === count)
+	else if(level === num_levels)
 	{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
@@ -120,6 +154,11 @@ $(function(){
 		localStorage.clear();
 	});
 
+	//Limpa a área de texto do código
+	$("#clear_text").on("click", function(){
+		$("textarea").val('');
+	});
+
 	$("#next_btn").on("click", function(){
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
@@ -130,7 +169,7 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level < count)
+				if(cur_level < num_levels)
 				{
 					cur_level++;
 					loadLevel(cur_level);
@@ -162,9 +201,8 @@ $(function(){
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
 
-		if($.inArray(level.tag_init, answer) !== -1 && $.inArray(level.tag_end, answer) !== -1)
-		{
-			levelMarker.addClass('solved');
+		if (hasValue(level.id, localStorage.getItem('level_cleared_css'))) {
+			levelMarker.addClass('cleared');
 		}
 
 		levelMarker.appendTo('#levels');
@@ -183,7 +221,7 @@ $(function(){
 		document.querySelector('#board').classList.add('fadeOut');
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(function(){
-			loadLevel(level)
+			loadLevel(level);
 		}, 1000);
 	});
 
@@ -201,7 +239,7 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level !== count)
+				if(cur_level !== num_levels)
 				{
 					document.querySelector("#button2").disabled = false;
 					cur_level++;
@@ -214,14 +252,16 @@ $(function(){
 	$("#check").on("click", function(){
 		let text = $("textarea").val();
 		let lines = text.split('\n');
+		console.log(lines);
 		let aux_rule, aux_prop = [], aux_value = [], temp;
 		answer[cur_level-1] = text;
 		let properties = '';
 
 		if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
 		{
-			for(let i = 0; i < lines.length; i++)
+			for(let i = 1; i < lines.length-1; i++)
 			{
+				console.log(lines[i]);
 				if(lines[i].indexOf(";") > -1)
 				{
 					aux_rule = lines[i].split(";")[0];
@@ -231,7 +271,6 @@ $(function(){
 						setTimeout(function(){
 							document.querySelector(".speech-bubble").remove();
 						}, 2000);
-						$("textarea").val('');
 						return;
 					}
 					else
@@ -249,7 +288,6 @@ $(function(){
 					setTimeout(function(){
 						document.querySelector(".speech-bubble").remove();
 					}, 2000);
-					$("textarea").val('');
 					return;
 				}
 			}
@@ -259,6 +297,7 @@ $(function(){
 				for(let i = 0; i < lines.length - 1; i++)
 				{
 					try{
+
 						$("p").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
@@ -266,7 +305,6 @@ $(function(){
 						setTimeout(function(){
 							document.querySelector(".speech-bubble").remove();
 						}, 2000);
-						$("textarea").val('');
 						return;
 					}
 				}
@@ -284,7 +322,6 @@ $(function(){
 						setTimeout(function(){
 							document.querySelector(".speech-bubble").remove();
 						}, 2000);
-						$("textarea").val('');
 						return;
 					}
 				}
@@ -302,7 +339,6 @@ $(function(){
 						setTimeout(function(){
 							document.querySelector(".speech-bubble").remove();
 						}, 2000);
-						$("textarea").val('');
 					}
 				}
 			}
@@ -313,7 +349,6 @@ $(function(){
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
-			$("textarea").val('');
 		}
 		else if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) == -1 && text !== 'undefined')
 		{
@@ -321,7 +356,6 @@ $(function(){
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
-			$("textarea").val('');
 		}
 		else{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
@@ -329,36 +363,41 @@ $(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
 		}
-
-		/* if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
-		{
-			localStorage.setItem('answer',JSON.stringify(answer));
-			var tmpString1 = $("textarea").val().split("{");
-			var tmpString2 = tmpString1[1].trim().split(":");
-			var tmpString3 = tmpString2[1].trim().split(";");
-		
-			var prop = tmpString2[0];
-			var value = tmpString3[0];
-		
-			if(cur_level == 1 && tmpString1[0].indexOf('p') > -1)
-				$("p").css(prop,value);
-			else if (cur_level == 2 && tmpString1[0].indexOf('#') > -1)
-				$("#ola").css(prop,value);
-			else if (cur_level == 3 && tmpString1[0].indexOf('.') > -1)
-				$(".ola").css(prop,value);
-		} */
-		
-
+		let current_lvl = cur_level-1;
+		$('[data-level=' + current_lvl + ']').addClass('cleared');
+		answer[cur_level-1] = text;
+		level_cleared[cur_level-1] = cur_level;
+		localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared));
+		localStorage.setItem('answer_css',JSON.stringify(answer));
+		document.querySelector("#next_btn").classList = 'btn btn-success';
 		document.querySelector("#next_btn").disabled = false;
 	});
 
-	let modal = document.querySelector("#help_body");
-
-	$("#help_btn").on('click', function(){
-		modal.style.display = "block";
+	$("#dialog").dialog({
+		autoOpen : false,
+		modal : true, 
+		show : "blind", 
+		hide : "blind",
+		minWidth: 1000,
+		minHeight: 'auto'	
 	});
 
-	$(".close_modal").on('click', function(){
-		modal.style.display = "none";
+	$("#about").dialog({
+		autoOpen : false,
+		modal : true, 
+		show : "blind", 
+		hide : "blind",
+		minWidth: 1000,
+		minHeight: 'auto'	
+	});
+
+	$("#help_btn").on('click', function(){
+		$("#dialog").dialog('open');
+		return false;
+	});
+
+	$("#css_about_btn").on('click', function(){
+		$("#about").dialog('open');
+		return false;
 	});
 });

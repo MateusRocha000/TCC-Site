@@ -184,6 +184,12 @@ button {
 	bottom: 0.5em;
 }
 
+#clear_text{
+	position: absolute;
+	left: 220px;
+	bottom: 0.5em;
+}
+
 #next_btn.disabled {
 	opacity: 0.5;
 	cursor: context-menu;
@@ -270,6 +276,11 @@ button {
 	opacity: 1;
 }
 
+#css_about_btn{
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
 textarea{
     display: block;
 	width: calc(100% - 30px);
@@ -282,6 +293,7 @@ textarea{
     outline: none;
     resize: none;
 	overflow: auto;
+	word-wrap: break-word;
 }
 
 .line-numbers {
@@ -338,6 +350,7 @@ textarea{
 	border-color: rgba(255, 255, 255, 0.5);
 }
   
-.level-marker.solved {
-	background-color: #228B24;
+.cleared{
+	background-color: green;
+	color: white;
 }

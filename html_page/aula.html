@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="view_screen.css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 
@@ -50,22 +51,12 @@
 
 				
 			</div>
-			<div id="tooltip_quit">
-				<a class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'">Sair</a>
-				<span class="tt_content_quit">Volta para o menu principal</span>
-			</div>
-			<div id="tooltip_clear">
-				<a class="btn btn-warning" id="clear_storage">Limpar</a>
-				<span class="tt_content_clear">Limpa as respostas salvas</span>
-			</div>
-			<div id="tooltip_check">
-				<div id="check" class="btn btn-success" method="POST" action="/answer">Testar</div>
-				<span class="tt_content_check">Testa o seu código</span>
-			</div>
-			<div id="tooltip_next">
-				<button class="btn btn-primary" id="next_btn">Próximo</button>
-				<span class="tt_content_next">Avança para a próxima atividade</span>
-			</div>
+
+			<button class="btn btn-danger" id="quit_btn" onclick="window.location.href='../index.html'">Sair</button>
+			<button class="btn btn-warning" id="clear_storage">Resetar</button>
+			<button id="check" class="btn btn-primary" method="POST" action="/answer">Testar</button>
+			<button class="btn btn-info" id="clear_text">Limpar</button>
+			<button id="next_btn">Próximo</button>
 			
 		</div>
 		

@@ -38,7 +38,7 @@ let levels = [
 		before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<img',
-		tag_end: '/>',
+		tag_end: '>',
 		style: 'three',
 		help: 'A tag de imagem <img> adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores. Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como: \n\n<img src=\"nome_da_imagem.jpg\">.\n\nCaso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:\n\n<img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"'
 	},
@@ -127,9 +127,29 @@ let num_levels = Object.keys(levels).length;
 //Carrega o nível ao carregar a página
 $(window).on("load", loadLevel(cur_level));
 
+//Salva os níveis concluídos antes de sair da página caso deem refresh na página
+//Mas caso deem refresh de novo, os níveis concluídos são perdidos (Mudar para MongoDB??)
+$(window).on("beforeunload", function(){
+	localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+});
+
 //Função auxiliar para verificar se uma classe está atribuída à um elemento do HTML
 function hasClass(el, className) {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+}
+
+//Função auxiliar para verificar se um elemento está contido em um array
+function hasValue(el, array){
+	let exists = false;
+	for(let i = 0; i < array.length; i++)
+	{
+		if(el == array[i])
+		{
+			exists = true;
+			break;
+		}	
+	}
+	return exists;
 }
 
 //Função que carrega as informações de cada nível
@@ -145,6 +165,7 @@ function loadLevel(level)
 	document.querySelector(".total").innerHTML = num_levels;
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
 	document.querySelector("#next_btn").disabled = true;
+	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = '';
 	
@@ -180,7 +201,12 @@ function loadLevel(level)
 	document.querySelector('#board').classList.add('animated_fadein');
 
 	//Condicionais para carregar o tamanho da área de texto dos níveis
-	if(level == 5)
+	if(level == 2)
+	{
+		document.querySelector("textarea").classList = 'text_two';
+		document.querySelector("#pc_screen").classList = 'pc_screen_two';
+	}
+	else if(level == 5)
 	{
 		document.querySelector("textarea").classList = 'text_five';
 	}
@@ -212,14 +238,28 @@ function loadLevel(level)
 	}
 };
 
+function checkImageExists(image, callBack)
+{
+	let imgData = new Image();
+	imgData.onload = function(){
+		callBack(true);
+	};
+	imgData.onerror = function(){
+		callBack(false);
+	};
+	imgData.src = image;
+}
 
 $(function(){
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
-	let new_line_level_five = 3, new_line_level_six = 4;
+	let new_line_level_two = 3, new_line_level_five = 3, new_line_level_six = 4;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
 
-		if((e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) || (e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) || (e.keyCode == 13 && (cur_level !== 5 && cur_level !== 6)))
+		if(	(e.keyCode == 13 && cur_level == 2 && newLines >= new_line_level_two) || 
+			(e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) || 
+			(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) || 
+			(e.keyCode == 13 && (cur_level !== 2 && cur_level !== 5 && cur_level !== 6)))
 		{
 			return false;
 		}
@@ -229,6 +269,11 @@ $(function(){
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
 		localStorage.clear();
+	});
+
+	//Limpa a área de texto do código
+	$("#clear_text").on("click", function(){
+		$("textarea").val('');
 	});
 	
 	//Muda de nível caso o atual tenha sido concluído adicionando animação de fadeOut
@@ -276,7 +321,7 @@ $(function(){
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
 
-		if ($.inArray(level.id, level_cleared) !== -1) {
+		if (hasValue(level.id, localStorage.getItem('level_cleared_html'))) {
 			levelMarker.addClass('cleared');
 		}
 
@@ -335,13 +380,29 @@ $(function(){
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
 		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
+			if(cur_level === 3)
+			{
+				let aux = text.split("\"");
+				let src = aux[1].split("\"");
+				checkImageExists(src[0], function(existsImage){
+					if(existsImage == false)
+					{
+						console.log(src[0]);
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Imagem não encontrada.</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+					}
+				});
+			}
 			document.querySelector(".item").innerHTML = text;
-			answer[cur_level-1] = text;
-			level_cleared[cur_level-1] = cur_level;
+			document.querySelector("#next_btn").classList = 'btn btn-success';
 			let current_lvl = cur_level-1;
 			$('[data-level=' + current_lvl + ']').addClass('cleared');
-			localStorage.setItem('level_cleared', JSON.stringify(level_cleared));
-			localStorage.setItem('answer',JSON.stringify(answer));
+			answer[cur_level-1] = text;
+			level_cleared[cur_level-1] = cur_level;
+			localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+			localStorage.setItem('answer_html',JSON.stringify(answer));
 			document.querySelector("#next_btn").disabled = false;
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
@@ -351,7 +412,6 @@ $(function(){
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
-			$("textarea").val('');
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
 		else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
@@ -360,7 +420,6 @@ $(function(){
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
-			$("textarea").val('');
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
 		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
@@ -369,7 +428,6 @@ $(function(){
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
-			$("textarea").val('');
 		}
 		//Habilita o botão de próximo para avançar um nível
 		document.querySelector("#next_btn").disabled = false;

@@ -91,11 +91,12 @@
 }
 
 .pos_two{
+	font-family: 'Permanent Marker', cursive;
 	text-align: justify;
-	width: 340px;
+	width: 300px;
 	font-size: 20px;
-	top: 22.5em;
-	left: 12.5em;
+	top: 20em;
+	left: 11.5em;
 	z-index: 50;
 }
 

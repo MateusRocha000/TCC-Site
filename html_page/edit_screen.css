@@ -1,3 +1,7 @@
+textarea{
+	word-wrap: break-word;
+}
+
 #title {
 	font-family: 'Luckiest Guy';
 	font-size: 40px;
@@ -93,6 +97,19 @@
 			cursor: context-menu;
 		}
 
+.pc_screen_two {
+	height: 395px;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
 .pc_screen_five {
 	height: 500px;
 	position: relative;
@@ -175,86 +192,31 @@
 	bottom: 0.5em;
 }
 
+#clear_text{
+	position: absolute;
+	left: 220px;
+	bottom: 0.5em;
+}
+
 #quit_btn {
 	position: absolute;
 	left: 30px;
 	bottom: 0.5em;
 }
 
-#tooltip_quit .tt_content_quit,
-#tooltip_clear .tt_content_clear,
-#tooltip_check .tt_content_check,
-#tooltip_next .tt_content_next{
-	visibility: hidden;
-	width: auto;
-	background-color: #555;
-	color: #fff;
-	text-align: center;
-	padding: 5px;
-	border-radius: 6px;
-	position: absolute;
-	z-index: 1;
-	margin-left: -60px;
-	opacity: 0;
-	transition: opacity 0.3s;
+.text_two{
+	display: block;
+	width: calc(100% - 30px);
+	height: 85px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
 }
-
-#tooltip_quit .tt_content_quit{
-	bottom: 12.5%;
-	left: 10%;
-}
-
-#tooltip_clear .tt_content_clear{
-	bottom: 12.5%;
-	left: 25%;
-}
-
-#tooltip_check .tt_content_check{
-	bottom: 12.5%;
-	left: 75%;
-}
-
-#tooltip_next .tt_content_next{
-	bottom: 12.5%;
-	left: 65%;
-}
-
-		#tooltip_quit .tt_content_quit::after,
-		#tooltip_clear .tt_content_clear::after,
-		#tooltip_check .tt_content_check::after,
-		#tooltip_next .tt_content_next::after{
-			content: "";
-			position: absolute;
-			top: 100%;
-			margin-left: -5px;
-			border-width: 5px;
-			border-style: solid;
-			border-color: #555 transparent transparent transparent;
-		}
-
-		#tooltip_quit .tt_content_quit::after{
-			left: 20%;
-		}
-
-		#tooltip_clear .tt_content_clear::after{
-			left: 10%;
-		}
-
-		#tooltip_check .tt_content_check::after{
-			left: 30%;
-		}
-
-		#tooltip_next .tt_content_next::after{
-			left: 90%;
-		}
-
-		#tooltip_quit:hover .tt_content_quit,
-		#tooltip_clear:hover .tt_content_clear,
-		#tooltip_check:hover .tt_content_check,
-		#tooltip_next:hover .tt_content_next{
-			visibility: visible;
-			opacity: 1;
-		}
 
 .text_else{
     display: block;
