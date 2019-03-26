@@ -34,7 +34,7 @@ let levels = [
 	{
 		id: '3',
 		name: 'Tag de imagem: <img>',
-		instr: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros.',
+		instr: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros. Para isso, use a imagem do caminho: ',
 		before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<img',
@@ -209,6 +209,7 @@ function loadLevel(level)
 	else if(level == 5)
 	{
 		document.querySelector("textarea").classList = 'text_five';
+		document.querySelector("#pc_screen").classList = 'pc_screen_five';
 	}
 	else if(level == 6)
 	{
