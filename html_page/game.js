@@ -12,7 +12,7 @@ let levels = [
 	{
 		id: '1',
 		name: 'Tag de título: <h1>',
-		instr: 'Nossa cidade precisa de uma mensagem de boas vindas. Utilize a tag para criar essa mensagem para a entrada da nossa cidade.',
+		instr: 'Nossa cidade precisa do nome na entrada. Utilize a tag para colocar o nome \"Web City\" para a entrada da nossa cidade.',
 		before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<h1>',
@@ -23,7 +23,7 @@ let levels = [
 	{
 		id: '2',
 		name: 'Tag de parágrafo: <p>',
-		instr: 'Use a tag para criar uma mensagem de boas vindas.',
+		instr: 'Use a tag para criar uma mensagem de boas vindas na placa.',
 		before: "<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n",
 		after: '   </body>\n</html>',
 		tag_init: '<p>',
