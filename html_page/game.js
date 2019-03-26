@@ -18,7 +18,7 @@ let levels = [
 		tag_init: '<h1>',
 		tag_end: '</h1>',
 		style: 'one',
-		help: 'A tag <h1></h1> é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página. Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: <h2>, <h3>, etc.',
+		help: '<p>A tag &lt;h1&gt;&lt;/h1&gt; é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página.</p> <p>Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: &lt;h2&gt;, &lt;h3&gt;, etc.</p>',
 	},
 	{
 		id: '2',
@@ -29,7 +29,7 @@ let levels = [
 		tag_init: '<p>',
 		tag_end: '</p>',
 		style: 'two',
-		help: 'A tag de parágrafo <p></p> é utilizada para indicar que seu texto pertence ao parágrafo da página. Sempre que quiser adicionar um novo parágrafo, basta iniciar novamente a tag.'
+		help: '<p>A tag de parágrafo &lt;p&gt;&lt;/p&gt; é utilizada para indicar que seu texto pertence ao parágrafo da página.</p> <p>Sempre que quiser adicionar um novo parágrafo, basta iniciar novamente a tag.</p>'
 	},
 	{
 		id: '3',
@@ -40,7 +40,7 @@ let levels = [
 		tag_init: '<img',
 		tag_end: '>',
 		style: 'three',
-		help: 'A tag de imagem <img> adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores. Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como: \n\n<img src=\"nome_da_imagem.jpg\">.\n\nCaso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:\n\n<img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"'
+		help: '<p>A tag de imagem &lt;img&gt; adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores.</p> <p>Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como:</p> <p>&lt;img src=\"nome_da_imagem.jpg\"&gt;.</p><p>Caso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:</p><p>&lt;img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"&gt;</p>'
 	},
 	{
 		id: '4',
@@ -51,7 +51,7 @@ let levels = [
 		tag_init: '<button>',
 		tag_end: '</button>',
 		style: 'four',
-		help: 'A tag <button> insere um botão na página que pode executar alguma função que deseje. Essa função é chamada quando o botão é clicado. Ao criar um botão, você pode colocar um nome para o mesmo que indicará o que ele faz: <button>Botão</button>'
+		help: '<p>A tag &lt;button&gt; insere um botão na página que pode executar alguma função que deseje. Essa função é chamada quando o botão é clicado.</p> <p>Ao criar um botão, você pode colocar um nome para o mesmo que indicará o que ele faz: &lt;button&gt;Botão&lt;/button&gt;'
 	},
 	{
 		id: '5',
@@ -62,7 +62,7 @@ let levels = [
 		tag_init: '<ul>',
 		tag_end: '</ul>',
 		style: 'five',
-		help: 'Estas tags criam uma lista com, ou sem, subitens. A tag <ul> cria a lista, enquanto a <li> indica os itens da lista.\n<ul>Lista\n   <li>Item 1</li>\n   <li>Item 2</li>\n   <li>Item 3</li>\n</ul>'
+		help: '<p>Estas tags criam uma lista com, ou sem, subitens. A tag &lt;ul&gt; cria a lista, enquanto a &lt;li&gt; indica os itens da lista.</p><p>&lt;ul&gt;Lista</p><p>&nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 3&lt;/li&gt;</p><p>&lt;/ul&gt;</p>'
 	},
 	{
 		id: '6',
@@ -73,18 +73,18 @@ let levels = [
 		tag_init: '<table>',
 		tag_end: '</table>',
 		style: 'six',
-		help: 'A tag <table> cria uma tabela e as tags <tr>, <th>, <td> criam os elementos da tabela, onde <tr> é referente à linha da tabela, <th> ao título da coluna e <td> ao dado da célula da tabela.\n\n<table>\n  <tr><th>Cabeçalho</th></tr>\n  <tr><td>Elemento 1</td></tr>\n  <tr><td>Elemento 2</td></tr>\n</table>'
+		help: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p>'
 	},
 	{
 		id: '7',
 		name: 'Classes',
-		instr: 'Classe para tags da página. ',
+		instr: 'Classe para tags da página. Crie as quatro lâmpadas com classe para termos iluminação novamente.',
 		before: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: 'class=\"',
 		tag_end: '\"',
 		style: 'seven',
-		help: 'Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS. Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele: <nome_da_tag class=\"nome_da_classe\">'
+		help: '<p>Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS.</p> <p>Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele:</p> <p>&lt;nome_da_tag class=\"nome_da_classe\"&gt;</p>'
 	},
 	{
 		id: '8',
@@ -95,29 +95,40 @@ let levels = [
 		tag_init: 'id=\"',
 		tag_end: '\"',
 		style: 'eight',
-		help: 'Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão. Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador \"id\" e atribuir um nome para ele: <nome_da_tag id=\"nome_do_id\"&gt.'
+		help: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador \"id\" e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=\"nome_do_id\"&gt</p>'
 	},
 	{
 		id: '9',
+		name: 'Tag de divisão: <div>',
+		instr: '',
+		before: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
+		after: '   </body>\n</html>',
+		tag_init: '<div>',
+		tag_end: '</div>',
+		style: 'nine',
+		help: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando \"id\" e/ou \"class\", e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=\"id_da_div\"&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
+	},
+	{
+		id: '10',
 		name: 'Tag de comentário: <!-- -->',
 		instr: 'Tag de comentário para a página',
 		before: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<!--',
 		tag_end: '-->',
-		style: 'nine',
-		help: 'Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado. Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso. Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.'
+		style: 'ten',
+		help: '<p>Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado.</p> <p>Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso.</p> <p>Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.</p>'
 	},
 	{
-		id: '10',
+		id: '11',
 		name: 'Tag de link: <a>',
 		instr: ' Crie um link para a página de CSS (webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
 		before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<a',
 		tag_end: '</a>',
-		style: 'ten',
-		help: 'A tag <a> cria um link para uma página, atribuindo o link da página ao atributo \"href\". Assim, ao clicar nele, você é redirecionado àquela página.'
+		style: 'eleven',
+		help: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo \"href\". Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=\"link_da_página\"&gt;Nome do link&lt;/a&gt;'
 	}
 ];
 
@@ -157,8 +168,8 @@ function loadLevel(level)
 {
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").textContent = levels[level-1].instr;
-	document.querySelector("#dialog").textContent = levels[level-1].help;
-	document.querySelector("#about").innerHTML = '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
+	document.querySelector("#dialog").innerHTML = levels[level-1].help;
+	document.querySelector("#about").innerHTML = '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
 	document.querySelector("#before").textContent = levels[level-1].before;
 	document.querySelector("#after").textContent = levels[level-1].after;
 	document.querySelector(".current").innerHTML = level;
