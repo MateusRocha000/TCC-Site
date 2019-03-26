@@ -1,6 +1,6 @@
 #view_screen {
 	position: relative;
-	width: 50%;
+	width: 50vw;
 	height: auto;
 }
 
@@ -14,22 +14,16 @@
 	padding: 1em;
 }
 
-
-
 .background{
 	display: flex;
 	z-index: 30;
 }
-
-
 
 .item {
 	display: flex;
 	position: absolute;
 	z-index: 50;
 }
-
-
 
 .level-one{
 	background-size : 50% 50%;
