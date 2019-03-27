@@ -122,7 +122,7 @@ let levels = [
 	{
 		id: '11',
 		name: 'Tag de link: <a>',
-		instr: ' Crie um link para a página de CSS (webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
+		instr: ' Crie um link para a página de CSS (https://webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
 		before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 		after: '   </body>\n</html>',
 		tag_init: '<a',
