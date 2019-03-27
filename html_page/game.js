@@ -138,12 +138,6 @@ let num_levels = Object.keys(levels).length;
 //Carrega o nível ao carregar a página
 $(window).on("load", loadLevel(cur_level));
 
-//Salva os níveis concluídos antes de sair da página caso deem refresh na página
-//Mas caso deem refresh de novo, os níveis concluídos são perdidos (Mudar para MongoDB??)
-$(window).on("beforeunload", function(){
-	localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
-});
-
 //Função auxiliar para verificar se uma classe está atribuída à um elemento do HTML
 function hasClass(el, className) {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
@@ -179,13 +173,6 @@ function loadLevel(level)
 	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = '';
-	
-	//Se a página está sendo visitada pela primeira vez, mostra modal de ajuda e marca como visitada
-	if(localStorage.getItem('visited') == null)
-	{
-		document.querySelector("#help_body").style.display = "block";
-		localStorage.setItem('visited',true);
-	}
 
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
 	if(answer[level-1] !== '' && answer[level-1] !== undefined)
@@ -277,10 +264,14 @@ $(function(){
 		}
 	});
 
-	//Limpa as respostas salvas
+	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
-		localStorage.clear();
+		localStorage.removeItem('level_cleared_html');
+		localStorage.removeItem('answer_html');
+		setTimeout(function(){
+			location.reload();
+		}, 1000);
 	});
 
 	//Limpa a área de texto do código
@@ -333,10 +324,13 @@ $(function(){
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
 
-		if (hasValue(level.id, localStorage.getItem('level_cleared_html'))) {
-			levelMarker.addClass('cleared');
+		if(localStorage.getItem('level_cleared_html') !== null)
+		{
+			if (hasValue(level.id, localStorage.getItem('level_cleared_html'))) {
+				levelMarker.addClass('cleared');
+			}
 		}
-
+		
 		levelMarker.appendTo('#levels');
 	});
 

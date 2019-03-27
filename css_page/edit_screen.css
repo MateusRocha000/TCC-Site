@@ -180,9 +180,11 @@ button {
 }
 
 #clear_storage {
-	position: absolute;
-	left: 7vw;
-	bottom: 1vh;
+	margin-top: 10px;
+	text-align: center;
+	cursor: pointer;
+	color: black;
+	font-weight: bold;
 }
 
 #quit_btn {

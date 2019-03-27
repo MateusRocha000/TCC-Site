@@ -88,12 +88,6 @@ function loadLevel(level)
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = levels[level-1].item;
 
-	if(localStorage.getItem('visited') == null)
-	{
-		document.querySelector("#help_body").style.display = "block";
-		localStorage.setItem('visited',true);
-	}
-
 	if(answer[level-1] !== '' && levels[level-1].text !== undefined)
 	{
 		$("textarea").val(answer[level-1]);
@@ -149,9 +143,14 @@ $(function(){
 
 	});
 
+	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
 		answer.length = 0;
-		localStorage.clear();
+		localStorage.removeItem('level_cleared_css');
+		localStorage.removeItem('answer_css');
+		setTimeout(function(){
+			location.reload();
+		}, 1000);
 	});
 
 	//Limpa a área de texto do código
@@ -201,8 +200,11 @@ $(function(){
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
 
-		if (hasValue(level.id, localStorage.getItem('level_cleared_css'))) {
-			levelMarker.addClass('cleared');
+		if(localStorage.getItem('level_cleared_css') !== null)
+		{
+			if (hasValue(level.id, localStorage.getItem('level_cleared_css'))) {
+				levelMarker.addClass('cleared');
+			}
 		}
 
 		levelMarker.appendTo('#levels');
