@@ -159,6 +159,13 @@
 	border: 1px solid black;
 }
 
+.pos_ten{
+	width: 70%;
+	height: 70%;
+	padding: 1em;
+	z-index: 50;
+}
+
 .speech-bubble {
 	position: relative;
 	text-align: center;
@@ -187,3 +194,9 @@
 			margin-left: -10px;
 			z-index: 100;
 		}
+
+#pedra{
+	background-image: url('../img/ground.png');
+	background-repeat: no-repeat;
+	position: absolute;
+}

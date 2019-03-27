@@ -10,125 +10,126 @@ let level_cleared = [];
 //Informações de cada nível
 let levels = [
 	{
-		id: '1',
-		name: 'Tag de título: <h1>',
-		instr: 'Nossa cidade precisa do nome na entrada. Utilize a tag para colocar o nome \"Web City\" para a entrada da nossa cidade.',
-		before: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '1',
+		name	: 'Tag de título: <h1>',
+		instr	: 'Nossa cidade precisa do nome na entrada. Utilize a tag para colocar o nome \"Web City\" para a entrada da nossa cidade.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Título&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<h1>',
-		tag_end: '</h1>',
-		style: 'one',
-		help: '<p>A tag &lt;h1&gt;&lt;/h1&gt; é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página.</p> <p>Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: &lt;h2&gt;, &lt;h3&gt;, etc.</p>',
+		tag_end	: '</h1>',
+		style	: 'one',
+		help	: '<p>A tag &lt;h1&gt;&lt;/h1&gt; é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página.</p> <p>Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: &lt;h2&gt;, &lt;h3&gt;, etc.</p>',
 	},
 	{
-		id: '2',
-		name: 'Tag de parágrafo: <p>',
-		instr: 'Use a tag para criar uma mensagem de boas vindas na placa.',
-		before: "<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n",
-		after: '   </body>\n</html>',
+		id		: '2',
+		name	: 'Tag de parágrafo: <p>',
+		instr	: 'Use a tag para criar uma mensagem de boas vindas na placa.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Parágrafo&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<p>',
-		tag_end: '</p>',
-		style: 'two',
-		help: '<p>A tag de parágrafo &lt;p&gt;&lt;/p&gt; é utilizada para indicar que seu texto pertence ao parágrafo da página.</p> <p>Sempre que quiser adicionar um novo parágrafo, basta iniciar novamente a tag.</p>'
+		tag_end	: '</p>',
+		style	: 'two',
+		help	: '<p>A tag de parágrafo &lt;p&gt;&lt;/p&gt; é utilizada para indicar que seu texto pertence ao parágrafo da página.</p> <p>Sempre que quiser adicionar um novo parágrafo, basta iniciar novamente a tag.</p>'
 	},
 	{
-		id: '3',
-		name: 'Tag de imagem: <img>',
-		instr: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros. Para isso, use a imagem do caminho: ',
-		before: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '3',
+		name	: 'Tag de imagem: <img>',
+		instr	: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros. Para isso, use a imagem do caminho: ',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Imagem&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<img',
-		tag_end: '>',
-		style: 'three',
-		help: '<p>A tag de imagem &lt;img&gt; adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores.</p> <p>Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como:</p> <p>&lt;img src=\"nome_da_imagem.jpg\"&gt;.</p><p>Caso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:</p><p>&lt;img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"&gt;</p>'
+		tag_end	: '>',
+		style	: 'three',
+		help	: '<p>A tag de imagem &lt;img&gt; adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores.</p> <p>Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como:</p> <p>&lt;img src=\"nome_da_imagem.jpg\"&gt;.</p><p>Caso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:</p><p>&lt;img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"&gt;</p>'
 	},
 	{
-		id: '4',
-		name: 'Tag de botão: <button>',
-		instr: 'Precisamos de um novo botão de alarme para aviso de invasões. Consegue criar para nós?',
-		before: '<html>\n   <head>\n     <title>Botão</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '4',
+		name	: 'Tag de botão: <button>',
+		instr	: 'Precisamos de um novo botão de alarme para aviso de invasões. Consegue criar para nós?',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Botão&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<button>',
-		tag_end: '</button>',
-		style: 'four',
-		help: '<p>A tag &lt;button&gt; insere um botão na página que pode executar alguma função que deseje. Essa função é chamada quando o botão é clicado.</p> <p>Ao criar um botão, você pode colocar um nome para o mesmo que indicará o que ele faz: &lt;button&gt;Botão&lt;/button&gt;'
+		tag_end	: '</button>',
+		style	: 'four',
+		help	: '<p>A tag &lt;button&gt; insere um botão na página que pode executar alguma função que deseje. Essa função é chamada quando o botão é clicado.</p> <p>Ao criar um botão, você pode colocar um nome para o mesmo que indicará o que ele faz: &lt;button&gt;Botão&lt;/button&gt;'
 	},
 	{
-		id: '5',
-		name: 'Tags de lista: <ul> e <li>',
-		instr: 'Muitos dos ingredientes que tínhamos foi perdido. Crie uma lista de compras para o restaurante.',
-		before: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '5',
+		name	: 'Tags de lista: <ul> e <li>',
+		instr	: 'Muitos dos ingredientes que tínhamos foi perdido. Crie uma lista de compras para o restaurante.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Lista&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<ul>',
-		tag_end: '</ul>',
-		style: 'five',
-		help: '<p>Estas tags criam uma lista com, ou sem, subitens. A tag &lt;ul&gt; cria a lista, enquanto a &lt;li&gt; indica os itens da lista.</p><p>&lt;ul&gt;Lista</p><p>&nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 3&lt;/li&gt;</p><p>&lt;/ul&gt;</p>'
+		tag_end	: '</ul>',
+		style	: 'five',
+		help	: '<p>Estas tags criam uma lista com, ou sem, subitens. A tag &lt;ul&gt; cria a lista, enquanto a &lt;li&gt; indica os itens da lista.</p><p>&lt;ul&gt;Lista</p><p>&nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 3&lt;/li&gt;</p><p>&lt;/ul&gt;</p>'
 	},
 	{
-		id: '6',
-		name: 'Tags de tabela: <table>, <tr>, <th> e <td>',
-		instr: 'A janela da prefeitura foi danificada e precisamos de outra. Use seu conhecimento para fazer uma.',
-		before: '<html>\n   <head>\n     <title>Tabela</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '6',
+		name	: 'Tags de tabela: <table>, <tr>, <th> e <td>',
+		instr	: 'A janela da prefeitura foi danificada e precisamos de outra. Use seu conhecimento para fazer uma.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Tabela&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<table>',
-		tag_end: '</table>',
-		style: 'six',
-		help: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p>'
+		tag_end	: '</table>',
+		style	: 'six',
+		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p>'
 	},
 	{
-		id: '7',
-		name: 'Classes',
-		instr: 'Classe para tags da página. Crie as quatro lâmpadas com classe para termos iluminação novamente.',
-		before: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '7',
+		name	: 'Classes',
+		instr	: 'Classe para tags da página. Crie as quatro lâmpadas com classe para termos iluminação novamente.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Classes&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: 'class=\"',
-		tag_end: '\"',
-		style: 'seven',
-		help: '<p>Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS.</p> <p>Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele:</p> <p>&lt;nome_da_tag class=\"nome_da_classe\"&gt;</p>'
+		tag_end	: '\"',
+		style	: 'seven',
+		help	: '<p>Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS.</p> <p>Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele:</p> <p>&lt;nome_da_tag class=\"nome_da_classe\"&gt;</p>'
 	},
 	{
-		id: '8',
-		name: 'Identificadores',
-		instr: 'Identificador para tags da página',
-		before: '<html>\n   <head>\n     <title>Identificadores</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '8',
+		name	: 'Identificadores',
+		instr	: 'Identificador para tags da página',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Identificadores&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: 'id=\"',
-		tag_end: '\"',
-		style: 'eight',
-		help: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador \"id\" e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=\"nome_do_id\"&gt</p>'
+		tag_end	: '\"',
+		style	: 'eight',
+		help	: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador \"id\" e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=\"nome_do_id\"&gt</p>'
 	},
 	{
-		id: '9',
-		name: 'Tag de divisão: <div>',
-		instr: '',
-		before: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '9',
+		name	: 'Tag de divisão: <div>',
+		instr	: 'Instruções sobre div',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Div&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<div>',
-		tag_end: '</div>',
-		style: 'nine',
-		help: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando \"id\" e/ou \"class\", e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=\"id_da_div\"&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
+		tag_end	: '</div>',
+		style	: 'nine',
+		help	: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando \"id\" e/ou \"class\", e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=\"id_da_div\"&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
 	},
 	{
-		id: '10',
-		name: 'Tag de comentário: <!-- -->',
-		instr: 'Tag de comentário para a página',
-		before: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '10',
+		name	: 'Tag de comentário: <!-- -->',
+		instr	: 'Os invasores bloquearam o caminho. Utilize as tags de comentário para removê-las do caminho.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Comentário&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea id="area1" type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n   &lt;div id="pedra"&gt;&lt;/div&gt;',
+		after	: '<textarea id="area2" type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<!--',
-		tag_end: '-->',
-		style: 'ten',
-		help: '<p>Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado.</p> <p>Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso.</p> <p>Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.</p>'
+		tag_end	: '-->',
+		style	: 'ten',
+		item	: '<div id="pedra"></div>',
+		help	: '<p>Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado.</p> <p>Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso.</p> <p>Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.</p>'
 	},
 	{
-		id: '11',
-		name: 'Tag de link: <a>',
-		instr: ' Crie um link para a página de CSS (https://webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
-		before: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
-		after: '   </body>\n</html>',
+		id		: '11',
+		name	: 'Tag de link: <a>',
+		instr	: ' Crie um link para a página de CSS (https://webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
+		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Link&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
+		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
 		tag_init: '<a',
-		tag_end: '</a>',
-		style: 'eleven',
-		help: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo \"href\". Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=\"link_da_página\"&gt;Nome do link&lt;/a&gt;'
+		tag_end	: '</a>',
+		style	: 'eleven',
+		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo \"href\". Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=\"link_da_página\"&gt;Nome do link&lt;/a&gt;'
 	}
 ];
 
@@ -160,25 +161,37 @@ function hasValue(el, array){
 //Função que carrega as informações de cada nível
 function loadLevel(level)
 {
-	document.querySelector("#title").textContent = levels[level-1].name;
-	document.querySelector("#instr").textContent = levels[level-1].instr;
-	document.querySelector("#dialog").innerHTML = levels[level-1].help;
-	document.querySelector("#about").innerHTML = '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
-	document.querySelector("#before").textContent = levels[level-1].before;
-	document.querySelector("#after").textContent = levels[level-1].after;
-	document.querySelector(".current").innerHTML = level;
-	document.querySelector(".total").innerHTML = num_levels;
+	document.querySelector("#title").textContent 	= levels[level-1].name;
+	document.querySelector("#title").classList		= 'title_else';
+	document.querySelector("#instr").textContent 	= levels[level-1].instr;
+	document.querySelector("#dialog").innerHTML 	= levels[level-1].help;
+	document.querySelector("#about").innerHTML 		= '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
+	document.querySelector("#before").innerHTML 	= levels[level-1].before;
+	document.querySelector("#after").innerHTML 		= levels[level-1].after;
+	document.querySelector(".current").innerHTML 	= level;
+	document.querySelector(".total").innerHTML 		= num_levels;
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
-	document.querySelector("#next_btn").disabled = true;
-	document.querySelector("#next_btn").classList = 'btn btn-secondary';
-	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
-	document.querySelector(".item").innerHTML = '';
+	document.querySelector("#next_btn").disabled 	= true;
+	document.querySelector("#next_btn").classList 	= 'btn btn-secondary';
+	document.querySelector(".item").classList 		= 'item pos_' + levels[level-1].style;
+	document.querySelector(".item").innerHTML 		= '';
 
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
-	if(answer[level-1] !== '' && answer[level-1] !== undefined)
+	if(answer[level-1] !== '' && answer[level-1] !== undefined && localStorage !== null)
 	{
-		$("textarea").val(answer[level-1]);
-		document.querySelector(".item").innerHTML = answer[level-1];
+		if(level == 10)
+		{
+			$("#area1").val('<!--');
+			$("#area2").val('-->');
+		}
+		else
+		{
+			$("textarea").val(answer[level-1]);
+		}
+		let ans = localStorage.getItem('answer_html');
+		setTimeout(function(){
+			document.querySelector(".item").innerHTML = JSON.parse(ans)[level-1];
+		}, 100);
 	}
 	//Remove o que usuário digitou ao mudar de nível para não permanecer na tela
 	else
@@ -201,23 +214,42 @@ function loadLevel(level)
 	//Condicionais para carregar o tamanho da área de texto dos níveis
 	if(level == 2)
 	{
-		document.querySelector("textarea").classList = 'text_two';
-		document.querySelector("#pc_screen").classList = 'pc_screen_two';
+		document.querySelector("textarea").classList 	= 'text_two';
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_two';
 	}
 	else if(level == 5)
 	{
-		document.querySelector("textarea").classList = 'text_five';
-		document.querySelector("#pc_screen").classList = 'pc_screen_five';
+		document.querySelector("textarea").classList 	= 'text_five';
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_five';
 	}
 	else if(level == 6)
 	{
-		document.querySelector("#pc_screen").classList = 'pc_screen_table';
-		document.querySelector("textarea").classList = 'text_six';
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_table';
+		document.querySelector("textarea").classList 	= 'text_six';
+		document.querySelector("#title").classList		= 'title_table';
+	}
+	else if(level == 9)
+	{
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_div';
+		document.querySelector("textarea").classList 	= 'text_nine';
+	}
+	else if(level == 10)
+	{
+		document.querySelector(".item").innerHTML 		= levels[level-1].item;
+		document.querySelector("#pedra").classList 		= 'pos_' + levels[level-1].style;
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_ten';
+		document.querySelector("#area1").classList		= 'text_ten';
+		document.querySelector("#area2").classList		= 'text_ten';
+	}
+	else if(level == num_levels)
+	{
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_eleven';
+		document.querySelector("textarea").classList 	= 'text_eleven';
 	}
 	else
 	{
-		document.querySelector("#pc_screen").classList = 'pc_screen_else';
-		document.querySelector("textarea").classList = 'text_else';
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_else';
+		document.querySelector("textarea").classList 	= 'text_else';
 	}
 	
 	//Condicionais para deixar botões de mudança de nível apenas nos níveis corretos
@@ -251,13 +283,15 @@ function checkImageExists(image, callBack)
 
 $(function(){
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
-	let new_line_level_two = 3, new_line_level_five = 3, new_line_level_six = 4;
+	let new_line_level_two = 3, 
+		new_line_level_five = 3, 
+		new_line_level_six = 4;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
 
-		if(	(e.keyCode == 13 && cur_level == 2 && newLines >= new_line_level_two) || 
-			(e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) || 
-			(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) || 
+		if(	(e.keyCode == 13 && cur_level == 2 && newLines >= new_line_level_two) 	|| 
+			(e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) 	|| 
+			(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) 	|| 
 			(e.keyCode == 13 && (cur_level !== 2 && cur_level !== 5 && cur_level !== 6)))
 		{
 			return false;
@@ -366,75 +400,96 @@ $(function(){
 		}
 		document.querySelector('#board').classList.add('fadeOut');
 		document.querySelector('#board').classList.add('animated_fadeout');
-		setTimeout(
-			function(){
-				if(cur_level !== num_levels)
-				{
-					document.querySelector("#button2").disabled = false;
-					cur_level++;
-					
-					loadLevel(cur_level);
-				}
-			}, 1000
-		);
+		setTimeout(function(){
+			if(cur_level !== num_levels)
+			{
+				document.querySelector("#button2").disabled = false;
+				cur_level++;
+				loadLevel(cur_level);
+			}
+		}, 1000);
 	});
 	
 	//Testa o código digitado pelo usuário e trata erros de entrada
 	$("#check").on("click", function(){
-		text = $("textarea").val();
+		if(cur_level == 10)
+		{
+			area1 = $("#area1").val();
+			area2 = $("#area2").val();
 
-		//Se a resposta estiver correta, atribui o código ao item da área de visualização
-		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
-		{
-			if(cur_level === 3)
+			if(area1.indexOf(levels[9].tag_init) > -1 && area2.indexOf(levels[9].tag_end) > -1)
 			{
-				let aux = text.split("\"");
-				let src = aux[1].split("\"");
-				checkImageExists(src[0], function(existsImage){
-					if(existsImage == false)
-					{
-						console.log(src[0]);
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Imagem não encontrada.</div>';
-						setTimeout(function(){
-							document.querySelector(".speech-bubble").remove();
-						}, 2000);
-					}
-				});
+				let item = document.querySelector(".item");
+				item.innerHTML = area1 + levels[9].item + area2;
+
+				document.querySelector("#next_btn").classList = 'btn btn-success';
+				let current_lvl = cur_level-1;
+				$('[data-level=' + current_lvl + ']').addClass('cleared');
+				answer[cur_level-1] = area1 + levels[9].item + area2;
+				level_cleared[cur_level-1] = cur_level;
+				localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+				localStorage.setItem('answer_html',JSON.stringify(answer));
+				document.querySelector("#next_btn").disabled = false;
 			}
-			document.querySelector(".item").innerHTML = text;
-			document.querySelector("#next_btn").classList = 'btn btn-success';
-			let current_lvl = cur_level-1;
-			$('[data-level=' + current_lvl + ']').addClass('cleared');
-			answer[cur_level-1] = text;
-			level_cleared[cur_level-1] = cur_level;
-			localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
-			localStorage.setItem('answer_html',JSON.stringify(answer));
-			document.querySelector("#next_btn").disabled = false;
 		}
-		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
-		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
-		{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
-			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
-			}, 2000);
+		else{
+			text = $("textarea").val();
+
+			//Se a resposta estiver correta, atribui o código ao item da área de visualização
+			if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
+			{
+				if(cur_level === 3)
+				{
+					let aux = text.split("\"");
+					let src = aux[1].split("\"");
+					checkImageExists(src[0], function(existsImage){
+						if(existsImage == false)
+						{
+							console.log(src[0]);
+							document.querySelector(".background").innerHTML += '<div class="speech-bubble">Imagem não encontrada.</div>';
+							setTimeout(function(){
+								document.querySelector(".speech-bubble").remove();
+							}, 2000);
+						}
+					});
+				}
+				document.querySelector(".item").innerHTML = text;
+				document.querySelector("#next_btn").classList = 'btn btn-success';
+				let current_lvl = cur_level-1;
+				$('[data-level=' + current_lvl + ']').addClass('cleared');
+				answer[cur_level-1] = text;
+				level_cleared[cur_level-1] = cur_level;
+				localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+				localStorage.setItem('answer_html',JSON.stringify(answer));
+				document.querySelector("#next_btn").disabled = false;
+			}
+			//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
+			else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
+			{
+				document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
+				setTimeout(function(){
+					document.querySelector(".speech-bubble").remove();
+				}, 2000);
+			}
+			//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
+			else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+			{
+				document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
+				setTimeout(function(){
+					document.querySelector(".speech-bubble").remove();
+				}, 2000);
+			}
+			//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
+			else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+			{
+				document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
+				setTimeout(function(){
+					document.querySelector(".speech-bubble").remove();
+				}, 2000);
+			}
 		}
-		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
-		else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
-		{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
-			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
-			}, 2000);
-		}
-		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
-		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
-		{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
-			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
-			}, 2000);
-		}
+
+		
 		//Habilita o botão de próximo para avançar um nível
 		document.querySelector("#next_btn").disabled = false;
 

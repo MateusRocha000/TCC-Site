@@ -9,12 +9,15 @@
 	z-index: 10;
 }
 
-textarea{
-	word-wrap: break-word;
-}
-
 #title {
 	font-family: 'Luckiest Guy';
+}
+
+.title_table{
+	font-size: 32px;
+}
+
+.title_else{
 	font-size: 40px;
 }
 
@@ -128,7 +131,7 @@ textarea{
 }
 
 .pc_screen_five {
-	height: 53vh;
+	height: 54vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -142,6 +145,48 @@ textarea{
 }
 
 .pc_screen_table {
+	height: 57vh;
+	width: 45vw;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_div {
+	height: 57vh;
+	width: 45vw;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_ten {
+	height: 58vh;
+	width: 45vw;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_eleven {
 	height: 55vh;
 	width: 45vw;
 	position: relative;
@@ -228,7 +273,7 @@ textarea{
 
 .text_two{
 	display: block;
-	width: calc(100% - 30px);
+	width: calc(100% - 40px);
 	height: 85px;
 	background-color: black;
 	color: #00ffff;
@@ -242,7 +287,7 @@ textarea{
 
 .text_else{
     display: block;
-	width: calc(100% - 30px);
+	width: calc(100% - 40px);
 	height: 30px;
 	background-color: black;
 	color: #00ffff;
@@ -256,7 +301,7 @@ textarea{
 
 .text_five{
 	display: block;
-	width: calc(100% - 30px);
+	width: calc(100% - 40px);
 	height: 85px;
 	background-color: black;
 	color: #00ffff;
@@ -270,8 +315,50 @@ textarea{
 
 .text_six{
 	display: block;
-	width: calc(100% - 30px);
+	width: calc(100% - 40px);
 	height: 108px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_nine{
+	display: block;
+	width: calc(100% - 40px);
+	height: 108px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_ten{
+    display: block;
+	width: calc(100% - 40px);
+	height: 30px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_eleven{
+	display: block;
+	width: calc(100% - 40px);
+	height: 85px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;
