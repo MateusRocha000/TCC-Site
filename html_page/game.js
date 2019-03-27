@@ -13,8 +13,8 @@ let levels = [
 		id		: '1',
 		name	: 'Tag de título: <h1>',
 		instr	: 'Nossa cidade precisa do nome na entrada. Utilize a tag para colocar o nome \"Web City\" para a entrada da nossa cidade.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Título&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<h1>',
 		tag_end	: '</h1>',
 		style	: 'one',
@@ -24,8 +24,8 @@ let levels = [
 		id		: '2',
 		name	: 'Tag de parágrafo: <p>',
 		instr	: 'Use a tag para criar uma mensagem de boas vindas na placa.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Parágrafo&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Parágrafo</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<p>',
 		tag_end	: '</p>',
 		style	: 'two',
@@ -35,8 +35,8 @@ let levels = [
 		id		: '3',
 		name	: 'Tag de imagem: <img>',
 		instr	: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros. Para isso, use a imagem do caminho: ',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Imagem&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<img',
 		tag_end	: '>',
 		style	: 'three',
@@ -46,8 +46,8 @@ let levels = [
 		id		: '4',
 		name	: 'Tag de botão: <button>',
 		instr	: 'Precisamos de um novo botão de alarme para aviso de invasões. Consegue criar para nós?',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Botão&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Botão</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<button>',
 		tag_end	: '</button>',
 		style	: 'four',
@@ -57,8 +57,8 @@ let levels = [
 		id		: '5',
 		name	: 'Tags de lista: <ul> e <li>',
 		instr	: 'Muitos dos ingredientes que tínhamos foi perdido. Crie uma lista de compras para o restaurante.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Lista&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<ul>',
 		tag_end	: '</ul>',
 		style	: 'five',
@@ -68,8 +68,8 @@ let levels = [
 		id		: '6',
 		name	: 'Tags de tabela: <table>, <tr>, <th> e <td>',
 		instr	: 'A janela da prefeitura foi danificada e precisamos de outra. Use seu conhecimento para fazer uma.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Tabela&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Tabela</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<table>',
 		tag_end	: '</table>',
 		style	: 'six',
@@ -79,8 +79,8 @@ let levels = [
 		id		: '7',
 		name	: 'Classes',
 		instr	: 'Classe para tags da página. Crie as quatro lâmpadas com classe para termos iluminação novamente.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Classes&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: 'class=\"',
 		tag_end	: '\"',
 		style	: 'seven',
@@ -90,8 +90,8 @@ let levels = [
 		id		: '8',
 		name	: 'Identificadores',
 		instr	: 'Identificador para tags da página',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Identificadores&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Identificadores</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: 'id=\"',
 		tag_end	: '\"',
 		style	: 'eight',
@@ -101,8 +101,8 @@ let levels = [
 		id		: '9',
 		name	: 'Tag de divisão: <div>',
 		instr	: 'Instruções sobre div',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Div&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<div>',
 		tag_end	: '</div>',
 		style	: 'nine',
@@ -111,9 +111,9 @@ let levels = [
 	{
 		id		: '10',
 		name	: 'Tag de comentário: <!-- -->',
-		instr	: 'Os invasores bloquearam o caminho. Utilize as tags de comentário para removê-las do caminho.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Comentário&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea id="area1" type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n   &lt;div id="pedra"&gt;&lt;/div&gt;',
-		after	: '<textarea id="area2" type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n   &lt;/body&gt;\n&lt;/html&gt;',
+		instr	: 'Os invasores bloquearam o caminho. Utilize as tags de comentário para removê-las do caminho, comentando <div id="pedra"></div>',
+		before	: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<!--',
 		tag_end	: '-->',
 		style	: 'ten',
@@ -124,8 +124,8 @@ let levels = [
 		id		: '11',
 		name	: 'Tag de link: <a>',
 		instr	: ' Crie um link para a página de CSS (https://webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
-		before	: '&lt;html&gt;\n   &lt;head&gt;\n     &lt;title&gt;Link&lt;/title&gt;\n   &lt;/head&gt;\n   &lt;body&gt;\n<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>\n',
-		after	: '   &lt;/body&gt;\n&lt;/html&gt;',
+		before	: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
 		tag_init: '<a',
 		tag_end	: '</a>',
 		style	: 'eleven',
@@ -166,8 +166,8 @@ function loadLevel(level)
 	document.querySelector("#instr").textContent 	= levels[level-1].instr;
 	document.querySelector("#dialog").innerHTML 	= levels[level-1].help;
 	document.querySelector("#about").innerHTML 		= '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
-	document.querySelector("#before").innerHTML 	= levels[level-1].before;
-	document.querySelector("#after").innerHTML 		= levels[level-1].after;
+	document.querySelector("#before").textContent 	= levels[level-1].before;
+	document.querySelector("#after").textContent 		= levels[level-1].after;
 	document.querySelector(".current").innerHTML 	= level;
 	document.querySelector(".total").innerHTML 		= num_levels;
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
@@ -179,16 +179,8 @@ function loadLevel(level)
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
 	if(answer[level-1] !== '' && answer[level-1] !== undefined && localStorage !== null)
 	{
-		if(level == 10)
-		{
-			$("#area1").val('<!--');
-			$("#area2").val('-->');
-		}
-		else
-		{
-			$("textarea").val(answer[level-1]);
-		}
 		let ans = localStorage.getItem('answer_html');
+		$("textarea").val(ans[level-1]);
 		setTimeout(function(){
 			document.querySelector(".item").innerHTML = JSON.parse(ans)[level-1];
 		}, 100);
@@ -238,8 +230,6 @@ function loadLevel(level)
 		document.querySelector(".item").innerHTML 		= levels[level-1].item;
 		document.querySelector("#pedra").classList 		= 'pos_' + levels[level-1].style;
 		document.querySelector("#pc_screen").classList 	= 'pc_screen_ten';
-		document.querySelector("#area1").classList		= 'text_ten';
-		document.querySelector("#area2").classList		= 'text_ten';
 	}
 	else if(level == num_levels)
 	{
@@ -284,15 +274,20 @@ function checkImageExists(image, callBack)
 $(function(){
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
 	let new_line_level_two = 3, 
-		new_line_level_five = 3, 
-		new_line_level_six = 4;
+		new_line_level_five = 3,
+		new_line_level_six = 4,
+		new_line_level_nine = 4,
+		new_line_level_eleven = 3;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
+		console.log(newLines);
 
-		if(	(e.keyCode == 13 && cur_level == 2 && newLines >= new_line_level_two) 	|| 
-			(e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) 	|| 
-			(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) 	|| 
-			(e.keyCode == 13 && (cur_level !== 2 && cur_level !== 5 && cur_level !== 6)))
+		if(	(e.keyCode == 13 && cur_level == 2 && newLines >= new_line_level_two) 		|| 
+			(e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) 		|| 
+			(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) 		|| 
+			(e.keyCode == 13 && cur_level == 9 && newLines >= new_line_level_nine) 		|| 
+			(e.keyCode == 13 && cur_level == 11 && newLines >= new_line_level_eleven) 	|| 
+			(e.keyCode == 13 && (cur_level !== 2 && cur_level !== 5 && cur_level !== 6 && cur_level !== 9 && cur_level !== 11)))
 		{
 			return false;
 		}
@@ -412,81 +407,60 @@ $(function(){
 	
 	//Testa o código digitado pelo usuário e trata erros de entrada
 	$("#check").on("click", function(){
-		if(cur_level == 10)
+		
+		text = $("textarea").val();
+
+		//Se a resposta estiver correta, atribui o código ao item da área de visualização
+		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
 		{
-			area1 = $("#area1").val();
-			area2 = $("#area2").val();
-
-			if(area1.indexOf(levels[9].tag_init) > -1 && area2.indexOf(levels[9].tag_end) > -1)
+			if(cur_level === 3)
 			{
-				let item = document.querySelector(".item");
-				item.innerHTML = area1 + levels[9].item + area2;
-
-				document.querySelector("#next_btn").classList = 'btn btn-success';
-				let current_lvl = cur_level-1;
-				$('[data-level=' + current_lvl + ']').addClass('cleared');
-				answer[cur_level-1] = area1 + levels[9].item + area2;
-				level_cleared[cur_level-1] = cur_level;
-				localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
-				localStorage.setItem('answer_html',JSON.stringify(answer));
-				document.querySelector("#next_btn").disabled = false;
+				let aux = text.split("\"");
+				let src = aux[1].split("\"");
+				checkImageExists(src[0], function(existsImage){
+					if(existsImage == false)
+					{
+						console.log(src[0]);
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Imagem não encontrada.</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+					}
+				});
 			}
+			document.querySelector(".item").innerHTML = text;
+			document.querySelector("#next_btn").classList = 'btn btn-success';
+			let current_lvl = cur_level-1;
+			$('[data-level=' + current_lvl + ']').addClass('cleared');
+			answer[cur_level-1] = text;
+			level_cleared[cur_level-1] = cur_level;
+			localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+			localStorage.setItem('answer_html',JSON.stringify(answer));
+			document.querySelector("#next_btn").disabled = false;
 		}
-		else{
-			text = $("textarea").val();
-
-			//Se a resposta estiver correta, atribui o código ao item da área de visualização
-			if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
-			{
-				if(cur_level === 3)
-				{
-					let aux = text.split("\"");
-					let src = aux[1].split("\"");
-					checkImageExists(src[0], function(existsImage){
-						if(existsImage == false)
-						{
-							console.log(src[0]);
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble">Imagem não encontrada.</div>';
-							setTimeout(function(){
-								document.querySelector(".speech-bubble").remove();
-							}, 2000);
-						}
-					});
-				}
-				document.querySelector(".item").innerHTML = text;
-				document.querySelector("#next_btn").classList = 'btn btn-success';
-				let current_lvl = cur_level-1;
-				$('[data-level=' + current_lvl + ']').addClass('cleared');
-				answer[cur_level-1] = text;
-				level_cleared[cur_level-1] = cur_level;
-				localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
-				localStorage.setItem('answer_html',JSON.stringify(answer));
-				document.querySelector("#next_btn").disabled = false;
-			}
-			//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
-			else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
-			{
-				document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
-				setTimeout(function(){
-					document.querySelector(".speech-bubble").remove();
-				}, 2000);
-			}
-			//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
-			else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
-			{
-				document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
-				setTimeout(function(){
-					document.querySelector(".speech-bubble").remove();
-				}, 2000);
-			}
-			//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
-			else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
-			{
-				document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
-				setTimeout(function(){
-					document.querySelector(".speech-bubble").remove();
-				}, 2000);
-			}
+		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
+		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+		}
+		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
+		else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
+		}
+		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
+		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+		{
+			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
+			setTimeout(function(){
+				document.querySelector(".speech-bubble").remove();
+			}, 2000);
 		}
 
 		
