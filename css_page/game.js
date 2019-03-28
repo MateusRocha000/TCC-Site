@@ -18,7 +18,7 @@ let levels = [
 			sel_init: 'p{',
 			sel_end: '}',
 			style: 'one',
-			help: 'O seletor é utilizado para indicar para a página que um elemento HTML está recebendo um estilo com certas propriedades definidas. A regra é definida com o nome da regra com as propriedades recebendo seus possíveis valores entre chaves, como:\np{\n   font-size: 25px;\n}\n\nNo exemplo acima, é alterado o tamanho da fonte de um parágrafo.'
+			help: '<p>O seletor é utilizado para indicar para a página que um elemento HTML está recebendo um estilo com certas propriedades definidas.</p> <p>A regra é definida com o nome da regra com as propriedades recebendo seus possíveis valores entre chaves, como:</p><p>p{</p><p>&nbsp;&nbsp;font-size: 25px;</p><p>}</p><p>No exemplo acima, é alterado o tamanho da fonte de um parágrafo.</p>'
 	},
 	{
 			id: '2',
@@ -29,7 +29,7 @@ let levels = [
 			sel_init: '#ola{',
 			sel_end: '}',
 			style: 'two',
-			help: 'A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de \"#\". Portanto, a regra é feita da seguinte maneira: \n#nome_do_id{\n   font-size: 25px;\n}'
+			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de \"#\".</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
 	},
 	{
 			id: '3',
@@ -40,7 +40,43 @@ let levels = [
 			sel_init: '.ola{',
 			sel_end: '}',
 			style: 'three',
-			help: 'As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de \"#\" colocamos \".\" no lugar: \n#nome_da_classe{\n   font-size: 25px;\n}'
+			help: '<p>As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de \"#\" colocamos \".\" no lugar:</p><p>.nome_da_classe{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
+	},
+	{
+			id: '4',
+			name: 'Propriedade: background',
+			instr: '',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p>Texto 1</p>\n      <p>Texto 2</p>\n   </body>\n</html>',
+			item: '<p>Texto 1</p><p>Texto 2</p>',
+			sel_init: '{',
+			property: 'background',
+			sel_end: '}',
+			style: 'four',
+			help: '<p>As propriedades do plano de fundo, seja cor, imagem de fundo, tamanho, posição, etc., podem ser alteradas. O uso da propriedade \"background\" pode ser feita da seguinte forma:</p><p>background: cor imagem posição tamanho repetir origem clipe anexo</p><p>&nbsp;- Cor (background-color): Define a cor do plano de fundo;</p><p>&nbsp;- Imagem (background-image): Define uma imagem como plano de fundo;</p><p>&nbsp;- Tamanho (background-size): Define o tamanho do background, recebendo os valores de largura e altura seperados por espaço;</p><p>&nbsp;- Posição (background-position): Define a posição do background, assim como tamanho;</p><p>&nbsp;- Repetir (background-repeat): Define se será a imagem que ficará se repetindo ou não;</p><p>&nbsp;- Origem (background-origin): Define a origem do background (borda, preenchimento ou conteúdo);</p><p>&nbsp;- Clipe (background-clip): Define até quando o background se extende, seja até abaixo da borda, até a borda de preenchimento ou a borda do conteúdo.</p><p>&nbsp;- Anexo (background-attachment): Define se a imagem de background seguirá a barra de rolagem da página ou será fixa.</p><p>Você também pode usar algumas das propriedades e o navegador saberá quais estão sendo definidas. Além disso, você pode utilizar as propriedades de forma separada.</p>'
+	},
+	{
+			id: '5',
+			name: 'Propriedade: position',
+			instr: '',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id="p1">Texto 1</p>\n      <p>Texto 2</p>\n   </body>\n</html>',
+			item: '<p id="p1">Texto 1</p><p>Texto 2</p>',
+			sel_init: '{',
+			property: 'position',
+			sel_end: '}',
+			style: 'five',
+			help: '<p>Cada elemento é posicionado em sua página utilizando a tag \"pai\" como referência tendo como exemplo:</p><p>&lt;body&gt;</p><p>&lt;img src=\"imagem.jpg\"&gt;</p><p>&lt;/body&gt;<p>Neste exemplo, a tag <i>&lt;img&gt;</i> possue como pai a tag <i>&lt;body&gt;</i>. Portanto, elas serão posicionados levando em consideração a dimensão e o posicionamento do corpo da página.</p><p>Elementos na página também podem servir de referência para outros utilizando a propriedade \"position\". O elemento que for utilizado como referência terá essa propriedade com o valor \"relative\", enquanto os elementos que serão posicionados recebem \"absolute\".</p><p>elemento1 {</p><p>&nbsp;position: relative;</p><p>}</p><p>elemento2 {</p><p>&nbsp;position: absolute;</p><p>}</p>'
+	},
+	{
+			id: '6',
+			name: 'Propriedade: float',
+			instr: '',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n   <img src="">\n	</body>\n</html>',
+			item: '',
+			sel_init: '{',
+			property: 'float',
+			sel_end: '}',
+			style: 'six',
+			help: '<p>A propriedade float é usada para indicar que elementos devem ser removidos do fluxo normal da página e \"flutuados\" na esquerda ou na direita.</p><p>No caso de você inserir uma imagem na página e logo em seguida um texto, o texto será inserido abaixo da imagem. Mas caso queira que a imagem permaneça na esquerda ou na direita, enquanto o texto também ocupe o espaço ao lado da imagem, será a propriedade float a fazer isso.</p><p>&lt;img src=\"nome_da_imagem.jpg\"&gt;</p><p>&lt;p&gt;Um parágrafo para servir de exemplo.&lt;/p&gt;</p><p>Abaixo estão os exemplos:</p><img src="../img/sem float.png" style="width: 300px; height: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/com float.png" style="width: 300px; height: 300px;">'
 	}
 ];
 
@@ -77,7 +113,7 @@ function loadLevel(level)
 {
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").textContent = levels[level-1].instr;
-	document.querySelector("#dialog").textContent = levels[level-1].help;
+	document.querySelector("#dialog").innerHTML = levels[level-1].help;
 	document.querySelector("#about").innerHTML = '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML. Com ela é possível alterar a cor de fundo, tamanho da fonte, posição dos elementos e muitas outras coisas.</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves. </p><p>Há muitas propriedades que são possíveis de alterar, como: largura (width), altura (height), cor de fundo (background-color), e muito mais.</p>';
 	document.querySelector("#before").textContent = levels[level-1].before;
 	document.querySelector(".current").innerHTML = level;
@@ -123,6 +159,7 @@ function loadLevel(level)
 	{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
+		document.querySelector("#next_btn").textContent = 'Acabar';
 	}
 	else{
 		document.querySelector("#button1").disabled = false;
@@ -254,7 +291,6 @@ $(function(){
 	$("#check").on("click", function(){
 		let text = $("textarea").val();
 		let lines = text.split('\n');
-		console.log(lines);
 		let aux_rule, aux_prop = [], aux_value = [], temp;
 		answer[cur_level-1] = text;
 		let properties = '';
@@ -263,7 +299,6 @@ $(function(){
 		{
 			for(let i = 1; i < lines.length-1; i++)
 			{
-				console.log(lines[i]);
 				if(lines[i].indexOf(";") > -1)
 				{
 					aux_rule = lines[i].split(";")[0];
@@ -299,8 +334,8 @@ $(function(){
 				for(let i = 0; i < lines.length - 1; i++)
 				{
 					try{
-
 						$("p").css(aux_prop[i], aux_value[i]);
+						
 					}catch(err)
 					{
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
@@ -335,6 +370,22 @@ $(function(){
 					
 					try{
 						$(".ola").css(aux_prop[i], aux_value[i]);
+					}catch(err)
+					{
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+						setTimeout(function(){
+							document.querySelector(".speech-bubble").remove();
+						}, 2000);
+					}
+				}
+			}
+			else if(cur_level == 5)
+			{
+				for(let i = 0; i < lines.length - 1; i++)
+				{
+					
+					try{
+						$("#p1").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
@@ -380,8 +431,8 @@ $(function(){
 		modal : true, 
 		show : "blind", 
 		hide : "blind",
-		minWidth: 1000,
-		minHeight: 'auto'	
+		width: 1000,
+		height: 'auto'	
 	});
 
 	$("#about").dialog({
@@ -389,8 +440,8 @@ $(function(){
 		modal : true, 
 		show : "blind", 
 		hide : "blind",
-		minWidth: 1000,
-		minHeight: 'auto'	
+		width: 1000,
+		height: 'auto'	
 	});
 
 	$("#help_btn").on('click', function(){

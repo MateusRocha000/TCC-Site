@@ -4,7 +4,7 @@ h2{
 
 #edit_screen {
 	width: 50vw;
-	height: auto;
+	height: 100vh;
 	position: relative;
 	padding: 2em;
 	background-image: url("../img/space_backg.png");

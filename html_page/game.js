@@ -18,7 +18,7 @@ let levels = [
 		tag_init: '<h1>',
 		tag_end	: '</h1>',
 		style	: 'one',
-		help	: '<p>A tag &lt;h1&gt;&lt;/h1&gt; é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página.</p> <p>Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: &lt;h2&gt;, &lt;h3&gt;, etc.</p>',
+		help	: '<p>A tag &lt;h1&gt;&lt;/h1&gt; é utilizada para transformar seu texto em um título. O número 1 na tag representa o título principal da página.</p> <p>Caso queira criar outros títulos, ou subtítulos, no corpo da sua página você pode usar a tag com numerações maiores: &lt;h2&gt;, &lt;h3&gt;, até &lt;h6&gt;.</p>',
 	},
 	{
 		id		: '2',
@@ -252,6 +252,7 @@ function loadLevel(level)
 	{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
+		document.querySelector("#next_btn").textContent = 'Acabar';
 	}
 	else{
 		document.querySelector("#button1").disabled = false;

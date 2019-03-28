@@ -1,7 +1,7 @@
 #edit_screen {
-	width: 50vw;
-	height: auto;
 	position: relative;
+	width: 50vw;
+	height: 100vh;
 	padding: 2em;
 	background-image: url("../img/space_backg.png");
 	color: #00ffff;

@@ -19,22 +19,21 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 			tema: 'CSS', aulas: {
 				'seletor': 'Seletor',
 				'id': 'Id',
-				'classe': 'Classe'/* ,
-				'texto': 'Texto',
-				'tamanho': 'Tamanho dos elementos',
-				'caixa': 'Modelo de caixa',
+				'classe': 'Classe',
+				'planofundo': 'Plano de Fundo',
 				'posicao': 'Posição',
+				'cor' : 'Cores',
 				'flutuante': 'Elemento flutuante'
 			}
-		},
+		}/*,
 		{
 			tema: 'JavaScript', aulas: {
 				'variavel': 'Variável',
 				'condicional': 'Condicional',
 				'funcao': 'Função',
-				'evento': 'Evento'*/
+				'evento': 'Evento'
 			} 
-		}
+		}*/
 		
 	];	
 	
