@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var index = require('./indexRoute');
 var html = require('./html_page/htmlRoute');
 var css = require('./css_page/cssRoute');
-var js = require('./js_page/jsRoute');
+//var js = require('./js_page/jsRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/'));
 app.use('/', index);
 app.use('/html', html);
 app.use('/css', css);
-app.use('/javascript', js);
+//app.use('/javascript', js);
 
 //Error handler
 app.use(function(req, res, next){

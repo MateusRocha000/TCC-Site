@@ -129,7 +129,7 @@ let levels = [
 		tag_init: '<a',
 		tag_end	: '</a>',
 		style	: 'eleven',
-		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;'
+		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;<p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou é entendida pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido é necessário que você coloque a url absoluta do site com <q>http</q></p>'
 	}
 ];
 
