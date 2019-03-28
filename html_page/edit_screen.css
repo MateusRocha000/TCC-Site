@@ -131,7 +131,7 @@
 }
 
 .pc_screen_five {
-	height: 57vh;
+	height: 60vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -302,7 +302,7 @@
 .text_five{
 	display: block;
 	width: calc(100% - 40px);
-	height: 85px;
+	height: 120px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;

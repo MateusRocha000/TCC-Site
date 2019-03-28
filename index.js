@@ -6,13 +6,13 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				'titulo': 'Título',
 				'paragrafo': 'Parágrafo',
 				'imagem': 'Imagem',
-				'link': 'Link',
 				'botao': 'Botão',
 				'lista': 'Lista',
 				'tabela': 'Tabela',
 				'classe': 'Classe',
 				'id': 'Id',
-				'comentario': 'Comentário'
+				'comentario': 'Comentário',
+				'link': 'Link'
 			}
 		},
 		{

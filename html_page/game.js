@@ -40,7 +40,7 @@ let levels = [
 		tag_init: '<img',
 		tag_end	: '>',
 		style	: 'three',
-		help	: '<p>A tag de imagem &lt;img&gt; adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores.</p> <p>Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo \"src\" e atribuir o nome da imagem, como:</p> <p>&lt;img src=\"nome_da_imagem.jpg\"&gt;.</p><p>Caso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:</p><p>&lt;img src=\"Caminho/ para/ imagem/nome_da_image.jpg\"&gt;</p>'
+		help	: '<p>A tag de imagem &lt;img&gt; adiciona uma imagem ao corpo de sua página. Observe que ela não possui o fechamento como as anteriores.</p> <p>Para que a página saiba qual imagem será carregada, você precisa utilizar o atributo <q>src</q> e atribuir o nome da imagem, como:</p> <p>&lt;img src=<q>nome_da_imagem.jpg</q>&gt;.</p><p>Caso a imagem esteja em um diretório diferente do qual está seu código HTML, é necessário que você insira o caminho completo para a imagem:</p><p>&lt;img src=<q>Caminho/ para/ imagem/nome_da_image.jpg</q>&gt;</p>'
 	},
 	{
 		id		: '4',
@@ -55,14 +55,14 @@ let levels = [
 	},
 	{
 		id		: '5',
-		name	: 'Tags de lista: <ul> e <li>',
+		name	: 'Tags de lista: <ul>, <ol> e <li>',
 		instr	: 'Muitos dos ingredientes que tínhamos foi perdido. Crie uma lista de compras para o restaurante.',
 		before	: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<ul>',
 		tag_end	: '</ul>',
 		style	: 'five',
-		help	: '<p>Estas tags criam uma lista com, ou sem, subitens. A tag &lt;ul&gt; cria a lista, enquanto a &lt;li&gt; indica os itens da lista.</p><p>&lt;ul&gt;Lista</p><p>&nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 3&lt;/li&gt;</p><p>&lt;/ul&gt;</p>'
+		help	: '<p>Estas tags criam uma lista com, ou sem, subitens. A tag &lt;ul&gt; cria a lista, enquanto a &lt;li&gt; indica os itens da lista.</p><p>&lt;ul&gt;Lista</p><p>&nbsp;&nbsp;&lt;li&gt;Item 1&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 2&lt;/li&gt;</p><p>&nbsp;&nbsp;&lt;li&gt;Item 3&lt;/li&gt;</p><p>&lt;/ul&gt;</p><p>Listas criadas pela tag &lt;ul&gt; são conhecidas como listas não ordenadas, onde os itens não possuem uma numeração. Para que sua lista possua os números em cada item, você utiliza &lt;ol&gt;</p>'
 	},
 	{
 		id		: '6',
@@ -84,7 +84,7 @@ let levels = [
 		tag_init: 'class=\"',
 		tag_end	: '\"',
 		style	: 'seven',
-		help	: '<p>Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS.</p> <p>Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele:</p> <p>&lt;nome_da_tag class=\"nome_da_classe\"&gt;</p>'
+		help	: '<p>Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS.</p> <p>Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele:</p> <p>&lt;nome_da_tag class=<q>nome_da_classe</q>&gt;</p>'
 	},
 	{
 		id		: '8',
@@ -95,7 +95,7 @@ let levels = [
 		tag_init: 'id=\"',
 		tag_end	: '\"',
 		style	: 'eight',
-		help	: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador \"id\" e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=\"nome_do_id\"&gt</p>'
+		help	: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador <q>id</q> e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=<q>nome_do_id</q>&gt</p>'
 	},
 	{
 		id		: '9',
@@ -106,7 +106,7 @@ let levels = [
 		tag_init: '<div>',
 		tag_end	: '</div>',
 		style	: 'nine',
-		help	: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando \"id\" e/ou \"class\", e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=\"id_da_div\"&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=\"classe_da_div\"&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
+		help	: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando <q>id</q> e/ou <q>class</q>, e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=<q>id_da_div</q>&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
 	},
 	{
 		id		: '10',
@@ -129,7 +129,7 @@ let levels = [
 		tag_init: '<a',
 		tag_end	: '</a>',
 		style	: 'eleven',
-		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo \"href\". Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=\"link_da_página\"&gt;Nome do link&lt;/a&gt;'
+		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;'
 	}
 ];
 
@@ -275,7 +275,7 @@ function checkImageExists(image, callBack)
 $(function(){
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
 	let new_line_level_two = 3, 
-		new_line_level_five = 3,
+		new_line_level_five = 4,
 		new_line_level_six = 4,
 		new_line_level_nine = 4,
 		new_line_level_eleven = 3;
@@ -412,7 +412,7 @@ $(function(){
 		text = $("textarea").val();
 
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
-		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
+		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined' || (cur_level == 5 && text.indexOf('<ol>') > -1 && text.indexOf('</ol>') > -1))
 		{
 			if(cur_level === 3)
 			{

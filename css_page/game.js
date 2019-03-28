@@ -29,7 +29,7 @@ let levels = [
 			sel_init: '#ola{',
 			sel_end: '}',
 			style: 'two',
-			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de \"#\".</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
+			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de <q>#</q>.</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
 	},
 	{
 			id: '3',
@@ -40,7 +40,7 @@ let levels = [
 			sel_init: '.ola{',
 			sel_end: '}',
 			style: 'three',
-			help: '<p>As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de \"#\" colocamos \".\" no lugar:</p><p>.nome_da_classe{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
+			help: '<p>As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de <q>#</q> colocamos <q>.</q> no lugar:</p><p>.nome_da_classe{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
 	},
 	{
 			id: '4',
@@ -52,7 +52,7 @@ let levels = [
 			property: 'background',
 			sel_end: '}',
 			style: 'four',
-			help: '<p>As propriedades do plano de fundo, seja cor, imagem de fundo, tamanho, posição, etc., podem ser alteradas. O uso da propriedade \"background\" pode ser feita da seguinte forma:</p><p>background: cor imagem posição tamanho repetir origem clipe anexo</p><p>&nbsp;- Cor (background-color): Define a cor do plano de fundo;</p><p>&nbsp;- Imagem (background-image): Define uma imagem como plano de fundo;</p><p>&nbsp;- Tamanho (background-size): Define o tamanho do background, recebendo os valores de largura e altura seperados por espaço;</p><p>&nbsp;- Posição (background-position): Define a posição do background, assim como tamanho;</p><p>&nbsp;- Repetir (background-repeat): Define se será a imagem que ficará se repetindo ou não;</p><p>&nbsp;- Origem (background-origin): Define a origem do background (borda, preenchimento ou conteúdo);</p><p>&nbsp;- Clipe (background-clip): Define até quando o background se extende, seja até abaixo da borda, até a borda de preenchimento ou a borda do conteúdo.</p><p>&nbsp;- Anexo (background-attachment): Define se a imagem de background seguirá a barra de rolagem da página ou será fixa.</p><p>Você também pode usar algumas das propriedades e o navegador saberá quais estão sendo definidas. Além disso, você pode utilizar as propriedades de forma separada.</p>'
+			help: '<p>As propriedades do plano de fundo, seja cor, imagem de fundo, tamanho, posição, etc., podem ser alteradas. O uso da propriedade <q>background</q> pode ser feita da seguinte forma:</p><p>background: cor imagem posição tamanho repetir origem clipe anexo</p><p>&nbsp;- Cor (background-color): Define a cor do plano de fundo;</p><p>&nbsp;- Imagem (background-image): Define uma imagem como plano de fundo;</p><p>&nbsp;- Tamanho (background-size): Define o tamanho do background, recebendo os valores de largura e altura seperados por espaço;</p><p>&nbsp;- Posição (background-position): Define a posição do background, assim como tamanho;</p><p>&nbsp;- Repetir (background-repeat): Define se será a imagem que ficará se repetindo ou não;</p><p>&nbsp;- Origem (background-origin): Define a origem do background (borda, preenchimento ou conteúdo);</p><p>&nbsp;- Clipe (background-clip): Define até quando o background se extende, seja até abaixo da borda, até a borda de preenchimento ou a borda do conteúdo.</p><p>&nbsp;- Anexo (background-attachment): Define se a imagem de background seguirá a barra de rolagem da página ou será fixa.</p><p>Você também pode usar algumas das propriedades e o navegador saberá quais estão sendo definidas. Além disso, você pode utilizar as propriedades de forma separada.</p>'
 	},
 	{
 			id: '5',
@@ -64,7 +64,7 @@ let levels = [
 			property: 'position',
 			sel_end: '}',
 			style: 'five',
-			help: '<p>Cada elemento é posicionado em sua página utilizando a tag \"pai\" como referência tendo como exemplo:</p><p>&lt;body&gt;</p><p>&lt;img src=\"imagem.jpg\"&gt;</p><p>&lt;/body&gt;<p>Neste exemplo, a tag <i>&lt;img&gt;</i> possue como pai a tag <i>&lt;body&gt;</i>. Portanto, elas serão posicionados levando em consideração a dimensão e o posicionamento do corpo da página.</p><p>Elementos na página também podem servir de referência para outros utilizando a propriedade \"position\". O elemento que for utilizado como referência terá essa propriedade com o valor \"relative\", enquanto os elementos que serão posicionados recebem \"absolute\".</p><p>elemento1 {</p><p>&nbsp;position: relative;</p><p>}</p><p>elemento2 {</p><p>&nbsp;position: absolute;</p><p>}</p>'
+			help: '<p>Cada elemento é posicionado em sua página utilizando a tag <q>pai</q> como referência tendo como exemplo:</p><p>&lt;body&gt;</p><p>&lt;img src=<q>imagem.jpg</q>&gt;</p><p>&lt;/body&gt;<p>Neste exemplo, a tag <i>&lt;img&gt;</i> possue como pai a tag <i>&lt;body&gt;</i>. Portanto, elas serão posicionados levando em consideração a dimensão e o posicionamento do corpo da página.</p><p>Elementos na página também podem servir de referência para outros utilizando a propriedade <q>position</q>. O elemento que for utilizado como referência terá essa propriedade com o valor <q>relative</q>, enquanto os elementos que serão posicionados recebem <q>absolute</q>.</p><p>elemento1 {</p><p>&nbsp;position: relative;</p><p>}</p><p>elemento2 {</p><p>&nbsp;position: absolute;</p><p>}</p>'
 	},
 	{
 			id: '6',
@@ -76,7 +76,7 @@ let levels = [
 			property: 'float',
 			sel_end: '}',
 			style: 'six',
-			help: '<p>A propriedade float é usada para indicar que elementos devem ser removidos do fluxo normal da página e \"flutuados\" na esquerda ou na direita.</p><p>No caso de você inserir uma imagem na página e logo em seguida um texto, o texto será inserido abaixo da imagem. Mas caso queira que a imagem permaneça na esquerda ou na direita, enquanto o texto também ocupe o espaço ao lado da imagem, será a propriedade float a fazer isso.</p><p>&lt;img src=\"nome_da_imagem.jpg\"&gt;</p><p>&lt;p&gt;Um parágrafo para servir de exemplo.&lt;/p&gt;</p><p>Abaixo estão os exemplos:</p><img src="../img/sem float.png" style="width: 300px; height: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/com float.png" style="width: 300px; height: 300px;">'
+			help: '<p>A propriedade float é usada para indicar que elementos devem ser removidos do fluxo normal da página e <q>flutuados</q> na esquerda ou na direita.</p><p>No caso de você inserir uma imagem na página e logo em seguida um texto, o texto será inserido abaixo da imagem. Mas caso queira que a imagem permaneça na esquerda ou na direita, enquanto o texto também ocupe o espaço ao lado da imagem, será a propriedade float a fazer isso.</p><p>&lt;img src=<q>nome_da_imagem.jpg</q>&gt;</p><p>&lt;p&gt;Um parágrafo para servir de exemplo.&lt;/p&gt;</p><p>Abaixo estão os exemplos:</p><img src="../img/sem float.png" style="width: 300px; height: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/com float.png" style="width: 300px; height: 300px;">'
 	}
 ];
 
