@@ -3,5 +3,5 @@ var path = require("path");
 
 exports.index = function(req, res, next)
 {
-    return res.sendFile(path.join(__dirname + '/'));
+    return res.sendFile(path.join(__dirname + '/aula.html'));
 }

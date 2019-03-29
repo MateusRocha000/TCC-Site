@@ -1,11 +1,11 @@
 //Nível atual
-let cur_level = 1;
+let cur_level_css = parseInt(localStorage.cur_level_css, 10) || 1;
 
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
-let answer = [];
+let answer_css = (localStorage.answer_css && JSON.parse(localStorage.answer_css)) || {};
 
 //Vetor que indica quais níveis foram cumpridos
-let level_cleared = [];
+let level_cleared = (localStorage.level_cleared_css && JSON.parse(localStorage.level_cleared_css)) || [];
 
 //Informações de cada nível
 let levels = [
@@ -83,13 +83,8 @@ let levels = [
 //Variável auxiliar que pega a quantidade de níveis
 let num_levels = Object.keys(levels).length;
 
-$(window).on("load", loadLevel(cur_level));
+$(window).on("load", loadLevel(cur_level_css));
 
-//Salva os níveis concluídos antes de sair da página caso deem refresh na página
-//Mas caso deem refresh de novo, os níveis concluídos são perdidos (Mudar para MongoDB??)
-$(window).on("beforeunload", function(){
-	localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared));
-});
 
 function hasClass(el, className) {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
@@ -124,10 +119,29 @@ function loadLevel(level)
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = levels[level-1].item;
 
-	if(answer[level-1] !== '' && levels[level-1].text !== undefined)
+	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
-		$("textarea").val(answer[level-1]);
-		document.querySelector(".item").style = levels[level-1].text;
+		
+		$("textarea").val(answer_css[level]);
+		if(JSON.parse(localStorage.answer_css)[level] !== undefined)
+		{
+			let aux = JSON.parse(localStorage.answer_css)[level-1].split('{');
+			let sel = aux[0];
+			let aux2 = aux[1].split('}');
+			let prop = aux2[0];
+			if(level == 1)
+			{
+				document.querySelector(".item p").style = prop;
+			}
+			else if(level == 2)
+			{
+				document.querySelector(".item #ola").style = prop;
+			}
+			else if(level == 3)
+			{
+				document.querySelector(".item .ola").style = prop;
+			}
+		}
 	}
 	else
 		$("textarea").val('');
@@ -135,7 +149,7 @@ function loadLevel(level)
 	$("#levels-box").hide();
 
 	key = Object.values(levels[level-1].id);
-	let content = answer[key];
+	let content = answer_css[key];
 	
 	document.querySelector("#next_btn").disabled = true;
 
@@ -168,6 +182,12 @@ function loadLevel(level)
 	
 };
 
+$(window).on("beforeunload", function(){
+	localStorage.setItem('cur_level_css', cur_level_css);
+	localStorage.setItem('answer_css', JSON.stringify(answer_css));
+	localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared));
+});
+
 $(function(){
 	let new_line = 10;
 	$("textarea").keydown(function(e){
@@ -182,7 +202,7 @@ $(function(){
 
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
-		answer.length = 0;
+		answer_css.length = 0;
 		localStorage.removeItem('level_cleared_css');
 		localStorage.removeItem('answer_css');
 		setTimeout(function(){
@@ -205,10 +225,10 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level < num_levels)
+				if(cur_level_css < num_levels)
 				{
-					cur_level++;
-					loadLevel(cur_level);
+					cur_level_css++;
+					loadLevel(cur_level_css);
 				}
 			}, 1000
 		);
@@ -224,11 +244,11 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level !== 1)
+				if(cur_level_css !== 1)
 				{
 					document.querySelector("#button1").disabled = false;
-					cur_level--;
-					loadLevel(cur_level);
+					cur_level_css--;
+					loadLevel(cur_level_css);
 				}
 			}, 1000
 		);
@@ -251,7 +271,7 @@ $(function(){
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
 		level++;
-		cur_level = level;
+		cur_level_css = level;
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -278,11 +298,11 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level !== num_levels)
+				if(cur_level_css !== num_levels)
 				{
 					document.querySelector("#button2").disabled = false;
-					cur_level++;
-					loadLevel(cur_level);
+					cur_level_css++;
+					loadLevel(cur_level_css);
 				}
 			}, 1000
 		);
@@ -292,10 +312,10 @@ $(function(){
 		let text = $("textarea").val();
 		let lines = text.split('\n');
 		let aux_rule, aux_prop = [], aux_value = [], temp;
-		answer[cur_level-1] = text;
+		answer_css[cur_level_css-1] = text;
 		let properties = '';
 
-		if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
+		if(text.indexOf(levels[cur_level_css-1].sel_init) > -1 && text.indexOf(levels[cur_level_css-1].sel_end) > -1 && text !== 'undefined')
 		{
 			for(let i = 1; i < lines.length-1; i++)
 			{
@@ -316,7 +336,7 @@ $(function(){
 						temp = aux_rule.split(":");
 						aux_prop.push(temp[0]);
 						aux_value.push(temp[1]);
-						levels[cur_level-1].text = properties;
+						levels[cur_level_css-1].text = properties;
 					}
 				}
 				else
@@ -329,7 +349,7 @@ $(function(){
 				}
 			}
 			
-			if(cur_level == 1)
+			if(cur_level_css == 1)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
@@ -346,7 +366,7 @@ $(function(){
 					}
 				}
 			}
-			else if(cur_level == 2)
+			else if(cur_level_css == 2)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
@@ -363,7 +383,7 @@ $(function(){
 					}
 				}
 			}
-			else if(cur_level == 3)
+			else if(cur_level_css == 3)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
@@ -379,7 +399,7 @@ $(function(){
 					}
 				}
 			}
-			else if(cur_level == 5)
+			else if(cur_level_css == 5)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
 				{
@@ -396,14 +416,14 @@ $(function(){
 				}
 			}
 		}
-		else if(text.indexOf(levels[cur_level-1].sel_init) == -1 && text.indexOf(levels[cur_level-1].sel_end) > -1 && text !== 'undefined')
+		else if(text.indexOf(levels[cur_level_css-1].sel_init) == -1 && text.indexOf(levels[cur_level_css-1].sel_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Seu seletor está incorreto.</div>';
 			setTimeout(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
 		}
-		else if(text.indexOf(levels[cur_level-1].sel_init) > -1 && text.indexOf(levels[cur_level-1].sel_end) == -1 && text !== 'undefined')
+		else if(text.indexOf(levels[cur_level_css-1].sel_init) > -1 && text.indexOf(levels[cur_level_css-1].sel_end) == -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Está faltando um fecha chaves.</div>';
 			setTimeout(function(){
@@ -416,12 +436,10 @@ $(function(){
 				document.querySelector(".speech-bubble").remove();
 			}, 2000);
 		}
-		let current_lvl = cur_level-1;
+		let current_lvl = cur_level_css-1;
 		$('[data-level=' + current_lvl + ']').addClass('cleared');
-		answer[cur_level-1] = text;
-		level_cleared[cur_level-1] = cur_level;
-		localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared));
-		localStorage.setItem('answer_css',JSON.stringify(answer));
+		answer_css[levels[cur_level_css-1].id] = text;
+		level_cleared[levels[cur_level_css-1].id] = cur_level_css;
 		document.querySelector("#next_btn").classList = 'btn btn-success';
 		document.querySelector("#next_btn").disabled = false;
 	});

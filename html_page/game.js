@@ -1,11 +1,11 @@
 //Nível atual
-let cur_level = 1;
+let cur_level_html = parseInt(localStorage.cur_level_html, 10) || 1;
 
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
-let answer = [];
+let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_html)) || {};
 
 //Vetor que indica quais níveis foram cumpridos
-let level_cleared = [];
+let level_cleared = (localStorage.level_cleared_html && JSON.parse(localStorage.level_cleared_html)) || [];
 
 //Informações de cada nível
 let levels = [
@@ -137,7 +137,7 @@ let levels = [
 let num_levels = Object.keys(levels).length;
 
 //Carrega o nível ao carregar a página
-$(window).on("load", loadLevel(cur_level));
+$(window).on("load", loadLevel(cur_level_html));
 
 //Função auxiliar para verificar se uma classe está atribuída à um elemento do HTML
 function hasClass(el, className) {
@@ -177,15 +177,15 @@ function loadLevel(level)
 	document.querySelector(".item").innerHTML 		= '';
 
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
-	if(answer[level-1] !== '' && answer[level-1] !== undefined && localStorage !== null)
+	if(answer[level] !== '' || answer[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
 	{
-		let ans = localStorage.getItem('answer_html');
-		$("textarea").val(ans[level-1]);
-		setTimeout(function(){
-			document.querySelector(".item").innerHTML = JSON.parse(ans)[level-1];
-		}, 100);
+		$("textarea").val(answer_html[level]);
+		if(JSON.parse(localStorage.answer_html)[level] !== undefined)
+		{
+			document.querySelector(".item").innerHTML = JSON.parse(localStorage.answer_html)[level];
+		}
 	}
-	//Remove o que usuário digitou ao mudar de nível para não permanecer na tela
+	//Se não tinha resposta salva para o nível, a área de texto fica sem valor
 	else
 		$("textarea").val('');
 	
@@ -272,6 +272,12 @@ function checkImageExists(image, callBack)
 	imgData.src = image;
 }
 
+$(window).on('beforeunload', function(){
+	localStorage.setItem('cur_level_html', cur_level_html);
+	localStorage.setItem('answer_html', JSON.stringify(answer_html));
+	localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+});
+
 $(function(){
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
 	let new_line_level_two = 3, 
@@ -281,14 +287,13 @@ $(function(){
 		new_line_level_eleven = 3;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
-		console.log(newLines);
 
-		if(	(e.keyCode == 13 && cur_level == 2 && newLines >= new_line_level_two) 		|| 
-			(e.keyCode == 13 && cur_level == 5 && newLines >= new_line_level_five) 		|| 
-			(e.keyCode == 13 && cur_level == 6 && newLines >= new_line_level_six) 		|| 
-			(e.keyCode == 13 && cur_level == 9 && newLines >= new_line_level_nine) 		|| 
-			(e.keyCode == 13 && cur_level == 11 && newLines >= new_line_level_eleven) 	|| 
-			(e.keyCode == 13 && (cur_level !== 2 && cur_level !== 5 && cur_level !== 6 && cur_level !== 9 && cur_level !== 11)))
+		if(	(e.keyCode == 13 && cur_level_html == 2 && newLines >= new_line_level_two) 		|| 
+			(e.keyCode == 13 && cur_level_html == 5 && newLines >= new_line_level_five) 		|| 
+			(e.keyCode == 13 && cur_level_html == 6 && newLines >= new_line_level_six) 		|| 
+			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_nine) 		|| 
+			(e.keyCode == 13 && cur_level_html == 11 && newLines >= new_line_level_eleven) 	|| 
+			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 9 && cur_level_html !== 11)))
 		{
 			return false;
 		}
@@ -296,7 +301,7 @@ $(function(){
 
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
-		answer.length = 0;
+		answer_html.length = 0;
 		localStorage.removeItem('level_cleared_html');
 		localStorage.removeItem('answer_html');
 		setTimeout(function(){
@@ -320,10 +325,10 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level < num_levels)
+				if(cur_level_html < num_levels)
 				{
-					cur_level++;
-					loadLevel(cur_level);
+					cur_level_html++;
+					loadLevel(cur_level_html);
 				}
 			}, 1000
 		);
@@ -340,11 +345,11 @@ $(function(){
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(
 			function(){
-				if(cur_level !== 1)
+				if(cur_level_html !== 1)
 				{
 					document.querySelector("#button1").disabled = false;
-					cur_level--;
-					loadLevel(cur_level);
+					cur_level_html--;
+					loadLevel(cur_level_html);
 				}
 			}, 1000
 		);
@@ -369,7 +374,7 @@ $(function(){
 		let level = $(this).attr('data-level');
 		level = parseInt(level, 10);
 		level++;
-		cur_level = level;
+		cur_level_html = level;
 		if(hasClass(document.querySelector('#board'), 'fadeIn') && hasClass(document.querySelector('#board'), 'animated_fadein'))
 		{
 			document.querySelector('#board').classList.remove('fadeIn');
@@ -397,11 +402,11 @@ $(function(){
 		document.querySelector('#board').classList.add('fadeOut');
 		document.querySelector('#board').classList.add('animated_fadeout');
 		setTimeout(function(){
-			if(cur_level !== num_levels)
+			if(cur_level_html !== num_levels)
 			{
 				document.querySelector("#button2").disabled = false;
-				cur_level++;
-				loadLevel(cur_level);
+				cur_level_html++;
+				loadLevel(cur_level_html);
 			}
 		}, 1000);
 	});
@@ -412,9 +417,9 @@ $(function(){
 		text = $("textarea").val();
 
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
-		if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined' || (cur_level == 5 && text.indexOf('<ol>') > -1 && text.indexOf('</ol>') > -1))
+		if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 && text.indexOf(levels[cur_level_html-1].tag_end) > -1 && text !== 'undefined' || (cur_level_html == 5 && text.indexOf('<ol>') > -1 && text.indexOf('</ol>') > -1))
 		{
-			if(cur_level === 3)
+			if(cur_level_html === 3)
 			{
 				let aux = text.split("\"");
 				let src = aux[1].split("\"");
@@ -431,16 +436,14 @@ $(function(){
 			}
 			document.querySelector(".item").innerHTML = text;
 			document.querySelector("#next_btn").classList = 'btn btn-success';
-			let current_lvl = cur_level-1;
+			let current_lvl = cur_level_html-1;
 			$('[data-level=' + current_lvl + ']').addClass('cleared');
-			answer[cur_level-1] = text;
-			level_cleared[cur_level-1] = cur_level;
-			localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
-			localStorage.setItem('answer_html',JSON.stringify(answer));
+			answer_html[levels[cur_level_html-1].id] = text;
+			level_cleared[levels[cur_level_html-1].id] = cur_level_html;
 			document.querySelector("#next_btn").disabled = false;
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
-		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) > -1 && text !== 'undefined')
+		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) > -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não abriu sua tag ou está incorreta.</div>';
 			setTimeout(function(){
@@ -448,7 +451,7 @@ $(function(){
 			}, 2000);
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
-		else if(text.indexOf(levels[cur_level-1].tag_init) > -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+		else if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você não fechou sua tag ou está incorreta.</div>';
 			setTimeout(function(){
@@ -456,7 +459,7 @@ $(function(){
 			}, 2000);
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
-		else if(text.indexOf(levels[cur_level-1].tag_init) == -1 && text.indexOf(levels[cur_level-1].tag_end) == -1 && text !== 'undefined')
+		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
 		{
 			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Você está se esquecendo das tags.</div>';
 			setTimeout(function(){
