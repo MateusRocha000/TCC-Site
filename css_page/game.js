@@ -111,7 +111,7 @@ function loadLevel(level)
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").innerHTML = levels[level-1].instr;
 	document.querySelector("#dialog").innerHTML = levels[level-1].help;
-	document.querySelector("#about").innerHTML = '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML. Com ela é possível alterar a cor de fundo, tamanho da fonte, posição dos elementos e muitas outras coisas.</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves. </p><p>Há muitas propriedades que são possíveis de alterar, como: largura (width), altura (height), cor de fundo (background-color), e muito mais.</p>';
+	document.querySelector("#about").innerHTML = '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML, alterando propriedades como: largura (width), altura (height), cor de fundo (background-color), e muito mais..</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves.</p><p>Cada elemento HTML utiliza a seguinte configuração:</p><p><div id="margin">Margem<div id="border">Borda<div id="padding">Preenchimento<div id="content">Conteúdo</div></div></div></div></p><p>- Margem: uma área transparente por fora da borda do elemento. Normalmente usada para controlar distância entre os elementos</p><p>- Borda: a borda que fica ao redor do conteúdo + preenchimento.</p><p>- Preenchimento: uma área transparente que fica ao redor do conteúdo do elemento.</p><p>- Conteúdo: o próprio conteúdo do elemento: imagem, texto, etc.</p>';
 	document.querySelector("#before").textContent = levels[level-1].before;
 	document.querySelector(".current").innerHTML = level;
 	document.querySelector(".total").innerHTML = num_levels;
@@ -123,8 +123,8 @@ function loadLevel(level)
 	
 	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
-		
 		$("textarea").val(answer_css[level]);
+		
 		console.log(JSON.parse(localStorage.answer_css)[level-1]);
 		let aux = JSON.parse(localStorage.answer_css)[level-1].split('{');
 		let sel = aux[0];
