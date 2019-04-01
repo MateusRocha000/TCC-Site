@@ -1,6 +1,8 @@
 //Nível atual
 let cur_level_css = parseInt(localStorage.cur_level_css, 10) || 1;
 
+let answer_html = localStorage.answer_html;
+
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
 let answer_css = (localStorage.answer_css && JSON.parse(localStorage.answer_css)) || {};
 
@@ -12,10 +14,10 @@ let levels = [
 	{
 			id: '1',
 			name: 'Seletor',
-			instr: 'Seletor para aplicar estilo da página.',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p>Olá</p>\n   </body>\n</html>',
-			item: '<p>Olá</p>',
-			sel_init: 'p{',
+			instr: '<p>O nome de nossa cidade foi colocado perfeitamente. Mas ele parece precisar ficar mais bonito. Altere o estilo da fonte com <q>font-family</q> usando a fonte <q>Luckiest Guy</q> e, caso queira, altere a cor utilizando a propriedade <q>color</q>.</p>',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n     '+ JSON.parse(answer_html)[1] + '\n   </body>\n</html>',
+			item: JSON.parse(answer_html)[1],
+			sel_init: 'h1{',
 			sel_end: '}',
 			style: 'one',
 			help: '<p>O seletor é utilizado para indicar para a página que um elemento HTML está recebendo um estilo com certas propriedades definidas.</p> <p>A regra é definida com o nome da regra com as propriedades recebendo seus possíveis valores entre chaves, como:</p><p>p{</p><p>&nbsp;&nbsp;font-size: 25px;</p><p>}</p><p>No exemplo acima, é alterado o tamanho da fonte de um parágrafo.</p>'
@@ -36,7 +38,7 @@ let levels = [
 			name: 'Classe',
 			instr: 'Outra maneira de aplicar estilo. Classes são usados em elementos que receberão o mesmo estilo.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p class=\"ola\">Olá</p>\n      <p class=\"ola\">Entre</p>\n   </body>\n</html>',
-			item: '<p class=\"ola\">Olá</p>      <p class=\"ola\">Entre</p>',
+			item: JSON.parse(answer_html)[2],
 			sel_init: '.ola{',
 			sel_end: '}',
 			style: 'three',
@@ -107,7 +109,7 @@ function hasValue(el, array){
 function loadLevel(level)
 {
 	document.querySelector("#title").textContent = levels[level-1].name;
-	document.querySelector("#instr").textContent = levels[level-1].instr;
+	document.querySelector("#instr").innerHTML = levels[level-1].instr;
 	document.querySelector("#dialog").innerHTML = levels[level-1].help;
 	document.querySelector("#about").innerHTML = '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML. Com ela é possível alterar a cor de fundo, tamanho da fonte, posição dos elementos e muitas outras coisas.</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves. </p><p>Há muitas propriedades que são possíveis de alterar, como: largura (width), altura (height), cor de fundo (background-color), e muito mais.</p>';
 	document.querySelector("#before").textContent = levels[level-1].before;
@@ -118,30 +120,29 @@ function loadLevel(level)
 	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = levels[level-1].item;
-
+	
 	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
 		
 		$("textarea").val(answer_css[level]);
-		if(JSON.parse(localStorage.answer_css)[level] !== undefined)
+		console.log(JSON.parse(localStorage.answer_css)[level-1]);
+		let aux = JSON.parse(localStorage.answer_css)[level-1].split('{');
+		let sel = aux[0];
+		let aux2 = aux[1].split('}');
+		let prop = aux2[0];
+		if(level == 1)
 		{
-			let aux = JSON.parse(localStorage.answer_css)[level-1].split('{');
-			let sel = aux[0];
-			let aux2 = aux[1].split('}');
-			let prop = aux2[0];
-			if(level == 1)
-			{
-				document.querySelector(".item p").style = prop;
-			}
-			else if(level == 2)
-			{
-				document.querySelector(".item #ola").style = prop;
-			}
-			else if(level == 3)
-			{
-				document.querySelector(".item .ola").style = prop;
-			}
+			document.querySelector(".item h1").style = prop;
 		}
+		else if(level == 2)
+		{
+			document.querySelector(".item #ola").style = prop;
+		}
+		else if(level == 3)
+		{
+			document.querySelector(".item .ola").style = prop;
+		}
+		
 	}
 	else
 		$("textarea").val('');
@@ -203,6 +204,7 @@ $(function(){
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
 		answer_css.length = 0;
+		level_cleared.length = 0;
 		localStorage.removeItem('level_cleared_css');
 		localStorage.removeItem('answer_css');
 		setTimeout(function(){
@@ -354,7 +356,7 @@ $(function(){
 				for(let i = 0; i < lines.length - 1; i++)
 				{
 					try{
-						$("p").css(aux_prop[i], aux_value[i]);
+						$(".item h1").css(aux_prop[i], aux_value[i]);
 						
 					}catch(err)
 					{
@@ -372,7 +374,7 @@ $(function(){
 				{
 					
 					try{
-						$("#ola").css(aux_prop[i], aux_value[i]);
+						$(".item #ola").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
@@ -389,7 +391,7 @@ $(function(){
 				{
 					
 					try{
-						$(".ola").css(aux_prop[i], aux_value[i]);
+						$(".item .ola").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
@@ -405,7 +407,7 @@ $(function(){
 				{
 					
 					try{
-						$("#p1").css(aux_prop[i], aux_value[i]);
+						$(".item #p1").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
