@@ -1,7 +1,7 @@
 //Nível atual
 let cur_level_css = parseInt(localStorage.cur_level_css, 10) || 1;
 
-let answer_html = localStorage.answer_html;
+let answer_html = JSON.parse(localStorage.answer_html);
 
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
 let answer_css = (localStorage.answer_css && JSON.parse(localStorage.answer_css)) || {};
@@ -15,8 +15,8 @@ let levels = [
 			id: '1',
 			name: 'Seletor',
 			instr: '<p>O nome de nossa cidade foi colocado perfeitamente. Mas ele parece precisar ficar mais bonito. Altere o estilo da fonte com <q>font-family</q> usando a fonte <q>Luckiest Guy</q> e, caso queira, altere a cor utilizando a propriedade <q>color</q>.</p>',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n     '+ JSON.parse(answer_html)[1] + '\n   </body>\n</html>',
-			item: JSON.parse(answer_html)[1],
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n     '+ answer_html[1] + '\n   </body>\n</html>',
+			item: answer_html[1],
 			sel_init: 'h1{',
 			sel_end: '}',
 			style: 'one',
@@ -38,7 +38,7 @@ let levels = [
 			name: 'Classe',
 			instr: 'Outra maneira de aplicar estilo. Classes são usados em elementos que receberão o mesmo estilo.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p class=\"ola\">Olá</p>\n      <p class=\"ola\">Entre</p>\n   </body>\n</html>',
-			item: JSON.parse(answer_html)[2],
+			item: answer_html[2],
 			sel_init: '.ola{',
 			sel_end: '}',
 			style: 'three',
@@ -125,7 +125,6 @@ function loadLevel(level)
 	{
 		$("textarea").val(answer_css[level]);
 		
-		console.log(JSON.parse(localStorage.answer_css)[level-1]);
 		let aux = JSON.parse(localStorage.answer_css)[level-1].split('{');
 		let sel = aux[0];
 		let aux2 = aux[1].split('}');
