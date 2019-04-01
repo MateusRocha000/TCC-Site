@@ -5,7 +5,7 @@ let cur_level_html = parseInt(localStorage.cur_level_html, 10) || 1;
 let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_html)) || {};
 
 //Vetor que indica quais níveis foram cumpridos
-let level_cleared = (localStorage.level_cleared_html && JSON.parse(localStorage.level_cleared_html)) || [];
+let level_cleared_html = (localStorage.level_cleared_html && JSON.parse(localStorage.level_cleared_html)) || [];
 
 //Informações de cada nível
 let levels = [
@@ -167,15 +167,22 @@ function loadLevel(level)
 	document.querySelector("#dialog").innerHTML 	= levels[level-1].help;
 	document.querySelector("#about").innerHTML 		= '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
 	document.querySelector("#before").textContent 	= levels[level-1].before;
-	document.querySelector("#after").textContent 		= levels[level-1].after;
+	document.querySelector("#after").textContent 	= levels[level-1].after;
 	document.querySelector(".current").innerHTML 	= level;
 	document.querySelector(".total").innerHTML 		= num_levels;
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
-	document.querySelector("#next_btn").disabled 	= true;
 	document.querySelector("#next_btn").classList 	= 'btn btn-secondary';
 	document.querySelector(".item").classList 		= 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML 		= '';
 
+	if(level_cleared_html[level] !== null && level_cleared_html[level] !== undefined)
+	{
+		document.querySelector("#next_btn").disabled = false;
+		document.querySelector("#next_btn").classList = 'btn btn-success';
+	}
+	else
+		document.querySelector("#next_btn").disabled = true;
+	
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
 	if(answer_html[level] !== '' || answer_html[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
 	{
@@ -277,7 +284,7 @@ function checkImageExists(image, callBack)
 $(window).on('beforeunload', function(){
 	localStorage.setItem('cur_level_html', cur_level_html);
 	localStorage.setItem('answer_html', JSON.stringify(answer_html));
-	localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared));
+	localStorage.setItem('level_cleared_html', JSON.stringify(level_cleared_html));
 });
 
 $(function(){
@@ -444,7 +451,7 @@ $(function(){
 			let current_lvl = cur_level_html-1;
 			$('[data-level=' + current_lvl + ']').addClass('cleared');
 			answer_html[levels[cur_level_html-1].id] = text;
-			level_cleared[levels[cur_level_html-1].id] = cur_level_html;
+			level_cleared_html[levels[cur_level_html-1].id] = cur_level_html;
 			document.querySelector("#next_btn").disabled = false;
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag

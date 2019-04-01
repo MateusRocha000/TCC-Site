@@ -7,7 +7,7 @@ let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_ht
 let answer_css = (localStorage.answer_css && JSON.parse(localStorage.answer_css)) || {};
 
 //Vetor que indica quais níveis foram cumpridos
-let level_cleared = (localStorage.level_cleared_css && JSON.parse(localStorage.level_cleared_css)) || [];
+let level_cleared_css = (localStorage.level_cleared_css && JSON.parse(localStorage.level_cleared_css)) || [];
 
 //Informações de cada nível
 let levels = [
@@ -116,10 +116,18 @@ function loadLevel(level)
 	document.querySelector(".current").innerHTML = level;
 	document.querySelector(".total").innerHTML = num_levels;
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
-	document.querySelector("#next_btn").disabled = true;
 	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML = levels[level-1].item;
+	
+	console.log(document.querySelector("#next_btn").disabled);
+	if(level_cleared_css[level] !== null && level_cleared_css[level] !== undefined)
+	{
+		document.querySelector("#next_btn").disabled = false;
+		document.querySelector("#next_btn").classList = 'btn btn-success';
+	}
+	else
+		document.querySelector("#next_btn").disabled = true;
 	
 	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
@@ -185,7 +193,7 @@ function loadLevel(level)
 $(window).on("beforeunload", function(){
 	localStorage.setItem('cur_level_css', cur_level_css);
 	localStorage.setItem('answer_css', JSON.stringify(answer_css));
-	localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared));
+	localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared_css));
 });
 
 $(function(){
@@ -203,7 +211,7 @@ $(function(){
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
 		answer_css.length = 0;
-		level_cleared.length = 0;
+		level_cleared_css.length = 0;
 		localStorage.removeItem('level_cleared_css');
 		localStorage.removeItem('answer_css');
 		setTimeout(function(){
@@ -440,7 +448,7 @@ $(function(){
 		let current_lvl = cur_level_css-1;
 		$('[data-level=' + current_lvl + ']').addClass('cleared');
 		answer_css[levels[cur_level_css-1].id] = text;
-		level_cleared[levels[cur_level_css-1].id] = cur_level_css;
+		level_cleared_css[levels[cur_level_css-1].id] = cur_level_css;
 		document.querySelector("#next_btn").classList = 'btn btn-success';
 		document.querySelector("#next_btn").disabled = false;
 	});
