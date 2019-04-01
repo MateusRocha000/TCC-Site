@@ -28,21 +28,20 @@
 }
 
 .item table{
-	border-collapse: separate;
 	border-spacing: 20px;
 	width: 100%;
 }
 
 .item th{
-	border: 1px solid black;
-	background-color: #00ffff;
+	border: 10px solid #d3d3d3;
+    background-color: #bfffff;
 	width: 100px;
 	height: 100px;
 }
 
 .item td {
-	border: 1px solid black;
-	background-color: #00ffff;
+	border: 10px solid #d3d3d3;
+    background-color: #bfffff;
 	width: 150px;
 	height: 200px;
 }
@@ -58,16 +57,14 @@
 	width: 50vw;
 	height : 100vh;	
 	padding	: 1em;
-	background-color: #80ffff;
 	z-index: 10;
 }
 
 .pos_one{
-	font-family: 'Permanent Marker', cursive;
 	font-size: 30px;
 	position: absolute;
-	top: 40vh;
-	left: 25vw;
+	top: 46vh;
+	left: 23vw;
 	transform: translate(-50%, -38%);
 	z-index: 50;
 }
@@ -89,12 +86,13 @@
 }
 
 .pos_two{
-	font-family: 'Permanent Marker', cursive;
+	display: flex;
+	flex-direction: column;
 	text-align: justify;
-	width: 300px;
-	font-size: 20px;
-	top: 20em;
-	left: 11.5em;
+	width: 320px;
+	font-size: 24px;
+	top: 43vh;
+	left: 5vw;
 	z-index: 50;
 }
 
@@ -116,11 +114,12 @@
 .pos_three{
 	display: flex;
 	position: absolute;
-	width: 45%;
-	height: 20%;
+	width: 55%;
+	height: 28%;
 	z-index: 50;
-	top: 26em;
-	left:13em;
+	top: 6vh;
+	left: 6vw;
+	transform: rotateX(27deg) rotateY(27deg); 
 }
 
 .pos_three img{
@@ -150,12 +149,15 @@
 	z-index: 50;
 }
 
-.pos_four a{
-	color: blue;
-	width: 100%;
-	height: 50%;
-	padding: 1em;
-	z-index: 50;
+.pos_four button{
+	position: absolute;
+    top: 62vh;
+    left: 26.5vw;
+    width: 85px;
+    height: 35px;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 .level-five{
@@ -171,6 +173,16 @@
 	height : 100%;	
 	padding	: 1em;
 	z-index: 10;
+}
+
+.pos_five{
+	width: 20%;
+    height: 30%;
+    padding: 1em;
+    z-index: 50;
+    position: absolute;
+    top: 17vh;
+    left: 35.5vw;
 }
 
 .level-six{
@@ -189,7 +201,13 @@
 }
 
 .pos_six{
-	border: 1px solid black;
+	width: 80%;
+    padding: 1em 1em 1.5em 1em;
+    z-index: 50;
+    position: absolute;
+    top: 17vh;
+    left: 4vw;
+    background-color: white;
 }
 
 .level-seven{

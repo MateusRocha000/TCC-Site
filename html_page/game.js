@@ -73,7 +73,7 @@ let levels = [
 		tag_init: '<table>',
 		tag_end	: '</table>',
 		style	: 'six',
-		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p>'
+		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar.'
 	},
 	{
 		id		: '7',
@@ -177,7 +177,7 @@ function loadLevel(level)
 	document.querySelector(".item").innerHTML 		= '';
 
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
-	if(answer[level] !== '' || answer[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
+	if(answer_html[level] !== '' || answer_html[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
 	{
 		$("textarea").val(answer_html[level]);
 		if(JSON.parse(localStorage.answer_html)[level] !== undefined)
@@ -230,6 +230,7 @@ function loadLevel(level)
 		document.querySelector(".item").innerHTML 		= levels[level-1].item;
 		document.querySelector("#pedra").classList 		= 'pos_' + levels[level-1].style;
 		document.querySelector("#pc_screen").classList 	= 'pc_screen_ten';
+		document.querySelector("textarea").classList 	= 'text_ten';
 	}
 	else if(level == num_levels)
 	{
@@ -284,6 +285,7 @@ $(function(){
 		new_line_level_five = 4,
 		new_line_level_six = 4,
 		new_line_level_nine = 4,
+		new_line_level_ten = 4,
 		new_line_level_eleven = 3;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
@@ -292,8 +294,9 @@ $(function(){
 			(e.keyCode == 13 && cur_level_html == 5 && newLines >= new_line_level_five) 		|| 
 			(e.keyCode == 13 && cur_level_html == 6 && newLines >= new_line_level_six) 		|| 
 			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_nine) 		|| 
+			(e.keyCode == 13 && cur_level_html == 10 && newLines >= new_line_level_ten) 		|| 
 			(e.keyCode == 13 && cur_level_html == 11 && newLines >= new_line_level_eleven) 	|| 
-			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 9 && cur_level_html !== 11)))
+			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 9 && cur_level_html !== 10 && cur_level_html !== 11)))
 		{
 			return false;
 		}
@@ -302,8 +305,9 @@ $(function(){
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
 		answer_html.length = 0;
-		localStorage.removeItem('level_cleared_html');
-		localStorage.removeItem('answer_html');
+		level_cleared_html.length = 0;
+		localStorage.removeItem("level_cleared_html");
+		localStorage.removeItem("answer_html");
 		setTimeout(function(){
 			location.reload();
 		}, 1000);

@@ -344,7 +344,7 @@
 .text_ten{
     display: block;
 	width: calc(100% - 40px);
-	height: 30px;
+	height: 120px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;
