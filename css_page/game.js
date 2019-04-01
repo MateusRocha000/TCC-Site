@@ -125,7 +125,7 @@ function loadLevel(level)
 	{
 		$("textarea").val(answer_css[level]);
 		
-		let aux = JSON.parse(localStorage.answer_css)[level-1].split('{');
+		let aux = answer_css[level-1].split('{');
 		let sel = aux[0];
 		let aux2 = aux[1].split('}');
 		let prop = aux2[0];

@@ -183,7 +183,7 @@ function loadLevel(level)
 		//let ans = JSON.parse(localStorage.answer_html);
 		if(answer_html[level] !== undefined || answer_html[level] !== null)
 		{
-			document.querySelector(".item").innerHTML = JSON.parse(localStorage.answer_html)[level];
+			document.querySelector(".item").innerHTML = answer_html[level];
 		}
 	}
 	//Se não tinha resposta salva para o nível, a área de texto fica sem valor
