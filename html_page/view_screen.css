@@ -48,7 +48,8 @@
 }
 
 .level-one{
-	background-image : url("../img/entry.png"); 
+	background-image : url("../img/level_one.png"); 
+	background-size: 100%;
 	background-repeat : no-repeat;
 	background-position : center bottom;
 	position: absolute;	
@@ -72,9 +73,8 @@
 }
 
 .level-two{
-	background-image: url("../img/papel.png"), url("../img/placa.png");
-	background-color: #80ffff;
-	background-size : 50% 30%, 50% 50%;
+	background-image : url("../img/level_two.png"); 
+	background-size: 100%;
 	background-repeat : no-repeat;
 	background-position : center 75%, center bottom;
 	order: 1, 2;
@@ -99,9 +99,8 @@
 }
 
 .level-three{
-	background-image: url("../img/placa.png");
-	background-color: #80ffff;
-	background-size : 50% 50%;
+	background-image : url("../img/level_three.png"); 
+	background-size: 100%;
 	background-repeat : no-repeat;
 	background-position : center bottom;
 	display : flex;	
@@ -130,6 +129,10 @@
 }
 
 .level-four{
+	background-image : url("../img/level_four.png"); 
+	background-size: 100%;
+	background-repeat : no-repeat;
+	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
@@ -155,9 +158,56 @@
 	z-index: 50;
 }
 
+.level-five{
+	background-image : url("../img/level_five.png"); 
+	background-size: 100%;
+	background-repeat : no-repeat;
+	background-position : center bottom;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height : 100%;	
+	padding	: 1em;
+	z-index: 10;
+}
+
+.level-six{
+	background-image : url("../img/level_six.png"); 
+	background-size: 100%;
+	background-repeat : no-repeat;
+	background-position : center bottom;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height : 100%;	
+	padding	: 1em;
+	z-index: 10;
+}
+
 .pos_six{
 	border: 1px solid black;
 }
+
+.level-seven{
+	background-image : url("../img/level_seven.png"); 
+	background-size: 100%;
+	background-repeat : no-repeat;
+	background-position : center bottom;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height : 100%;	
+	padding	: 1em;
+	z-index: 10;
+}
+
+
 
 .pos_ten{
 	width: 70%;
