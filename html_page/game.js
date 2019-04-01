@@ -12,7 +12,7 @@ let levels = [
 	{
 		id		: '1',
 		name	: 'Tag de título: <h1>',
-		instr	: 'Nossa cidade precisa do nome na entrada. Utilize a tag para colocar o nome \"Web City\" para a entrada da nossa cidade.',
+		instr	: 'Nossa vila precisa do nome na entrada. Utilize a tag para colocar o nome \"Web Village\" para a entrada da nossa cidade.',
 		before	: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<h1>',
@@ -123,7 +123,7 @@ let levels = [
 	{
 		id		: '11',
 		name	: 'Tag de link: <a>',
-		instr	: ' Crie um link para a página de CSS (https://webcity.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
+		instr	: ' Crie um link para a página de CSS (https://webvillage.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
 		before	: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<a',
