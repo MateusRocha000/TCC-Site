@@ -1,7 +1,7 @@
 //Nível atual
 let cur_level_css = parseInt(localStorage.cur_level_css, 10) || 1;
 
-let answer_html = JSON.parse(localStorage.answer_html);
+let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_html)) || {};
 
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
 let answer_css = (localStorage.answer_css && JSON.parse(localStorage.answer_css)) || {};

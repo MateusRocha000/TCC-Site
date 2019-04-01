@@ -180,8 +180,8 @@ function loadLevel(level)
 	if(answer_html[level] !== '' || answer_html[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
 	{
 		$("textarea").val(answer_html[level]);
-		let ans = JSON.parse(localStorage.answer_html);
-		if(ans[level] !== undefined)
+		//let ans = JSON.parse(localStorage.answer_html);
+		if(answer_html[level] !== undefined || answer_html[level] !== null)
 		{
 			document.querySelector(".item").innerHTML = JSON.parse(localStorage.answer_html)[level];
 		}
