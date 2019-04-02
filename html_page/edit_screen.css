@@ -14,7 +14,7 @@
 }
 
 .title_table{
-	font-size: 32px;
+	font-size: 28px;
 }
 
 .title_else{
@@ -117,7 +117,7 @@
 		}
 
 .pc_screen_two {
-	height: 55vh;
+	height: 58vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -131,7 +131,7 @@
 }
 
 .pc_screen_five {
-	height: 60vh;
+	height: 62vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -145,7 +145,7 @@
 }
 
 .pc_screen_table {
-	height: 57vh;
+	height: 62vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -172,7 +172,7 @@
 	overflow: hidden;
 }
 
-.pc_screen_ten {
+.pc_screen_eight {
 	height: 58vh;
 	width: 45vw;
 	position: relative;
@@ -186,8 +186,8 @@
 	overflow: hidden;
 }
 
-.pc_screen_eleven {
-	height: 55vh;
+.pc_screen_nine {
+	height: 58vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -201,10 +201,10 @@
 }
 
 .pc_screen_else {
-	height: 50vh;
+	height: 52vh;
 	width: 45vw;
 	position: relative;
-	padding: 30px 30px 30px 30px;
+	padding: 15px 30px 30px 30px;
 	border-top: 30px solid #c0c0c0;
 	border-right: 30px solid #c0c0c0;
 	border-bottom: 50px solid #c0c0c0;
@@ -236,7 +236,7 @@
 
 #next_btn {
 	position: absolute;
-	right: 1.7vw;
+	right: 1.3vw;
 	bottom: 1vh;
 }
 
@@ -247,7 +247,7 @@
 
 #check{
 	position: absolute;
-	right: 8vw;
+	right: 8.5vw;
 	bottom: 1vh;
 }
 
@@ -261,7 +261,7 @@
 
 #clear_text{
 	position: absolute;
-	right: 14vw;
+	right: 15vw;
 	bottom: 1vh;
 }
 
@@ -288,7 +288,7 @@
 .text_else{
     display: block;
 	width: calc(100% - 40px);
-	height: 30px;
+	height: 32px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;
@@ -316,7 +316,35 @@
 .text_six{
 	display: block;
 	width: calc(100% - 40px);
-	height: 108px;
+	height: 115px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_seven{
+	display: block;
+	width: calc(100% - 40px);
+	height: 85px;
+	background-color: black;
+	color: #00ffff;
+    margin-left: 40px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+	overflow: auto;
+}
+
+.text_eight{
+	display: block;
+	width: calc(100% - 40px);
+	height: 85px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;
@@ -328,34 +356,6 @@
 }
 
 .text_nine{
-	display: block;
-	width: calc(100% - 40px);
-	height: 108px;
-	background-color: black;
-	color: #00ffff;
-    margin-left: 40px;
-    border: none;
-    font-size: 18px;
-    outline: none;
-    resize: none;
-	overflow: auto;
-}
-
-.text_ten{
-    display: block;
-	width: calc(100% - 40px);
-	height: 120px;
-	background-color: black;
-	color: #00ffff;
-    margin-left: 40px;
-    border: none;
-    font-size: 18px;
-    outline: none;
-    resize: none;
-	overflow: auto;
-}
-
-.text_eleven{
 	display: block;
 	width: calc(100% - 40px);
 	height: 85px;

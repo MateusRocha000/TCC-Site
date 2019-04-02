@@ -56,7 +56,7 @@ let levels = [
 	{
 		id		: '5',
 		name	: 'Tags de lista: <ul>, <ol> e <li>',
-		instr	: 'Muitos dos ingredientes que tínhamos foi perdido. Crie uma lista de compras para o restaurante.',
+		instr	: 'Perdemos alguns ingredientes. Crie uma lista de compras para o restaurante.',
 		before	: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<ul>',
@@ -67,14 +67,14 @@ let levels = [
 	{
 		id		: '6',
 		name	: 'Tags de tabela: <table>, <tr>, <th> e <td>',
-		instr	: 'A janela da prefeitura foi danificada e precisamos de outra. Use seu conhecimento para fazer uma.',
+		instr	: 'A janela da prefeitura foi quebrada. Nos ajuda com outra.',
 		before	: '<html>\n   <head>\n     <title>Tabela</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<table>',
 		tag_end	: '</table>',
 		style	: 'six',
 		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar.'
-	},
+	},/*
 	{
 		id		: '7',
 		name	: 'Classes',
@@ -96,40 +96,40 @@ let levels = [
 		tag_end	: '\"',
 		style	: 'eight',
 		help	: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador <q>id</q> e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=<q>nome_do_id</q>&gt</p>'
-	},
+	},*/
 	{
-		id		: '9',
+		id		: '7',
 		name	: 'Tag de divisão: <div>',
-		instr	: 'Instruções sobre div',
+		instr	: 'Crie duas div para serem lâmpadas.',
 		before	: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<div>',
 		tag_end	: '</div>',
-		style	: 'nine',
+		style	: 'seven',
 		help	: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando <q>id</q> e/ou <q>class</q>, e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=<q>id_da_div</q>&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
 	},
 	{
-		id		: '10',
+		id		: '8',
 		name	: 'Tag de comentário: <!-- -->',
 		instr	: 'Os invasores bloquearam o caminho. Utilize as tags de comentário para removê-las do caminho, comentando <div id="pedra"></div>',
 		before	: '<html>\n   <head>\n     <title>Comentário</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<!--',
 		tag_end	: '-->',
-		style	: 'ten',
+		style	: 'eight',
 		item	: '<div id="pedra"></div>',
 		help	: '<p>Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado.</p> <p>Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso.</p> <p>Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.</p>'
 	},
 	{
-		id		: '11',
+		id		: '9',
 		name	: 'Tag de link: <a>',
-		instr	: ' Crie um link para a página de CSS (https://webvillage.herokuapp.com/css_page/aula.html). Lembre-se de colocar um nome para o link para não ficar vazio.',
+		instr	: ' Crie um link para a página de CSS (vide ajuda). Lembre-se de colocar um nome para o link para não ficar vazio.',
 		before	: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<a',
 		tag_end	: '</a>',
-		style	: 'eleven',
-		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;<p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou é entendida pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido é necessário que você coloque a url absoluta do site com <q>http</q></p>'
+		style	: 'nine',
+		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;<p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou é entendida pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido é necessário que você coloque a url absoluta do site com <q>http</q></p><p>Utilize o seguinte link nesta atividade:</p><p>https://webvillage.herokuapp.com/css_page/aula.html</p>'
 	}
 ];
 
@@ -221,6 +221,7 @@ function loadLevel(level)
 	{
 		document.querySelector("textarea").classList 	= 'text_five';
 		document.querySelector("#pc_screen").classList 	= 'pc_screen_five';
+		document.querySelector("#title").classList		= 'title_table';
 	}
 	else if(level == 6)
 	{
@@ -228,22 +229,22 @@ function loadLevel(level)
 		document.querySelector("textarea").classList 	= 'text_six';
 		document.querySelector("#title").classList		= 'title_table';
 	}
-	else if(level == 9)
+	else if(level == 7)
 	{
 		document.querySelector("#pc_screen").classList 	= 'pc_screen_div';
-		document.querySelector("textarea").classList 	= 'text_nine';
+		document.querySelector("textarea").classList 	= 'text_seven';
 	}
-	else if(level == 10)
+	else if(level == 8)
 	{
 		document.querySelector(".item").innerHTML 		= levels[level-1].item;
 		document.querySelector("#pedra").classList 		= 'pos_' + levels[level-1].style;
-		document.querySelector("#pc_screen").classList 	= 'pc_screen_ten';
-		document.querySelector("textarea").classList 	= 'text_ten';
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_eight';
+		document.querySelector("textarea").classList 	= 'text_eight';
 	}
 	else if(level == num_levels)
 	{
-		document.querySelector("#pc_screen").classList 	= 'pc_screen_eleven';
-		document.querySelector("textarea").classList 	= 'text_eleven';
+		document.querySelector("#pc_screen").classList 	= 'pc_screen_nine';
+		document.querySelector("textarea").classList 	= 'text_nine';
 	}
 	else
 	{
@@ -292,19 +293,19 @@ $(function(){
 	let new_line_level_two = 3, 
 		new_line_level_five = 4,
 		new_line_level_six = 4,
-		new_line_level_nine = 4,
-		new_line_level_ten = 4,
-		new_line_level_eleven = 3;
+		new_line_level_seven = 4,
+		new_line_level_eight = 4,
+		new_line_level_nine = 3;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
 
 		if(	(e.keyCode == 13 && cur_level_html == 2 && newLines >= new_line_level_two) 		|| 
 			(e.keyCode == 13 && cur_level_html == 5 && newLines >= new_line_level_five) 		|| 
 			(e.keyCode == 13 && cur_level_html == 6 && newLines >= new_line_level_six) 		|| 
-			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_nine) 		|| 
-			(e.keyCode == 13 && cur_level_html == 10 && newLines >= new_line_level_ten) 		|| 
-			(e.keyCode == 13 && cur_level_html == 11 && newLines >= new_line_level_eleven) 	|| 
-			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 9 && cur_level_html !== 10 && cur_level_html !== 11)))
+			(e.keyCode == 13 && cur_level_html == 7 && newLines >= new_line_level_nine) 		|| 
+			(e.keyCode == 13 && cur_level_html == 8 && newLines >= new_line_level_ten) 		|| 
+			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_eleven) 	|| 
+			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 7 && cur_level_html !== 8 && cur_level_html !== 9)))
 		{
 			return false;
 		}
