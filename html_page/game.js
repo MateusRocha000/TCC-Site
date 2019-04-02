@@ -312,6 +312,7 @@ $(window).on('beforeunload', function(){
 });
 
 $(function(){
+	
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
 	let new_line_level_two = 3, 
 		new_line_level_five = 4,

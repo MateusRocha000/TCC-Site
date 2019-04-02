@@ -330,7 +330,6 @@
 	border-radius: .4em;
 	z-index: 100;
 }
-
 		.speech-bubble-two:after {
 			content: '';
 			position: absolute;

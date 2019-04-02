@@ -654,6 +654,7 @@ $(function(){
 					}
 				}
 			}
+			
 			let current_lvl = cur_level_css-1;
 			$('[data-level=' + current_lvl + ']').addClass('cleared');
 			answer_css[levels[cur_level_css-1].id] = text;

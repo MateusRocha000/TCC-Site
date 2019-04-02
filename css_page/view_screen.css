@@ -158,7 +158,6 @@
 	border-radius: .4em;
 	z-index: 100;
 }
-
 		.speech-bubble-three:after {
 			content: '';
 			position: absolute;
