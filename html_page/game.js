@@ -336,10 +336,10 @@ $(function(){
 
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
-		answer_html.length = 0;
-		level_cleared_html.length = 0;
-		localStorage.removeItem("level_cleared_html");
-		localStorage.removeItem("answer_html");
+		answer_html = {};
+		level_cleared_html = [];
+		localStorage.setItem("level_cleared_html", level_cleared_html);
+		localStorage.setItem("answer_html", answer_html);
 		setTimeout(function(){
 			location.reload();
 		}, 1000);
