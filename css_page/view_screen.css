@@ -112,31 +112,139 @@
 	height: 300px;
 }
 
-.speech-bubble {
+.speech-bubble-one {
+	font-family: 'Indie Flower', cursive;
 	position: relative;
 	text-align: center;
 	font-size: 24px;
-	height: 50px;
+	height: 80px;
 	width: 250px;
 	top: 75%;
 	left: 35%;
 	padding: 5px;
-	background: #00aabb;
+	background: white;
+	border: 2px solid black;
 	border-radius: .4em;
 	z-index: 100;
 }
 
-.speech-bubble:after {
-	content: '';
-	position: absolute;
-	left: 1%;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 10px solid transparent;
-	border-right-color: #00aabb;
-	border-left: 0;
-	margin-top: -10px;
-	margin-left: -10px;
+		.speech-bubble-one:after {
+			content: '';
+			position: absolute;
+			left: 2%;
+			top: 50%;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-right-color: white;
+			border-left: 0;
+			margin-top: -10px;
+			margin-left: -10px;
+			z-index: 100;
+		}
+		
+.speech-bubble-three {
+	font-family: 'Indie Flower', cursive;
+	position: relative;
+	text-align: center;
+	font-size: 24px;
+	height: 80px;
+	width: 250px;
+	top: 15vh;
+	left: 8vw;
+	padding: 5px;
+	background: white;
+	border: 2px solid black;
+	border-radius: .4em;
 	z-index: 100;
+}
+
+		.speech-bubble-three:after {
+			content: '';
+			position: absolute;
+			right: 5%;
+			top: 50%;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-left-color: white;
+			border-right: 0;
+			margin-top: -10px;
+			margin-right: -20px;
+			z-index: 100;
+		}
+
+.char_level_one{
+	background-image: url('../img/coutinho1.png');
+	background-size: 70%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 200px;
+	height: 230px;
+	top: 65vh;
+	left: 8vw;
+	z-index: 80;
+}
+
+.char_level_one_done{
+	background-image: url('../img/coutinho2.png');
+	background-size: 70%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 200px;
+	height: 230px;
+	top: 65vh;
+	left: 8vw;
+	z-index: 80;
+}
+
+.char_level_one_error{
+	background-image: url('../img/coutinho3.png');
+	background-size: 70%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 200px;
+	height: 230px;
+	top: 65vh;
+	left: 8vw;
+	z-index: 80;
+}
+
+.char_level_three{
+	background-image: url(../img/coutinho1.png);
+    transform: rotateY(180deg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 480px;
+    height: 800px;
+    top: -11vh;
+    left: 25vw;
+    z-index: 80;
+}
+
+.char_level_three_done{
+	background-image: url('../img/coutinho2.png');
+	transform: rotateY(180deg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 480px;
+    height: 800px;
+    top: -11vh;
+    left: 25vw;
+    z-index: 80;
+}
+
+.char_level_three_error{
+	background-image: url('../img/coutinho3.png');
+	transform: rotateY(180deg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 480px;
+    height: 800px;
+    top: -11vh;
+    left: 25vw;
+    z-index: 80;
 }

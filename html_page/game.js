@@ -483,7 +483,7 @@ $(function(){
 							case 9: document.querySelector("#char").classList = 'char_level_nine_error';
 									break;
 						}
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Imagem não encontrada.</div>';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Imagem não encontrada.</div>';
 						setTimeout(function(){
 							switch(cur_level_html)
 							{

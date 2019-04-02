@@ -118,9 +118,28 @@ function loadLevel(level)
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
 	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
-	document.querySelector(".item").innerHTML = levels[level-1].item;
+	console.log(JSON.stringify(answer_css));
+	switch(level)
+	{
+		case 1: document.querySelector("#char").classList = 'char_level_one';
+				break;
+		case 2: document.querySelector("#char").classList = 'char_level_two';
+				break;
+		case 3: document.querySelector("#char").classList = 'char_level_three';
+				break;
+		case 4: document.querySelector("#char").classList = 'char_level_four';
+				break;
+		case 5: document.querySelector("#char").classList = 'char_level_five';
+				break;
+		case 6: document.querySelector("#char").classList = 'char_level_six';
+				break;
+	}
 	
-	console.log(document.querySelector("#next_btn").disabled);
+	if(answer_html[level] !== undefined && answer_html[level] !== null)
+	{
+		document.querySelector(".item").innerHTML = answer_html[level];
+	}
+	
 	if(level_cleared_css[level] !== null && level_cleared_css[level] !== undefined)
 	{
 		document.querySelector("#next_btn").disabled = false;
@@ -128,6 +147,7 @@ function loadLevel(level)
 	}
 	else
 		document.querySelector("#next_btn").disabled = true;
+
 	
 	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
@@ -137,15 +157,15 @@ function loadLevel(level)
 		let sel = aux[0];
 		let aux2 = aux[1].split('}');
 		let prop = aux2[0];
-		if(level == 1)
+		if(level == 1 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
 			document.querySelector(".item h1").style = prop;
 		}
-		else if(level == 2)
+		else if(level == 2 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
 			document.querySelector(".item #ola").style = prop;
 		}
-		else if(level == 3)
+		else if(level == 3 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
 			document.querySelector(".item .ola").style = prop;
 		}
@@ -210,10 +230,10 @@ $(function(){
 
 	//Limpa as respostas e recarrega a página depois de um segundo
 	$("#clear_storage").on("click", function(){
-		answer_css.length = 0;
-		level_cleared_css.length = 0;
-		localStorage.removeItem('level_cleared_css');
-		localStorage.removeItem('answer_css');
+		answer_css = {};
+		level_cleared_css = [];
+		localStorage.setItem('level_cleared_css', level_cleared_css);
+		localStorage.setItem('answer_css', answer_css);
 		setTimeout(function(){
 			location.reload();
 		}, 1000);
@@ -333,9 +353,44 @@ $(function(){
 					aux_rule = lines[i].split(";")[0];
 					if(lines[i].indexOf(":") == -1)
 					{
+						switch(cur_level_css)
+						{
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									break;
+						}
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 						setTimeout(function(){
-							document.querySelector(".speech-bubble").remove();
+							switch(cur_level_css)
+							{
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
 						}, 2000);
 						return;
 					}
@@ -350,9 +405,44 @@ $(function(){
 				}
 				else
 				{
+					switch(cur_level_css)
+					{
+						case 1: document.querySelector("#char").classList = 'char_level_one_error';
+								break;
+						case 2: document.querySelector("#char").classList = 'char_level_two_error';
+								break;
+						case 3: document.querySelector("#char").classList = 'char_level_three_error';
+								break;
+						case 4: document.querySelector("#char").classList = 'char_level_four_error';
+								break;
+						case 5: document.querySelector("#char").classList = 'char_level_five_error';
+								break;
+						case 6: document.querySelector("#char").classList = 'char_level_six_error';
+								break;
+					}
 					document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 					setTimeout(function(){
-						document.querySelector(".speech-bubble").remove();
+						switch(cur_level_css)
+						{
+							case 1: document.querySelector("#char").classList = 'char_level_one';
+									document.querySelector(".speech-bubble-one").remove();
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two';
+									document.querySelector(".speech-bubble-two").remove();
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three';
+									document.querySelector(".speech-bubble-three").remove();
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four';
+									document.querySelector(".speech-bubble-four").remove();
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five';
+									document.querySelector(".speech-bubble-five").remove();
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six';
+									document.querySelector(".speech-bubble-six").remove();
+									break;
+						}
 					}, 2000);
 					return;
 				}
@@ -367,9 +457,44 @@ $(function(){
 						
 					}catch(err)
 					{
+						switch(cur_level_css)
+						{
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									break;
+						}
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
-							document.querySelector(".speech-bubble").remove();
+							switch(cur_level_css)
+							{
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
 						}, 2000);
 						return;
 					}
@@ -384,9 +509,44 @@ $(function(){
 						$(".item #ola").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
+						switch(cur_level_css)
+						{
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									break;
+						}
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
-							document.querySelector(".speech-bubble").remove();
+							switch(cur_level_css)
+							{
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
 						}, 2000);
 						return;
 					}
@@ -401,9 +561,44 @@ $(function(){
 						$(".item .ola").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
+						switch(cur_level_css)
+						{
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									break;
+						}
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
-							document.querySelector(".speech-bubble").remove();
+							switch(cur_level_css)
+							{
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
 						}, 2000);
 					}
 				}
@@ -417,40 +612,198 @@ $(function(){
 						$(".item #p1").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
+						switch(cur_level_css)
+						{
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									break;
+						}
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
-							document.querySelector(".speech-bubble").remove();
+							switch(cur_level_css)
+							{
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
 						}, 2000);
 					}
 				}
 			}
+			let current_lvl = cur_level_css-1;
+			$('[data-level=' + current_lvl + ']').addClass('cleared');
+			answer_css[levels[cur_level_css-1].id] = text;
+			level_cleared_css[levels[cur_level_css-1].id] = cur_level_css;
+			document.querySelector("#next_btn").classList = 'btn btn-success';
+			document.querySelector("#next_btn").disabled = false;
 		}
 		else if(text.indexOf(levels[cur_level_css-1].sel_init) == -1 && text.indexOf(levels[cur_level_css-1].sel_end) > -1 && text !== 'undefined')
 		{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Seu seletor está incorreto.</div>';
+			switch(cur_level_css)
+			{
+				case 1: document.querySelector("#char").classList = 'char_level_one_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Seu seletor está incorreto.</div>';
+						break;
+				case 2: document.querySelector("#char").classList = 'char_level_two_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Seu seletor está incorreto.</div>';
+						break;
+				case 3: document.querySelector("#char").classList = 'char_level_three_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Seu seletor está incorreto.</div>';
+						break;
+				case 4: document.querySelector("#char").classList = 'char_level_four_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Seu seletor está incorreto.</div>';
+						break;
+				case 5: document.querySelector("#char").classList = 'char_level_five_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Seu seletor está incorreto.</div>';
+						break;
+				case 6: document.querySelector("#char").classList = 'char_level_six_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Seu seletor está incorreto.</div>';
+						break;
+			}
+			
 			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
+				switch(cur_level_css)
+				{
+					case 1: document.querySelector("#char").classList = 'char_level_one';
+							document.querySelector(".speech-bubble-one").remove();
+							break;
+					case 2: document.querySelector("#char").classList = 'char_level_two';
+							document.querySelector(".speech-bubble-two").remove();
+							break;
+					case 3: document.querySelector("#char").classList = 'char_level_three';
+							document.querySelector(".speech-bubble-three").remove();
+							break;
+					case 4: document.querySelector("#char").classList = 'char_level_four';
+							document.querySelector(".speech-bubble-four").remove();
+							break;
+					case 5: document.querySelector("#char").classList = 'char_level_five';
+							document.querySelector(".speech-bubble-five").remove();
+							break;
+					case 6: document.querySelector("#char").classList = 'char_level_six';
+							document.querySelector(".speech-bubble-six").remove();
+							break;
+				}
 			}, 2000);
 		}
 		else if(text.indexOf(levels[cur_level_css-1].sel_init) > -1 && text.indexOf(levels[cur_level_css-1].sel_end) == -1 && text !== 'undefined')
 		{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Está faltando um fecha chaves.</div>';
+			switch(cur_level_css)
+			{
+				case 1: document.querySelector("#char").classList = 'char_level_one_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Está faltando um fecha chaves.</div>';
+						break;
+				case 2: document.querySelector("#char").classList = 'char_level_two_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Está faltando um fecha chaves.</div>';
+						break;
+				case 3: document.querySelector("#char").classList = 'char_level_three_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Está faltando um fecha chaves.</div>';
+						break;
+				case 4: document.querySelector("#char").classList = 'char_level_four_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Está faltando um fecha chaves.</div>';
+						break;
+				case 5: document.querySelector("#char").classList = 'char_level_five_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Está faltando um fecha chaves.</div>';
+						break;
+				case 6: document.querySelector("#char").classList = 'char_level_six_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Está faltando um fecha chaves.</div>';
+						break;
+			}
+			
 			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
+				switch(cur_level_css)
+				{
+					case 1: document.querySelector("#char").classList = 'char_level_one';
+							document.querySelector(".speech-bubble-one").remove();
+							break;
+					case 2: document.querySelector("#char").classList = 'char_level_two';
+							document.querySelector(".speech-bubble-two").remove();
+							break;
+					case 3: document.querySelector("#char").classList = 'char_level_three';
+							document.querySelector(".speech-bubble-three").remove();
+							break;
+					case 4: document.querySelector("#char").classList = 'char_level_four';
+							document.querySelector(".speech-bubble-four").remove();
+							break;
+					case 5: document.querySelector("#char").classList = 'char_level_five';
+							document.querySelector(".speech-bubble-five").remove();
+							break;
+					case 6: document.querySelector("#char").classList = 'char_level_six';
+							document.querySelector(".speech-bubble-six").remove();
+							break;
+				}
 			}, 2000);
 		}
 		else{
-			document.querySelector(".background").innerHTML += '<div class="speech-bubble">Código incorreto</div>';
+			switch(cur_level_css)
+			{
+				case 1: document.querySelector("#char").classList = 'char_level_one_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Código incorreto</div>';
+						break;
+				case 2: document.querySelector("#char").classList = 'char_level_two_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Código incorreto</div>';
+						break;
+				case 3: document.querySelector("#char").classList = 'char_level_three_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Código incorreto</div>';
+						break;
+				case 4: document.querySelector("#char").classList = 'char_level_four_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Código incorreto</div>';
+						break;
+				case 5: document.querySelector("#char").classList = 'char_level_five_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Código incorreto</div>';
+						break;
+				case 6: document.querySelector("#char").classList = 'char_level_six_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Código incorreto</div>';
+						break;
+			}
+			
 			setTimeout(function(){
-				document.querySelector(".speech-bubble").remove();
+				switch(cur_level_css)
+				{
+					case 1: document.querySelector("#char").classList = 'char_level_one';
+							document.querySelector(".speech-bubble-one").remove();
+							break;
+					case 2: document.querySelector("#char").classList = 'char_level_two';
+							document.querySelector(".speech-bubble-two").remove();
+							break;
+					case 3: document.querySelector("#char").classList = 'char_level_three';
+							document.querySelector(".speech-bubble-three").remove();
+							break;
+					case 4: document.querySelector("#char").classList = 'char_level_four';
+							document.querySelector(".speech-bubble-four").remove();
+							break;
+					case 5: document.querySelector("#char").classList = 'char_level_five';
+							document.querySelector(".speech-bubble-five").remove();
+							break;
+					case 6: document.querySelector("#char").classList = 'char_level_six';
+							document.querySelector(".speech-bubble-six").remove();
+							break;
+				}
 			}, 2000);
 		}
-		let current_lvl = cur_level_css-1;
-		$('[data-level=' + current_lvl + ']').addClass('cleared');
-		answer_css[levels[cur_level_css-1].id] = text;
-		level_cleared_css[levels[cur_level_css-1].id] = cur_level_css;
-		document.querySelector("#next_btn").classList = 'btn btn-success';
-		document.querySelector("#next_btn").disabled = false;
 	});
 
 	$("#dialog").dialog({
