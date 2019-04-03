@@ -25,10 +25,10 @@ let levels = [
 	{
 			id: '2',
 			name: 'Identificador',
-			instr: 'Maneira alternativa de aplicar estilo. Identificadores são únicos.',
-			before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id=\"ola\">Olá</p>\n<p>Segundo parágrafo</p>\n   </body>\n</html>",
-			item: '<p id="ola">Olá</p><p>Segundo parágrafo</p>',
-			sel_init: '#ola{',
+			instr: 'Aplique a propriedade visibility recebendo hidden na pedra utilizando o identificador.',
+			before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div id=\"pedra\"></div>\n   </body>\n</html>",
+			item: '<div id="pedra"></div>',
+			sel_init: '#pedra{',
 			sel_end: '}',
 			style: 'two',
 			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de <q>#</q>.</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
@@ -36,10 +36,10 @@ let levels = [
 	{
 			id: '3',
 			name: 'Classe',
-			instr: 'Outra maneira de aplicar estilo. Classes são usados em elementos que receberão o mesmo estilo.',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p class=\"ola\">...</p>\n      <p class=\"ola\">...</p>\n   </body>\n</html>',
-			item: answer_html[2],
-			sel_init: '.ola{',
+			instr: 'Utilize a classe das divs para iluminar o local com a cor #FFD700 para a cor do plano de fundo.',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="lamp"></div>\n      <div class="lamp"></div>\n   </body>\n</html>',
+			item: '<div class="lamp"></div><div class="lamp"></div>',
+			sel_init: '.lamp{',
 			sel_end: '}',
 			style: 'three',
 			help: '<p>As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de <q>#</q> colocamos <q>.</q> no lugar:</p><p>.nome_da_classe{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
@@ -139,10 +139,12 @@ function loadLevel(level)
 		case 6: document.querySelector("#char").classList = 'char_level_six';
 				break;
 	}
-	
 	if(answer_html[level] !== undefined && answer_html[level] !== null)
 	{
-		document.querySelector(".item").innerHTML = answer_html[level];
+		if(level == 2 || level == 3)
+			document.querySelector(".item").innerHTML = levels[level-1].item;
+		else
+			document.querySelector(".item").innerHTML = answer_html[level];
 	}
 	
 	if(level_cleared_css[level] !== null && level_cleared_css[level] !== undefined)
@@ -156,9 +158,9 @@ function loadLevel(level)
 	
 	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
-		$("textarea").val(answer_css[level]);
-		
-		let aux = answer_css[level-1].split('{');
+		$("textarea").val(answer_css[level-1]);
+
+		let aux = answer_css[level].split('{');
 		let sel = aux[0];
 		let aux2 = aux[1].split('}');
 		let prop = aux2[0];
@@ -168,11 +170,16 @@ function loadLevel(level)
 		}
 		else if(level == 2 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
-			document.querySelector(".item #ola").style = prop;
+			document.querySelector(".item #pedra").style = prop;
 		}
 		else if(level == 3 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
-			document.querySelector(".item .ola").style = prop;
+			let node = document.querySelector(".item").childNodes;
+			for(let i = 0; i < node.length; i++)
+			{
+				node[i].style = prop;
+			}
+			
 		}
 		
 	}
@@ -216,9 +223,14 @@ function loadLevel(level)
 };
 
 $(window).on("beforeunload", function(){
-	localStorage.setItem('cur_level_css', cur_level_css);
-	localStorage.setItem('answer_css', JSON.stringify(answer_css));
-	localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared_css));
+	if(cur_level_css !== undefined 
+			&& JSON.stringify(answer_css) !== '' 
+				&& JSON.stringify(level_cleared_css) !== '')
+	{
+		localStorage.setItem('cur_level_css', cur_level_css);
+		localStorage.setItem('answer_css', JSON.stringify(answer_css));
+		localStorage.setItem('level_cleared_css', JSON.stringify(level_cleared_css));
+	}
 });
 
 $(function(){
@@ -348,7 +360,7 @@ $(function(){
 		let aux_rule, aux_prop = [], aux_value = [], temp;
 		answer_css[cur_level_css-1] = text;
 		let properties = '';
-
+		console.log(text);
 		if(text.indexOf(levels[cur_level_css-1].sel_init) > -1 && text.indexOf(levels[cur_level_css-1].sel_end) > -1 && text !== 'undefined')
 		{
 			for(let i = 1; i < lines.length-1; i++)
@@ -361,19 +373,25 @@ $(function(){
 						switch(cur_level_css)
 						{
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 									break;
 							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 									break;
 							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 									break;
 							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 									break;
 							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 									break;
 							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
 									break;
 						}
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ":"</div>';
+						
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
@@ -413,19 +431,24 @@ $(function(){
 					switch(cur_level_css)
 					{
 						case 1: document.querySelector("#char").classList = 'char_level_one_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
 						case 2: document.querySelector("#char").classList = 'char_level_two_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
 						case 3: document.querySelector("#char").classList = 'char_level_three_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
 						case 4: document.querySelector("#char").classList = 'char_level_four_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
 						case 5: document.querySelector("#char").classList = 'char_level_five_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
 						case 6: document.querySelector("#char").classList = 'char_level_six_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
 					}
-					document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 					setTimeout(function(){
 						switch(cur_level_css)
 						{
@@ -465,19 +488,24 @@ $(function(){
 						switch(cur_level_css)
 						{
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 						}
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
@@ -511,25 +539,30 @@ $(function(){
 				{
 					
 					try{
-						$(".item #ola").css(aux_prop[i], aux_value[i]);
+						$(".item #pedra").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						switch(cur_level_css)
 						{
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 						}
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
@@ -563,25 +596,30 @@ $(function(){
 				{
 					
 					try{
-						$(".item .ola").css(aux_prop[i], aux_value[i]);
+						$(".item .lamp").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						switch(cur_level_css)
 						{
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 						}
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
@@ -620,19 +658,24 @@ $(function(){
 						switch(cur_level_css)
 						{
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
 						}
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
