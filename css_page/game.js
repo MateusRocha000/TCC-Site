@@ -239,6 +239,16 @@ $(window).on("beforeunload", function(){
 });
 
 $(function(){
+	//Se HTML e CSS foram concluídos e botão de próximo (com "Acabar" no content) for clicado
+	//redireciona para a página de parabéns
+	if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
+	{
+		$("#next_btn").on("click", function(){
+			window.location = '../finish.html';
+		});
+	}
+	
+	
 	//Não deixa o usuário passar de 10 linhas
 	let new_line = 10;
 	$("textarea").keydown(function(e){

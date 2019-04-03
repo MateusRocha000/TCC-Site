@@ -1,0 +1,109 @@
+html{
+	height: 100vh;	
+}
+
+body{
+	margin: 0;
+	height: 100vh;	
+}
+
+#page{
+	background-image: url("img/space_backg.png");
+    margin: 0;
+    height: 100%;
+    
+}
+
+#bar{
+	width: 600px;
+	height: 100px;
+	background-image: linear-gradient(to bottom,#DFDFDF,  #9D9C9C);
+	background-position: center;
+    border-radius: 50px;
+    z-index: 10;
+    position: absolute;
+}
+
+#content{
+	font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    top: 14vh;
+    left: 6vw;
+	width: 350px;
+	height: 490px;
+	color: #00ffff;
+	padding: 30px 30px 30px 30px;
+	background-color: rgba(200, 200, 200, 0.2);
+    z-index: 1;
+}
+
+#content p{
+	text-align: justify;
+}
+
+.none{
+	display: none;
+}
+
+.fadein-down{
+	-webkit-animation-name: fadeInDown;
+    -moz-animation-name: fadeInDown;
+    -o-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -o-animation-duration:1s;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInDown{
+	from {
+        -webkit-transform: translateY(-690px);
+        -moz-transform: translateY(-690px);
+        -o-transform: translateY(-690px);
+        transform: translateY(-690px);
+    }
+    to {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+@-webkit-keyframes fadeInLeft {
+    from {
+        -webkit-transform: translateY(-690px);
+        -moz-transform: translateY(-690px);
+        -o-transform: translateY(-690px);
+        transform: translateY(-690px);
+    }
+    to {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+@-moz-keyframes fadeInLeft {
+    from {
+        -webkit-transform: translateY(-690px);
+        -moz-transform: translateY(-690px);
+        -o-transform: translateY(-690px);
+        transform: translateY(-690px);
+    }
+    to {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
