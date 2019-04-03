@@ -34,7 +34,7 @@ let levels = [
 	{
 		id		: '3',
 		name	: 'Tag de imagem: <img>',
-		instr	: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros. Para isso, use a imagem do caminho: ',
+		instr	: 'Utilize a tag para colocar uma foto chamativa no outdoor. Assim, nossa cidade atrai a atenção dos outros. Para isso, use a imagem do caminho: https://i.imgur.com/MTpaggz.png',
 		before	: '<html>\n   <head>\n     <title>Imagem</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<img',
@@ -327,7 +327,7 @@ $(function(){
 			(e.keyCode == 13 && cur_level_html == 5 && newLines >= new_line_level_five) 		|| 
 			(e.keyCode == 13 && cur_level_html == 6 && newLines >= new_line_level_six) 		|| 
 			(e.keyCode == 13 && cur_level_html == 7 && newLines >= new_line_level_nine) 		|| 
-			(e.keyCode == 13 && cur_level_html == 8 && newLines >= new_line_level_ten) 		|| 
+			(e.keyCode == 13 && cur_level_html == 8 && newLines >= new_line_level_eight) 		|| 
 			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_eleven) 	|| 
 			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 7 && cur_level_html !== 8 && cur_level_html !== 9)))
 		{
@@ -452,8 +452,7 @@ $(function(){
 	$("#check").on("click", function(){
 		
 		text = $("textarea").val();
-		console.log(text[text.indexOf('>') + 1]);
-		console.log(text[text.indexOf('>') + 1] == '<');
+		console.log(text);
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
 		if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 
 				&& text.indexOf(levels[cur_level_html-1].tag_end) > -1 
@@ -462,9 +461,9 @@ $(function(){
 		{
 			if(text[text.indexOf('>') + 1] !== '<')
 			{
-				console.log('Aqui');
 				if(cur_level_html === 3)
 				{
+					console.log("Aqui 3");
 					let aux = text.split("\"");
 					let src = aux[1].split("\"");
 					checkImageExists(src[0], function(existsImage){
@@ -548,16 +547,10 @@ $(function(){
 					case 9: document.querySelector("#char").classList = 'char_level_nine_done';
 							break;
 				}
-				document.querySelector(".item").innerHTML = text;
-				document.querySelector("#next_btn").classList = 'btn btn-success';
-				let current_lvl = cur_level_html-1;
-				$('[data-level=' + current_lvl + ']').addClass('cleared');
-				answer_html[levels[cur_level_html-1].id] = text;
-				level_cleared_html[levels[cur_level_html-1].id] = cur_level_html;
-				document.querySelector("#next_btn").disabled = false;
+
+				
 			}
 			else{
-				console.log('Ali');
 				switch(cur_level_html)
 				{
 					case 1: document.querySelector("#char").classList = 'char_level_one_error';
@@ -597,6 +590,13 @@ $(function(){
 					}
 				}, 2000);
 			}
+			document.querySelector(".item").innerHTML = text;
+			document.querySelector("#next_btn").classList = 'btn btn-success';
+			let current_lvl = cur_level_html-1;
+			$('[data-level=' + current_lvl + ']').addClass('cleared');
+			answer_html[levels[cur_level_html-1].id] = text;
+			level_cleared_html[levels[cur_level_html-1].id] = cur_level_html;
+			document.querySelector("#next_btn").disabled = false;
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
 		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) > -1 && text !== 'undefined')
