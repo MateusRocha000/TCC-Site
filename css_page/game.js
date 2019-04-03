@@ -27,7 +27,7 @@ let levels = [
 			name: 'Identificador',
 			instr: 'Maneira alternativa de aplicar estilo. Identificadores são únicos.',
 			before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id=\"ola\">Olá</p>\n<p>Segundo parágrafo</p>\n   </body>\n</html>",
-			item: '<p id=\"ola\">Olá</p><p>Segundo parágrafo</p>',
+			item: '<p id="ola">Olá</p><p>Segundo parágrafo</p>',
 			sel_init: '#ola{',
 			sel_end: '}',
 			style: 'two',
