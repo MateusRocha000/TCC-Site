@@ -1,6 +1,7 @@
 //Nível atual
 let cur_level_css = parseInt(localStorage.cur_level_css, 10) || 1;
 
+//Vetor para pegar as respostas de HTML e verificar se foi terminado
 let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_html)) || {};
 
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
@@ -20,7 +21,7 @@ let levels = [
 			sel_init: 'h1{',
 			sel_end: '}',
 			style: 'one',
-			help: '<p>O seletor é utilizado para indicar para a página que um elemento HTML está recebendo um estilo com certas propriedades definidas.</p> <p>A regra é definida com o nome da regra com as propriedades recebendo seus possíveis valores entre chaves, como:</p><p>p{</p><p>&nbsp;&nbsp;font-size: 25px;</p><p>}</p><p>No exemplo acima, é alterado o tamanho da fonte de um parágrafo.</p>'
+			help: '<p>O seletor é utilizado para indicar para a página que um elemento HTML está recebendo um estilo com certas propriedades definidas.</p> <p>A regra é definida com o nome da regra com as propriedades recebendo seus possíveis valores entre chaves, como:</p><p>tag{</p><p>&nbsp;&nbsp;propriedade: valor;</p><p>}</p>'
 	},
 	{
 			id: '2',
@@ -31,18 +32,18 @@ let levels = [
 			sel_init: '#pedra{',
 			sel_end: '}',
 			style: 'two',
-			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de <q>#</q>.</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
+			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de <q>#</q>.</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;propriedade: valor;</p><p>}</p>'
 	},
 	{
 			id: '3',
 			name: 'Classe',
-			instr: 'Utilize a classe das divs para iluminar o local com a cor #FFD700 para a cor do plano de fundo.',
+			instr: 'Utilize a classe das divs para iluminar o local com a cor #FFD700 para o plano de fundo.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="lamp"></div>\n      <div class="lamp"></div>\n   </body>\n</html>',
 			item: '<div class="lamp"></div><div class="lamp"></div>',
 			sel_init: '.lamp{',
 			sel_end: '}',
 			style: 'three',
-			help: '<p>As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de <q>#</q> colocamos <q>.</q> no lugar:</p><p>.nome_da_classe{</p><p>&nbsp;font-size: 25px;</p><p>}</p>'
+			help: '<p>As regras utilizando classes também possuem a mesma sintaxe que o identificador, com a pequena diferença que em vez de <q>#</q> colocamos <q>.</q> no lugar:</p><p>.nome_da_classe{</p><p>&nbsp;propriedade: valor;</p><p>}</p>'
 	},
 	{
 			id: '4',
@@ -108,22 +109,24 @@ function hasValue(el, array){
 
 function loadLevel(level)
 {
+	//Se as atividades de HTML não estão completas, redireciona para o index
 	if(Object.keys(answer_html).length !== 9)
 	{
 		alert("Você não conluiu as atividades de HTML. Conclua-as e volte aqui.");
-		window.location = '../html_page/aula.html';
+		window.location = '../index.html';
 	}
-	document.querySelector("#title").textContent = levels[level-1].name;
-	document.querySelector("#instr").innerHTML = levels[level-1].instr;
-	document.querySelector("#dialog").innerHTML = levels[level-1].help;
-	document.querySelector("#about").innerHTML = '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML, alterando propriedades como: largura (width), altura (height), cor de fundo (background-color), e muito mais..</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves.</p><p>Cada elemento HTML utiliza a seguinte configuração:</p><p><div id="margin">Margem<div id="border">Borda<div id="padding">Preenchimento<div id="content">Conteúdo</div></div></div></div></p><p>- Margem: uma área transparente por fora da borda do elemento. Normalmente usada para controlar distância entre os elementos</p><p>- Borda: a borda que fica ao redor do conteúdo + preenchimento.</p><p>- Preenchimento: uma área transparente que fica ao redor do conteúdo do elemento.</p><p>- Conteúdo: o próprio conteúdo do elemento: imagem, texto, etc.</p>';
-	document.querySelector("#before").textContent = levels[level-1].before;
-	document.querySelector(".current").innerHTML = level;
-	document.querySelector(".total").innerHTML = num_levels;
-	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
-	document.querySelector("#next_btn").classList = 'btn btn-secondary';
-	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
+	document.querySelector("#title").textContent 		= levels[level-1].name;
+	document.querySelector("#instr").innerHTML 			= levels[level-1].instr;
+	document.querySelector("#dialog").innerHTML 		= levels[level-1].help;
+	document.querySelector("#about").innerHTML 			= '<p>O CSS (Cascading StyleSheet), ou Folha de Estilo em Cascata, é um formato de arquivo utilizado para dar estilo aos elementos em uma página HTML, alterando propriedades como: largura (width), altura (height), cor de fundo (background-color), e muito mais..</p><p>Para alterar as propriedades de um elemento, basta criar uma regra. Esta regra é composta por um seletor, que seleciona o elemento HTML, e o conjunto de propriedades, que alteram valores do elemento, entre chaves.</p><p>Cada elemento HTML utiliza a seguinte configuração:</p><p><div id="margin">Margem<div id="border">Borda<div id="padding">Preenchimento<div id="content">Conteúdo</div></div></div></div></p><p>- Margem: uma área transparente por fora da borda do elemento. Normalmente usada para controlar distância entre os elementos</p><p>- Borda: a borda que fica ao redor do conteúdo + preenchimento.</p><p>- Preenchimento: uma área transparente que fica ao redor do conteúdo do elemento.</p><p>- Conteúdo: o próprio conteúdo do elemento: imagem, texto, etc.</p>';
+	document.querySelector("#before").textContent 		= levels[level-1].before;
+	document.querySelector(".current").innerHTML 		= level;
+	document.querySelector(".total").innerHTML 			= num_levels;
+	document.querySelector(".background").classList 	= 'background level-' + levels[level-1].style;
+	document.querySelector("#next_btn").classList 		= 'btn btn-secondary';
+	document.querySelector(".item").classList 			= 'item pos_' + levels[level-1].style;
 
+	//Carrega a pose normal do personagem para cada nível no tamanho e posição corretos.
 	switch(level)
 	{
 		case 1: document.querySelector("#char").classList = 'char_level_one';
@@ -139,6 +142,7 @@ function loadLevel(level)
 		case 6: document.querySelector("#char").classList = 'char_level_six';
 				break;
 	}
+	//Pega as respostas dos níveis de HTML para aproveitar, exceto para os níveis 2 e 3
 	if(answer_html[level] !== undefined && answer_html[level] !== null)
 	{
 		if(level == 2 || level == 3)
@@ -146,7 +150,7 @@ function loadLevel(level)
 		else
 			document.querySelector(".item").innerHTML = answer_html[level];
 	}
-	
+	//Se o nível já foi concluído deixa o botão próximo habilitado.
 	if(level_cleared_css[level] !== null && level_cleared_css[level] !== undefined)
 	{
 		document.querySelector("#next_btn").disabled = false;
@@ -155,7 +159,7 @@ function loadLevel(level)
 	else
 		document.querySelector("#next_btn").disabled = true;
 
-	
+	//Se o nível já foi concluído, o item da área de visualização permanece com o estilo
 	if(answer_css[level] !== undefined && localStorage.answer_css !== undefined)
 	{
 		$("textarea").val(answer_css[level-1]);
@@ -222,6 +226,7 @@ function loadLevel(level)
 	
 };
 
+//Salva as respostas antes de dar refresh na página
 $(window).on("beforeunload", function(){
 	if(cur_level_css !== undefined 
 			&& JSON.stringify(answer_css) !== '' 
@@ -234,6 +239,7 @@ $(window).on("beforeunload", function(){
 });
 
 $(function(){
+	//Não deixa o usuário passar de 10 linhas
 	let new_line = 10;
 	$("textarea").keydown(function(e){
 		newLines = $(this).val().split("\n").length;
@@ -370,6 +376,7 @@ $(function(){
 					aux_rule = lines[i].split(";")[0];
 					if(lines[i].indexOf(":") == -1)
 					{
+						//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 						switch(cur_level_css)
 						{
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
@@ -395,6 +402,7 @@ $(function(){
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
 								case 1: document.querySelector("#char").classList = 'char_level_one';
 										document.querySelector(".speech-bubble-one").remove();
 										break;
@@ -430,6 +438,7 @@ $(function(){
 				{
 					switch(cur_level_css)
 					{
+						//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 						case 1: document.querySelector("#char").classList = 'char_level_one_error';
 								document.querySelector(".background").innerHTML += '<div class="speech-bubble">Alguma regra está faltando ";"</div>';
 								break;
@@ -452,6 +461,7 @@ $(function(){
 					setTimeout(function(){
 						switch(cur_level_css)
 						{
+							//Retorna o personagem para pose normal e remove a fala depois de um tempo
 							case 1: document.querySelector("#char").classList = 'char_level_one';
 									document.querySelector(".speech-bubble-one").remove();
 									break;
@@ -487,6 +497,7 @@ $(function(){
 					{
 						switch(cur_level_css)
 						{
+							//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
 									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
@@ -509,6 +520,7 @@ $(function(){
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
 								case 1: document.querySelector("#char").classList = 'char_level_one';
 										document.querySelector(".speech-bubble-one").remove();
 										break;
@@ -544,6 +556,7 @@ $(function(){
 					{
 						switch(cur_level_css)
 						{
+							//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
 									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
@@ -566,6 +579,7 @@ $(function(){
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
 								case 1: document.querySelector("#char").classList = 'char_level_one';
 										document.querySelector(".speech-bubble-one").remove();
 										break;
@@ -601,6 +615,7 @@ $(function(){
 					{
 						switch(cur_level_css)
 						{
+							//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
 									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
@@ -623,6 +638,7 @@ $(function(){
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
 								case 1: document.querySelector("#char").classList = 'char_level_one';
 										document.querySelector(".speech-bubble-one").remove();
 										break;
@@ -657,6 +673,7 @@ $(function(){
 					{
 						switch(cur_level_css)
 						{
+							//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 							case 1: document.querySelector("#char").classList = 'char_level_one_error';
 									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
 									break;
@@ -679,6 +696,7 @@ $(function(){
 						setTimeout(function(){
 							switch(cur_level_css)
 							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
 								case 1: document.querySelector("#char").classList = 'char_level_one';
 										document.querySelector(".speech-bubble-one").remove();
 										break;
@@ -714,6 +732,7 @@ $(function(){
 		{
 			switch(cur_level_css)
 			{
+				//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 				case 1: document.querySelector("#char").classList = 'char_level_one_error';
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Seu seletor está incorreto.</div>';
 						break;
@@ -737,6 +756,7 @@ $(function(){
 			setTimeout(function(){
 				switch(cur_level_css)
 				{
+					//Retorna o personagem para pose normal e remove a fala depois de um tempo
 					case 1: document.querySelector("#char").classList = 'char_level_one';
 							document.querySelector(".speech-bubble-one").remove();
 							break;
@@ -762,6 +782,7 @@ $(function(){
 		{
 			switch(cur_level_css)
 			{
+				//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 				case 1: document.querySelector("#char").classList = 'char_level_one_error';
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Está faltando um fecha chaves.</div>';
 						break;
@@ -785,6 +806,7 @@ $(function(){
 			setTimeout(function(){
 				switch(cur_level_css)
 				{
+					//Retorna o personagem para pose normal e remove a fala depois de um tempo
 					case 1: document.querySelector("#char").classList = 'char_level_one';
 							document.querySelector(".speech-bubble-one").remove();
 							break;
@@ -809,6 +831,7 @@ $(function(){
 		else{
 			switch(cur_level_css)
 			{
+				//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
 				case 1: document.querySelector("#char").classList = 'char_level_one_error';
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Código incorreto</div>';
 						break;
@@ -832,6 +855,7 @@ $(function(){
 			setTimeout(function(){
 				switch(cur_level_css)
 				{
+					//Retorna o personagem para pose normal e remove a fala depois de um tempo
 					case 1: document.querySelector("#char").classList = 'char_level_one';
 							document.querySelector(".speech-bubble-one").remove();
 							break;
