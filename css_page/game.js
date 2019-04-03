@@ -14,7 +14,7 @@ let levels = [
 	{
 			id: '1',
 			name: 'Seletor',
-			instr: '<p>O nome de nossa cidade foi colocado perfeitamente. Mas ele parece precisar ficar mais bonito. Altere o estilo da fonte com <q>font-family</q> usando a fonte <q>Luckiest Guy</q> e, caso queira, altere a cor utilizando a propriedade <q>color</q>.</p>',
+			instr: '<p>O nome de nossa cidade foi colocado perfeitamente. Mas ele parece precisar ficar mais bonito. Altere o estilo da fonte com <q>font-family</q> usando a fonte <q>Luckiest Guy</q></p>',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n     '+ answer_html[1] + '\n   </body>\n</html>',
 			item: answer_html[1],
 			sel_init: 'h1{',
@@ -108,6 +108,11 @@ function hasValue(el, array){
 
 function loadLevel(level)
 {
+	if(Object.keys(answer_html).length !== 9)
+	{
+		alert("Você não conluiu as atividades de HTML. Conclua-as e volte aqui.");
+		window.location = '../html_page/aula.html';
+	}
 	document.querySelector("#title").textContent = levels[level-1].name;
 	document.querySelector("#instr").innerHTML = levels[level-1].instr;
 	document.querySelector("#dialog").innerHTML = levels[level-1].help;
@@ -118,7 +123,7 @@ function loadLevel(level)
 	document.querySelector(".background").classList = 'background level-' + levels[level-1].style;
 	document.querySelector("#next_btn").classList = 'btn btn-secondary';
 	document.querySelector(".item").classList = 'item pos_' + levels[level-1].style;
-	console.log(JSON.stringify(answer_css));
+
 	switch(level)
 	{
 		case 1: document.querySelector("#char").classList = 'char_level_one';
