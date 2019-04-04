@@ -27,7 +27,11 @@ button {
 }
 
 #button1 {
+	position: absolute;
 	background-color: #D3D3D3;
+	background-image: url("../img/arrow-left.png");
+	background-repeat: no-repeat;
+	background-position: center center;
 	width: 2.2vw;
 	height: 4vh;
 	padding: 0.4em 0.8em;
@@ -41,7 +45,11 @@ button {
 }
 
 #button2 {
+	position: absolute;
 	background-color: #D3D3D3;
+	background-image: url("../img/arrow-right.png");
+	background-repeat: no-repeat;
+	background-position: center center;
 	width: 2vw;
 	height: 4vh;
 	padding: 0.4em 0.8em;
@@ -72,13 +80,55 @@ button {
 }
 
 #level-indicator {
-	color: black;
 	display: inline-block;
-	width: 11vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 10vw;
+    height: 4vh;
+    line-height: 23px;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+}
+
+#level-indicator span:not(#seta-down){
+	position: absolute;
+	font-size: 2vh;
+	top: 0.3vh;
 	height: 4vh;
-	line-height: 23px;
-	text-align: center;
+}
+
+#labelLevel{
+	left: 5vw;
+}
+
+.current{
+	left: 7.5vw;
+}
+
+#labelOf{
+	left: 8.5vw;
+}
+
+.total{
+	left: 10vw;
+}
+
+#level-indicator img{
+	height: 2vh;
+}
+
+#seta-down{
+	background-image: url("../img/arrow-bottom.png");
+	background-repeat: no-repeat;
+	top: 0.8vh;
+	left: 11vw;
+	position: absolute;
+	width: 2vw;
+	height: 4vh;
+	padding: 0.4em 0.8em;
 	cursor: pointer;
+	
 }
 
 #instr {
@@ -110,7 +160,7 @@ button {
 }
 
 #before {
-	font-size: 18px;
+	font-size: 2.8vh;
 	color: #00ffff;
 	margin: 0;
 }
@@ -118,8 +168,11 @@ button {
 /* #html_btn,
 #js_btn, */
 #help_btn{
-	margin-top: 20px;
-	margin-right: 30px;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	margin-top: 2vh;
+	margin-right: 1vw;
 }
 
 #pc_screen {
@@ -129,10 +182,10 @@ button {
 	width: 45vw;
 	position: relative;
 	padding: 0 13px;
-	border-top: 30px solid #c0c0c0;
-	border-right: 30px solid #c0c0c0;
-	border-bottom: 50px solid #c0c0c0;
-	border-left: 30px solid #c0c0c0;
+	border-top: 4vh solid #c0c0c0;
+	border-right: 1.7vw solid #c0c0c0;
+	border-bottom: 7vh solid #c0c0c0;
+	border-left: 2.1vw solid #c0c0c0;
 	background-color: #000000;
 	border-radius: 4px;
 	overflow: hidden;
@@ -143,6 +196,7 @@ button {
 	top: 4vh;
 	right: 1vw;
 	width: 8vw;
+	height: 16vh;
 	padding: 1em 0.5em;
 	margin-top: 12px;
 	z-index: 80;
@@ -169,19 +223,27 @@ button {
 
 #next_btn {
 	position: absolute;
-	right: 1.7vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 3%;
 	bottom: 1vh;
 }
 
 #check{
 	position: absolute;
-	right: 8vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 18%;
 	bottom: 1vh;
 }
 
 #clear_storage {
 	margin-top: 10px;
 	text-align: center;
+	width: 6vw;
+	height: 5.5vh;
 	cursor: pointer;
 	color: black;
 	font-weight: bold;
@@ -189,13 +251,19 @@ button {
 
 #quit_btn {
 	position: absolute;
-	left: 2vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	left: 4.5%;
 	bottom: 1vh;
 }
 
 #clear_text{
 	position: absolute;
-	right: 14vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 33%;
 	bottom: 1vh;
 }
 
@@ -204,90 +272,11 @@ button {
 	cursor: context-menu;
 }
 
-#tooltip_quit .tt_content_quit,
-#tooltip_clear .tt_content_clear,
-#tooltip_check .tt_content_check,
-#tooltip_next .tt_content_next{
-	visibility: hidden;
-	width: auto;
-	background-color: #555;
-	color: #fff;
-	text-align: center;
-	padding: 5px;
-	border-radius: 6px;
-
-	/* Position the tooltip text */
-	position: absolute;
-	z-index: 1;
-	
-	margin-left: -60px;
-
-	/* Fade in tooltip */
-	opacity: 0;
-	transition: opacity 0.3s;
-}
-
-#tooltip_quit .tt_content_quit{
-	bottom: 12.5%;
-	left: 10%;
-}
-
-#tooltip_clear .tt_content_clear{
-	bottom: 12.5%;
-	left: 25%;
-}
-
-#tooltip_check .tt_content_check{
-	bottom: 12.5%;
-	left: 75%;
-}
-
-#tooltip_next .tt_content_next{
-	bottom: 12.5%;
-	left: 65%;
-}
-
-#tooltip_quit .tt_content_quit::after,
-#tooltip_clear .tt_content_clear::after,
-#tooltip_check .tt_content_check::after,
-#tooltip_next .tt_content_next::after{
-	content: "";
-	position: absolute;
-	top: 100%;
-	
-	margin-left: -5px;
-	border-width: 5px;
-	border-style: solid;
-	border-color: #555 transparent transparent transparent;
-}
-
-#tooltip_quit .tt_content_quit::after{
-	left: 20%;
-}
-
-#tooltip_clear .tt_content_clear::after{
-	left: 10%;
-}
-
-#tooltip_check .tt_content_check::after{
-	left: 30%;
-}
-
-#tooltip_next .tt_content_next::after{
-	left: 90%;
-}
-
-#tooltip_quit:hover .tt_content_quit,
-#tooltip_clear:hover .tt_content_clear,
-#tooltip_check:hover .tt_content_check,
-#tooltip_next:hover .tt_content_next{
-	visibility: visible;
-	opacity: 1;
-}
-
 #css_about_btn{
-	margin-top: 20px;
-	margin-right: 10px;
+	font-size: 1.1vw;
+	width: 8vw;
+	height: 5.5vh;
+	margin-top: 2vh;
 }
 
 textarea{
@@ -343,10 +332,11 @@ textarea{
 .level-marker {
 	float: left;
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 2vw;
+	height: 4vh;
 	margin: 2px;
-	line-height: 26px;
+	font-size: 1.8vh;
+	line-height: 3.7vh;
 	background-color: white;
 	color: black;
 	border: 2px solid transparent;

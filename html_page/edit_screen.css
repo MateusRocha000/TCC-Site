@@ -54,13 +54,14 @@
 
 #level-indicator {
 	display: inline-block;
-	position: relative;
-	width: 14vw;
-	height: 4vh;
-	line-height: 23px;
-	text-align: center;
-	color: black;
-	cursor: pointer;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 10vw;
+    height: 4vh;
+    line-height: 23px;
+    text-align: center;
+    color: black;
+    cursor: pointer;
 }
 
 #level-indicator span:not(#seta-down){
