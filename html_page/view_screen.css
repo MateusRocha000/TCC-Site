@@ -56,15 +56,13 @@
 
 .level-one{
 	background-image : url("../img/level_one.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	position: absolute;	
 	top	: 0;
 	left : 0;
 	width: 50vw;
 	height : 100vh;	
-	padding	: 1em;
 	z-index: 10;
 }
 
@@ -79,17 +77,14 @@
 
 .level-two{
 	background-image : url("../img/level_two.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center 75%, center bottom;
-	order: 1, 2;
 	display : flex;	
 	position: absolute;	
 	top	: 0;
 	left : 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -106,16 +101,14 @@
 
 .level-three{
 	background-image : url("../img/level_three.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display : flex;	
 	position: absolute;	
 	top	: 0;
 	left : 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -137,16 +130,14 @@
 
 .level-four{
 	background-image : url("../img/level_four.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -170,16 +161,14 @@
 
 .level-five{
 	background-image : url("../img/level_five.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -195,16 +184,14 @@
 
 .level-six{
 	background-image : url("../img/level_six.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -219,16 +206,14 @@
 
 .level-seven{
 	background-image : url("../img/level_seven.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -245,16 +230,14 @@
 
 .level-eight{
 	background-image : url("../img/level_eight.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -267,16 +250,14 @@
 
 .level-nine{
 	background-image : url("../img/level_nine.png"); 
-	background-size: 100%;
+	background-size: 50vw 100vh;
 	background-repeat : no-repeat;
-	background-position : center bottom;
 	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height : 100%;	
-	padding	: 1em;
+	height : 100%;
 	z-index: 10;
 }
 
@@ -575,10 +556,11 @@
 
 #pedra{
 	background-image: url('../img/ground.png');
+	background-size: 13vw 28vh;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 200px;
+	width: 13vw;
+	height: 28vh;
 	top: 40vh;
 	left: 30vw;
 	z-index: 80;
@@ -586,233 +568,233 @@
 
 .char_level_one{
 	background-image: url('../img/coutinho1.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
-	top: 61vh;
-	left: 8vw;
+	width: 10vw;
+    height: 35vh;
+	top: 64vh;
+	left: 4vw;
 	z-index: 80;
 }
 
 .char_level_one_done{
 	background-image: url('../img/coutinho2.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
-	top: 61vh;
-	left: 8vw;
+	width: 10vw;
+    height: 35vh;
+	top: 64vh;
+	left: 4vw;
 	z-index: 80;
 }
 
 .char_level_one_error{
 	background-image: url('../img/coutinho3.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
-	top: 61vh;
-	left: 8vw;
+	width: 10vw;
+    height: 35vh;
+	top: 64vh;
+	left: 4vw;
 	z-index: 80;
 }
 
 .char_level_two{
 	background-image: url(../img/coutinho1.png);
     transform: rotateY(180deg);
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 480px;
-    height: 800px;
+    width: 40vw;
+    height: 120vh;
     top: -11vh;
-    left: 25vw;
+    right: -15vw;
     z-index: 80;
 }
 
 .char_level_two_done{
 	background-image: url('../img/coutinho2.png');
 	transform: rotateY(180deg);
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 480px;
-    height: 800px;
+    width: 40vw;
+    height: 120vh;
     top: -11vh;
-    left: 25vw;
+    right: -15vw;
     z-index: 80;
 }
 
 .char_level_two_error{
 	background-image: url('../img/coutinho3.png');
 	transform: rotateY(180deg);
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 480px;
-    height: 800px;
+    width: 40vw;
+    height: 120vh;
     top: -11vh;
-    left: 25vw;
+    right: -15vw;
     z-index: 80;
 }
 
 .char_level_three{
 	background-image: url('../img/coutinho1.png');
 	transform: rotateY(180deg);
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 330px;
-	height: 380px;
-	top: 40vh;
-	left: 14vw;
+	width: 16vw;
+    height: 50vh;
+    top: 40vh;
+    left: 25vw;
 	z-index: 80;
 }
 
 .char_level_three_done{
 	background-image: url('../img/coutinho2.png');
 	transform: rotateY(180deg);
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 330px;
-	height: 380px;
-	top: 40vh;
-	left: 14vw;
+	width: 16vw;
+    height: 50vh;
+    top: 40vh;
+    left: 25vw;
 	z-index: 80;
 }
 
 .char_level_three_error{
 	background-image: url('../img/coutinho3.png');
 	transform: rotateY(180deg);
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 330px;
-	height: 380px;
-	top: 40vh;
-	left: 14vw;
+	width: 16vw;
+    height: 50vh;
+    top: 40vh;
+    left: 25vw;
 	z-index: 80;
 }
 
 .char_level_four{
 	background-image: url('../img/coutinho1.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 350px;
-	height: 403px;
-	top: 34vh;
-	left: 12vw;
+	width: 16vw;
+    height: 58vh;
+    top: 34vh;
+    left: 11vw;
 	z-index: 80;
 }
 
 .char_level_four_done{
 	background-image: url('../img/coutinho2.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 350px;
-	height: 403px;
-	top: 34vh;
-	left: 12vw;
+	width: 16vw;
+    height: 58vh;
+    top: 34vh;
+    left: 11vw;
 	z-index: 80;
 }
 
 .char_level_four_error{
 	background-image: url('../img/coutinho3.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 350px;
-	height: 403px;
-	top: 34vh;
-	left: 12vw;
+	width: 16vw;
+    height: 58vh;
+    top: 34vh;
+    left: 11vw;
 	z-index: 80;
 }
 
 .char_level_five{
 	background-image: url(../img/coutinho1.png);
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 432px;
-    height: 720px;
-    top: 2vh;
-    left: -18vw;
+    width: 31vw;
+    height: 110vh;
+    top: -3vh;
+    left: -22vw;
     z-index: 80;
 }
 
 .char_level_five_done{
 	background-image: url('../img/coutinho2.png');
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 432px;
-    height: 720px;
-    top: 2vh;
-    left: -18vw;
+    width: 31vw;
+    height: 110vh;
+    top: -3vh;
+    left: -22vw;
     z-index: 80;
 }
 
 .char_level_five_error{
 	background-image: url('../img/coutinho3.png');
-    background-size: 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 432px;
-    height: 720px;
-    top: 2vh;
-    left: -18vw;
+    width: 31vw;
+    height: 110vh;
+    top: -3vh;
+    left: -22vw;
     z-index: 80;
 }
 
 .char_level_six{
 	background-image: url(../img/coutinho1.png);
-    background-size: 70%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 350px;
-	height: 403px;
+    width: 17vw;
+    height: 60vh;
 	top: 38vh;
-	left: -5vw;
+	left: -8vw;
     z-index: 80;
 }
 
 .char_level_six_done{
 	background-image: url('../img/coutinho2.png');
-    background-size: 70%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 350px;
-	height: 403px;
+    width: 17vw;
+    height: 60vh;
 	top: 38vh;
-	left: -5vw;
+	left: -8vw;
     z-index: 80;
 }
 
 .char_level_six_error{
 	background-image: url('../img/coutinho3.png');
-    background-size: 70%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 350px;
-	height: 403px;
+    width: 17vw;
+    height: 60vh;
 	top: 38vh;
-	left: -5vw;
+	left: -8vw;
     z-index: 80;
 }
 
 .char_level_seven{
 	background-image: url('../img/coutinho1.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
+	width: 10vw;
+    height: 33vh;
 	top: 55vh;
 	left: 17vw;
 	z-index: 80;
@@ -820,11 +802,11 @@
 
 .char_level_seven_done{
 	background-image: url('../img/coutinho2.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
+	width: 10vw;
+    height: 33vh;
 	top: 55vh;
 	left: 17vw;
 	z-index: 80;
@@ -832,11 +814,11 @@
 
 .char_level_seven_error{
 	background-image: url('../img/coutinho3.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
+	width: 10vw;
+    height: 33vh;
 	top: 55vh;
 	left: 17vw;
 	z-index: 80;
@@ -844,11 +826,11 @@
 
 .char_level_eight{
 	background-image: url('../img/coutinho1.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
+	width: 10vw;
+    height: 33vh;
 	top: 60vh;
 	left: 17vw;
 	z-index: 80;
@@ -856,11 +838,11 @@
 
 .char_level_eight_done{
 	background-image: url('../img/coutinho2.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
+	width: 10vw;
+    height: 33vh;
 	top: 60vh;
 	left: 17vw;
 	z-index: 80;
@@ -868,11 +850,11 @@
 
 .char_level_eight_error{
 	background-image: url('../img/coutinho3.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 200px;
-	height: 230px;
+	width: 10vw;
+    height: 33vh;
 	top: 60vh;
 	left: 17vw;
 	z-index: 80;
@@ -880,36 +862,36 @@
 
 .char_level_nine{
 	background-image: url('../img/coutinho1.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 350px;
-	height: 403px;
+	width: 18vw;
+    height: 60vh;
 	top: 34vh;
-	left: 5vw;
+	left: 3vw;
 	z-index: 80;
 }
 
 .char_level_nine_done{
 	background-image: url('../img/coutinho2.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 350px;
-	height: 403px;
+	width: 18vw;
+    height: 60vh;
 	top: 34vh;
-	left: 5vw;
+	left: 3vw;
 	z-index: 80;
 }
 
 .char_level_nine_error{
 	background-image: url('../img/coutinho3.png');
-	background-size: 70%;
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	position: absolute;
-	width: 350px;
-	height: 403px;
+	width: 18vw;
+    height: 60vh;
 	top: 34vh;
-	left: 5vw;
+	left: 3vw;
 	z-index: 80;
 }

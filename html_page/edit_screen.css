@@ -11,6 +11,7 @@
 
 #title {
 	font-family: 'Luckiest Guy';
+	font-size: 4.5vh;
 }
 
 .title_table{
@@ -34,7 +35,11 @@
 }
 
 #button1 {
+	position: absolute;
 	background-color: #D3D3D3;
+	background-image: url("../img/arrow-left.png");
+	background-repeat: no-repeat;
+	background-position: center center;
 	width: 2.2vw;
 	height: 4vh;
 	padding: 0.4em 0.8em;
@@ -45,12 +50,12 @@
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	cursor: pointer;
-	text-align: 50vh;
 }
 
 #level-indicator {
 	display: inline-block;
-	width: 11vw;
+	position: relative;
+	width: 14vw;
 	height: 4vh;
 	line-height: 23px;
 	text-align: center;
@@ -58,16 +63,52 @@
 	cursor: pointer;
 }
 
-#level-indicator span{
+#level-indicator span:not(#seta-down){
+	position: absolute;
+	font-size: 2vh;
+	top: 0.3vh;
 	height: 4vh;
+}
+
+#labelLevel{
+	left: 5vw;
+}
+
+.current{
+	left: 7.5vw;
+}
+
+#labelOf{
+	left: 8.5vw;
+}
+
+.total{
+	left: 10vw;
 }
 
 #level-indicator img{
 	height: 2vh;
 }
 
+#seta-down{
+	background-image: url("../img/arrow-bottom.png");
+	background-repeat: no-repeat;
+	top: 0.8vh;
+	left: 11vw;
+	position: absolute;
+	width: 2vw;
+	height: 4vh;
+	padding: 0.4em 0.8em;
+	cursor: pointer;
+	
+}
+
 #button2 {
+	position: absolute;
 	background-color: #D3D3D3;
+	background-image: url("../img/arrow-right.png");
+	background-repeat: no-repeat;
+	background-position: center center;
 	width: 2vw;
 	height: 4vh;
 	padding: 0.4em 0.8em;
@@ -78,12 +119,11 @@
 	border-bottom-right-radius: 4px;
   	border-top-right-radius: 4px;
 	cursor: pointer;
-	text-align: 50vh;
 }
 
 #instr {
 	position: relative;
-	font-size: 16px;
+	font-size: 2.2vh;
 	font-family: sans-serif;
 	padding-top: 1rem;
 	padding-bottom: 1em;
@@ -101,13 +141,13 @@
 }
 
 #before {
-	font-size: 18px;
+	font-size: 2.8vh;
 	color: #00ffff;
 	margin: 0;
 }
 
 #after{
-	font-size: 18px;
+	font-size: 2.8vh;
 	color: #00ffff;
 }
 
@@ -204,11 +244,11 @@
 	height: 52vh;
 	width: 45vw;
 	position: relative;
-	padding: 15px 30px 30px 30px;
-	border-top: 30px solid #c0c0c0;
-	border-right: 30px solid #c0c0c0;
-	border-bottom: 50px solid #c0c0c0;
-	border-left: 30px solid #c0c0c0;
+	padding: 2vh 2vw 4vh 2vw;
+	border-top: 4vh solid #c0c0c0;
+	border-right: 1.7vw solid #c0c0c0;
+	border-bottom: 7vh solid #c0c0c0;
+	border-left: 2.1vw solid #c0c0c0;
 	background-color: #000000;
 	border-radius: 4px;
 	overflow: hidden;
@@ -219,6 +259,7 @@
 	top: 4vh;
 	right: 1vw;
 	width: 8vw;
+	height: 23vh;
 	padding: 1em 0.5em;
 	margin-top: 12px;
 	z-index: 80;
@@ -236,7 +277,10 @@
 
 #next_btn {
 	position: absolute;
-	right: 1.3vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 3%;
 	bottom: 1vh;
 }
 
@@ -247,13 +291,18 @@
 
 #check{
 	position: absolute;
-	right: 8.5vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 18%;
 	bottom: 1vh;
 }
 
 #clear_storage {
 	margin-top: 10px;
 	text-align: center;
+	width: 6vw;
+	height: 5.5vh;
 	cursor: pointer;
 	color: black;
 	font-weight: bold;
@@ -261,13 +310,19 @@
 
 #clear_text{
 	position: absolute;
-	right: 15vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 33%;
 	bottom: 1vh;
 }
 
 #quit_btn {
 	position: absolute;
-	left: 2vw;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	left: 4.5%;
 	bottom: 1vh;
 }
 
@@ -411,10 +466,11 @@
 .level-marker {
 	float: left;
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 2vw;
+	height: 4vh;
 	margin: 2px;
-	line-height: 26px;
+	font-size: 1.8vh;
+	line-height: 3.7vh;
 	background-color: white;
 	color: black;
 	border: 2px solid transparent;
@@ -435,10 +491,16 @@
 /*#css_btn,
 #js_btn,*/
 #help_btn{
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
 	margin-top: 2vh;
 	margin-right: 1vw;
 }
 
 #html_about_btn{
+	font-size: 1.1vw;
+	width: 8vw;
+	height: 5.5vh;
 	margin-top: 2vh;
 }
