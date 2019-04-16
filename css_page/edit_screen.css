@@ -160,7 +160,7 @@ button {
 }
 
 #before {
-	font-size: 2.8vh;
+	font-size: 15px;
 	color: #00ffff;
 	margin: 0;
 }
@@ -175,7 +175,7 @@ button {
 	margin-right: 1vw;
 }
 
-#pc_screen {
+.pc_screen {
 	display: grid;
 	grid-template-areas: 'before css';
 	height: 51vh;
@@ -186,6 +186,22 @@ button {
 	border-right: 1.7vw solid #c0c0c0;
 	border-bottom: 7vh solid #c0c0c0;
 	border-left: 2.1vw solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_four {
+	display: grid;
+	grid-template-areas: 'before css';
+	height: 60vh;
+	width: 45vw;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
 	background-color: #000000;
 	border-radius: 4px;
 	overflow: hidden;

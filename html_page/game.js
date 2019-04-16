@@ -74,29 +74,7 @@ let levels = [
 		tag_end	: '</table>',
 		style	: 'six',
 		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar.'
-	},/*
-	{
-		id		: '7',
-		name	: 'Classes',
-		instr	: 'Classe para tags da página. Crie as quatro lâmpadas com classe para termos iluminação novamente.',
-		before	: '<html>\n   <head>\n     <title>Classes</title>\n   </head>\n   <body>\n',
-		after	: '   </body>\n</html>',
-		tag_init: 'class=\"',
-		tag_end	: '\"',
-		style	: 'seven',
-		help	: '<p>Uma classe é um atributo que pode ser utilizado para atribuir funcionalidades ou estilos para as tags de HTML. O valor que esse atributo recebe é o nome que o identificará quando for utilizar a linguagem CSS.</p> <p>Um exemplo para utilizar classes nas tags é o caso de de definir um estilo para várias tags, como os botões, imagens ou elementos de uma lista ou tabela. Quando quiser utilizar classes basta colocar o atributo na abertura de sua tag e atribuir um nome para ele:</p> <p>&lt;nome_da_tag class=<q>nome_da_classe</q>&gt;</p>'
 	},
-	{
-		id		: '8',
-		name	: 'Identificadores',
-		instr	: 'Identificador para tags da página',
-		before	: '<html>\n   <head>\n     <title>Identificadores</title>\n   </head>\n   <body>\n',
-		after	: '   </body>\n</html>',
-		tag_init: 'id=\"',
-		tag_end	: '\"',
-		style	: 'eight',
-		help	: '<p>Os identificadores possuem a mesma função que as classes, definir quem irá receber um estilo. Entretanto, ao contrário de antes, você só pode utilizar um identificador único para uma tag. Ou seja, uma vez que uma tag possua um identificador com um nome, outra tag não pode tê-lo. Isso ajuda para o caso de você dar um estilo específico para uma tag que outras não terão.</p> <p>Digamos que sua página possui muitos campos de título, mas cada um possui seu tamanho, cor ou outra propriedade. Para ajudá-lo, basta usar o atributo de identificador <q>id</q> e atribuir um nome para ele:</p> <p>&lt;nome_da_tag id=<q>nome_do_id</q>&gt</p>'
-	},*/
 	{
 		id		: '7',
 		name	: 'Tag de divisão: <div>',

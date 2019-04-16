@@ -26,10 +26,10 @@ let levels = [
 	{
 			id: '2',
 			name: 'Identificador',
-			instr: 'Aplique a propriedade visibility recebendo hidden na pedra utilizando o identificador.',
-			before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div id=\"pedra\"></div>\n   </body>\n</html>",
-			item: '<div id="pedra"></div>',
-			sel_init: '#pedra{',
+			instr: '<p>Oferecemos uma ajuda neste nível colocando um ID. Modifique o tamanho da fonte da placa. Para isto, basta utilizar a propriedade <i>font-size</i> e especificar o tamanho da fonte em pixels. Use uma fonte de 30px.</p>',
+			before: "<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id=\"parag\">...</p>\n   </body>\n</html>",
+			item: answer_html[2],
+			sel_init: '#parag{',
 			sel_end: '}',
 			style: 'two',
 			help: '<p>A definição da regra utilizando o identificador é feita da mesma maneira que os seletores, tendo apenas a diferença que você utiliza o nome do identificador colocado no elemento HTML precedido de <q>#</q>.</p><p>Portanto, a regra é feita da seguinte maneira: </p><p>#nome_do_id{</p><p>&nbsp;propriedade: valor;</p><p>}</p>'
@@ -39,7 +39,7 @@ let levels = [
 			name: 'Classe',
 			instr: 'Utilize a classe das divs para iluminar o local com a cor #FFD700 para o plano de fundo.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="lamp"></div>\n      <div class="lamp"></div>\n   </body>\n</html>',
-			item: '<div class="lamp"></div><div class="lamp"></div>',
+			item: answer_html[7],
 			sel_init: '.lamp{',
 			sel_end: '}',
 			style: 'three',
@@ -48,9 +48,9 @@ let levels = [
 	{
 			id: '4',
 			name: 'Propriedade: background',
-			instr: '',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p>Texto 1</p>\n      <p>Texto 2</p>\n   </body>\n</html>',
-			item: '<p>Texto 1</p><p>Texto 2</p>',
+			instr: 'Altere o plano de fundo de nossa lista. Assim, a parede não fica riscada.',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <ul>...\n         <li>...</li>\n         <li>...</li>\n      </ul>\n   </body>\n</html>',
+			item: answer_html[5],
 			sel_init: '{',
 			property: 'background',
 			sel_end: '}',
@@ -59,27 +59,27 @@ let levels = [
 	},
 	{
 			id: '5',
-			name: 'Propriedade: position',
+			name: 'Flexbox',
 			instr: '',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id="p1">Texto 1</p>\n      <p>Texto 2</p>\n   </body>\n</html>',
-			item: '<p id="p1">Texto 1</p><p>Texto 2</p>',
+			item: '',
 			sel_init: '{',
-			property: 'position',
+			property: 'display',
 			sel_end: '}',
 			style: 'five',
-			help: '<p>Cada elemento é posicionado em sua página utilizando a tag <q>pai</q> como referência tendo como exemplo:</p><p>&lt;body&gt;</p><p>&lt;img src=<q>imagem.jpg</q>&gt;</p><p>&lt;/body&gt;<p>Neste exemplo, a tag <i>&lt;img&gt;</i> possue como pai a tag <i>&lt;body&gt;</i>. Portanto, elas serão posicionados levando em consideração a dimensão e o posicionamento do corpo da página.</p><p>Elementos na página também podem servir de referência para outros utilizando a propriedade <q>position</q>. O elemento que for utilizado como referência terá essa propriedade com o valor <q>relative</q>, enquanto os elementos que serão posicionados recebem <q>absolute</q>.</p><p>elemento1 {</p><p>&nbsp;position: relative;</p><p>}</p><p>elemento2 {</p><p>&nbsp;position: absolute;</p><p>}</p>'
+			help: '<p>Você pode organizar os elementos dentro de um bloco alterando a forma como eles estão organizados (<i>display</i>) para <i>flex</i>. Assim, espaçamento entre os elementos, além da forma como estão distribuídos no bloco podem ser alterados, seja em linha ou em coluna. Após o display ser alterado, algumas propriedades podem ser usadas:</p><p>- justify-content: altera a posição dos elementos pela linha.</p><p>- align-items: altera a posição dos elementos pela coluna.</p><p>A propriedade justify-content pode ter valores como:</p><p>-- space-between: um espaço é colocado entre os elementos do bloco.</p><p>-- space-around: um espaço igual é colocado ao redor dos elementos.</p><p>E align-items pode receber:</p><p>-- baseline: os textos no bloco ficam na mesma linha horizontal.</p><p>-- stretch: os elementos preenchem a coluna.</p><p>As duas propriedades podem receber valores como:</p><p>-- flex-start: os elementos vão para o início</p><p>-- flex-end: os elementos vão para o fim</p><p>-- center: os elementos vão para o centro</p>'
 	},
 	{
 			id: '6',
-			name: 'Propriedade: float',
-			instr: '',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n   <img src="https://i.imgur.com/MTpaggz.png">\n	</body>\n</html>',
-			item: '<img src="https://i.imgur.com/MTpaggz.png"> <p>Um parágrafo de exemplo para mostrar a propriedade float.</p>',
+			name: 'Grid',
+			instr: 'Crie um tabuleiro de xadrez 10x10. Para este caso, use a propriedade de coluna da grade e crie 10 colunas.',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n\n   </body>\n</html>',
+			item: '',
 			sel_init: '{',
-			property: 'float',
+			property: 'display',
 			sel_end: '}',
 			style: 'six',
-			help: '<p>A propriedade float é usada para indicar que elementos devem ser removidos do fluxo normal da página e <q>flutuados</q> na esquerda ou na direita.</p><p>No caso de você inserir uma imagem na página e logo em seguida um texto, o texto será inserido abaixo da imagem. Mas caso queira que a imagem permaneça na esquerda ou na direita, enquanto o texto também ocupe o espaço ao lado da imagem, será a propriedade float a fazer isso.</p><p>&lt;img src=<q>nome_da_imagem.jpg</q>&gt;</p><p>&lt;p&gt;Um parágrafo para servir de exemplo.&lt;/p&gt;</p><p>Abaixo estão os exemplos:</p><img src="../img/sem float.png" style="width: 300px; height: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/com float.png" style="width: 300px; height: 300px;">'
+			help: '<p>Os elementos também podem ser organizados em forma de grade. Para isso, utilizamos o <i>display: grid</i>.</p><p>Assim que esta organização é feita, você pode informar quantas linhas e quantas colunas terão a grade com <i>grid-template-rows</i> e <i>grid-template-columns</i> respectivamente. Você atribui valores para as duas propriedades dependendo de quantas linhas e de quantas colunas deseja. Ou seja, se atribuir <q>20% 60% 20%</q> você terá três divisões, onde a primeira e a última ocupam 20% do bloco cada uma e a do meio ocupa 60%. Você também pode colocar valores em pixels em frações (fr). Neste último caso, a célula da grade ocupa uma parte da grade. Caso utilize o valor <q>1fr 1fr 20%</q> A grade é dividida em três partes, onde uma parte ocupa 20% e as outras duas ocupam o restante, tendo o mesmo tamanho</p><p>Caso queira criar várias linhas ou colunas com valores iguais de tamanho, não é necessário que fique colocando o valor repetidas vezes. Basta usar a função <i>repeat</i> passando a quantidade de vezes que irá repetir e o tamanho, como:</p><p><i>grid-template-columns: repeat(5, 1fr)</i></p><p>No exemplo acima, são criadas 5 colunas, todas com tamanhos iguais.</p>'
 	}
 ];
 
@@ -125,6 +125,16 @@ function loadLevel(level)
 	document.querySelector(".background").classList 	= 'background level-' + levels[level-1].style;
 	document.querySelector("#next_btn").classList 		= 'btn btn-secondary';
 	document.querySelector(".item").classList 			= 'item pos_' + levels[level-1].style;
+	document.querySelector(".item").innerHTML			= levels[level-1].item;
+
+	if (level == 4)
+	{
+		document.querySelector("#pc_screen").classList = 'pc_screen_four';
+	}
+	else
+	{
+		document.querySelector("#pc_screen").classList = 'pc_screen';
+	}
 
 	//Carrega a pose normal do personagem para cada nível no tamanho e posição corretos.
 	switch(level)
@@ -142,14 +152,21 @@ function loadLevel(level)
 		case 6: document.querySelector("#char").classList = 'char_level_six';
 				break;
 	}
-	//Pega as respostas dos níveis de HTML para aproveitar, exceto para os níveis 2 e 3
+
+	//Pega as respostas dos níveis de HTML para aproveitar
 	if(answer_html[level] !== undefined && answer_html[level] !== null)
 	{
-		if(level == 2 || level == 3)
-			document.querySelector(".item").innerHTML = levels[level-1].item;
-		else
-			document.querySelector(".item").innerHTML = answer_html[level];
+		if(level == 2)
+			document.querySelector(".item p").setAttribute("id", "parag");
+		else if(level == 3)
+		{
+			let node = document.querySelector(".item").childNodes;
+			for (var i = 0; i < node.length; i++) {
+				node[i].classList = 'lamp';
+			}
+		}
 	}
+
 	//Se o nível já foi concluído deixa o botão próximo habilitado.
 	if(level_cleared_css[level] !== null && level_cleared_css[level] !== undefined)
 	{
@@ -174,7 +191,7 @@ function loadLevel(level)
 		}
 		else if(level == 2 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
-			document.querySelector(".item #pedra").style = prop;
+			document.querySelector(".item #parag").style = prop;
 		}
 		else if(level == 3 && answer_html[level] !== undefined && answer_html[level] !== null)
 		{
@@ -185,7 +202,10 @@ function loadLevel(level)
 			}
 			
 		}
-		
+		else if(level == 4 && answer_html[level] !== undefined && answer_html[level] !== null)
+		{
+			document.querySelector(".item ul").style = prop;
+		}
 	}
 	else
 		$("textarea").val('');
@@ -561,7 +581,7 @@ $(function(){
 				{
 					
 					try{
-						$(".item #pedra").css(aux_prop[i], aux_value[i]);
+						$(".item #parag").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						switch(cur_level_css)
@@ -672,6 +692,64 @@ $(function(){
 					}
 				}
 			}
+			else if(cur_level_css == 4)
+			{
+				for(let i = 0; i < lines.length - 1; i++)
+				{
+					
+					try{
+						$(".item ul").css(aux_prop[i], aux_value[i]);
+					}catch(err)
+					{
+						switch(cur_level_css)
+						{
+							//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+						}
+						setTimeout(function(){
+							switch(cur_level_css)
+							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
+						}, 2000);
+					}
+				}
+			}
 			else if(cur_level_css == 5)
 			{
 				for(let i = 0; i < lines.length - 1; i++)
@@ -727,6 +805,83 @@ $(function(){
 										break;
 							}
 						}, 2000);
+					}
+				}
+			}
+			else if(cur_level_css == 6)
+			{
+				for(let i = 0; i < lines.length - 1; i++)
+				{
+					
+					try{
+						$(".item").css(aux_prop[i], aux_value[i]);
+					}catch(err)
+					{
+						switch(cur_level_css)
+						{
+							//Altera o personagem caso o usuário erre e imprime a mensagem de feedback correspondente
+							case 1: document.querySelector("#char").classList = 'char_level_one_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 2: document.querySelector("#char").classList = 'char_level_two_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 3: document.querySelector("#char").classList = 'char_level_three_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 4: document.querySelector("#char").classList = 'char_level_four_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 5: document.querySelector("#char").classList = 'char_level_five_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+							case 6: document.querySelector("#char").classList = 'char_level_six_error';
+									document.querySelector(".background").innerHTML += '<div class="speech-bubble">' + err + '":"</div>';
+									break;
+						}
+						setTimeout(function(){
+							switch(cur_level_css)
+							{
+								//Retorna o personagem para pose normal e remove a fala depois de um tempo
+								case 1: document.querySelector("#char").classList = 'char_level_one';
+										document.querySelector(".speech-bubble-one").remove();
+										break;
+								case 2: document.querySelector("#char").classList = 'char_level_two';
+										document.querySelector(".speech-bubble-two").remove();
+										break;
+								case 3: document.querySelector("#char").classList = 'char_level_three';
+										document.querySelector(".speech-bubble-three").remove();
+										break;
+								case 4: document.querySelector("#char").classList = 'char_level_four';
+										document.querySelector(".speech-bubble-four").remove();
+										break;
+								case 5: document.querySelector("#char").classList = 'char_level_five';
+										document.querySelector(".speech-bubble-five").remove();
+										break;
+								case 6: document.querySelector("#char").classList = 'char_level_six';
+										document.querySelector(".speech-bubble-six").remove();
+										break;
+							}
+						}, 2000);
+					}
+				}
+				let black_cell = '<div style="background-color: black"></div>';
+				let white_cell = '<div style="background-color: white"></div>';
+				let num_cells = 10;
+				let board = document.querySelector(".item");
+
+				for(let i = 0; i < num_cells; i++)
+				{
+					for(let j = 0; j < num_cells; j++)
+					{
+						if ((i+j)%2 == 0)
+						{
+							board.insertAdjacentHTML('beforeend', black_cell);
+						}
+						else
+						{
+							board.insertAdjacentHTML('beforeend', white_cell);
+						}
 					}
 				}
 			}
