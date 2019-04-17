@@ -60,9 +60,9 @@ let levels = [
 	{
 			id: '5',
 			name: 'Flexbox',
-			instr: '',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <p id="p1">Texto 1</p>\n      <p>Texto 2</p>\n   </body>\n</html>',
-			item: '',
+			instr: 'Altere o display para flex e use uma propriedade para inserir um espaçamento entre as traves.',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="item">\n      	<div id="trave1"></div>\n      	<div id="trave2"></div>\n      </div>\n   </body>\n</html>',
+			item: '<div id="trave1"></div><div id="trave2"></div>',
 			sel_init: '{',
 			property: 'display',
 			sel_end: '}',
@@ -130,6 +130,10 @@ function loadLevel(level)
 	if (level == 4)
 	{
 		document.querySelector("#pc_screen").classList = 'pc_screen_four';
+	}
+	else if (level == 5)
+	{
+		document.querySelector("#pc_screen").classList = 'pc_screen_five';
 	}
 	else
 	{
@@ -756,7 +760,7 @@ $(function(){
 				{
 					
 					try{
-						$(".item #p1").css(aux_prop[i], aux_value[i]);
+						$(".item").css(aux_prop[i], aux_value[i]);
 					}catch(err)
 					{
 						switch(cur_level_css)

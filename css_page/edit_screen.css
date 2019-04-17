@@ -135,8 +135,7 @@ button {
 	position: relative;
 	font-size: 16px;
 	font-family: sans-serif;
-	padding-top: 1rem;
-	padding-bottom: 1em;
+	padding-bottom: 10px;
 }
 
 #editor {
@@ -192,6 +191,22 @@ button {
 }
 
 .pc_screen_four {
+	display: grid;
+	grid-template-areas: 'before css';
+	height: 60vh;
+	width: 45vw;
+	position: relative;
+	padding: 13px 30px 30px 13px;
+	border-top: 30px solid #c0c0c0;
+	border-right: 30px solid #c0c0c0;
+	border-bottom: 50px solid #c0c0c0;
+	border-left: 30px solid #c0c0c0;
+	background-color: #000000;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.pc_screen_five {
 	display: grid;
 	grid-template-areas: 'before css';
 	height: 60vh;
