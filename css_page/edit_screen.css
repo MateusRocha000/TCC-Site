@@ -10,6 +10,7 @@ h2{
 	background-image: url("../img/space_backg.png");
 	color: #00ffff;
 	font-size: 20px;
+	z-index: 10;
 }
 
 button {

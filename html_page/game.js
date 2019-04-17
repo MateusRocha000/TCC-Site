@@ -430,7 +430,7 @@ $(function(){
 	$("#check").on("click", function(){
 		
 		text = $("textarea").val();
-		console.log(text);
+		
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
 		if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 
 				&& text.indexOf(levels[cur_level_html-1].tag_end) > -1 
@@ -441,7 +441,6 @@ $(function(){
 			{
 				if(cur_level_html === 3)
 				{
-					console.log("Aqui 3");
 					let aux = text.split("\"");
 					let src = aux[1].split("\"");
 					checkImageExists(src[0], function(existsImage){
