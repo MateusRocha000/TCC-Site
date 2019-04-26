@@ -72,7 +72,7 @@ let levels = [
 	{
 			id: '6',
 			name: 'Grid',
-			instr: 'Crie um tabuleiro de xadrez 10x10. Para este caso, use a propriedade de coluna da grade e crie 10 colunas.',
+			instr: 'Crie um tabuleiro de xadrez 10x10. Para este caso, use as propriedades de linha coluna da grade e crie 10 colunas.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="item"></div>\n   </body>\n</html>',
 			item: '',
 			sel_init: '{',
@@ -263,6 +263,12 @@ function loadLevel(level)
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = false;
 	}
+	if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
+	{
+		document.querySelector("#next_btn").disabled = false;
+	}
+	else
+		document.querySelector("#next_btn").disabled = true;
 };
 
 //Salva as respostas antes de dar refresh na página
@@ -328,7 +334,6 @@ $(function(){
 		);
 		//Se HTML e CSS foram concluídos e botão de próximo (com "Acabar" no content) for clicado
 		//redireciona para a página de parabéns
-		console.log(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6);
 		if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
 		{
 				window.location = '../finish.html';
