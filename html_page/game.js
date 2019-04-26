@@ -264,15 +264,25 @@ function loadLevel(level)
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = true;
 		document.querySelector("#next_btn").style.display = 'none';
+<<<<<<< HEAD
 		document.querySelector("#check").classList = 'btn btn-primary check_last_level';
 		document.querySelector("#clear_text").classList = 'btn btn-info clear_text_last_level';
+=======
+		document.querySelector(".check").classList = 'btn btn-primary check_last_level';
+		document.querySelector(".clear_text").classList = 'btn btn-info clear_text_last_level';
+>>>>>>> 34bef2b1be527961c78a7730c47b77a86d334946
 	}
 	else{
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = false;
 	}
+<<<<<<< HEAD
 	document.querySelector("#check").classList = 'btn btn-primary check';
 	document.querySelector("#clear_text").classList = 'btn btn-info clear_text';
+=======
+	document.querySelector(".check").classList = 'btn btn-primary check';
+	document.querySelector(".clear_text").classList = 'btn btn-info clear_text';
+>>>>>>> 34bef2b1be527961c78a7730c47b77a86d334946
 	document.querySelector("#next_btn").style.display = 'block';
 };
 
