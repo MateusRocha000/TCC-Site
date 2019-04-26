@@ -919,7 +919,8 @@ $(function(){
 			answer_css[levels[cur_level_css-1].id] = text;
 			level_cleared_css[levels[cur_level_css-1].id] = cur_level_css;
 			document.querySelector("#next_btn").classList = 'btn btn-success';
-			document.querySelector("#next_btn").disabled = false;
+			if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
+				document.querySelector("#next_btn").disabled = false;
 		}
 		else if(text.indexOf(levels[cur_level_css-1].sel_init) == -1 && text.indexOf(levels[cur_level_css-1].sel_end) > -1 && text !== 'undefined')
 		{
