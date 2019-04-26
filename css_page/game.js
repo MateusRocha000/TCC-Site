@@ -247,7 +247,10 @@ function loadLevel(level)
 	document.querySelector('#board').classList.add('animated_fadein');
 	
 	document.querySelector("#next_btn").disabled = true;
-	document.querySelector(".item").style.display = 'block';
+	
+	if(level !== 3 || level !== 6)
+		document.querySelector(".item").style.display = 'block';
+
 	if(level === 1)
 	{
 
