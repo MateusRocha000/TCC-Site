@@ -37,7 +37,7 @@ let levels = [
 	{
 			id: '3',
 			name: 'Classe',
-			instr: 'Utilize a classe das divs para iluminar o local com a cor #FFD700 para o plano de fundo.',
+			instr: 'Utilize a classe das divs para iluminar o local com a cor #FFD700 para o plano de fundo. Utilize a propriedade "background-color"',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="lamp"></div>\n      <div class="lamp"></div>\n   </body>\n</html>',
 			item: answer_html[7],
 			sel_init: '.lamp{',
@@ -60,7 +60,7 @@ let levels = [
 	{
 			id: '5',
 			name: 'Flexbox',
-			instr: 'Altere o display para flex e use uma propriedade para inserir um espaçamento entre as traves.',
+			instr: 'Altere o display do item para flex e use uma propriedade para inserir um espaçamento entre as traves.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="item">\n      	<div id="trave1"></div>\n      	<div id="trave2"></div>\n      </div>\n   </body>\n</html>',
 			item: '<div id="trave1"></div><div id="trave2"></div>',
 			sel_init: '{',
@@ -73,7 +73,7 @@ let levels = [
 			id: '6',
 			name: 'Grid',
 			instr: 'Crie um tabuleiro de xadrez 10x10. Para este caso, use a propriedade de coluna da grade e crie 10 colunas.',
-			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n\n   </body>\n</html>',
+			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="item"></div>\n   </body>\n</html>',
 			item: '',
 			sel_init: '{',
 			property: 'display',
@@ -263,7 +263,6 @@ function loadLevel(level)
 		document.querySelector("#button1").disabled = false;
 		document.querySelector("#button2").disabled = false;
 	}
-	
 };
 
 //Salva as respostas antes de dar refresh na página
@@ -279,15 +278,7 @@ $(window).on("beforeunload", function(){
 });
 
 $(function(){
-	//Se HTML e CSS foram concluídos e botão de próximo (com "Acabar" no content) for clicado
-	//redireciona para a página de parabéns
-	if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
-	{
-		$("#next_btn").on("click", function(e){
-			e.preventDefault();
-			window.location = '../finish.html';
-		});
-	}
+
 	
 	
 	//Não deixa o usuário passar de 10 linhas
@@ -335,6 +326,13 @@ $(function(){
 				}
 			}, 1000
 		);
+		//Se HTML e CSS foram concluídos e botão de próximo (com "Acabar" no content) for clicado
+		//redireciona para a página de parabéns
+		console.log(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6);
+		if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
+		{
+				window.location = '../finish.html';
+		}
 	});
 	
 	$("#button1").on("click", function(){
@@ -1074,7 +1072,7 @@ $(function(){
 		modal : true, 
 		show : "blind", 
 		hide : "blind",
-		width: 1000,
+		width: 1100,
 		height: 'auto'	
 	});
 
