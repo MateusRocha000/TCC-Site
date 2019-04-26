@@ -252,7 +252,7 @@ function loadLevel(level)
 		document.querySelector("#pc_screen").classList 	= 'pc_screen_else';
 		document.querySelector("textarea").classList 	= 'text_else';
 	}
-	
+	document.querySelector("#next_btn").classList = 'btn btn-secondary next_btn';
 	//Condicionais para deixar botões de mudança de nível apenas nos níveis corretos
 	if(level === 1)
 	{
@@ -272,7 +272,6 @@ function loadLevel(level)
 		else{
 			document.querySelector("#check").classList = 'btn btn-primary check';
 			document.querySelector("#clear_text").classList = 'btn btn-info clear_text';
-			document.querySelector("#next_btn").classList = 'btn btn-secondary next_btn';
 			document.querySelector("#button1").disabled = false;
 			document.querySelector("#button2").disabled = false;
 		}
