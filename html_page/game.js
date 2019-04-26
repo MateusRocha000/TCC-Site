@@ -78,7 +78,7 @@ let levels = [
 	{
 		id		: '7',
 		name	: 'Tag de divisão: <div>',
-		instr	: 'Crie duas div para serem lâmpadas.',
+		instr	: 'Crie duas div sem classes ou identificadores para serem lâmpadas.',
 		before	: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<div>',
@@ -442,7 +442,7 @@ $(function(){
 				&& text !== 'undefined' || (cur_level_html == 5 && text.indexOf('<ol>') > -1 
 				&& text.indexOf('</ol>') > -1))
 		{
-			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 8)
+			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 8 || cur_level_html === 7)
 			{
 				if(!(text.indexOf("Web Village") > -1) && cur_level_html === 1)
 				{
@@ -507,8 +507,6 @@ $(function(){
 								break;
 					}
 				}
-				console.log('char_level_' + levels[cur_level_html-1].style);
-				console.log(document.querySelector("#char").classList.contains('char_level_' + levels[cur_level_html-1].style));
 				document.querySelector(".item").innerHTML = text;
 				document.querySelector("#next_btn").classList = 'btn btn-success';
 				let current_lvl = cur_level_html-1;
