@@ -276,7 +276,7 @@
 	justify-content: center;
 }
 
-#next_btn {
+.next_btn {
 	position: absolute;
 	font-size: 1.1vw;
 	width: 6vw;
@@ -285,7 +285,7 @@
 	bottom: 1vh;
 }
 
-		#next_btn.disabled {
+		.next_btn.disabled {
 			opacity: 0.5;
 			cursor: context-menu;
 		}
@@ -507,6 +507,14 @@
 	color: white;
 }
 
+.block{
+	display: block;
+}
+
+.none{
+	display: none;
+}
+
 /*#css_btn,
 #js_btn,*/
 #help_btn{
@@ -522,3 +530,4 @@
 	width: 9vw;
 	height: 5.5vh;
 	margin-top: 1vh;
+}

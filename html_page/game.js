@@ -259,21 +259,24 @@ function loadLevel(level)
 		document.querySelector("#button1").disabled = true;
 		document.querySelector("#button2").disabled = false;
 	}
-	else if(level === num_levels)
+	else
 	{
-		document.querySelector("#button1").disabled = false;
-		document.querySelector("#button2").disabled = true;
-		document.querySelector("#next_btn").style.display = 'none';
-		document.querySelector("#check").classList = 'btn btn-primary check_last_level';
-		document.querySelector("#clear_text").classList = 'btn btn-info clear_text_last_level';
-	}
-	else{
-		document.querySelector("#button1").disabled = false;
-		document.querySelector("#button2").disabled = false;
-	}
-	document.querySelector("#check").classList = 'btn btn-primary check';
-	document.querySelector("#clear_text").classList = 'btn btn-info clear_text';
-	document.querySelector("#next_btn").style.display = 'block';
+		if(level === num_levels)
+		{
+			document.querySelector("#button1").disabled = false;
+			document.querySelector("#button2").disabled = true;
+			document.querySelector("#check").classList = 'btn btn-primary check_last_level';
+			document.querySelector("#clear_text").classList = 'btn btn-info clear_text_last_level';
+			document.querySelector("#next_btn").style.display = 'none';
+		}
+		else{
+			document.querySelector("#check").classList = 'btn btn-primary check';
+			document.querySelector("#clear_text").classList = 'btn btn-info clear_text';
+			document.querySelector("#next_btn").classList = 'btn btn-secondary next_btn';
+			document.querySelector("#button1").disabled = false;
+			document.querySelector("#button2").disabled = false;
+		}
+	}	
 };
 
 function checkImageExists(image, callBack)
@@ -508,7 +511,7 @@ $(function(){
 					}
 				}
 				document.querySelector(".item").innerHTML = text;
-				document.querySelector("#next_btn").classList = 'btn btn-success';
+				document.querySelector("#next_btn").classList = 'btn btn-secondary next_btn';
 				let current_lvl = cur_level_html-1;
 				$('[data-level=' + current_lvl + ']').addClass('cleared');
 				answer_html[levels[cur_level_html-1].id] = text;
