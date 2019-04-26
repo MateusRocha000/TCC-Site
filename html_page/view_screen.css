@@ -69,7 +69,7 @@
 .pos_one{
 	font-size: 30px;
 	position: absolute;
-	top: 46vh;
+	top: 52vh;
 	left: 23vw;
 	transform: translate(-50%, -38%);
 	z-index: 50;
@@ -118,7 +118,7 @@
 	width: 55%;
 	height: 28%;
 	z-index: 50;
-	top: 6vh;
+	top: 12.5vh;
 	left: 6vw;
 	transform: rotateX(27deg) rotateY(27deg); 
 }
@@ -150,8 +150,8 @@
 
 .pos_four button{
 	position: absolute;
-    top: 62vh;
-    left: 26.5vw;
+    top: 63.5vh;
+    left: 26.3vw;
     width: 85px;
     height: 35px;
     background-color: red;
@@ -224,7 +224,7 @@
     padding: 1em 1em 1.5em 1em;
     z-index: 50;
     position: absolute;
-    top: 11vh;
+    top: 18vh;
     left: 10.9vw;
 }
 
