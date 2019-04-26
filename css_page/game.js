@@ -247,9 +247,10 @@ function loadLevel(level)
 	document.querySelector('#board').classList.add('animated_fadein');
 	
 	document.querySelector("#next_btn").disabled = true;
-
+	document.querySelector(".item").style.display = 'block';
 	if(level === 1)
 	{
+		
 		document.querySelector("#button1").disabled = true;
 		document.querySelector("#button2").disabled = false;
 	}
