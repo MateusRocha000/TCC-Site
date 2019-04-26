@@ -250,7 +250,7 @@ function loadLevel(level)
 	document.querySelector(".item").style.display = 'block';
 	if(level === 1)
 	{
-		
+
 		document.querySelector("#button1").disabled = true;
 		document.querySelector("#button2").disabled = false;
 	}
@@ -920,7 +920,7 @@ $(function(){
 			answer_css[levels[cur_level_css-1].id] = text;
 			level_cleared_css[levels[cur_level_css-1].id] = cur_level_css;
 			document.querySelector("#next_btn").classList = 'btn btn-success';
-			if(Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6)
+			if((Object.keys(answer_html).length == 9 && Object.keys(answer_css).length == 6) || cur_level_css !== 6)
 				document.querySelector("#next_btn").disabled = false;
 		}
 		else if(text.indexOf(levels[cur_level_css-1].sel_init) == -1 && text.indexOf(levels[cur_level_css-1].sel_end) > -1 && text !== 'undefined')
