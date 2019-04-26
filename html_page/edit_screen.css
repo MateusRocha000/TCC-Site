@@ -172,7 +172,7 @@
 }
 
 .pc_screen_five {
-	height: 62vh;
+	height: 65vh;
 	width: 45vw;
 	position: relative;
 	padding: 13px 30px 30px 13px;
@@ -376,7 +376,7 @@
 .text_five{
 	display: block;
 	width: calc(100% - 40px);
-	height: 120px;
+	height: 140px;
 	background-color: black;
 	color: #00ffff;
     margin-left: 40px;
@@ -522,8 +522,3 @@
 	width: 9vw;
 	height: 5.5vh;
 	margin-top: 1vh;
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 34bef2b1be527961c78a7730c47b77a86d334946

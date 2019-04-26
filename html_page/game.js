@@ -298,7 +298,7 @@ $(function(){
 	
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
 	let new_line_level_two = 3, 
-		new_line_level_five = 4,
+		new_line_level_five = 5,
 		new_line_level_six = 4,
 		new_line_level_seven = 4,
 		new_line_level_eight = 4,
