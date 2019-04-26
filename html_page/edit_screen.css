@@ -290,12 +290,21 @@
 			cursor: context-menu;
 		}
 
-#check{
+.check{
 	position: absolute;
 	font-size: 1.1vw;
 	width: 6vw;
 	height: 5.5vh;
 	right: 18%;
+	bottom: 1vh;
+}
+
+.check_last_level{
+	position: absolute;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 3%;
 	bottom: 1vh;
 }
 
@@ -309,12 +318,21 @@
 	font-weight: bold;
 }
 
-#clear_text{
+.clear_text{
 	position: absolute;
 	font-size: 1.1vw;
 	width: 6vw;
 	height: 5.5vh;
 	right: 33%;
+	bottom: 1vh;
+}
+
+.clear_text_last_level{
+	position: absolute;
+	font-size: 1.1vw;
+	width: 6vw;
+	height: 5.5vh;
+	right: 18%;
 	bottom: 1vh;
 }
 
@@ -495,13 +513,13 @@
 	font-size: 1.1vw;
 	width: 6vw;
 	height: 5.5vh;
-	margin-top: 2vh;
+	margin-top: 1vh;
 	margin-right: 1vw;
 }
 
 #html_about_btn{
 	font-size: 1.1vw;
-	width: 8vw;
+	width: 9vw;
 	height: 5.5vh;
-	margin-top: 2vh;
+	margin-top: 1vh;
 }
