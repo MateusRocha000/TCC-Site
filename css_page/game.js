@@ -60,26 +60,26 @@ let levels = [
 	{
 			id: '5',
 			name: 'Flexbox',
-			instr: 'Altere o display do item para flex e use uma propriedade para inserir um espaçamento entre as traves.',
+			instr: 'Altere o display do item para flex e use uma propriedade para alterar a posição das traves pela linha, colocando um espaçamento entre elas.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="item">\n      	<div id="trave1"></div>\n      	<div id="trave2"></div>\n      </div>\n   </body>\n</html>',
 			item: '<div id="trave1"></div><div id="trave2"></div>',
 			sel_init: '{',
 			property: 'display',
 			sel_end: '}',
 			style: 'five',
-			help: '<p>Você pode organizar os elementos dentro de um bloco alterando a forma como eles estão organizados (<i>display</i>) para <i>flex</i>. Assim, espaçamento entre os elementos, além da forma como estão distribuídos no bloco podem ser alterados, seja em linha ou em coluna. Após o display ser alterado, algumas propriedades podem ser usadas:</p><p>- justify-content: altera a posição dos elementos pela linha.</p><p>- align-items: altera a posição dos elementos pela coluna.</p><p>A propriedade justify-content pode ter valores como:</p><p>-- space-between: um espaço é colocado entre os elementos do bloco.</p><p>-- space-around: um espaço igual é colocado ao redor dos elementos.</p><p>E align-items pode receber:</p><p>-- baseline: os textos no bloco ficam na mesma linha horizontal.</p><p>-- stretch: os elementos preenchem a coluna.</p><p>As duas propriedades podem receber valores como:</p><p>-- flex-start: os elementos vão para o início</p><p>-- flex-end: os elementos vão para o fim</p><p>-- center: os elementos vão para o centro</p>'
+			help: '<p>Você pode organizar os elementos dentro de um bloco alterando a forma como eles estão organizados (<i>display</i>) para <i>flex</i>. Assim, espaçamento entre os elementos, além da forma como estão distribuídos no bloco podem ser alterados, seja em linha ou em coluna. Após o display ser alterado colocando <q>display: flex;</q>, algumas propriedades podem ser usadas:</p><p>- justify-content: altera a posição dos elementos pela linha.</p><p>- align-items: altera a posição dos elementos pela coluna.</p><p>A propriedade justify-content pode ter valores como:</p><p>-- space-between: um espaço é colocado entre os elementos do bloco.</p><p>-- space-around: um espaço igual é colocado ao redor dos elementos.</p><p>E align-items pode receber:</p><p>-- baseline: os textos no bloco ficam na mesma linha horizontal.</p><p>-- stretch: os elementos preenchem a coluna.</p><p>As duas propriedades podem receber valores como:</p><p>-- flex-start: os elementos vão para o início</p><p>-- flex-end: os elementos vão para o fim</p><p>-- center: os elementos vão para o centro</p>'
 	},
 	{
 			id: '6',
 			name: 'Grid',
-			instr: 'Crie um tabuleiro de xadrez 10x10. Para este caso, use as propriedades de linha coluna da grade e crie 10 colunas.',
+			instr: 'Crie um tabuleiro de xadrez 10x10. Para este caso, use as propriedades de linha e coluna da grade e crie 10 linhas e 10 colunas com tamanhos iguais.',
 			before: '<html>\n   <head>\n     <title>Titulo</title>\n   </head>\n   <body>\n      <div class="item"></div>\n   </body>\n</html>',
 			item: '',
 			sel_init: '{',
 			property: 'display',
 			sel_end: '}',
 			style: 'six',
-			help: '<p>Os elementos também podem ser organizados em forma de grade. Para isso, utilizamos o <i>display: grid</i>.</p><p>Assim que esta organização é feita, você pode informar quantas linhas e quantas colunas terão a grade com <i>grid-template-rows</i> e <i>grid-template-columns</i> respectivamente. Você atribui valores para as duas propriedades dependendo de quantas linhas e de quantas colunas deseja. Ou seja, se atribuir <q>20% 60% 20%</q> você terá três divisões, onde a primeira e a última ocupam 20% do bloco cada uma e a do meio ocupa 60%. Você também pode colocar valores em pixels em frações (fr). Neste último caso, a célula da grade ocupa uma parte da grade. Caso utilize o valor <q>1fr 1fr 20%</q> A grade é dividida em três partes, onde uma parte ocupa 20% e as outras duas ocupam o restante, tendo o mesmo tamanho</p><p>Caso queira criar várias linhas ou colunas com valores iguais de tamanho, não é necessário que fique colocando o valor repetidas vezes. Basta usar a função <i>repeat</i> passando a quantidade de vezes que irá repetir e o tamanho, como:</p><p><i>grid-template-columns: repeat(5, 1fr)</i></p><p>No exemplo acima, são criadas 5 colunas, todas com tamanhos iguais.</p>'
+			help: '<p>Os elementos também podem ser organizados em forma de grade. Para isso, utilizamos o <i>display: grid</i>.</p><p>Assim que esta organização é feita, você pode informar quantas linhas e quantas colunas terão a grade com <i>grid-template-rows</i> e <i>grid-template-columns</i> respectivamente. Você atribui valores para as duas propriedades dependendo de quantas linhas e de quantas colunas deseja. Ou seja, se atribuir <q>20% 60% 20%</q> você terá três divisões, onde a primeira e a última ocupam 20% do bloco cada uma e a do meio ocupa 60%. Você também pode colocar valores em pixels em frações (fr). Neste último caso, a célula da grade ocupa uma parte da grade. Caso utilize o valor <q>1fr 1fr 20%</q>, a grade é dividida em três partes, onde uma parte ocupa 20% e as outras duas ocupam o restante, tendo o mesmo tamanho.</p><p>Caso queira criar várias linhas ou colunas com valores iguais de tamanho, não é necessário que fique colocando o valor repetidas vezes. Basta usar a função <i>repeat</i> passando a quantidade de vezes que irá repetir e o tamanho, como:</p><p><i>grid-template-rows: repeat(5, 1fr)</i></p><p><i>grid-template-columns: repeat(5, 1fr)</i></p><p>No exemplo acima, são criadas 5 linhas e 5 colunas, todas com tamanhos iguais.</p>'
 	}
 ];
 
@@ -248,9 +248,6 @@ function loadLevel(level)
 	
 	document.querySelector("#next_btn").disabled = true;
 	
-	if(level !== 3 || level !== 6)
-		document.querySelector(".item").style.display = 'block';
-
 	if(level === 1)
 	{
 
@@ -300,6 +297,25 @@ $(function(){
 		{
 			return false;
 		}
+		
+		if(e.keyCode === 9) { // tab was pressed
+	        // get caret position/selection
+	        var start = this.selectionStart;
+	            end = this.selectionEnd;
+	        
+	        var $this = $(this);
+
+	        // set textarea value to: text before caret + tab + text after caret
+	        $this.val($this.val().substring(0, start)
+	                    + " "
+	                    + $this.val().substring(end));
+
+	        // put caret at right position again
+	        this.selectionStart = this.selectionEnd = start + 1;
+
+	        // prevent the focus lose
+	        return false;
+	    }
 
 	});
 

@@ -12,7 +12,7 @@ let levels = [
 	{
 		id		: '1',
 		name	: 'Tag de título: <h1>',
-		instr	: 'Nossa vila precisa do nome na entrada. Utilize a tag para colocar o nome \"Web Village\" para a entrada da nossa cidade.',
+		instr	: 'Nossa vila precisa do nome na entrada. Utilize a tag para colocar o nome \"Web Village\" para a entrada da nossa cidade. Lembre-se de que os dois nomes precisam começar com letra maiúscula.',
 		before	: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<h1>',
@@ -73,12 +73,12 @@ let levels = [
 		tag_init: '<table>',
 		tag_end	: '</table>',
 		style	: 'six',
-		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;Cabeçalho&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 1&lt;/td&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;Elemento 2&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar.'
+		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;...&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;...&lt;/td&gt;&lt;td&gt;...&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar, como:</p><p>&lt;th colspan=2&gt;</p>'
 	},
 	{
 		id		: '7',
 		name	: 'Tag de divisão: <div>',
-		instr	: 'Crie duas div sem classes ou identificadores para serem lâmpadas.',
+		instr	: 'Crie duas div vazias sem classes ou identificadores para serem lâmpadas.',
 		before	: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<div>',
@@ -96,12 +96,12 @@ let levels = [
 		tag_end	: '-->',
 		style	: 'eight',
 		item	: '<div id="pedra"></div>',
-		help	: '<p>Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado.</p> <p>Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso.</p> <p>Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.</p>'
+		help	: '<p>Estas tags especiais são utilizadas para fazer seu navegador ignorar aquela parte. Ou seja, ao abrir a página qualquer código que estiver dentro delas não será utilizado.</p> <p>Um bom uso para elas é o de deixar seu código mais fácil de entender caso outra pessoa tenha acesso.</p> <p>Outra forma é a de testar seu código, comentando algo que já existia para verificar se a remoção da parte do código afeta sua página ou, ainda, tirar alguma parte que esteja causando dor de cabeça e queira resolver depois.</p><p>A maneira de usar está a seguir:</p><p>&lt;!--</p><p>&nbsp;&nbsp;Código</p><p>--&gt;</p>'
 	},
 	{
 		id		: '9',
 		name	: 'Tag de link: <a>',
-		instr	: ' Crie um link para a página de CSS (vide ajuda). Lembre-se de colocar um nome para o link para não ficar vazio.',
+		instr	: ' Crie um link para a página de CSS (vide ajuda). Lembre-se de colocar um nome para o link para não ficar vazio. Assim que ele for criado, clique no mesmo para ser direcionado para as atividades de CSS.',
 		before	: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<a',
