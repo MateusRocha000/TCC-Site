@@ -45,7 +45,7 @@ let levels = [
 	{
 		id		: '4',
 		name	: 'Tag de botão: <button>',
-		instr	: 'Precisamos de um novo botão de alarme para aviso de invasões. Consegue criar para nós?',
+		instr	: 'Precisamos de um novo botão de alarme para aviso de invasões. Consegue criar para nós? Coloque o nome de "Alarme" no conteúdo do botão.',
 		before	: '<html>\n   <head>\n     <title>Botão</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<button>',
@@ -56,7 +56,7 @@ let levels = [
 	{
 		id		: '5',
 		name	: 'Tags de lista: <ul>, <ol> e <li>',
-		instr	: 'Perdemos alguns ingredientes. Crie uma lista de compras para o restaurante.',
+		instr	: 'Perdemos alguns ingredientes. Crie uma lista de compras com os que estão faltando.',
 		before	: '<html>\n   <head>\n     <title>Lista</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<ul>',
@@ -78,7 +78,7 @@ let levels = [
 	{
 		id		: '7',
 		name	: 'Tag de divisão: <div>',
-		instr	: 'Crie duas div vazias sem classes ou identificadores para serem lâmpadas.',
+		instr	: 'Crie duas div vazias e sem classes ou identificadores para serem lâmpadas.',
 		before	: '<html>\n   <head>\n     <title>Div</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<div>',
