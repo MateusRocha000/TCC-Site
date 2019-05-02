@@ -7,6 +7,8 @@ let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_ht
 //Vetor que indica quais níveis foram cumpridos
 let level_cleared_html = (localStorage.level_cleared_html && JSON.parse(localStorage.level_cleared_html)) || [];
 
+let correct_answer = false;
+
 //Informações de cada nível
 let levels = [
 	{
@@ -73,7 +75,7 @@ let levels = [
 		tag_init: '<table>',
 		tag_end	: '</table>',
 		style	: 'six',
-		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;...&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;...&lt;/td&gt;&lt;td&gt;...&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar, como:</p><p>&lt;th colspan=2&gt;</p>'
+		help	: '<p>A tag &lt;table&gt; cria uma tabela e as tags &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; criam os elementos da tabela, onde &lt;tr&gt; é referente à linha da tabela, &lt;th&gt; ao título da coluna e &lt;td&gt; ao dado da célula da tabela.</p><p>&lt;table&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;th&gt;...&lt;/th&gt;&lt;/tr&gt;</p><p>&nbsp;&nbsp;&lt;tr&gt;&lt;td&gt;...&lt;/td&gt;&lt;td&gt;...&lt;/td&gt;&lt;/tr&gt;</p><p>&lt;/table&gt;</p><p>No caso desta atividade não há necessidade de colocar texto dentro da tag.</p><p>Dica: você pode utilizar o atributo colspan para fazer um elemento ocupar mais de uma linha. Para isso, basta atribuir o número de colunas que irá ocupar, como:</p><p>&lt;th colspan=2&gt;</p>'
 	},
 	{
 		id		: '7',
@@ -252,7 +254,6 @@ function loadLevel(level)
 		document.querySelector("#pc_screen").classList 	= 'pc_screen_else';
 		document.querySelector("textarea").classList 	= 'text_else';
 	}
-	document.querySelector("#next_btn").classList = 'btn btn-secondary next_btn';
 	//Condicionais para deixar botões de mudança de nível apenas nos níveis corretos
 	if(level === 1)
 	{
@@ -444,12 +445,13 @@ $(function(){
 				&& text !== 'undefined' || (cur_level_html == 5 && text.indexOf('<ol>') > -1 
 				&& text.indexOf('</ol>') > -1))
 		{
-			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 8 || cur_level_html === 7)
+			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 8 || cur_level_html === 7 || cur_level_html === 6)
 			{
+				correct_answer = true;
 				if(!(text.indexOf("Web Village") > -1) && cur_level_html === 1)
 				{
+					correct_answer = false;
 					document.querySelector("#char").classList = 'char_level_one_error';
-
 					document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">O nome de nossa vila está errado.</div>';
 					setTimeout(function(){
 						document.querySelector("#char").classList = 'char_level_one';
@@ -463,6 +465,7 @@ $(function(){
 					checkImageExists(src[0], function(existsImage){
 						if(existsImage == false)
 						{
+							correct_answer = false;
 							document.querySelector("#char").classList = 'char_level_three_error';
 							document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Imagem não encontrada.</div>';
 							setTimeout(function(){
@@ -472,11 +475,67 @@ $(function(){
 						}
 					});
 				}
+				else if(cur_level_html === 4)
+				{
+					if (!(text.indexOf('Alarme') >= 0))
+					{
+						correct_answer = false;
+						document.querySelector("#char").classList = 'char_level_four_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Nome errado do botão.</div>';
+						setTimeout(function(){
+							document.querySelector("#char").classList = 'char_level_four';
+							document.querySelector(".speech-bubble-four").remove();
+						}, 2000);
+					}
+				}
+				else if(cur_level_html === 5)
+				{
+					
+					if (!(text.indexOf('Batata') >= 0 && text.indexOf('Garra') >= 0 && text.indexOf('Frutas') >= 0))
+					{
+						correct_answer = false;
+						document.querySelector("#char").classList = 'char_level_five_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Tem ingredientes errados na lista.</div>';
+						setTimeout(function(){
+							document.querySelector("#char").classList = 'char_level_five';
+							document.querySelector(".speech-bubble-five").remove();
+						}, 2000);
+					}
+				}
+				else if(cur_level_html === 6)
+				{
+					let aux = text.replace(/(\r\n|\n|\r)/gm, "");
+					if (aux.indexOf('colspan') < 0)
+					{
+						correct_answer = false;
+						document.querySelector("#char").classList = 'char_level_six_error';
+						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Está faltando o colspan.</div>';
+						setTimeout(function(){
+							document.querySelector("#char").classList = 'char_level_six';
+							document.querySelector(".speech-bubble-six").remove();
+						}, 2000);
+					}
+					else{
+						for (var i = 0; i < aux.length; i++) {
+							if(aux[i] == '>' && aux[i+1] !== '<')
+							{
+								correct_answer = false;
+								document.querySelector("#char").classList = 'char_level_six_error';
+								document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Não precisa de texto.</div>';
+								setTimeout(function(){
+									document.querySelector("#char").classList = 'char_level_six';
+									document.querySelector(".speech-bubble-six").remove();
+								}, 2000);
+								break;
+							}
+						}
+					}					
+				}
 				else if(cur_level_html === 8)
 				{
 					if(text.indexOf(levels[cur_level_html-1].item) <= 0){
+						correct_answer = false;
 						document.querySelector("#char").classList = 'char_level_eight_error';
-						console.log();
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble-eight">Sua div está incorreta.</div>';
 						setTimeout(function(){
 							document.querySelector("#char").classList = 'char_level_eight';
@@ -485,8 +544,15 @@ $(function(){
 					}
 				}
 
-				if(document.querySelector("#char").classList.contains('char_level_' + levels[cur_level_html-1].style))
+				if (correct_answer === true)
 				{
+					document.querySelector(".item").innerHTML = text;
+					let current_lvl = cur_level_html-1;
+					$('[data-level=' + current_lvl + ']').addClass('cleared');
+					answer_html[levels[cur_level_html-1].id] = text;
+					level_cleared_html[levels[cur_level_html-1].id] = cur_level_html;
+					document.querySelector("#next_btn").disabled = false;
+					document.querySelector("#next_btn").classList = 'btn btn-success';
 					switch(cur_level_html)
 					{
 						case 1: document.querySelector("#char").classList = 'char_level_one_done';
@@ -509,15 +575,9 @@ $(function(){
 								break;
 					}
 				}
-				document.querySelector(".item").innerHTML = text;
-				document.querySelector("#next_btn").classList = 'btn btn-secondary next_btn';
-				let current_lvl = cur_level_html-1;
-				$('[data-level=' + current_lvl + ']').addClass('cleared');
-				answer_html[levels[cur_level_html-1].id] = text;
-				level_cleared_html[levels[cur_level_html-1].id] = cur_level_html;
-				document.querySelector("#next_btn").disabled = false;
 			}
 			else{
+				correct_answer = false;
 				switch(cur_level_html)
 				{
 					case 1: document.querySelector("#char").classList = 'char_level_one_error';
@@ -557,11 +617,12 @@ $(function(){
 					}
 				}, 2000);
 			}
-			
 		}
+
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
 		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) > -1 && text !== 'undefined')
 		{
+			correct_answer = false;
 			switch(cur_level_html)
 			{
 				case 1: document.querySelector("#char").classList = 'char_level_one_error';
@@ -628,6 +689,7 @@ $(function(){
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
 		else if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
 		{
+			correct_answer = false;
 			switch(cur_level_html)
 			{
 				case 1: document.querySelector("#char").classList = 'char_level_one_error';
@@ -694,6 +756,7 @@ $(function(){
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
 		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
 		{
+			correct_answer = false;
 			switch(cur_level_html)
 			{
 				case 1: document.querySelector("#char").classList = 'char_level_one_error';
