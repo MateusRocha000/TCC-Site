@@ -516,7 +516,8 @@ $(function(){
 						}, 2000);
 					}
 					else{
-						for (var i = 0; i < aux.length; i++) {
+						for (var i = 0; i < aux.length-1; i++) {
+							console.log(aux[i]);
 							if(aux[i] == '>' && aux[i+1] !== '<')
 							{
 								correct_answer = false;
