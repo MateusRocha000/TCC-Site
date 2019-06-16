@@ -9,8 +9,7 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 				'botao': 'Botão',
 				'lista': 'Lista',
 				'tabela': 'Tabela',
-				'classe': 'Classe',
-				'id': 'Id',
+				'classe': 'Div',
 				'comentario': 'Comentário',
 				'link': 'Link'
 			}
@@ -18,12 +17,11 @@ angular.module("tcc-site").controller("tcc-site", function($scope, $localStorage
 		{
 			tema: 'CSS', aulas: {
 				'seletor': 'Seletor',
-				'id': 'Id',
+				'id': 'Identificador',
 				'classe': 'Classe',
 				'planofundo': 'Plano de Fundo',
-				'posicao': 'Posição',
-				'cor' : 'Cores',
-				'flutuante': 'Elemento flutuante'
+				'posicao': 'Flebox',
+				'cor' : 'Grid'
 			}
 		}/*,
 		{
