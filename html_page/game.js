@@ -14,7 +14,7 @@ let levels = [
 	{
 		id		: '1',
 		name	: 'Tag de título: <h1>',
-		instr	: 'Nossa vila precisa do nome na entrada. Utilize a tag para colocar o nome \"Web Village\" para a entrada da nossa cidade. Lembre-se de que os dois nomes precisam começar com letra maiúscula.',
+		instr	: 'Nossa vila precisa do nome na entrada. Utilize a tag para colocar o nome \"Web Village\" como título principal para a entrada da nossa cidade. Lembre-se de que os dois nomes precisam começar com letra maiúscula.',
 		before	: '<html>\n   <head>\n     <title>Título</title>\n   </head>\n   <body>\n',
 		after	: '   </body>\n</html>',
 		tag_init: '<h1>',
