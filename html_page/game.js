@@ -1,11 +1,30 @@
 //Nível atual
 let cur_level_html = parseInt(localStorage.cur_level_html, 10) || 1;
 
+function parseStoredData(key, fallback)
+{
+	const rawValue = localStorage.getItem(key);
+
+	if (!rawValue)
+	{
+		return fallback;
+	}
+
+	try
+	{
+		return JSON.parse(rawValue);
+	}
+	catch (error)
+	{
+		return fallback;
+	}
+}
+
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
-let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_html)) || {};
+let answer_html = parseStoredData('answer_html', {});
 
 //Vetor que indica quais níveis foram cumpridos
-let level_cleared_html = (localStorage.level_cleared_html && JSON.parse(localStorage.level_cleared_html)) || [];
+let level_cleared_html = parseStoredData('level_cleared_html', []);
 
 let correct_answer = false;
 
@@ -86,7 +105,7 @@ let levels = [
 		tag_init: '<div>',
 		tag_end	: '</div>',
 		style	: 'seven',
-		help	: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando <q>id</q> e/ou <q>class</q>, e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=<q>id_da_div</q>&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
+		help	: '<p>A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando <q>id</q> e/ou <q>class</q>, e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.</p><p>&lt;div id=<q>id_da_div</q>&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
 	},
 	{
 		id		: '8',
@@ -102,6 +121,28 @@ let levels = [
 	},
 	{
 		id		: '9',
+		name	: 'Tag de formulário: <form>',
+		instr	: 'A vila quer cadastrar novos visitantes. Monte um formulário com action="/cadastro", um campo de texto e um botão escrito "Enviar".',
+		before	: '<html>\n   <head>\n     <title>Formulário</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
+		tag_init: '<form',
+		tag_end	: '</form>',
+		style	: 'four',
+		help	: '<p>A tag &lt;form&gt; agrupa campos que o usuário pode preencher e enviar para algum processamento.</p><p>Dentro de um formulário você pode usar tags como &lt;input&gt; para receber dados e &lt;button&gt; para enviar as informações.</p><p>Exemplo:</p><p>&lt;form action=<q>/cadastro</q>&gt;</p><p>&nbsp;&nbsp;&lt;input type=<q>text</q>&gt;</p><p>&nbsp;&nbsp;&lt;button&gt;Enviar&lt;/button&gt;</p><p>&lt;/form&gt;</p>'
+	},
+	{
+		id		: '10',
+		name	: 'Tag de quebra de linha: <br>',
+		instr	: 'A placa da entrada ficou apertada. Use a tag para quebrar a frase em duas linhas: "Linha 1" e "Linha 2".',
+		before	: '<html>\n   <head>\n     <title>Quebra de linha</title>\n   </head>\n   <body>\n',
+		after	: '   </body>\n</html>',
+		tag_init: '<br',
+		tag_end	: '>',
+		style	: 'two',
+		help	: '<p>A tag &lt;br&gt; faz uma quebra de linha dentro do conteúdo exibido na página.</p><p>Ela é útil quando você quer continuar o texto na linha de baixo sem abrir um novo parágrafo.</p><p>Exemplo:</p><p>Linha 1&lt;br&gt;Linha 2</p>'
+	},
+	{
+		id		: '11',
 		name	: 'Tag de link: <a>',
 		instr	: ' Crie um link para a página de CSS (vide ajuda). Lembre-se de colocar um nome para o link para não ficar vazio. Assim que ele for criado, clique no mesmo para ser direcionado para as atividades de CSS.',
 		before	: '<html>\n   <head>\n     <title>Link</title>\n   </head>\n   <body>\n',
@@ -109,15 +150,18 @@ let levels = [
 		tag_init: '<a',
 		tag_end	: '</a>',
 		style	: 'nine',
-		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;<p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou é entendida pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido é necessário que você coloque a url absoluta do site com <q>http</q></p><p>Utilize o seguinte link nesta atividade:</p><p>https://webvillage.herokuapp.com/css_page/aula.html</p>'
+		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;</p><p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou são entendidos pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido, é necessário que você coloque a url absoluta do site com <q>http</q>.</p><p>Utilize o seguinte link nesta atividade:</p><p>https://webvillage.herokuapp.com/css_page/aula.html</p>'
 	}
 ];
 
 //Variável auxiliar que pega a quantidade de níveis
-let num_levels = Object.keys(levels).length;
+const num_levels = Object.keys(levels).length;
+const aboutDescription = '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam, pois não existe um elemento filho para elas.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i>; é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento HTML tem essa cara:</p><img src="../img/diagram_html.jfif" alt="Estrutura básica de um documento HTML"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
 
 //Carrega o nível ao carregar a página
-$(window).on("load", loadLevel(cur_level_html));
+$(window).on("load", function(){
+	loadLevel(cur_level_html);
+});
 
 //Função auxiliar para verificar se uma classe está atribuída à um elemento do HTML
 function hasClass(el, className) {
@@ -138,6 +182,51 @@ function hasValue(el, array){
 	return exists;
 }
 
+function getCharacterKey(level)
+{
+	const characterByLevel = {
+		1: 'one',
+		2: 'two',
+		3: 'three',
+		4: 'four',
+		5: 'five',
+		6: 'six',
+		7: 'seven',
+		8: 'eight',
+		9: 'four',
+		10: 'two',
+		11: 'nine'
+	};
+
+	return characterByLevel[level] || 'nine';
+}
+
+function setCharacterState(level, state)
+{
+	const characterKey = getCharacterKey(level);
+	const suffix = state ? '_' + state : '';
+
+	document.querySelector("#char").classList = 'char_level_' + characterKey + suffix;
+}
+
+function showLevelFeedback(level, message)
+{
+	const speechBubbleClass = 'speech-bubble-' + getCharacterKey(level);
+
+	setCharacterState(level, 'error');
+	document.querySelector(".background").innerHTML += '<div class="' + speechBubbleClass + '">' + message + '</div>';
+
+	setTimeout(function(){
+		setCharacterState(level);
+		const speechBubble = document.querySelector('.' + speechBubbleClass);
+
+		if (speechBubble)
+		{
+			speechBubble.remove();
+		}
+	}, 2000);
+}
+
 //Função que carrega as informações de cada nível
 function loadLevel(level)
 {
@@ -145,7 +234,7 @@ function loadLevel(level)
 	document.querySelector("#title").classList		= 'title_else';
 	document.querySelector("#instr").textContent 	= levels[level-1].instr;
 	document.querySelector("#dialog").innerHTML 	= levels[level-1].help;
-	document.querySelector("#about").innerHTML 		= '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
+	document.querySelector("#about").innerHTML 		= aboutDescription;
 	document.querySelector("#before").textContent 	= levels[level-1].before;
 	document.querySelector("#after").textContent 	= levels[level-1].after;
 	document.querySelector(".current").innerHTML 	= level;
@@ -156,27 +245,7 @@ function loadLevel(level)
 	document.querySelector(".item").classList 		= 'item pos_' + levels[level-1].style;
 	document.querySelector(".item").innerHTML 		= '';
 	
-	switch(level)
-	{
-		case 1: document.querySelector("#char").classList = 'char_level_one';
-				break;
-		case 2: document.querySelector("#char").classList = 'char_level_two';
-				break;
-		case 3: document.querySelector("#char").classList = 'char_level_three';
-				break;
-		case 4: document.querySelector("#char").classList = 'char_level_four';
-				break;
-		case 5: document.querySelector("#char").classList = 'char_level_five';
-				break;
-		case 6: document.querySelector("#char").classList = 'char_level_six';
-				break;
-		case 7: document.querySelector("#char").classList = 'char_level_seven';
-				break;
-		case 8: document.querySelector("#char").classList = 'char_level_eight';
-				break;
-		case 9: document.querySelector("#char").classList = 'char_level_nine';
-				break;
-	}
+	setCharacterState(level);
 
 	if(level_cleared_html[level] !== null && level_cleared_html[level] !== undefined)
 	{
@@ -187,14 +256,11 @@ function loadLevel(level)
 		document.querySelector("#next_btn").disabled = true;
 	
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
-	if(answer_html[level] !== '' || answer_html[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
+	const savedAnswer = answer_html[level];
+	if(savedAnswer !== undefined && savedAnswer !== null && savedAnswer !== '')
 	{
-		$("textarea").val(answer_html[level]);
-		//let ans = JSON.parse(localStorage.answer_html);
-		if(answer_html[level] !== undefined && answer_html[level] !== null)
-		{
-			document.querySelector(".item").innerHTML = answer_html[level];
-		}
+		$("textarea").val(savedAnswer);
+		document.querySelector(".item").innerHTML = savedAnswer;
 	}
 	//Se não tinha resposta salva para o nível, a área de texto fica sem valor
 	else
@@ -300,22 +366,21 @@ $(window).on('beforeunload', function(){
 $(function(){
 	
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
-	let new_line_level_two = 3, 
-		new_line_level_five = 5,
-		new_line_level_six = 4,
-		new_line_level_seven = 4,
-		new_line_level_eight = 4,
-		new_line_level_nine = 3;
+	const lineLimitByLevel = {
+		2: 3,
+		5: 5,
+		6: 4,
+		7: 4,
+		8: 4,
+		9: 5,
+		10: 2,
+		11: 3
+	};
 	$("textarea").keydown(function(e){
-		newLines = $(this).val().split("\n").length;
+		const newLines = $(this).val().split("\n").length;
+		const maxLines = lineLimitByLevel[cur_level_html];
 
-		if(	(e.keyCode == 13 && cur_level_html == 2 && newLines >= new_line_level_two) 		|| 
-			(e.keyCode == 13 && cur_level_html == 5 && newLines >= new_line_level_five) 		|| 
-			(e.keyCode == 13 && cur_level_html == 6 && newLines >= new_line_level_six) 		|| 
-			(e.keyCode == 13 && cur_level_html == 7 && newLines >= new_line_level_nine) 		|| 
-			(e.keyCode == 13 && cur_level_html == 8 && newLines >= new_line_level_eight) 		|| 
-			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_eleven) 	|| 
-			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 7 && cur_level_html !== 8 && cur_level_html !== 9)))
+		if(e.keyCode == 13 && (!maxLines || newLines >= maxLines))
 		{
 			return false;
 		}
@@ -325,8 +390,8 @@ $(function(){
 	$("#clear_storage").on("click", function(){
 		answer_html = {};
 		level_cleared_html = [];
-		localStorage.setItem("level_cleared_html", level_cleared_html);
-		localStorage.setItem("answer_html", answer_html);
+		localStorage.setItem("level_cleared_html", JSON.stringify(level_cleared_html));
+		localStorage.setItem("answer_html", JSON.stringify(answer_html));
 		setTimeout(function(){
 			location.reload();
 		}, 1000);
@@ -382,11 +447,8 @@ $(function(){
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
 
-		if(localStorage.getItem('level_cleared_html') !== null)
-		{
-			if (hasValue(level.id, localStorage.getItem('level_cleared_html'))) {
-				levelMarker.addClass('cleared');
-			}
+		if (hasValue(level.id, level_cleared_html)) {
+			levelMarker.addClass('cleared');
 		}
 		
 		levelMarker.appendTo('#levels');
@@ -437,26 +499,22 @@ $(function(){
 	//Testa o código digitado pelo usuário e trata erros de entrada
 	$("#check").on("click", function(){
 		
-		text = $("textarea").val();
+		let text = $("textarea").val();
+		const currentLevel = levels[cur_level_html-1];
+		const hasOpeningTag = text.indexOf(currentLevel.tag_init) > -1;
+		const hasClosingTag = text.indexOf(currentLevel.tag_end) > -1;
+		const hasOrderedList = cur_level_html === 5 && text.indexOf('<ol>') > -1 && text.indexOf('</ol>') > -1;
 		
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
-		if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 
-				&& text.indexOf(levels[cur_level_html-1].tag_end) > -1 
-				&& text !== 'undefined' || (cur_level_html == 5 && text.indexOf('<ol>') > -1 
-				&& text.indexOf('</ol>') > -1))
+		if((hasOpeningTag && hasClosingTag) || hasOrderedList)
 		{
-			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 8 || cur_level_html === 7 || cur_level_html === 6)
+			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 9 || cur_level_html === 8 || cur_level_html === 7 || cur_level_html === 6)
 			{
 				correct_answer = true;
 				if(!(text.indexOf("Web Village") > -1) && cur_level_html === 1)
 				{
 					correct_answer = false;
-					document.querySelector("#char").classList = 'char_level_one_error';
-					document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">O nome de nossa vila está errado.</div>';
-					setTimeout(function(){
-						document.querySelector("#char").classList = 'char_level_one';
-						document.querySelector(".speech-bubble-one").remove();
-					}, 2000);
+					showLevelFeedback(cur_level_html, 'O nome de nossa vila está errado.');
 				}
 				else if(cur_level_html === 3)
 				{
@@ -466,12 +524,7 @@ $(function(){
 						if(existsImage == false)
 						{
 							correct_answer = false;
-							document.querySelector("#char").classList = 'char_level_three_error';
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Imagem não encontrada.</div>';
-							setTimeout(function(){
-								document.querySelector("#char").classList = 'char_level_three';
-								document.querySelector(".speech-bubble-three").remove();
-							}, 2000);
+							showLevelFeedback(cur_level_html, 'Imagem não encontrada.');
 						}
 					});
 				}
@@ -480,12 +533,7 @@ $(function(){
 					if (!(text.indexOf('Alarme') >= 0))
 					{
 						correct_answer = false;
-						document.querySelector("#char").classList = 'char_level_four_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Nome errado do botão.</div>';
-						setTimeout(function(){
-							document.querySelector("#char").classList = 'char_level_four';
-							document.querySelector(".speech-bubble-four").remove();
-						}, 2000);
+						showLevelFeedback(cur_level_html, 'Nome errado do botão.');
 					}
 				}
 				else if(cur_level_html === 5)
@@ -494,12 +542,7 @@ $(function(){
 					if (!(text.indexOf('Batata') >= 0 && text.indexOf('Garra') >= 0 && text.indexOf('Frutas') >= 0))
 					{
 						correct_answer = false;
-						document.querySelector("#char").classList = 'char_level_five_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Tem ingredientes errados na lista.</div>';
-						setTimeout(function(){
-							document.querySelector("#char").classList = 'char_level_five';
-							document.querySelector(".speech-bubble-five").remove();
-						}, 2000);
+						showLevelFeedback(cur_level_html, 'Tem ingredientes errados na lista.');
 					}
 				}
 				else if(cur_level_html === 6)
@@ -508,40 +551,40 @@ $(function(){
 					if (aux.indexOf('colspan') < 0)
 					{
 						correct_answer = false;
-						document.querySelector("#char").classList = 'char_level_six_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Está faltando o colspan.</div>';
-						setTimeout(function(){
-							document.querySelector("#char").classList = 'char_level_six';
-							document.querySelector(".speech-bubble-six").remove();
-						}, 2000);
+						showLevelFeedback(cur_level_html, 'Está faltando o colspan.');
 					}
 					else{
 						for (var i = 0; i < aux.length-1; i++) {
-							console.log(aux[i]);
 							if(aux[i] == '>' && aux[i+1] !== '<')
 							{
 								correct_answer = false;
-								document.querySelector("#char").classList = 'char_level_six_error';
-								document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Não precisa de texto.</div>';
-								setTimeout(function(){
-									document.querySelector("#char").classList = 'char_level_six';
-									document.querySelector(".speech-bubble-six").remove();
-								}, 2000);
+								showLevelFeedback(cur_level_html, 'Não precisa de texto.');
 								break;
 							}
 						}
 					}					
 				}
+				else if(cur_level_html === 9)
+				{
+					if (!(text.indexOf('action="/cadastro"') >= 0 && text.indexOf('<input') >= 0 && text.indexOf('type="text"') >= 0 && text.indexOf('Enviar') >= 0))
+					{
+						correct_answer = false;
+						showLevelFeedback(cur_level_html, 'O formulário precisa de action, campo de texto e botão Enviar.');
+					}
+				}
+				else if(cur_level_html === 10)
+				{
+					if (!(text.indexOf('Linha 1') >= 0 && text.indexOf('Linha 2') >= 0))
+					{
+						correct_answer = false;
+						showLevelFeedback(cur_level_html, 'Use a quebra de linha entre Linha 1 e Linha 2.');
+					}
+				}
 				else if(cur_level_html === 8)
 				{
-					if(text.indexOf(levels[cur_level_html-1].item) <= 0){
+					if(text.indexOf(levels[cur_level_html-1].item) < 0){
 						correct_answer = false;
-						document.querySelector("#char").classList = 'char_level_eight_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-eight">Sua div está incorreta.</div>';
-						setTimeout(function(){
-							document.querySelector("#char").classList = 'char_level_eight';
-							document.querySelector(".speech-bubble-eight").remove();
-						}, 2000);
+						showLevelFeedback(cur_level_html, 'Sua div está incorreta.');
 					}
 				}
 
@@ -554,272 +597,32 @@ $(function(){
 					level_cleared_html[levels[cur_level_html-1].id] = cur_level_html;
 					document.querySelector("#next_btn").disabled = false;
 					document.querySelector("#next_btn").classList = 'btn btn-success';
-					switch(cur_level_html)
-					{
-						case 1: document.querySelector("#char").classList = 'char_level_one_done';
-								break;
-						case 2: document.querySelector("#char").classList = 'char_level_two_done';
-								break;
-						case 3: document.querySelector("#char").classList = 'char_level_three_done';
-								break;
-						case 4: document.querySelector("#char").classList = 'char_level_four_done';
-								break;
-						case 5: document.querySelector("#char").classList = 'char_level_five_done';
-								break;
-						case 6: document.querySelector("#char").classList = 'char_level_six_done';
-								break;
-						case 7: document.querySelector("#char").classList = 'char_level_seven_done';
-								break;
-						case 8: document.querySelector("#char").classList = 'char_level_eight_done';
-								break;
-						case 9: document.querySelector("#char").classList = 'char_level_nine_done';
-								break;
-					}
+					setCharacterState(cur_level_html, 'done');
 				}
 			}
 			else{
 				correct_answer = false;
-				switch(cur_level_html)
-				{
-					case 1: document.querySelector("#char").classList = 'char_level_one_error';
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Esqueceu do conteúdo.</div>';
-							break;
-					case 2: document.querySelector("#char").classList = 'char_level_two_error';
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Esqueceu do conteúdo.</div>';
-							break;
-					case 4: document.querySelector("#char").classList = 'char_level_four_error';
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Esqueceu do conteúdo.</div>';
-							break;
-					case 5: document.querySelector("#char").classList = 'char_level_five_error';
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Esqueceu do conteúdo.</div>';
-							break;
-					case 9: document.querySelector("#char").classList = 'char_level_nine_error';
-							document.querySelector(".background").innerHTML += '<div class="speech-bubble-nine">Esqueceu do conteúdo.</div>';
-							break;
-				}
-				setTimeout(function(){
-					switch(cur_level_html)
-					{
-					case 1: document.querySelector("#char").classList = 'char_level_one';
-							document.querySelector(".speech-bubble-one").remove();
-							break;
-					case 2: document.querySelector("#char").classList = 'char_level_two';
-							document.querySelector(".speech-bubble-two").remove();
-							break;
-					case 4: document.querySelector("#char").classList = 'char_level_four';
-							document.querySelector(".speech-bubble-four").remove();
-							break;
-					case 5: document.querySelector("#char").classList = 'char_level_five';
-							document.querySelector(".speech-bubble-five").remove();
-							break;
-					case 9: document.querySelector("#char").classList = 'char_level_nine';
-							document.querySelector(".speech-bubble-nine").remove();
-							break;
-					}
-				}, 2000);
+				showLevelFeedback(cur_level_html, 'Esqueceu do conteúdo.');
 			}
 		}
 
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
-		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) > -1 && text !== 'undefined')
+		else if(!hasOpeningTag && hasClosingTag)
 		{
 			correct_answer = false;
-			switch(cur_level_html)
-			{
-				case 1: document.querySelector("#char").classList = 'char_level_one_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 2: document.querySelector("#char").classList = 'char_level_two_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 3: document.querySelector("#char").classList = 'char_level_three_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 4: document.querySelector("#char").classList = 'char_level_four_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 5: document.querySelector("#char").classList = 'char_level_five_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 6: document.querySelector("#char").classList = 'char_level_six_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 7: document.querySelector("#char").classList = 'char_level_seven_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-seven">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 8: document.querySelector("#char").classList = 'char_level_eight_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-eight">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-				case 9: document.querySelector("#char").classList = 'char_level_nine_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-nine">Você não abriu sua tag ou está incorreta.</div>';
-						break;
-			}
-			setTimeout(function(){
-				switch(cur_level_html)
-				{
-				case 1: document.querySelector("#char").classList = 'char_level_one';
-						document.querySelector(".speech-bubble-one").remove();
-						break;
-				case 2: document.querySelector("#char").classList = 'char_level_two';
-						document.querySelector(".speech-bubble-two").remove();
-						break;
-				case 3: document.querySelector("#char").classList = 'char_level_three';
-						document.querySelector(".speech-bubble-three").remove();
-						break;
-				case 4: document.querySelector("#char").classList = 'char_level_four';
-						document.querySelector(".speech-bubble-four").remove();
-						break;
-				case 5: document.querySelector("#char").classList = 'char_level_five';
-						document.querySelector(".speech-bubble-five").remove();
-						break;
-				case 6: document.querySelector("#char").classList = 'char_level_six';
-						document.querySelector(".speech-bubble-six").remove();
-						break;
-				case 7: document.querySelector("#char").classList = 'char_level_seven';
-						document.querySelector(".speech-bubble-seven").remove();
-						break;
-				case 8: document.querySelector("#char").classList = 'char_level_eight';
-						document.querySelector(".speech-bubble-eight").remove();
-						break;
-				case 9: document.querySelector("#char").classList = 'char_level_nine';
-						document.querySelector(".speech-bubble-nine").remove();
-						break;
-				}
-			}, 2000);
+			showLevelFeedback(cur_level_html, 'Você não abriu sua tag ou está incorreta.');
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
-		else if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
+		else if(hasOpeningTag && !hasClosingTag)
 		{
 			correct_answer = false;
-			switch(cur_level_html)
-			{
-				case 1: document.querySelector("#char").classList = 'char_level_one_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 2: document.querySelector("#char").classList = 'char_level_two_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 3: document.querySelector("#char").classList = 'char_level_three_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 4: document.querySelector("#char").classList = 'char_level_four_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 5: document.querySelector("#char").classList = 'char_level_five_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 6: document.querySelector("#char").classList = 'char_level_six_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 7: document.querySelector("#char").classList = 'char_level_seven_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-seven">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 8: document.querySelector("#char").classList = 'char_level_eight_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-eight">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-				case 9: document.querySelector("#char").classList = 'char_level_nine_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-nine">Você não fechou sua tag ou está incorreta.</div>';
-						break;
-			}
-			setTimeout(function(){
-				switch(cur_level_html)
-				{
-				case 1: document.querySelector("#char").classList = 'char_level_one';
-						document.querySelector(".speech-bubble-one").remove();
-						break;
-				case 2: document.querySelector("#char").classList = 'char_level_two';
-						document.querySelector(".speech-bubble-two").remove();
-						break;
-				case 3: document.querySelector("#char").classList = 'char_level_three';
-						document.querySelector(".speech-bubble-three").remove();
-						break;
-				case 4: document.querySelector("#char").classList = 'char_level_four';
-						document.querySelector(".speech-bubble-four").remove();
-						break;
-				case 5: document.querySelector("#char").classList = 'char_level_five';
-						document.querySelector(".speech-bubble-five").remove();
-						break;
-				case 6: document.querySelector("#char").classList = 'char_level_six';
-						document.querySelector(".speech-bubble-six").remove();
-						break;
-				case 7: document.querySelector("#char").classList = 'char_level_seven';
-						document.querySelector(".speech-bubble-seven").remove();
-						break;
-				case 8: document.querySelector("#char").classList = 'char_level_eight';
-						document.querySelector(".speech-bubble-eight").remove();
-						break;
-				case 9: document.querySelector("#char").classList = 'char_level_nine';
-						document.querySelector(".speech-bubble-nine").remove();
-						break;
-				}
-			}, 2000);
+			showLevelFeedback(cur_level_html, 'Você não fechou sua tag ou está incorreta.');
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
-		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
+		else if(!hasOpeningTag && !hasClosingTag)
 		{
 			correct_answer = false;
-			switch(cur_level_html)
-			{
-				case 1: document.querySelector("#char").classList = 'char_level_one_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-one">Você está se esquecendo das tags.</div>';
-						break;
-				case 2: document.querySelector("#char").classList = 'char_level_two_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-two">Você está se esquecendo das tags.</div>';
-						break;
-				case 3: document.querySelector("#char").classList = 'char_level_three_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-three">Você está se esquecendo das tags.</div>';
-						break;
-				case 4: document.querySelector("#char").classList = 'char_level_four_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-four">Você está se esquecendo das tags.</div>';
-						break;
-				case 5: document.querySelector("#char").classList = 'char_level_five_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-five">Você está se esquecendo das tags.</div>';
-						break;
-				case 6: document.querySelector("#char").classList = 'char_level_six_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-six">Você está se esquecendo das tags.</div>';
-						break;
-				case 7: document.querySelector("#char").classList = 'char_level_seven_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-seven">Você está se esquecendo das tags.</div>';
-						break;
-				case 8: document.querySelector("#char").classList = 'char_level_eight_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-eight">Você está se esquecendo das tags.</div>';
-						break;
-				case 9: document.querySelector("#char").classList = 'char_level_nine_error';
-						document.querySelector(".background").innerHTML += '<div class="speech-bubble-nine">Você está se esquecendo das tags.</div>';
-						break;
-			}
-			setTimeout(function(){
-				switch(cur_level_html)
-				{
-				case 1: document.querySelector("#char").classList = 'char_level_one';
-						document.querySelector(".speech-bubble-one").remove();
-						break;
-				case 2: document.querySelector("#char").classList = 'char_level_two';
-						document.querySelector(".speech-bubble-two").remove();
-						break;
-				case 3: document.querySelector("#char").classList = 'char_level_three';
-						document.querySelector(".speech-bubble-three").remove();
-						break;
-				case 4: document.querySelector("#char").classList = 'char_level_four';
-						document.querySelector(".speech-bubble-four").remove();
-						break;
-				case 5: document.querySelector("#char").classList = 'char_level_five';
-						document.querySelector(".speech-bubble-five").remove();
-						break;
-				case 6: document.querySelector("#char").classList = 'char_level_six';
-						document.querySelector(".speech-bubble-six").remove();
-						break;
-				case 7: document.querySelector("#char").classList = 'char_level_seven';
-						document.querySelector(".speech-bubble-seven").remove();
-						break;
-				case 8: document.querySelector("#char").classList = 'char_level_eight';
-						document.querySelector(".speech-bubble-eight").remove();
-						break;
-				case 9: document.querySelector("#char").classList = 'char_level_nine';
-						document.querySelector(".speech-bubble-nine").remove();
-						break;
-				}
-			}, 2000);
+			showLevelFeedback(cur_level_html, 'Você está se esquecendo das tags.');
 		}
 
 	});
