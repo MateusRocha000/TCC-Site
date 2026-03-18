@@ -1,7 +1,10 @@
 <!doctype html>
+<html lang="pt-BR">
 <head>
 	<title>Web Village</title>
 	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content="Fase do jogo Web Village focada no ensino de HTML."/>
 	<link rel="stylesheet" href="animate.min.css">
 	<link rel="stylesheet" type="text/css" href="aula.css">
 	<link rel="stylesheet" type="text/css" href="modal.css">
@@ -9,7 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="view_screen.css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
@@ -21,7 +23,7 @@
 			<h1 id="title"></h1>
 
 			<div id="num-levels">
-				<button id="button1" name="seta-esq"><!-- <img class="arrow" src="../img/arrow-left.png"> --></button>
+				<button id="button1" name="seta-esq" type="button" aria-label="Voltar um nível"><!-- <img class="arrow" src="../img/arrow-left.png"> --></button>
 				<span id="level-indicator">
 					<span id="labelLevel">Nível</span>
 					<span class="current"></span>
@@ -30,7 +32,7 @@
 					<span id="seta-down"></span>
 				</span>
 				
-				<button id="button2" name="seta-dir"><!-- <img class="arrow" src="../img/arrow-right.png"> --></button>
+				<button id="button2" name="seta-dir" type="button" aria-label="Avançar um nível"><!-- <img class="arrow" src="../img/arrow-right.png"> --></button>
 
 				<div id="levels-box" class="box">
 					<div id="levels">
@@ -48,7 +50,7 @@
 		<div id="editor">
 			<div id="pc_screen">	
 				<pre id="before"></pre>
-				<textarea type="text" name="code" autofocus style="resize:none; word-wrap: break-word;"></textarea>
+				<textarea name="code" autofocus aria-label="Editor de código HTML" spellcheck="false" style="resize:none; word-wrap: break-word;"></textarea>
 				<pre id="after"></pre>
 
 				
@@ -63,8 +65,8 @@
 			
 		</div>
 		
-		<a class="btn btn-primary" id="help_btn">Ajuda</a>
-		<a class="btn btn-primary" id="html_about_btn">Sobre HTML</a>
+		<button class="btn btn-primary" id="help_btn" type="button">Ajuda</button>
+		<button class="btn btn-primary" id="html_about_btn" type="button">Sobre HTML</button>
 		<!-- <a class="btn btn-primary" id="css_btn" onclick="window.location.href='../css_page/aula.html'">CSS</a>
 		<a class="btn btn-primary" id="js_btn" onclick="window.location.href='../js_page/aula.html'">JavaScript</a>
 		

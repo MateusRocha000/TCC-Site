@@ -1,11 +1,30 @@
 //Nível atual
 let cur_level_html = parseInt(localStorage.cur_level_html, 10) || 1;
 
+function parseStoredData(key, fallback)
+{
+	const rawValue = localStorage.getItem(key);
+
+	if (!rawValue)
+	{
+		return fallback;
+	}
+
+	try
+	{
+		return JSON.parse(rawValue);
+	}
+	catch (error)
+	{
+		return fallback;
+	}
+}
+
 //Vetor onde serão salvas as respostas do usuário (caso corretas)
-let answer_html = (localStorage.answer_html && JSON.parse(localStorage.answer_html)) || {};
+let answer_html = parseStoredData('answer_html', {});
 
 //Vetor que indica quais níveis foram cumpridos
-let level_cleared_html = (localStorage.level_cleared_html && JSON.parse(localStorage.level_cleared_html)) || [];
+let level_cleared_html = parseStoredData('level_cleared_html', []);
 
 let correct_answer = false;
 
@@ -86,7 +105,7 @@ let levels = [
 		tag_init: '<div>',
 		tag_end	: '</div>',
 		style	: 'seven',
-		help	: 'A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando <q>id</q> e/ou <q>class</q>, e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.<br>&lt;div id=<q>id_da_div</q>&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
+		help	: '<p>A tag &lt;div&gt; é utilizada para organizar melhor seu código, criando divisões em sua página. Estas divisões funcionam como blocos e você pode estilizá-los, utilizando <q>id</q> e/ou <q>class</q>, e organizar sua página de maneira mais eficiente. Quando se aplica um estilo a uma &lt;div&gt;, tudo que estiver dentro da mesma irá receber aquele estilo.</p><p>&lt;div id=<q>id_da_div</q>&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&nbsp;&nbsp;&lt;div class=<q>classe_da_div</q>&gt;...&lt;/div&gt;</p><p>&lt;/div&gt;</p>'
 	},
 	{
 		id		: '8',
@@ -109,15 +128,18 @@ let levels = [
 		tag_init: '<a',
 		tag_end	: '</a>',
 		style	: 'nine',
-		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;<p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou é entendida pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido é necessário que você coloque a url absoluta do site com <q>http</q></p><p>Utilize o seguinte link nesta atividade:</p><p>https://webvillage.herokuapp.com/css_page/aula.html</p>'
+		help	: '<p>A tag &lt;a&gt; cria um link para uma página, atribuindo o link da página ao atributo <q>href</q>. Assim, ao clicar nele, você é redirecionado àquela página.</p><p>&lt;a href=<q>link_da_página</q>&gt;Nome do link&lt;/a&gt;</p><p>Lembre-se que links que não possuem o protocolo http, ou https, na url do link que você criou são entendidos pelo navegador como uma url relativa, ou seja, ele irá utilizar como base a url do site em que você se encontra e acrescentar o link que você está passando. Para que você seja redirecionado, de fato, para o link fornecido, é necessário que você coloque a url absoluta do site com <q>http</q>.</p><p>Utilize o seguinte link nesta atividade:</p><p>https://webvillage.herokuapp.com/css_page/aula.html</p>'
 	}
 ];
 
 //Variável auxiliar que pega a quantidade de níveis
-let num_levels = Object.keys(levels).length;
+const num_levels = Object.keys(levels).length;
+const aboutDescription = '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam, pois não existe um elemento filho para elas.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i>; é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento HTML tem essa cara:</p><img src="../img/diagram_html.jfif" alt="Estrutura básica de um documento HTML"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
 
 //Carrega o nível ao carregar a página
-$(window).on("load", loadLevel(cur_level_html));
+$(window).on("load", function(){
+	loadLevel(cur_level_html);
+});
 
 //Função auxiliar para verificar se uma classe está atribuída à um elemento do HTML
 function hasClass(el, className) {
@@ -145,7 +167,7 @@ function loadLevel(level)
 	document.querySelector("#title").classList		= 'title_else';
 	document.querySelector("#instr").textContent 	= levels[level-1].instr;
 	document.querySelector("#dialog").innerHTML 	= levels[level-1].help;
-	document.querySelector("#about").innerHTML 		= '<p>O HTML (HyperText Markup Language), ou Linguagem de Marcação de HiperTexto, é um formato de arquivo em texto com marcações dando a este uma estrutura. As marcações são definidas utilizando <i>tags</i> que representam alguma informação da página Web. Quase todas as tags necessitam que sejam iniciadas com &lt;nome_da_tag&gt; e fechadas com &lt;/nome_da_tag&gt;. Aquelas que podem ter um elemento filho precisam ser fechadas. Mas tags como de imagem &lt;img&gt; não precisam pois não existe um elemento filho para ela.</p><p>O navegador interpreta o arquivo como HTML ao utilizar a tag <i>&lt;html&gt;&lt;/html&gt;</i>. Dentro desta tag, será construída sua página. Ela possui um cabeçalho, definido pela tag <i>&lt;head&gt;&lt;/head&gt;</i> (onde são definidos o título da página, que aparece na aba do navegador, e os metadados presentes na página que não são mostrados e costumam ser links para documentos de estilo da página e scripts), e um corpo, definido pela tag <i>&lt;body&gt;&lt;/body&gt;</i> e é dentro dessa tag que estará todo o corpo de sua página.</p><p>Portanto, sabemos que um documento html tem essa cara:</p><img src="../img/diagram_html.jfif"><p>Cumpra as atividades e avance para os próximos níveis.</p>';
+	document.querySelector("#about").innerHTML 		= aboutDescription;
 	document.querySelector("#before").textContent 	= levels[level-1].before;
 	document.querySelector("#after").textContent 	= levels[level-1].after;
 	document.querySelector(".current").innerHTML 	= level;
@@ -187,14 +209,11 @@ function loadLevel(level)
 		document.querySelector("#next_btn").disabled = true;
 	
 	//Se o nível já tiver sido concluído e foi visitado novamente, carrega as respostas que o usuário salvou
-	if(answer_html[level] !== '' || answer_html[level] !== null && (localStorage.answer_html !== null || localStorage.answer_html !== ''))
+	const savedAnswer = answer_html[level];
+	if(savedAnswer !== undefined && savedAnswer !== null && savedAnswer !== '')
 	{
-		$("textarea").val(answer_html[level]);
-		//let ans = JSON.parse(localStorage.answer_html);
-		if(answer_html[level] !== undefined && answer_html[level] !== null)
-		{
-			document.querySelector(".item").innerHTML = answer_html[level];
-		}
+		$("textarea").val(savedAnswer);
+		document.querySelector(".item").innerHTML = savedAnswer;
 	}
 	//Se não tinha resposta salva para o nível, a área de texto fica sem valor
 	else
@@ -300,22 +319,19 @@ $(window).on('beforeunload', function(){
 $(function(){
 	
 	//Não permite que o usuário dê ENTER além do número estipulado de linhas para a área de texto
-	let new_line_level_two = 3, 
-		new_line_level_five = 5,
-		new_line_level_six = 4,
-		new_line_level_seven = 4,
-		new_line_level_eight = 4,
-		new_line_level_nine = 3;
+	const lineLimitByLevel = {
+		2: 3,
+		5: 5,
+		6: 4,
+		7: 4,
+		8: 4,
+		9: 3
+	};
 	$("textarea").keydown(function(e){
-		newLines = $(this).val().split("\n").length;
+		const newLines = $(this).val().split("\n").length;
+		const maxLines = lineLimitByLevel[cur_level_html];
 
-		if(	(e.keyCode == 13 && cur_level_html == 2 && newLines >= new_line_level_two) 		|| 
-			(e.keyCode == 13 && cur_level_html == 5 && newLines >= new_line_level_five) 		|| 
-			(e.keyCode == 13 && cur_level_html == 6 && newLines >= new_line_level_six) 		|| 
-			(e.keyCode == 13 && cur_level_html == 7 && newLines >= new_line_level_nine) 		|| 
-			(e.keyCode == 13 && cur_level_html == 8 && newLines >= new_line_level_eight) 		|| 
-			(e.keyCode == 13 && cur_level_html == 9 && newLines >= new_line_level_eleven) 	|| 
-			(e.keyCode == 13 && (cur_level_html !== 2 && cur_level_html !== 5 && cur_level_html !== 6 && cur_level_html !== 7 && cur_level_html !== 8 && cur_level_html !== 9)))
+		if(e.keyCode == 13 && (!maxLines || newLines >= maxLines))
 		{
 			return false;
 		}
@@ -325,8 +341,8 @@ $(function(){
 	$("#clear_storage").on("click", function(){
 		answer_html = {};
 		level_cleared_html = [];
-		localStorage.setItem("level_cleared_html", level_cleared_html);
-		localStorage.setItem("answer_html", answer_html);
+		localStorage.setItem("level_cleared_html", JSON.stringify(level_cleared_html));
+		localStorage.setItem("answer_html", JSON.stringify(answer_html));
 		setTimeout(function(){
 			location.reload();
 		}, 1000);
@@ -382,11 +398,8 @@ $(function(){
 	levels.forEach(function(level, i){
 		let levelMarker = $('<span/>').addClass('level-marker').attr('data-level', i).text(i+1);
 
-		if(localStorage.getItem('level_cleared_html') !== null)
-		{
-			if (hasValue(level.id, localStorage.getItem('level_cleared_html'))) {
-				levelMarker.addClass('cleared');
-			}
+		if (hasValue(level.id, level_cleared_html)) {
+			levelMarker.addClass('cleared');
 		}
 		
 		levelMarker.appendTo('#levels');
@@ -437,13 +450,14 @@ $(function(){
 	//Testa o código digitado pelo usuário e trata erros de entrada
 	$("#check").on("click", function(){
 		
-		text = $("textarea").val();
+		let text = $("textarea").val();
+		const currentLevel = levels[cur_level_html-1];
+		const hasOpeningTag = text.indexOf(currentLevel.tag_init) > -1;
+		const hasClosingTag = text.indexOf(currentLevel.tag_end) > -1;
+		const hasOrderedList = cur_level_html === 5 && text.indexOf('<ol>') > -1 && text.indexOf('</ol>') > -1;
 		
 		//Se a resposta estiver correta, atribui o código ao item da área de visualização
-		if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 
-				&& text.indexOf(levels[cur_level_html-1].tag_end) > -1 
-				&& text !== 'undefined' || (cur_level_html == 5 && text.indexOf('<ol>') > -1 
-				&& text.indexOf('</ol>') > -1))
+		if((hasOpeningTag && hasClosingTag) || hasOrderedList)
 		{
 			if(text[text.indexOf('>') + 1] !== '<' || cur_level_html === 8 || cur_level_html === 7 || cur_level_html === 6)
 			{
@@ -517,7 +531,6 @@ $(function(){
 					}
 					else{
 						for (var i = 0; i < aux.length-1; i++) {
-							console.log(aux[i]);
 							if(aux[i] == '>' && aux[i+1] !== '<')
 							{
 								correct_answer = false;
@@ -534,7 +547,7 @@ $(function(){
 				}
 				else if(cur_level_html === 8)
 				{
-					if(text.indexOf(levels[cur_level_html-1].item) <= 0){
+					if(text.indexOf(levels[cur_level_html-1].item) < 0){
 						correct_answer = false;
 						document.querySelector("#char").classList = 'char_level_eight_error';
 						document.querySelector(".background").innerHTML += '<div class="speech-bubble-eight">Sua div está incorreta.</div>';
@@ -621,7 +634,7 @@ $(function(){
 		}
 
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura de tag
-		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) > -1 && text !== 'undefined')
+		else if(!hasOpeningTag && hasClosingTag)
 		{
 			correct_answer = false;
 			switch(cur_level_html)
@@ -688,7 +701,7 @@ $(function(){
 			}, 2000);
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, o fechamento da tag
-		else if(text.indexOf(levels[cur_level_html-1].tag_init) > -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
+		else if(hasOpeningTag && !hasClosingTag)
 		{
 			correct_answer = false;
 			switch(cur_level_html)
@@ -755,7 +768,7 @@ $(function(){
 			}, 2000);
 		}
 		//Tratamento de erro para o caso de o usuário digitar de forma incorreta, ou não digitar, a abertura e fechamento da tag
-		else if(text.indexOf(levels[cur_level_html-1].tag_init) == -1 && text.indexOf(levels[cur_level_html-1].tag_end) == -1 && text !== 'undefined')
+		else if(!hasOpeningTag && !hasClosingTag)
 		{
 			correct_answer = false;
 			switch(cur_level_html)
